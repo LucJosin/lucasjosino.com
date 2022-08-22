@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
-
 import sitemap from "@astrojs/sitemap";
+
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,5 +17,5 @@ export default defineConfig({
   // Astro sitemap.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
-  integrations: [sitemap()],
+  integrations: [sitemap(), image()]
 });
