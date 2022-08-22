@@ -93,32 +93,40 @@ const { title, description, imageUrl } = Astro.props as Props;
       :root {
         --primary-color: #fff;
 
-        --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-        --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-        --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+        --divider-color: #000;
+        --border-color: #000;
 
         --color-text: #000;
         --color-bg: #fff;
         --color-border: #fff;
       }
 
-      html {
-        font-family: system-ui, sans-serif;
-        font-size: var(--font-size-base);
-        color: var(--color-text);
-        background-color: var(--color-bg);
-      }
-
+      html,
       body {
+        scroll-behavior: smooth;
+        padding: 0;
         margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        overflow-x: hidden;
+        background-color: var(--color-bg);
+        color: var(--color-text);
       }
 
-      :global(h1) {
-        font-size: var(--font-size-xl);
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
-      :global(h2) {
-        font-size: var(--font-size-lg);
+      * {
+        box-sizing: border-box;
+      }
+
+      :global(p) {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
       }
 
       :global(code) {

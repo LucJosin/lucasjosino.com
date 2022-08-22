@@ -1,0 +1,23 @@
+---
+interface Props {
+  height?: string;
+  width?: string;
+  margin?: string;
+}
+
+const { height, width } = Astro.props as Props;
+let { margin } = Astro.props as Props;
+
+margin = margin ?? '1.5rem 0';
+---
+
+<div class="divider"></div>
+
+<style define:vars={{ height, width, margin }}>
+  .divider {
+    margin: var(--margin);
+    height: var(--height);
+    width: var(--width);
+    background-color: var(--divider-color);
+  }
+</style>

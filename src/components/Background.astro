@@ -1,0 +1,22 @@
+---
+---
+
+<div class="container"></div>
+
+<style>
+  .container {
+    height: inherit;
+    position: absolute;
+    width: inherit;
+    background: url('./static/images/background.jpg') no-repeat center;
+    background-size: cover;
+  }
+
+  .container::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(3px);
+  }
+</style>
