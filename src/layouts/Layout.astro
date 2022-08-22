@@ -1,31 +1,105 @@
 ---
+import headConfig from '@constants/head';
+
 export interface Props {
   title: string;
+  description: string;
+  imageUrl?: string;
 }
 
-const { title } = Astro.props as Props;
+const { title, description, imageUrl } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Configurations -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-language" content="en-US" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <!-- Default  -->
+    <meta name="copyright" content="© 2022, Lucas Josino. All Rights Reserved."
+    />
+    <meta name="description" content={description + headConfig.endDescription}
+    />
+    <meta name="author" content={headConfig.name} />
+    <meta name="tags" content={headConfig.tags} />
+    <meta name="keywords" content={headConfig.tags} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@lucjosin" />
+    <meta name="twitter:site" content="@lucjosin" />
+    <meta name="twitter:domain" content={Astro.url} />
+    <meta name="twitter:title" content={headConfig.titleStart + title} />
+    <meta
+      name="twitter:description"
+      property="og:description"
+      itemprop="description"
+      content={description + headConfig.endDescription}
+    />
+    <meta
+      property="twitter:image"
+      itemprop="image primaryImageOfPage"
+      content={imageUrl ?? './static/images/lg-lt.svg'}
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={headConfig.titleStart + title} />
+    <meta property="og:site_name" content={headConfig.name} />
+    <meta
+      property="og:description"
+      content={description + headConfig.endDescription}
+    />
+    <meta property="og:type" content="portfolio" />
+    <meta property="og:image" content={imageUrl ?? './static/images/lg-lt.svg'}
+    />
+
+    <!-- Links -->
+    <link rel="shortlink" type="text/html" href="https://lucjos.in/h" />
+    <link rel="canonical" href={Astro.url} />
+
+    <!-- Icons -->
+    <link
+      rel="apple-touch-icon"
+      href={imageUrl ?? './static/images/lg-lt.svg'}
+      type="image/png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href={imageUrl ?? './static/images/lg-lt.svg'}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href={imageUrl ?? './static/images/lg-lt.svg'}
+    />
+
+    <!-- Astro -->
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
+    <!-- Title -->
+    <title>{headConfig.titleStart + title}</title>
   </head>
   <body>
     <slot />
     <style>
       :root {
+        --primary-color: #fff;
+
         --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
         --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
         --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
 
-        --color-text: hsl(12, 5%, 4%);
-        --color-bg: hsl(10, 21%, 95%);
-        --color-border: hsl(17, 24%, 90%);
+        --color-text: #000;
+        --color-bg: #fff;
+        --color-border: #fff;
       }
 
       html {
@@ -51,6 +125,13 @@ const { title } = Astro.props as Props;
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
           DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
       }
+      /* 
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary-color: #000;
+          --color-bg: #202020;
+        }
+      } */
     </style>
   </body>
 </html>
