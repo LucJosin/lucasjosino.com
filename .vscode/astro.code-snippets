@@ -1,0 +1,39 @@
+{
+  "Astro page": {
+    "prefix": "astrop",
+    "body": [
+      "---",
+      "import Layout from '@layouts/Layout.astro';",
+      "---",
+      "",
+      "<Layout title=\"$1\">",
+      "\t<main>",
+      "\t\t$0",
+      "\t</main>",
+      "</Layout>",
+      "",
+      "<style>",
+      "</style>"
+    ],
+    "description": "Create a Astro page using Layout"
+  },
+  "Astro component": {
+    "prefix": "astroc",
+    "body": [
+      "---",
+      "$1",
+      "---",
+      "",
+      "<div class=\"$2\">",
+      "\t$3",
+      "</div>",
+      "",
+      "<style>",
+      "\t.$2 {",
+      "\t\t$0",
+      "\t}",
+      "</style>"
+    ],
+    "description": "Create a Astro page using Layout"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "todo-tree.tree.showBadges": true,
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules"],
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "star",
+      "type": "tag",
+      "foreground": "#000",
+      "background": "#b6edff",
+      "iconColour": "#b6edff",
+      "rulerColour": "#b6edff",
+      "gutterIcon": true
+    },
+    "BUG": {
+      "icon": "bug",
+      "type": "tag",
+      "foreground": "#000",
+      "background": "#ff6f72",
+      "iconColour": "#ff6f72",
+      "rulerColour": "#ff6f72",
+      "gutterIcon": true
+    }
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro",
+    "typescript",
+    "typescriptreact"
+  ]
+}
