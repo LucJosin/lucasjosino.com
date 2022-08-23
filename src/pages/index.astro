@@ -15,6 +15,12 @@ import Menu from '@layouts/Menu.astro';
       <Menu />
     </div>
     <Background />
+    <a
+      href="https://www.freepik.com/vectors/matrix"
+      class="credits"
+      target="_blank"
+      >Matrix vector created by starline - www.freepik.com
+    </a>
   </main>
 </Layout>
 
@@ -35,5 +41,13 @@ import Menu from '@layouts/Menu.astro';
     flex-direction: inherit;
     align-items: inherit;
     justify-content: inherit;
+  }
+
+  .credits {
+    z-index: 1;
+    position: absolute;
+    bottom: 0.5rem;
+    opacity: 0.4;
+    font-size: 0.7em;
   }
 </style>

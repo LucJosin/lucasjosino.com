@@ -45,7 +45,7 @@ const { title, description, imageUrl } = Astro.props as Props;
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={imageUrl ?? './static/images/lg-lt.svg'}
+      content={imageUrl ?? './static/icons/lg-lt.svg'}
     />
 
     <!-- Open Graph -->
@@ -57,7 +57,7 @@ const { title, description, imageUrl } = Astro.props as Props;
       content={description + headConfig.endDescription}
     />
     <meta property="og:type" content="portfolio" />
-    <meta property="og:image" content={imageUrl ?? './static/images/lg-lt.svg'}
+    <meta property="og:image" content={imageUrl ?? './static/icons/lg-lt.svg'}
     />
 
     <!-- Links -->
@@ -67,18 +67,18 @@ const { title, description, imageUrl } = Astro.props as Props;
     <!-- Icons -->
     <link
       rel="apple-touch-icon"
-      href={imageUrl ?? './static/images/lg-lt.svg'}
+      href={imageUrl ?? './static/icons/lg-lt.svg'}
       type="image/png"
     />
     <link
       rel="shortcut icon"
       type="image/png"
-      href={imageUrl ?? './static/images/lg-lt.svg'}
+      href={imageUrl ?? './static/icons/lg-lt.svg'}
     />
     <link
       rel="icon"
       type="image/png"
-      href={imageUrl ?? './static/images/lg-lt.svg'}
+      href={imageUrl ?? './static/icons/lg-lt.svg'}
     />
 
     <!-- Astro -->
@@ -113,13 +113,13 @@ const { title, description, imageUrl } = Astro.props as Props;
         color: var(--color-text);
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
       * {
         box-sizing: border-box;
+      }
+
+      :global(a) {
+        color: var(--color-text);
+        text-decoration: none;
       }
 
       :global(p) {
@@ -133,13 +133,19 @@ const { title, description, imageUrl } = Astro.props as Props;
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
           DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
       }
-      /* 
+
       @media (prefers-color-scheme: dark) {
         :root {
-          --primary-color: #000;
-          --color-bg: #202020;
+          --primary-color: #101010;
+
+          --divider-color: #fff;
+          --border-color: #fff;
+
+          --color-text: #fff;
+          --color-bg: #101010;
+          --color-border: #101010;
         }
-      } */
+      }
     </style>
   </body>
 </html>
