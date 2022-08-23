@@ -2,14 +2,24 @@
 import LinkBox from '@components/LinkBox.astro';
 import Title from '@components/Title.astro';
 import { project } from '@constants/linkBox';
+import { projects } from 'data/projects';
 ---
 
 <div class="projects">
   <Title title="Projects" fontSize="1.3em" />
 
   <div class="projects-container">
-    <LinkBox height={project.height} width={project.width} />
-    <LinkBox height={project.height} width={project.width} />
+    {
+      projects.map((data) => (
+        <LinkBox
+          height={project.height}
+          width={project.width}
+          link={data.url}
+          icon={data.icon}
+          iconSize="24"
+        />
+      ))
+    }
   </div>
 </div>
 

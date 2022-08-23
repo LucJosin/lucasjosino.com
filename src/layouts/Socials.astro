@@ -2,15 +2,24 @@
 import LinkBox from '@components/LinkBox.astro';
 import Title from '@components/Title.astro';
 import { social } from '@constants/linkBox';
+import { socials } from 'data/socials';
 ---
 
 <div class="socials">
   <Title title="Socials" fontSize="1.3em" />
   <div class="socials-container">
-    <LinkBox height={social.height} width={social.width} />
-    <LinkBox height={social.height} width={social.width} />
-    <LinkBox height={social.height} width={social.width} />
-    <LinkBox height={social.height} width={social.width} />
+    {
+      socials.map((data) => (
+        <LinkBox
+          height={social.height}
+          width={social.width}
+          link={data.url}
+          icon={data.icon}
+          iconSize="24"
+          alt={data.alt}
+        />
+      ))
+    }
   </div>
 </div>
 

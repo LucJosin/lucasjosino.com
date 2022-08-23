@@ -1,11 +1,23 @@
 ---
 import LinkBox from '@components/LinkBox.astro';
 import { linkBox } from '@constants/linkBox';
+import { links } from 'data/links';
 ---
 
 <div class="links">
-  <LinkBox height={linkBox.height} width={linkBox.width} />
-  <LinkBox height={linkBox.height} width={linkBox.width} />
+  {
+    links.map((data) => (
+      <LinkBox
+        height={linkBox.height}
+        width={linkBox.width}
+        link={data.url}
+        icon={data.icon}
+        iconSize="24"
+        title={data.name}
+        alt={data.alt}
+      />
+    ))
+  }
 </div>
 
 <style>
