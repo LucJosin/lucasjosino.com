@@ -1,7 +1,7 @@
-import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
+import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config';
 
-import image from "@astrojs/image";
+import image from '@astrojs/image';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,13 +9,21 @@ export default defineConfig({
   //
   // Astro uses this full URL to generate your sitemap
   // and canonical URLs in your final build.
-  site: "https://www.my-site.dev",
+  site: 'https://www.my-site.dev',
   // Specifies the output target for builds.s
   //
   // ‘static’ - Building a static site to be deploy to any static host.
-  output: "static",
+  output: 'static',
   // Astro sitemap.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
-  integrations: [sitemap(), image()]
+  integrations: [sitemap(), image()],
+  // Astro icon.
+  //
+  // Ref: https://github.com/natemoo-re/astro-icon#setup
+  vite: {
+    ssr: {
+      external: ['svgo'],
+    },
+  },
 });
