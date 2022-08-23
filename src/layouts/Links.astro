@@ -1,0 +1,18 @@
+---
+import LinkBox from '@components/LinkBox.astro';
+import { linkBox } from '@constants/linkBox';
+---
+
+<div class="links">
+  <LinkBox height={linkBox.height} width={linkBox.width} />
+  <LinkBox height={linkBox.height} width={linkBox.width} />
+</div>
+
+<style>
+  .links {
+    height: 50px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>

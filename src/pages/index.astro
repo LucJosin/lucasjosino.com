@@ -1,5 +1,8 @@
 ---
+import Avatar from '@components/Avatar.astro';
+import Background from '@components/Background.astro';
 import Layout from '@layouts/Layout.astro';
+import Menu from '@layouts/Menu.astro';
 ---
 
 <Layout
@@ -7,10 +10,44 @@ import Layout from '@layouts/Layout.astro';
   description="Hi!, I'm Lucas Josino. A Mobile Developer. Welcome to my world! "
 >
   <main>
-    <h1>Hello World!</h1>
+    <div class="container">
+      <Avatar />
+      <Menu />
+    </div>
+    <Background />
+    <a
+      href="https://www.freepik.com/vectors/matrix"
+      class="credits"
+      target="_blank"
+      >Matrix vector created by starline - www.freepik.com
+    </a>
   </main>
 </Layout>
 
 <style>
+  main {
+    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
+  .container {
+    z-index: 2;
+    display: inherit;
+    flex-direction: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+  }
+
+  .credits {
+    z-index: 1;
+    position: absolute;
+    bottom: 0.5rem;
+    opacity: 0.4;
+    font-size: 0.7em;
+  }
 </style>

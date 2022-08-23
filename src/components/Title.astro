@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  margin?: string;
+  fontSize?: string;
+}
+
+const { title } = Astro.props as Props;
+let { margin, fontSize } = Astro.props as Props;
+
+margin = margin ?? '1rem 0';
+fontSize = fontSize ?? '0.9em 0';
+---
+
+<div class="title">
+  {title}
+</div>
+
+<style define:vars={{ margin, fontSize }}>
+  .title {
+    margin: var(--margin);
+    font-size: var(--fontSize);
+    font-weight: bold;
+  }
+</style>

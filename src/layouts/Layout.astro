@@ -45,7 +45,7 @@ const { title, description, imageUrl } = Astro.props as Props;
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={imageUrl ?? './static/images/lg-lt.svg'}
+      content={imageUrl ?? './static/icons/lg-lt.svg'}
     />
 
     <!-- Open Graph -->
@@ -57,7 +57,7 @@ const { title, description, imageUrl } = Astro.props as Props;
       content={description + headConfig.endDescription}
     />
     <meta property="og:type" content="portfolio" />
-    <meta property="og:image" content={imageUrl ?? './static/images/lg-lt.svg'}
+    <meta property="og:image" content={imageUrl ?? './static/icons/lg-lt.svg'}
     />
 
     <!-- Links -->
@@ -67,18 +67,18 @@ const { title, description, imageUrl } = Astro.props as Props;
     <!-- Icons -->
     <link
       rel="apple-touch-icon"
-      href={imageUrl ?? './static/images/lg-lt.svg'}
+      href={imageUrl ?? './static/icons/lg-lt.svg'}
       type="image/png"
     />
     <link
       rel="shortcut icon"
       type="image/png"
-      href={imageUrl ?? './static/images/lg-lt.svg'}
+      href={imageUrl ?? './static/icons/lg-lt.svg'}
     />
     <link
       rel="icon"
       type="image/png"
-      href={imageUrl ?? './static/images/lg-lt.svg'}
+      href={imageUrl ?? './static/icons/lg-lt.svg'}
     />
 
     <!-- Astro -->
@@ -93,45 +93,59 @@ const { title, description, imageUrl } = Astro.props as Props;
       :root {
         --primary-color: #fff;
 
-        --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-        --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-        --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+        --divider-color: #000;
+        --border-color: #000;
 
         --color-text: #000;
         --color-bg: #fff;
         --color-border: #fff;
       }
 
-      html {
-        font-family: system-ui, sans-serif;
-        font-size: var(--font-size-base);
-        color: var(--color-text);
-        background-color: var(--color-bg);
-      }
-
+      html,
       body {
+        scroll-behavior: smooth;
+        padding: 0;
         margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        overflow-x: hidden;
+        background-color: var(--color-bg);
+        color: var(--color-text);
       }
 
-      :global(h1) {
-        font-size: var(--font-size-xl);
+      * {
+        box-sizing: border-box;
       }
 
-      :global(h2) {
-        font-size: var(--font-size-lg);
+      :global(a) {
+        color: var(--color-text);
+        text-decoration: none;
+      }
+
+      :global(p) {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
       }
 
       :global(code) {
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
           DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
       }
-      /* 
+
       @media (prefers-color-scheme: dark) {
         :root {
-          --primary-color: #000;
-          --color-bg: #202020;
+          --primary-color: #101010;
+
+          --divider-color: #fff;
+          --border-color: #fff;
+
+          --color-text: #fff;
+          --color-bg: #101010;
+          --color-border: #101010;
         }
-      } */
+      }
     </style>
   </body>
 </html>
