@@ -1,0 +1,30 @@
+---
+interface Props {
+  value: string;
+  width: string;
+  margin?: string;
+  fontSize?: string;
+}
+
+const { value, width } = Astro.props as Props;
+let { margin, fontSize } = Astro.props as Props;
+
+margin = margin ?? '1rem 0';
+fontSize = fontSize ?? '0.8em';
+---
+
+<div class="description">
+  {value}
+</div>
+
+<style define:vars={{ margin, fontSize, width }}>
+  .description {
+    overflow: hidden;
+    width: var(--width);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin: var(--margin);
+    font-size: var(--fontSize);
+  }
+</style>

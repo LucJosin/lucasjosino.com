@@ -1,0 +1,30 @@
+---
+import LinkBox from '@components/core/LinkBox.astro';
+import { linkBox } from '@constants/linkBox';
+import { links } from '@constants/links';
+---
+
+<div class="links">
+  {
+    links.map((data) => (
+      <LinkBox
+        height={linkBox.height}
+        width={linkBox.width}
+        link={data.url}
+        icon={data.icon}
+        iconSize="24"
+        title={data.name}
+        alt={data.alt}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .links {
+    height: 50px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+import { project } from '@constants/linkBox';
+import Description from './Description.astro';
+import Divider from './Divider.astro';
+import LinkIcon from './LinkIcon.astro';
+import Title from './Title.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  height?: string;
+  width?: string;
+}
+
+let { height, width } = Astro.props as Props;
+const { title, description, url } = Astro.props as Props;
+
+height = height ?? project.height;
+width = width ?? project.width;
+---
+
+<div class="project-item">
+  <div class="item-header">
+    <Title title={title} fontSize="0.85em" />
+    <LinkIcon url={url} iconSize="20" />
+  </div>
+  <Divider width="100%" margin="0 0" />
+  <Description value={description} width="100%" />
+</div>
+
+<style define:vars={{ height, width }}>
+  .project-item {
+    height: var(--height);
+    width: var(--width);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 0.2rem 1rem;
+    transition: all 0.4s;
+  }
+
+  .item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import Divider from '@components/core/Divider.astro';
+import SubTitle from '@components/core/SubTitle.astro';
+import Title from '@components/core/Title.astro';
+import Links from '@components/data/Links.astro';
+import Projects from '@components/data/Projects.astro';
+import Socials from '@components/data/Socials.astro';
+---
+
+<div class="menu">
+  <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.2em" />
+  <SubTitle subTitle="Developer" margin="0 0" />
+  <Divider height="1px" width="80%" />
+  <Links />
+  <Socials />
+  <Projects />
+</div>
+
+<style>
+  .menu {
+    height: 35rem;
+    width: 30rem;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

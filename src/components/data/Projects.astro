@@ -1,0 +1,33 @@
+---
+import ProjectItem from '@components/core/ProjectItem.astro';
+import Title from '@components/core/Title.astro';
+import { projects } from '@constants/projects';
+---
+
+<div class="projects">
+  <Title title="Projects" fontSize="1.3em" />
+
+  <div class="projects-container">
+    {
+      projects.map((data) => (
+        <ProjectItem
+          title={data.title}
+          description={data.description}
+          url={data.url}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .projects {
+    height: fit-content;
+    width: 80%;
+  }
+
+  .projects-container {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>

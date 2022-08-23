@@ -1,0 +1,44 @@
+---
+import { Icon } from 'astro-icon';
+import SubTitle from './SubTitle.astro';
+
+interface Props {
+  height: string;
+  width: string;
+  link: string;
+  icon?: string;
+  iconSize: string;
+  title?: string;
+  alt?: string;
+}
+
+const { height, width, link, icon, iconSize, title, alt } =
+  Astro.props as Props;
+---
+
+<a href={link} target="_blank" title={alt ?? title ?? link}>
+  <div class="link-box">
+    <Icon pack="simple-icons" name={icon} size={iconSize} />
+    {title && <SubTitle subTitle={title} />}
+  </div>
+</a>
+
+<style define:vars={{ height, width }}>
+  .link-box {
+    height: var(--height);
+    width: var(--width);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s;
+    gap: 1rem;
+  }
+
+  .link-box:hover {
+    border: 1px solid var(--primary-color);
+    background-color: var(--border-color);
+    color: var(--primary-color);
+  }
+</style>
