@@ -1,22 +1,22 @@
 ---
 import LinkBox from '@components/LinkBox.astro';
 import Title from '@components/Title.astro';
-import { project } from '@constants/linkBox';
-import { projects } from 'data/projects';
+import { social } from '@constants/linkBox';
+import { socials } from '@constants/socials';
 ---
 
-<div class="projects">
-  <Title title="Projects" fontSize="1.3em" />
-
-  <div class="projects-container">
+<div class="socials">
+  <Title title="Socials" fontSize="1.3em" />
+  <div class="socials-container">
     {
-      projects.map((data) => (
+      socials.map((data) => (
         <LinkBox
-          height={project.height}
-          width={project.width}
+          height={social.height}
+          width={social.width}
           link={data.url}
           icon={data.icon}
           iconSize="24"
+          alt={data.alt}
         />
       ))
     }
@@ -24,12 +24,12 @@ import { projects } from 'data/projects';
 </div>
 
 <style>
-  .projects {
+  .socials {
     height: fit-content;
     width: 80%;
   }
 
-  .projects-container {
+  .socials-container {
     display: flex;
     justify-content: space-between;
   }
