@@ -1,7 +1,6 @@
 ---
-import LinkBox from '@components/core/LinkBox.astro';
+import ProjectItem from '@components/core/ProjectItem.astro';
 import Title from '@components/core/Title.astro';
-import { project } from '@constants/linkBox';
 import { projects } from '@constants/projects';
 ---
 
@@ -11,12 +10,10 @@ import { projects } from '@constants/projects';
   <div class="projects-container">
     {
       projects.map((data) => (
-        <LinkBox
-          height={project.height}
-          width={project.width}
-          link={data.url}
-          icon={data.icon}
-          iconSize="24"
+        <ProjectItem
+          title={data.title}
+          description={data.description}
+          url={data.url}
         />
       ))
     }

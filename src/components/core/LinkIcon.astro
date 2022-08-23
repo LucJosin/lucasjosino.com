@@ -1,0 +1,28 @@
+---
+import Icon from 'astro-icon';
+
+interface Props {
+  url: string;
+  iconSize?: string;
+}
+
+let { iconSize } = Astro.props as Props;
+const { url } = Astro.props as Props;
+
+iconSize = iconSize ?? '24';
+---
+
+<a href={url} class="link-icon">
+  <Icon pack="simple-icons" name="github" size={iconSize} class="link-icon-st"
+  />
+</a>
+
+<style>
+  .link-icon-st {
+    transition: color 0.4s;
+  }
+
+  .link-icon-st:hover {
+    color: gray;
+  }
+</style>

@@ -1,14 +1,13 @@
 export const projects = [
   {
-    name: 'Github',
-    icon: 'github',
-    user: 'LucJosin',
+    title: 'TheWizardProject',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     url: 'https://github.com/LucJosin',
   },
   {
-    name: 'Linkedin',
-    icon: 'linkedin',
-    user: 'LucJosin',
-    url: 'https://linkedin.com/in/LucJosin',
+    title: 'Github',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    url: 'https://github.com/LucJosin',
   },
 ];
