@@ -91,11 +91,13 @@ const { title, description, imageUrl } = Astro.props as Props;
     <style>
       :root {
         --primary-color: #fff;
+        --secondary-color: #000;
 
         --divider-color: #000;
         --border-color: #000;
 
         --color-text: #000;
+        --color-text-inv: #fff;
         --color-bg: #fff;
         --color-border: #fff;
       }
@@ -128,6 +130,13 @@ const { title, description, imageUrl } = Astro.props as Props;
         margin-inline-end: 0;
       }
 
+      :global(h1) {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+      }
+
       :global(code) {
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
           DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
@@ -136,11 +145,13 @@ const { title, description, imageUrl } = Astro.props as Props;
       @media (prefers-color-scheme: dark) {
         :root {
           --primary-color: #101010;
+          --secondary-color: #fff;
 
           --divider-color: #fff;
           --border-color: #fff;
 
           --color-text: #fff;
+          --color-text-inv: #121212;
           --color-bg: #101010;
           --color-border: #101010;
         }
