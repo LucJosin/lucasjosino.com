@@ -15,12 +15,19 @@ import Menu from '@components/layouts/Menu.astro';
       <Menu />
     </div>
     <Background />
-    <!-- <a
-      href="https://www.freepik.com/vectors/matrix"
-      class="credits"
-      target="_blank"
-      >Matrix vector created by starline - www.freepik.com
-    </a> -->
+    <span class="credits">
+      Designed and built by
+      <a href="https://github.com/LucJosin" target="_blank" class="credits-link"
+        >Lucas Josino
+      </a>
+      |
+      <a
+        href="https://github.com/LucJosin/lucasjosino.com"
+        target="_blank"
+        class="credits-link"
+        >Source
+      </a>
+    </span>
   </main>
 </Layout>
 
@@ -47,14 +54,32 @@ import Menu from '@components/layouts/Menu.astro';
     z-index: 1;
     position: absolute;
     bottom: 0.5rem;
-    opacity: 0.4;
+    opacity: 0.6;
     font-size: 0.7em;
   }
 
+  .credits-link {
+    color: var(--color-text);
+    border-bottom: 1px solid transparent;
+  }
+
+  .credits-link:hover {
+    border-bottom: 1px solid var(--border-color);
+  }
+
   @media (prefers-color-scheme: light) {
-    .credits {
-      opacity: 0.8;
+    .credits-link {
       color: var(--primary-color);
+      border-bottom: 1px solid transparent;
+    }
+
+    .credits {
+      opacity: 1;
+      color: var(--primary-color);
+    }
+
+    .credits-link:hover {
+      border-bottom: 1px solid var(--primary-color);
     }
   }
 </style>
