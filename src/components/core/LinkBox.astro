@@ -16,7 +16,12 @@ const { height, width, link, icon, iconSize, title, alt } =
   Astro.props as Props;
 ---
 
-<a href={link} target="_blank" title={alt ?? title ?? link}>
+<a
+  href={link}
+  target="_blank"
+  title={alt ?? title ?? link}
+  rel="noopener noreferrer"
+>
   <div class="link-box">
     <Icon pack="simple-icons" name={icon} size={iconSize} />
     {title && <SubTitle subTitle={title} />}

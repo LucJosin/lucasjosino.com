@@ -1,13 +1,13 @@
 export const projects = [
   {
-    title: 'TheWizardProject',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    url: 'https://github.com/LucJosin',
+    title: 'lucasjosino.com',
+    description: 'Personal website built with Astro.',
+    url: 'https://github.com/LucJosin/lucasjosino.com',
   },
   {
-    title: 'Github',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    url: 'https://github.com/LucJosin',
+    title: 'on_audio_query',
+    description:
+      'Flutter Plugin used to query audios/songs infos from device storage.',
+    url: 'https://github.com/LucJosin/on_audio_query',
   },
 ];
