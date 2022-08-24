@@ -9,8 +9,8 @@ export default defineConfig({
   //
   // Astro uses this full URL to generate your sitemap
   // and canonical URLs in your final build.
-  site: 'https://www.my-site.dev',
-  // Specifies the output target for builds.s
+  site: 'https://www.lucasjosino.com',
+  // Specifies the output target for builds.
   //
   // ‘static’ - Building a static site to be deploy to any static host.
   output: 'static',
