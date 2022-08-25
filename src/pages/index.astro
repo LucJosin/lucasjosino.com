@@ -84,11 +84,14 @@ import Menu from '@components/layouts/Menu.astro';
   }
 
   @media (max-width: 415px) {
+    main {
+      justify-content: flex-start;
+    }
+
     .container {
       width: 100%;
-      margin-top: 50%;
       box-sizing: content-box;
-      padding: 5rem;
+      padding: 2rem 0 5rem 0;
     }
   }
 </style>
