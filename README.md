@@ -1,21 +1,32 @@
 # lucasjosino.com
 
-Lucas Josino's personal website built with [Astro](https://astro.build).
+Lucas Josino's personal website built with [Astro](https://astro.build) + [Typescript](https://www.typescriptlang.org/).
 
-**Note**: The source for this site was not created to be a template or theme, but for my own use. Feel free to take whatever inspiration from it that you want, but this code was not written with the intention of being cloned and deployed. As such, I do not provide support or guidance for doing that.
+**Note**: The source for this site was not created to be a template or theme, but for my use. Feel free to take whatever inspiration from it that you want, but this code was not written to be cloned and deployed. As such, I do not provide support or guidance for doing that.
+
+## Dependencies
+
+See more Astro [integrations](https://astro.build/integrations/)
+
+- [@astrojs/sitemap](https://www.npmjs.com/package/@astrojs/sitemap)
+- [astro](https://www.npmjs.com/package/astro)
+- [astro-icon](https://www.npmjs.com/package/astro-icon)
+- [astro-compress](https://www.npmjs.com/package/astro-compress)
+- [eslint](https://www.npmjs.com/package/eslint)
+- [prettier](https://www.npmjs.com/package/prettier)
 
 ## Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
+| Command             | Action                                             |
+| :------------------ | :------------------------------------------------- |
+| `yarn`              | Installs dependencies                              |
+| `yarn dev`          | Starts local dev server at `localhost:3000`        |
+| `yarn build`        | Build your production site to `./dist/`            |
+| `yarn preview`      | Preview your build locally, before deploying       |
+| `yarn astro ...`    | Run CLI commands like `astro add`, `astro preview` |
+| `yarn astro --help` | Get help using the Astro CLI                       |
 
 ## Contact
 
