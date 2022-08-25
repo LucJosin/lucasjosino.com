@@ -1,8 +1,7 @@
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
-import image from '@astrojs/image';
 
-import compress from "astro-compress";
+import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,13 +17,17 @@ export default defineConfig({
   // Astro sitemap.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
-  integrations: [sitemap(), image(), compress()],
+  integrations: [sitemap(), compress()],
   // Astro icon.
   //
   // Ref: https://github.com/natemoo-re/astro-icon#setup
   vite: {
     ssr: {
-      external: ['svgo']
-    }
-  }
+      external: ['svgo'],
+    },
+  },
+  // Listen on all addresses, including LAN and public addresses.
+  //
+  // Ref: https://docs.astro.build/en/reference/configuration-reference/#serverhost
+  server: { host: true },
 });
