@@ -33,4 +33,20 @@ import { socials } from '@constants/socials';
     display: flex;
     justify-content: space-between;
   }
+
+  @media (max-width: 415px) {
+    .socials {
+      text-align: center;
+      height: max-content;
+    }
+
+    .socials-container {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: auto auto;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
 </style>

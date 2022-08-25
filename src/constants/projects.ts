@@ -1,7 +1,7 @@
 export const projects = [
   {
     title: 'lucasjosino.com',
-    description: 'Personal website built with Astro.',
+    description: 'Personal website built with Astro + Typescript.',
     url: 'https://github.com/LucJosin/lucasjosino.com',
   },
   {

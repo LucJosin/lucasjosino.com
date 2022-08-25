@@ -1,7 +1,8 @@
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
-
 import image from '@astrojs/image';
+
+import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,13 +18,13 @@ export default defineConfig({
   // Astro sitemap.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
-  integrations: [sitemap(), image()],
+  integrations: [sitemap(), image(), compress()],
   // Astro icon.
   //
   // Ref: https://github.com/natemoo-re/astro-icon#setup
   vite: {
     ssr: {
-      external: ['svgo'],
-    },
-  },
+      external: ['svgo']
+    }
+  }
 });

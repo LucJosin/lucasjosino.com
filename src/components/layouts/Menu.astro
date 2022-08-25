@@ -8,8 +8,10 @@ import Socials from '@components/data/Socials.astro';
 ---
 
 <div class="menu">
-  <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.2em" />
-  <SubTitle subTitle="Developer" margin="0 0" />
+  <div class="info">
+    <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.2em" />
+    <SubTitle subTitle="Developer" margin="0 0" />
+  </div>
   <Divider height="1px" width="80%" />
   <Links />
   <Socials />
@@ -26,5 +28,20 @@ import Socials from '@components/data/Socials.astro';
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .info {
+    text-align: center;
+  }
+
+  @media (max-width: 415px) {
+    .menu {
+      height: max-content;
+      width: 80%;
+    }
+
+    .info {
+      margin-top: 3rem;
+    }
   }
 </style>

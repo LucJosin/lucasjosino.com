@@ -51,7 +51,7 @@ import Menu from '@components/layouts/Menu.astro';
   }
 
   .credits {
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     bottom: 0.5rem;
     opacity: 0.6;
@@ -80,6 +80,18 @@ import Menu from '@components/layouts/Menu.astro';
 
     .credits-link:hover {
       border-bottom: 1px solid var(--primary-color);
+    }
+  }
+
+  @media (max-width: 415px) {
+    main {
+      justify-content: flex-start;
+    }
+
+    .container {
+      width: 100%;
+      box-sizing: content-box;
+      padding: 2rem 0 5rem 0;
     }
   }
 </style>

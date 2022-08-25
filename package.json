@@ -10,11 +10,11 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/image": "^0.3.4",
     "@astrojs/sitemap": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
     "astro": "^1.0.6",
+    "astro-compress": "^1.0.5",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-astro": "^0.17.1",
