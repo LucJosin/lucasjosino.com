@@ -30,4 +30,18 @@ import { projects } from '@constants/projects';
     display: flex;
     justify-content: space-between;
   }
+
+  @media (max-width: 415px) {
+    .projects {
+      text-align: center;
+      height: max-content;
+    }
+
+    .projects-container {
+      gap: 1rem;
+      align-items: center;
+      flex-direction: column;
+      padding-bottom: 4rem;
+    }
+  }
 </style>
