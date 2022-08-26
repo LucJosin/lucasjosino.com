@@ -1,0 +1,101 @@
+---
+import Background from '@components/core/Background.astro';
+import Layout from '@components/layouts/Layout.astro';
+---
+
+<Layout
+  title="Lucjos.in"
+  description="Lucjos.in is the Lucas Josino URL shortener. "
+>
+  <main>
+    <div class="index">
+      <h1 class="textPage">Lucjos.in</h1>
+
+      <p class="description">
+        Lucjos.in is the <a href="/" class="contact-link link-home"
+          >Lucas Josino
+        </a>
+        URL shortener.
+      </p>
+      <p class="contact">
+        Any problem? Please contact: <a
+          href="mailto:contact@lucasjosino.com"
+          class="contact-link"
+          >contact@lucasjosino.com
+        </a>
+      </p>
+    </div>
+
+    <Background />
+  </main>
+</Layout>
+
+<style>
+  main {
+    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .index {
+    height: 35rem;
+    width: 30rem;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    position: relative;
+  }
+
+  .textPage {
+    font-size: 5em;
+  }
+
+  .description {
+    text-align: center;
+    margin: 1rem;
+  }
+
+  .contact {
+    width: fit-content;
+    position: absolute;
+    bottom: 1rem;
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  .link-home {
+    font-weight: bold;
+  }
+
+  .contact-link {
+    border-bottom: 1px solid transparent;
+    transition: 0.4s;
+  }
+
+  .contact-link:hover {
+    border-bottom: 1px solid var(--secondary-color);
+  }
+
+  @media (max-width: 415px) {
+    .index {
+      width: 80%;
+      min-width: 80%;
+    }
+
+    .textPage {
+      font-size: 3em;
+    }
+
+    .contact {
+      font-size: 0.7em;
+    }
+  }
+</style>
