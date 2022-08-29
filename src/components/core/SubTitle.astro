@@ -5,11 +5,7 @@ interface Props {
   fontSize?: string;
 }
 
-const { subTitle } = Astro.props as Props;
-let { margin, fontSize } = Astro.props as Props;
-
-margin = margin ?? '1rem 0';
-fontSize = fontSize ?? '1em';
+const { subTitle, margin = '1rem 0', fontSize = '1em' } = Astro.props as Props;
 ---
 
 <div class="sub-title">
