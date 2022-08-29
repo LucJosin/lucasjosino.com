@@ -8,9 +8,10 @@
     height: inherit;
     position: absolute;
     width: inherit;
-    background: url('/static/images/background.jpg') no-repeat center;
-    background-size: cover;
-    opacity: 0.8;
+    /* background: url('/static/images/background.jpg') no-repeat center;
+    background-size: cover; */
+    opacity: 1;
+    background-color: #dfdfdd;
   }
 
   .container::after {
@@ -23,7 +24,8 @@
 
   @media (prefers-color-scheme: dark) {
     .container {
-      opacity: 0.2;
+      opacity: 1;
+      background-color: #151515;
     }
 
     .container::after {
