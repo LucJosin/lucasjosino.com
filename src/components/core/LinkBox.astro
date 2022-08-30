@@ -32,7 +32,7 @@ const { height, width, link, icon, iconSize, title, alt } =
   .link-box {
     height: var(--height);
     width: var(--width);
-    border: 1px solid var(--border-color);
+    border: var(--border-size) solid var(--border-color);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -42,7 +42,7 @@ const { height, width, link, icon, iconSize, title, alt } =
   }
 
   .link-box:hover {
-    border: 1px solid var(--primary-color);
+    border: var(--border-size) solid var(--primary-color);
     background-color: var(--border-color);
     color: var(--primary-color);
   }

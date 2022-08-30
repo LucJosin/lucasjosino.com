@@ -1,5 +1,4 @@
 ---
-import { project } from '@constants/linkBox';
 import Description from './Description.astro';
 import Divider from './Divider.astro';
 import LinkIcon from './LinkIcon.astro';
@@ -17,8 +16,8 @@ const {
   title,
   description,
   url,
-  height = project.height,
-  width = project.width,
+  height = 'var(--project-lb-height)',
+  width = 'var(--project-lb-width)',
 } = Astro.props as Props;
 ---
 
@@ -35,7 +34,7 @@ const {
   .project-item {
     height: var(--height);
     width: var(--width);
-    border: 1px solid var(--border-color);
+    border: var(--border-size) solid var(--border-color);
     border-radius: 10px;
     box-sizing: border-box;
     padding: 0.2rem 1rem;

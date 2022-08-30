@@ -1,6 +1,5 @@
 ---
 import LinkBox from '@components/core/LinkBox.astro';
-import { linkBox } from '@constants/linkBox';
 import { links } from '@constants/links';
 ---
 
@@ -8,8 +7,8 @@ import { links } from '@constants/links';
   {
     links.map((data) => (
       <LinkBox
-        height={linkBox.height}
-        width={linkBox.width}
+        height="var(--link-box-height)"
+        width="var(--link-box-width)"
         link={data.url}
         icon={data.icon}
         iconSize="24"

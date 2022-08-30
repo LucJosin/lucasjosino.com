@@ -17,9 +17,9 @@ const { title, href, alt } = Astro.props as Props;
     height: fit-content;
     width: fit-content;
     padding: 1rem 2rem;
-    border: 1px solid var(--border-color);
+    border: var(--border-size) solid var(--border-color);
     background-color: transparent;
-    color: var(--color-text);
+    color: var(--text-color);
     border-radius: 10px;
     margin: 0 0 1rem 0;
     transition: 0.4s;
@@ -27,8 +27,8 @@ const { title, href, alt } = Astro.props as Props;
   }
 
   a:hover {
-    border: 1px solid var(--border-color);
+    border: var(--border-size) solid var(--border-color);
     background-color: var(--secondary-color);
-    color: var(--color-text-inv);
+    color: var(--text-color-inv);
   }
 </style>
