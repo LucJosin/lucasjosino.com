@@ -91,7 +91,9 @@ const { title, description, imageUrl, robots } = Astro.props as Props;
       :root {
         /* Global */
         --primary-color: #f0f0f0;
-        --secondary-color: #000;
+        --secondary-color: #dfdfdd;
+
+        --contrast-color: #000;
 
         --divider-color: #000;
         --divider-height: 1px;
@@ -104,6 +106,13 @@ const { title, description, imageUrl, robots } = Astro.props as Props;
 
         --text-color: #000;
         --text-color-inv: #fff;
+
+        /* Border radius */
+        --border-radius: 10px;
+        --layout-border-radius: 20px;
+
+        /* Transition */
+        --transition-duration: 0.4s;
 
         /* LinkBox (default) */
         --link-box-height: 3.1rem;
@@ -121,7 +130,9 @@ const { title, description, imageUrl, robots } = Astro.props as Props;
       @media (prefers-color-scheme: dark) {
         :root {
           --primary-color: #191919;
-          --secondary-color: #fff;
+          --secondary-color: #151515;
+
+          --contrast-color: #fff;
 
           --divider-color: #fff;
 
