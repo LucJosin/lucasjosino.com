@@ -2,6 +2,7 @@
 import Background from '@components/core/Background.astro';
 import Button from '@components/core/Button.astro';
 import Divider from '@components/core/Divider.astro';
+import MenuContainer from '@components/data/MenuContainer.astro';
 import Layout from '@components/layouts/Layout.astro';
 
 const encodedUrl = encodeURI(`[${Astro.url.pathname}]`);
@@ -13,7 +14,7 @@ const encodedCode = encodeURI('Status: 404');
   description="Hi!, I'm Lucas Josino. A Mobile Developer. Welcome to my world! "
 >
   <main>
-    <div class="page404">
+    <MenuContainer className="menu-404">
       <h1 class="text404">404</h1>
       <p>This page could not be found.</p>
 
@@ -40,7 +41,7 @@ const encodedCode = encodeURI('Status: 404');
           </a>
         </span>
       </div>
-    </div>
+    </MenuContainer>
 
     <Background />
   </main>
@@ -57,15 +58,7 @@ const encodedCode = encodeURI('Status: 404');
     justify-content: center;
   }
 
-  .page404 {
-    height: 35rem;
-    width: 30rem;
-    background-color: var(--primary-color);
-    border-radius: var(--layout-border-radius);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .menu-404 {
     z-index: 1;
     position: relative;
   }
@@ -95,11 +88,6 @@ const encodedCode = encodeURI('Status: 404');
   }
 
   @media (max-width: 415px) {
-    .page404 {
-      width: 80%;
-      min-width: 80%;
-    }
-
     .help {
       font-size: 0.7em;
     }

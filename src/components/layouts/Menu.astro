@@ -2,11 +2,12 @@
 import Divider from '@components/core/Divider.astro';
 import Title from '@components/core/Title.astro';
 import Links from '@components/data/Links.astro';
+import MenuContainer from '@components/data/MenuContainer.astro';
 import Projects from '@components/data/Projects.astro';
 import Socials from '@components/data/Socials.astro';
 ---
 
-<div class="menu">
+<MenuContainer>
   <div class="info">
     <Title title="Lucas Josino | Developer" margin="0.2em 0" fontSize="1.2em" />
     <p class="menu-subtitle">@lucjosin | <a href="/lucjos.in">lucjos.in</a></p>
@@ -15,30 +16,14 @@ import Socials from '@components/data/Socials.astro';
   <Links />
   <Socials />
   <Projects />
-</div>
+</MenuContainer>
 
 <style>
-  .menu {
-    height: 35rem;
-    width: 30rem;
-    background-color: var(--primary-color);
-    border-radius: var(--layout-border-radius);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
   .info {
     text-align: center;
   }
 
   @media (max-width: 415px) {
-    .menu {
-      height: max-content;
-      width: 80%;
-    }
-
     .info {
       margin-top: 3rem;
     }
