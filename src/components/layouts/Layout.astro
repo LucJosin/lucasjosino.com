@@ -5,9 +5,10 @@ export interface Props {
   title: string;
   description: string;
   imageUrl?: string;
+  robots?: string;
 }
 
-const { title, description, imageUrl } = Astro.props as Props;
+const { title, description, imageUrl, robots } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -20,20 +21,21 @@ const { title, description, imageUrl } = Astro.props as Props;
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
     <!-- Default  -->
-    <meta name="copyright" content="© 2022, Lucas Josino. All Rights Reserved."
-    />
-    <meta name="description" content={description + headConfig.endDescription}
+    <meta name="copyright" content={headConfig.copyRight} />
+    <meta
+      name="description"
+      content={description + headConfig.endDescription}
     />
     <meta name="author" content={headConfig.name} />
     <meta name="tags" content={headConfig.tags} />
     <meta name="keywords" content={headConfig.tags} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content={robots ?? headConfig.robots} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:creator" content="@lucjosin" />
-    <meta name="twitter:site" content="@lucjosin" />
+    <meta name="twitter:creator" content={headConfig.social} />
+    <meta name="twitter:site" content={headConfig.social} />
     <meta name="twitter:domain" content={Astro.url} />
     <meta name="twitter:title" content={headConfig.titleStart + title} />
     <meta
@@ -45,7 +47,7 @@ const { title, description, imageUrl } = Astro.props as Props;
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={imageUrl ?? './static/icons/logo.svg'}
+      content={imageUrl ?? headConfig.imageUrl}
     />
 
     <!-- Open Graph -->
@@ -57,8 +59,9 @@ const { title, description, imageUrl } = Astro.props as Props;
       content={description + headConfig.endDescription}
     />
     <meta property="og:type" content="portfolio" />
-    <meta property="og:image" content={imageUrl ?? './static/icons/logo.svg'} />
+    <meta property="og:image" content={imageUrl ?? headConfig.imageUrl} />
 
+    <!-- TODO: shortlink -->
     <!-- Links -->
     <link rel="shortlink" type="text/html" href="https://lucjos.in/h" />
     <link rel="canonical" href={Astro.url} />
@@ -66,19 +69,15 @@ const { title, description, imageUrl } = Astro.props as Props;
     <!-- Icons -->
     <link
       rel="apple-touch-icon"
-      href={imageUrl ?? './static/icons/logo.svg'}
+      href={imageUrl ?? headConfig.imageUrl}
       type="image/png"
     />
     <link
       rel="shortcut icon"
       type="image/png"
-      href={imageUrl ?? './static/icons/logo.svg'}
+      href={imageUrl ?? headConfig.imageUrl}
     />
-    <link
-      rel="icon"
-      type="image/png"
-      href={imageUrl ?? './static/icons/logo.svg'}
-    />
+    <link rel="icon" type="image/png" href={imageUrl ?? headConfig.imageUrl} />
 
     <!-- Astro -->
     <meta name="generator" content={Astro.generator} />
@@ -90,16 +89,58 @@ const { title, description, imageUrl } = Astro.props as Props;
     <slot />
     <style>
       :root {
+        /* Global */
         --primary-color: #f0f0f0;
-        --secondary-color: #000;
+        --secondary-color: #dfdfdd;
+
+        --contrast-color: #000;
 
         --divider-color: #000;
-        --border-color: #000;
+        --divider-height: 1px;
+        --divider-width: 1rem;
+        --divider-size: 1px;
+        --divider-margin: 1.5rem 0;
 
-        --color-text: #000;
-        --color-text-inv: #fff;
-        --color-bg: #fff;
-        --color-border: #fff;
+        --border-color: #000;
+        --border-size: 1px;
+
+        --text-color: #000;
+        --text-color-inv: #fff;
+
+        /* Border radius */
+        --border-radius: 10px;
+        --layout-border-radius: 20px;
+
+        /* Transition */
+        --transition-duration: 0.4s;
+
+        /* LinkBox (default) */
+        --link-box-height: 3.1rem;
+        --link-box-width: 11.2rem;
+
+        /* LinkBox (social) */
+        --social-lb-height: 4.3rem;
+        --social-lb-width: 5rem;
+
+        /* LinkBox (project) */
+        --project-lb-height: 8.75rem;
+        --project-lb-width: 11.2rem;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary-color: #191919;
+          --secondary-color: #151515;
+
+          --contrast-color: #fff;
+
+          --divider-color: #fff;
+
+          --border-color: #fff;
+
+          --text-color: #fff;
+          --text-color-inv: #121212;
+        }
       }
 
       html,
@@ -110,8 +151,8 @@ const { title, description, imageUrl } = Astro.props as Props;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
           Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         overflow-x: hidden;
-        background-color: var(--color-bg);
-        color: var(--color-text);
+        background-color: var(--primary-color);
+        color: var(--text-color);
       }
 
       * {
@@ -119,7 +160,7 @@ const { title, description, imageUrl } = Astro.props as Props;
       }
 
       :global(a) {
-        color: var(--color-text);
+        color: var(--text-color);
         text-decoration: none;
       }
 
@@ -140,21 +181,6 @@ const { title, description, imageUrl } = Astro.props as Props;
       :global(code) {
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
           DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --primary-color: #191919;
-          --secondary-color: #fff;
-
-          --divider-color: #fff;
-          --border-color: #fff;
-
-          --color-text: #fff;
-          --color-text-inv: #121212;
-          --color-bg: #101010;
-          --color-border: #101010;
-        }
       }
     </style>
   </body>

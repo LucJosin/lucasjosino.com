@@ -1,8 +1,45 @@
-# lucasjosino.com
+<div align=center>
+
+# Lucas Josino's Website
+
+  <img src="./public/static/icons/logo.svg" height=60 />
+
+  <p align="center">
+    <br>
+    <a href="https://www.lucasjosino.com">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://shields.io/badge/WEBSITE-LUCASJOSINO.COM-%230D1117?style=for-the-badge&labelColor=%230D1117">
+        <img align="center" alt="Lucas Josino's Website" src="https://shields.io/badge/WEBSITE-LUCASJOSINO.COM-white?style=for-the-badge&labelColor=white">
+      </picture>
+    </p>
+  </a>
+  <a href="./LICENSE" target="_blank">
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/github/license/lucjosin/lucasjosino.com?color=%230D1117&style=for-the-badge&labelColor=%230D1117">
+        <img align="center" alt="TheWizardProject Twitter" src="https://img.shields.io/github/license/lucjosin/lucasjosino.com?color=white&style=for-the-badge&labelColor=white">
+    </picture>
+  </a>
+</p>
 
 Lucas Josino's personal website built with [Astro](https://astro.build) + [Typescript](https://www.typescriptlang.org/).
 
+</div>
+
 **Note**: The source for this site was not created to be a template or theme, but for my use. Feel free to take whatever inspiration from it that you want, but this code was not written to be cloned and deployed. As such, I do not provide support or guidance for doing that.
+
+## Preview
+
+<details>
+<summary>Light Mode</summary>
+
+<img src="./assets/light-mode.png">
+
+</details>
+
+<details>
+<summary>Dark Mode</summary>
+<img src="./assets/dark-mode.png">
+</details>
 
 ## Dependencies
 

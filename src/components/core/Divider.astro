@@ -4,11 +4,12 @@ interface Props {
   width?: string;
   margin?: string;
 }
-let { margin, height, width } = Astro.props as Props;
 
-margin = margin ?? '1.5rem 0';
-height = height ?? '1px';
-width = width ?? '1rem';
+const {
+  margin = 'var(--divider-margin)',
+  height = 'var(--divider-height)',
+  width = 'var(--divider-width)',
+} = Astro.props as Props;
 ---
 
 <div class="divider"></div>

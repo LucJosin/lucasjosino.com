@@ -1,7 +1,6 @@
 ---
 import LinkBox from '@components/core/LinkBox.astro';
 import Title from '@components/core/Title.astro';
-import { social } from '@constants/linkBox';
 import { socials } from '@constants/socials';
 ---
 
@@ -11,8 +10,8 @@ import { socials } from '@constants/socials';
     {
       socials.map((data) => (
         <LinkBox
-          height={social.height}
-          width={social.width}
+          height="var(--social-lb-height)"
+          width="var(--social-lb-width)"
           link={data.url}
           icon={data.icon}
           iconSize="24"

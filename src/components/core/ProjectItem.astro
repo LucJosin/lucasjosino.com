@@ -1,5 +1,4 @@
 ---
-import { project } from '@constants/linkBox';
 import Description from './Description.astro';
 import Divider from './Divider.astro';
 import LinkIcon from './LinkIcon.astro';
@@ -13,11 +12,13 @@ interface Props {
   width?: string;
 }
 
-let { height, width } = Astro.props as Props;
-const { title, description, url } = Astro.props as Props;
-
-height = height ?? project.height;
-width = width ?? project.width;
+const {
+  title,
+  description,
+  url,
+  height = 'var(--project-lb-height)',
+  width = 'var(--project-lb-width)',
+} = Astro.props as Props;
 ---
 
 <div class="project-item">
@@ -33,11 +34,11 @@ width = width ?? project.width;
   .project-item {
     height: var(--height);
     width: var(--width);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
     box-sizing: border-box;
     padding: 0.2rem 1rem;
-    transition: all 0.4s;
+    transition: all var(--transition-duration);
   }
 
   .item-header {

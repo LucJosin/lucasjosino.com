@@ -6,20 +6,21 @@ interface Props {
   iconSize?: string;
 }
 
-let { iconSize } = Astro.props as Props;
-const { url } = Astro.props as Props;
-
-iconSize = iconSize ?? '24';
+const { url, iconSize = '24' } = Astro.props as Props;
 ---
 
 <a href={url} rel="noopener noreferrer" target="_blank" class="link-icon">
-  <Icon pack="simple-icons" name="github" size={iconSize} class="link-icon-st"
+  <Icon
+    pack="simple-icons"
+    name="github"
+    size={iconSize}
+    class="link-icon-st"
   />
 </a>
 
 <style>
   .link-icon-st {
-    transition: color 0.4s;
+    transition: color var(--transition-duration);
   }
 
   .link-icon-st:hover {

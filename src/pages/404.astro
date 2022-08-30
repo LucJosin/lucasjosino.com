@@ -61,7 +61,7 @@ const encodedCode = encodeURI('Status: 404');
     height: 35rem;
     width: 30rem;
     background-color: var(--primary-color);
-    border-radius: 20px;
+    border-radius: var(--layout-border-radius);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,7 +87,7 @@ const encodedCode = encodeURI('Status: 404');
 
   .contact-link {
     border-bottom: 1px solid transparent;
-    transition: 0.4s;
+    transition: var(--transition-duration);
   }
 
   .contact-link:hover {
