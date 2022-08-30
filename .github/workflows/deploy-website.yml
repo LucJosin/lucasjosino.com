@@ -16,7 +16,7 @@ jobs:
           server: ${{ secrets.ftp_host }}
           username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_password }}
-          local-dir: ./main/
+          local-dir: ./dist/
           port: 21
 
       - name: Output Deploy
