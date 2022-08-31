@@ -8,13 +8,13 @@ interface Props {
 const { title, href, alt } = Astro.props as Props;
 ---
 
-<a href={href} title={alt ?? title}>
+<a href={href} title={alt ?? title} aria-label={alt ?? title}>
   {title}
 </a>
 
 <style>
   a {
-    height: fit-content;
+    height: max-content;
     width: fit-content;
     padding: 1rem 2rem;
     border: var(--border-size) solid var(--border-color);

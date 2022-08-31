@@ -12,22 +12,10 @@
     background-color: var(--secondary-color);
   }
 
-  .container::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backdrop-filter: blur(3px);
-  }
-
   @media (prefers-color-scheme: dark) {
     .container {
       opacity: 1;
       background-color: var(--secondary-color);
-    }
-
-    .container::after {
-      backdrop-filter: blur(2px) grayscale(1);
     }
   }
 </style>

@@ -9,7 +9,14 @@ interface Props {
 const { url, iconSize = '24' } = Astro.props as Props;
 ---
 
-<a href={url} rel="noopener noreferrer" target="_blank" class="link-icon">
+<a
+  href={url}
+  rel="noopener noreferrer"
+  target="_blank"
+  class="link-icon"
+  title="Github"
+  area-label="Github"
+>
   <Icon
     pack="simple-icons"
     name="github"
