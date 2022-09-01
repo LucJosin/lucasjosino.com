@@ -2,6 +2,7 @@ name: Build and Deploy
 
 # Only build and deploy after new tag.
 on:
+  workflow_dispatch:
   push:
     tags:
       - '*'
