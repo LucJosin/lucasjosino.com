@@ -3,7 +3,7 @@
 # Lucas Josino's Website
 
   <img src="./public/favicon-light.ico#gh-dark-mode-only" height=60 />
-  <img src="./public/favicon.ico" height=60 />
+  <img src="./public/favicon.ico#gh-light-mode-only" height=60 />
 
   <p align="center">
     <br>
