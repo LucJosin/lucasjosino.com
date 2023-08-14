@@ -11,6 +11,7 @@ import { projects } from '@constants/projects';
     {
       projects.map((data) => (
         <ProjectItem
+          alt={data.alt}
           title={data.title}
           description={data.description}
           git={data.git}

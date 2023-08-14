@@ -3,10 +3,11 @@ import Icon from 'astro-icon';
 
 interface Props {
   git: string;
+  alt?: string;
   iconSize?: string;
 }
 
-const { git, iconSize = '24' } = Astro.props as Props;
+const { git, alt, iconSize = '24' } = Astro.props as Props;
 ---
 
 <a
@@ -14,8 +15,8 @@ const { git, iconSize = '24' } = Astro.props as Props;
   rel="noopener noreferrer"
   target="_blank"
   class="link-icon"
-  title="Github"
-  area-label="Github"
+  title={alt}
+  area-label={alt}
 >
   <Icon name="simple-icons:github" size={iconSize} class="link-icon-st" />
 </a>

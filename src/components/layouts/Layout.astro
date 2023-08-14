@@ -4,14 +4,12 @@ import headConfig from '@constants/head';
 export interface Props {
   title: string;
   description: string;
-  icon?: string;
   banner?: string;
   robots?: string;
   shortlink?: string;
 }
 
-const { title, description, icon, banner, robots, shortlink } =
-  Astro.props as Props;
+const { title, description, banner, robots, shortlink } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -66,16 +64,37 @@ const { title, description, icon, banner, robots, shortlink } =
 
     <!-- Links -->
     {shortlink && <link rel="shortlink" type="text/html" href={shortlink} />}
-    <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={headConfig.canonical + Astro.url.pathname} />
 
     <!-- Icons -->
     <link
       rel="apple-touch-icon"
-      href={icon ?? headConfig.icon}
-      type="image/jpg"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
     />
-    <link rel="shortcut icon" type="image/jpg" href={icon ?? headConfig.icon} />
-    <link rel="icon" type="image/jpg" href={icon ?? headConfig.icon} />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      href="/favicon.ico"
+      media="(prefers-color-scheme:no-preference)"
+    />
+    <link
+      rel="icon"
+      href="/favicon-light.ico"
+      media="(prefers-color-scheme:dark)"
+    />
+    <link rel="icon" href="/favicon.ico" media="(prefers-color-scheme:light)" />
 
     <!-- Astro -->
     <meta name="generator" content={Astro.generator} />

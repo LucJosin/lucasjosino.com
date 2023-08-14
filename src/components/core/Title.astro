@@ -1,8 +1,10 @@
 ---
 import { Icon } from 'astro-icon';
+
 interface Props {
   title: string;
   url?: string;
+  alt?: string;
   margin?: string;
   fontSize?: string;
 }
@@ -10,6 +12,7 @@ interface Props {
 const {
   title,
   url,
+  alt,
   margin = '1rem 0',
   fontSize = '0.9em 0',
 } = Astro.props as Props;
@@ -22,6 +25,8 @@ const {
         rel="noopener noreferrer"
         target="_blank"
         class="link-title"
+        title={alt}
+        aria-label={alt}
         href={url}
       >
         {title}
