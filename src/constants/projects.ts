@@ -1,13 +1,15 @@
 export const projects = [
   {
-    title: 'lucasjosino.com',
-    description: 'Personal website built with Astro & Typescript.',
-    url: 'https://github.com/LucJosin/lucasjosino.com',
+    title: 'HawAPI',
+    description: 'A Free and Open Source API for Stranger Things series',
+    git: 'https://github.com/HawAPI/HawAPI',
+    url: 'https://hawapi.theproject.id/',
   },
   {
     title: 'on_audio_query',
     description:
       'Flutter Plugin used to query audios/songs infos from device storage.',
-    url: 'https://github.com/LucJosin/on_audio_query',
+    git: 'https://github.com/LucJosin/on_audio_query',
+    url: 'https://pub.dev/packages/on_audio_query',
   },
 ];
