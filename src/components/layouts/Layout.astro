@@ -4,12 +4,13 @@ import headConfig from '@constants/head';
 export interface Props {
   title: string;
   description: string;
-  imageUrl?: string;
+  icon?: string;
+  banner?: string;
   robots?: string;
   shortlink?: string;
 }
 
-const { title, description, imageUrl, robots, shortlink } =
+const { title, description, icon, banner, robots, shortlink } =
   Astro.props as Props;
 ---
 
@@ -49,7 +50,7 @@ const { title, description, imageUrl, robots, shortlink } =
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={imageUrl ?? headConfig.imageUrl}
+      content={banner ?? headConfig.banner}
     />
 
     <!-- Open Graph -->
@@ -61,7 +62,7 @@ const { title, description, imageUrl, robots, shortlink } =
       content={description + headConfig.endDescription}
     />
     <meta property="og:type" content="portfolio" />
-    <meta property="og:image" content={imageUrl ?? headConfig.imageUrl} />
+    <meta property="og:image" content={banner ?? headConfig.banner} />
 
     <!-- Links -->
     {shortlink && <link rel="shortlink" type="text/html" href={shortlink} />}
@@ -70,15 +71,11 @@ const { title, description, imageUrl, robots, shortlink } =
     <!-- Icons -->
     <link
       rel="apple-touch-icon"
-      href={imageUrl ?? headConfig.imageUrl}
-      type="image/png"
+      href={icon ?? headConfig.icon}
+      type="image/jpg"
     />
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href={imageUrl ?? headConfig.imageUrl}
-    />
-    <link rel="icon" type="image/png" href={imageUrl ?? headConfig.imageUrl} />
+    <link rel="shortcut icon" type="image/jpg" href={icon ?? headConfig.icon} />
+    <link rel="icon" type="image/jpg" href={icon ?? headConfig.icon} />
 
     <!-- Astro -->
     <meta name="generator" content={Astro.generator} />
@@ -148,8 +145,18 @@ const { title, description, imageUrl, robots, shortlink } =
       body {
         padding: 0;
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          Segoe UI,
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          Fira Sans,
+          Droid Sans,
+          Helvetica Neue,
+          sans-serif;
         overflow-x: hidden;
         background-color: var(--primary-color);
         color: var(--text-color);
@@ -157,6 +164,12 @@ const { title, description, imageUrl, robots, shortlink } =
 
       * {
         box-sizing: border-box;
+      }
+
+      :global([astro-icon]) {
+        fill: var(--text-color);
+        color: var(--text-color);
+        transition: all var(--transition-duration);
       }
 
       :global(a) {
@@ -179,8 +192,15 @@ const { title, description, imageUrl, robots, shortlink } =
       }
 
       :global(code) {
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
       }
     </style>
   </body>
