@@ -2,7 +2,8 @@
 
 # Lucas Josino's Website
 
-  <img src="./public/static/icons/logo.svg" height=60 />
+  <img src="./public/favicon-light.ico#gh-dark-mode-only" height=60 />
+  <img src="./public/favicon.ico" height=60 />
 
   <p align="center">
     <br>
@@ -26,20 +27,6 @@ Lucas Josino's personal website built with [Astro](https://astro.build) + [Types
 </div>
 
 **Note**: The source for this site was not created to be a template or theme, but for my use. Feel free to take whatever inspiration from it that you want, but this code was not written to be cloned and deployed. As such, I do not provide support or guidance for doing that.
-
-## Preview
-
-<details>
-<summary>Light Mode</summary>
-
-<img src="./assets/light-mode.png">
-
-</details>
-
-<details>
-<summary>Dark Mode</summary>
-<img src="./assets/dark-mode.png">
-</details>
 
 ## Dependencies
 
