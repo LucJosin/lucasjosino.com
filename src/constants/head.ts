@@ -8,6 +8,7 @@ interface HeadConfig {
   icon: string;
   banner: string;
   robots: string;
+  canonical: string;
 }
 
 const headConfig: HeadConfig = {
@@ -20,6 +21,7 @@ const headConfig: HeadConfig = {
   icon: './favicon.ico',
   banner: './static/banner.jpg',
   robots: 'index,follow',
+  canonical: 'https://lucasjosino.dev',
 };
 
 export default headConfig;
