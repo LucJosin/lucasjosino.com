@@ -11,10 +11,11 @@ const encodedCode = encodeURI('Status: 404');
 
 <Layout
   title="404"
-  description="Hi!, I'm Lucas Josino. A Mobile Developer. Welcome to my world! "
+  description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development. "
 >
   <main>
     <MenuContainer className="menu-404">
+      <p class="path">{Astro.url.pathname}</p>
       <h1 class="text404">404</h1>
       <p>This page could not be found.</p>
 
@@ -31,9 +32,9 @@ const encodedCode = encodeURI('Status: 404');
             class="contact-link"
             >Github
           </a>
-          |
+           |
           <a
-            href="mailto:contact@lucasjosino.com"
+            href=`mailto:contact@lucasjosino.com?subject=[404] Page: ${Astro.url.pathname}`
             class="contact-link"
             target="_blank"
             rel="noopener noreferrer"
@@ -56,6 +57,10 @@ const encodedCode = encodeURI('Status: 404');
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .path {
+    font-size: 0.9em;
   }
 
   .menu-404 {
@@ -88,6 +93,10 @@ const encodedCode = encodeURI('Status: 404');
   }
 
   @media (max-width: 415px) {
+    .text404 {
+      font-size: 5em;
+    }
+
     .help {
       font-size: 0.7em;
     }

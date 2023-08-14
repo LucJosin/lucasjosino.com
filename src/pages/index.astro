@@ -1,19 +1,33 @@
 ---
 import Avatar from '@components/core/Avatar.astro';
 import Background from '@components/core/Background.astro';
+import Divider from '@components/core/Divider.astro';
+import Title from '@components/core/Title.astro';
+import Links from '@components/data/Links.astro';
+import MenuContainer from '@components/data/MenuContainer.astro';
+import Projects from '@components/data/Projects.astro';
+import Socials from '@components/data/Socials.astro';
 import Layout from '@components/layouts/Layout.astro';
-import Menu from '@components/layouts/Menu.astro';
 ---
 
 <Layout
   title="Backend Developer"
-  description="Hi!, I'm Lucas Josino. Backend Developer. Welcome to my world! "
+  description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development. "
   shortlink="https://lucjos.in/"
 >
   <main>
     <div class="container">
       <Avatar />
-      <Menu />
+      <MenuContainer>
+        <div class="info">
+          <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.2em" />
+          <p class="menu-subtitle">Backend Developer</p>
+        </div>
+        <Divider height="1px" width="80%" />
+        <Links />
+        <Socials />
+        <Projects />
+      </MenuContainer>
     </div>
     <Background />
   </main>
@@ -55,6 +69,10 @@ import Menu from '@components/layouts/Menu.astro';
     border-bottom: 1px solid var(--border-color);
   }
 
+  .info {
+    text-align: center;
+  }
+
   @media (prefers-color-scheme: light) {
     .credits-link {
       color: var(--primary-color);
@@ -74,6 +92,10 @@ import Menu from '@components/layouts/Menu.astro';
   @media (max-width: 415px) {
     main {
       justify-content: flex-start;
+    }
+
+    .info {
+      margin-top: 3rem;
     }
 
     .container {
