@@ -8,6 +8,7 @@ interface Props {
   title: string;
   description: string;
   url: string;
+  git: string;
   height?: string;
   width?: string;
 }
@@ -16,6 +17,7 @@ const {
   title,
   description,
   url,
+  git,
   height = 'var(--project-lb-height)',
   width = 'var(--project-lb-width)',
 } = Astro.props as Props;
@@ -23,8 +25,8 @@ const {
 
 <div class="project-item">
   <div class="item-header">
-    <Title title={title} fontSize="0.9em" />
-    <LinkIcon url={url} iconSize="20" />
+    <Title title={title} url={url} fontSize="0.9em" />
+    <LinkIcon git={git} iconSize="20" />
   </div>
   <Divider width="100%" margin="0 0" />
   <Description value={description} width="100%" />

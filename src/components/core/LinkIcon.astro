@@ -2,27 +2,22 @@
 import Icon from 'astro-icon';
 
 interface Props {
-  url: string;
+  git: string;
   iconSize?: string;
 }
 
-const { url, iconSize = '24' } = Astro.props as Props;
+const { git, iconSize = '24' } = Astro.props as Props;
 ---
 
 <a
-  href={url}
+  href={git}
   rel="noopener noreferrer"
   target="_blank"
   class="link-icon"
   title="Github"
   area-label="Github"
 >
-  <Icon
-    pack="simple-icons"
-    name="github"
-    size={iconSize}
-    class="link-icon-st"
-  />
+  <Icon name="simple-icons:github" size={iconSize} class="link-icon-st" />
 </a>
 
 <style>

@@ -1,15 +1,36 @@
 ---
+import { Icon } from 'astro-icon';
 interface Props {
   title: string;
+  url?: string;
   margin?: string;
   fontSize?: string;
 }
 
-const { title, margin = '1rem 0', fontSize = '0.9em 0' } = Astro.props as Props;
+const {
+  title,
+  url,
+  margin = '1rem 0',
+  fontSize = '0.9em 0',
+} = Astro.props as Props;
 ---
 
 <div class="title">
-  {title}
+  {
+    url != null ? (
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        class="link-title"
+        href={url}
+      >
+        {title}
+        <Icon name="octicon:link-external-16" size="12" />
+      </a>
+    ) : (
+      title
+    )
+  }
 </div>
 
 <style define:vars={{ margin, fontSize }}>
@@ -17,5 +38,14 @@ const { title, margin = '1rem 0', fontSize = '0.9em 0' } = Astro.props as Props;
     margin: var(--margin);
     font-size: var(--fontSize);
     font-weight: bold;
+  }
+
+  .link-title {
+    transition: all var(--transition-duration);
+    border-bottom: 2px solid transparent;
+  }
+
+  .link-title:hover {
+    border-bottom: 2px solid var(--text-color);
   }
 </style>
