@@ -19,7 +19,15 @@ export default defineConfig({
   // Astro sitemap.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
-  integrations: [swup(), sitemap(), robotsTxt({ sitemap: false }), compress()],
+  integrations: [
+    swup({
+      theme: 'fade',
+      accessibility: false,
+    }),
+    sitemap(),
+    robotsTxt({ sitemap: false }),
+    compress(),
+  ],
   // Astro icon.
   //
   // Ref: https://github.com/natemoo-re/astro-icon#setup
