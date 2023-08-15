@@ -1,0 +1,12 @@
+
+# BLOCK FOLDERS(NOT FILES)
+Options -Indexes
+
+# FORCE 'WWW' REDIRECT
+RewriteCond %{HTTP_HOST} ^lucasjosino.com [NC]
+RewriteRule ^(.*)$ https://www.lucasjosino.com/$1 [L,R=301]
+# FORCE 'WWW' REDIRECT
+
+# ERROR PAGES
+ErrorDocument 404 /404.html
+# ERROR PAGES
