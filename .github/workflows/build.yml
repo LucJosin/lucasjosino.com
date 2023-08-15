@@ -25,10 +25,12 @@ jobs:
       - name: Build Astro
         run: yarn build
 
+      - name: Enter dist folder
+        run: cd dist/
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'feat: Add new build'
           branch: release
-          repository: dist/
           disable_globbing: true
           skip_dirty_check: true
