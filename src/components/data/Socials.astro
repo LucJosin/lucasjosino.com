@@ -10,11 +10,11 @@ import { socials } from '@constants/socials';
     {
       socials.map((data) => (
         <LinkBox
-          height="var(--social-lb-height)"
-          width="var(--social-lb-width)"
+          height="var(--link-box-height)"
+          width="100%"
           link={data.url}
           icon={data.icon}
-          iconSize="24"
+          iconSize="20"
           alt={data.alt}
         />
       ))
@@ -29,23 +29,22 @@ import { socials } from '@constants/socials';
   }
 
   .socials-container {
-    display: flex;
+    display: grid;
+    align-items: center;
     justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(4.3rem, 7rem));
+    grid-auto-rows: minmax(1rem, auto);
   }
 
   @media (max-width: 415px) {
     .socials {
       text-align: center;
-      height: max-content;
     }
 
     .socials-container {
-      display: grid;
       gap: 1rem;
-      grid-template-columns: auto auto;
       justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      grid-template-columns: repeat(1, var(--project-lb-width));
     }
   }
 </style>

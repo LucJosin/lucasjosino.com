@@ -1,7 +1,9 @@
 import sitemap from '@astrojs/sitemap';
+import swup from '@swup/astro';
+import compress from 'astro-compress';
 import { defineConfig } from 'astro/config';
 
-import compress from 'astro-compress';
+import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +19,7 @@ export default defineConfig({
   // Astro sitemap.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
-  integrations: [sitemap(), compress()],
+  integrations: [swup(), sitemap(), robotsTxt({ sitemap: false }), compress()],
   // Astro icon.
   //
   // Ref: https://github.com/natemoo-re/astro-icon#setup
@@ -29,5 +31,7 @@ export default defineConfig({
   // Listen on all addresses, including LAN and public addresses.
   //
   // Ref: https://docs.astro.build/en/reference/configuration-reference/#serverhost
-  server: { host: true },
+  server: {
+    host: true,
+  },
 });

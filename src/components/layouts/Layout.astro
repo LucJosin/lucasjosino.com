@@ -4,13 +4,12 @@ import headConfig from '@constants/head';
 export interface Props {
   title: string;
   description: string;
-  imageUrl?: string;
+  banner?: string;
   robots?: string;
   shortlink?: string;
 }
 
-const { title, description, imageUrl, robots, shortlink } =
-  Astro.props as Props;
+const { title, description, banner, robots, shortlink } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -49,7 +48,7 @@ const { title, description, imageUrl, robots, shortlink } =
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={imageUrl ?? headConfig.imageUrl}
+      content={banner ?? headConfig.banner}
     />
 
     <!-- Open Graph -->
@@ -61,24 +60,41 @@ const { title, description, imageUrl, robots, shortlink } =
       content={description + headConfig.endDescription}
     />
     <meta property="og:type" content="portfolio" />
-    <meta property="og:image" content={imageUrl ?? headConfig.imageUrl} />
+    <meta property="og:image" content={banner ?? headConfig.banner} />
 
     <!-- Links -->
     {shortlink && <link rel="shortlink" type="text/html" href={shortlink} />}
-    <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={headConfig.canonical + Astro.url.pathname} />
 
     <!-- Icons -->
     <link
       rel="apple-touch-icon"
-      href={imageUrl ?? headConfig.imageUrl}
-      type="image/png"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
     />
     <link
-      rel="shortcut icon"
+      rel="icon"
       type="image/png"
-      href={imageUrl ?? headConfig.imageUrl}
+      sizes="32x32"
+      href="./favicon-32x32.png"
     />
-    <link rel="icon" type="image/png" href={imageUrl ?? headConfig.imageUrl} />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      href="/favicon.ico"
+      media="(prefers-color-scheme:no-preference)"
+    />
+    <link
+      rel="icon"
+      href="/favicon-light.ico"
+      media="(prefers-color-scheme:dark)"
+    />
+    <link rel="icon" href="/favicon.ico" media="(prefers-color-scheme:light)" />
 
     <!-- Astro -->
     <meta name="generator" content={Astro.generator} />
@@ -148,8 +164,18 @@ const { title, description, imageUrl, robots, shortlink } =
       body {
         padding: 0;
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          Segoe UI,
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          Fira Sans,
+          Droid Sans,
+          Helvetica Neue,
+          sans-serif;
         overflow-x: hidden;
         background-color: var(--primary-color);
         color: var(--text-color);
@@ -157,6 +183,12 @@ const { title, description, imageUrl, robots, shortlink } =
 
       * {
         box-sizing: border-box;
+      }
+
+      :global([astro-icon]) {
+        fill: var(--text-color);
+        color: var(--text-color);
+        transition: all var(--transition-duration);
       }
 
       :global(a) {
@@ -179,8 +211,15 @@ const { title, description, imageUrl, robots, shortlink } =
       }
 
       :global(code) {
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
       }
     </style>
   </body>

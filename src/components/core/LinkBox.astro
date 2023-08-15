@@ -24,7 +24,7 @@ const { height, width, link, icon, iconSize, title, alt } =
   rel="noopener noreferrer"
 >
   <div class="link-box">
-    <Icon pack="simple-icons" name={icon} size={iconSize} />
+    <Icon name={icon} size={iconSize} />
     {title && <SubTitle subTitle={title} />}
   </div>
 </a>
@@ -32,19 +32,24 @@ const { height, width, link, icon, iconSize, title, alt } =
 <style define:vars={{ height, width }}>
   .link-box {
     height: var(--height);
-    width: var(--width);
+    min-width: var(--width);
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all var(--transition-duration);
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .link-box:hover {
     border: var(--border-size) solid var(--primary-color);
     background-color: var(--border-color);
     color: var(--primary-color);
+  }
+
+  .link-box:hover > [astro-icon] {
+    fill: var(--text-color-inv);
+    color: var(--text-color-inv);
   }
 </style>
