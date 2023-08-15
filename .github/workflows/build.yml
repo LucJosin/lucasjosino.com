@@ -30,3 +30,4 @@ jobs:
           commit_message: 'feat: Add new build'
           branch: release
           file_pattern: 'dist/*'
+          disable_globbing: true
