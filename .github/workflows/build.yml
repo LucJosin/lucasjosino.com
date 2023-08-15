@@ -31,3 +31,4 @@ jobs:
           branch: release
           file_pattern: 'dist/*'
           disable_globbing: true
+          skip_dirty_check: true
