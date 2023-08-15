@@ -1,6 +1,6 @@
-name: Build and Deploy
+name: Build
 
-# Only build and deploy after new tag.
+# Only build after new tag.
 on:
   workflow_dispatch:
   push:
@@ -25,15 +25,8 @@ jobs:
       - name: Build Astro
         run: yarn build
 
-      - name: Deploy website to host
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          server: ${{ secrets.ftp_host }}
-          username: ${{ secrets.ftp_user }}
-          password: ${{ secrets.ftp_password }}
-          local-dir: ./dist/
-          port: 21
-
-      - name: Output Deploy
-        run: |
-          echo "Website Deployed"
+          commit_message: 'feat: Add new build'
+          branch: release
+          file_pattern: 'dist/*'
