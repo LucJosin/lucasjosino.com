@@ -25,15 +25,10 @@ jobs:
       - name: Build Astro
         run: yarn build
 
-      - name: Enter dist folder
-        run: cd dist/
+      - run: |
+          git config --global user.email "github-actions[bot]"
+          git config --global user.name "github-actions[bot]@users.noreply.github.com"
 
-      - name: Push to release branch
-        run: |
-          mkdir release
-          git init --initial-branch=release
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "build: Add new release files"
-          git push --force
+      - uses: kiprasmel/git-publish-generated-branch@v0
+        with:
+          ARGS: '--dir "dist" --branch "release"'
