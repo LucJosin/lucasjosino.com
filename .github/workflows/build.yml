@@ -29,6 +29,6 @@ jobs:
         with:
           commit_message: 'feat: Add new build'
           branch: release
-          file_pattern: 'dist/*'
+          repository: dist/
           disable_globbing: true
           skip_dirty_check: true
