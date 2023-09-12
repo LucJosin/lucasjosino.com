@@ -17,7 +17,6 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
   <head>
     <!-- Configurations -->
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="content-language" content="en-US" />
     <meta http-equiv="content-type" content="text/html" />
 
@@ -34,7 +33,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta name="robots" content={robots ?? headConfig.robots} />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content={headConfig.social} />
     <meta name="twitter:site" content={headConfig.social} />
     <meta name="twitter:domain" content={Astro.url} />
@@ -48,7 +47,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={banner ?? headConfig.banner}
+      content={Astro.url + (banner ?? headConfig.banner)}
     />
 
     <!-- Open Graph -->
@@ -60,27 +59,52 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
       content={description + headConfig.endDescription}
     />
     <meta property="og:type" content="portfolio" />
-    <meta property="og:image" content={banner ?? headConfig.banner} />
+    <meta
+      property="og:image"
+      content={Astro.url + (banner ?? headConfig.banner)}
+    />
 
     <!-- Links -->
     {shortlink && <link rel="shortlink" type="text/html" href={shortlink} />}
+    <link
+      rel="alternative"
+      href={headConfig.alternative + Astro.url.pathname}
+    />
     <link rel="canonical" href={headConfig.canonical + Astro.url.pathname} />
 
     <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={`${Astro.url}apple-touch-icon.png`}
+    />
     <link
       rel="icon"
-      href="/favicon.ico"
+      type="image/png"
+      sizes="32x32"
+      href={`${Astro.url}favicon-32x32.png`}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href={`${Astro.url}favicon-16x16.png`}
+    />
+    <link
+      rel="icon"
+      href={`${Astro.url}favicon.ico`}
       media="(prefers-color-scheme:no-preference)"
     />
     <link
       rel="icon"
-      href="/favicon-light.ico"
+      href={`${Astro.url}favicon-light.ico`}
       media="(prefers-color-scheme:dark)"
     />
-    <link rel="icon" href="/favicon.ico" media="(prefers-color-scheme:light)" />
+    <link
+      rel="icon"
+      href={`${Astro.url}favicon.ico`}
+      media="(prefers-color-scheme:light)"
+    />
 
     <!-- Astro -->
     <meta name="generator" content={Astro.generator} />

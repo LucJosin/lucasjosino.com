@@ -5,10 +5,10 @@ interface HeadConfig {
   copyRight: string;
   endDescription: string;
   tags: string;
-  icon: string;
   banner: string;
   robots: string;
   canonical: string;
+  alternative: string;
 }
 
 const headConfig: HeadConfig = {
@@ -18,10 +18,10 @@ const headConfig: HeadConfig = {
   copyRight: '© 2023, Lucas Josino. All Rights Reserved.',
   endDescription: '• lucasjosino.com | lucasjosino.dev | lucjos.in | @lucjosin',
   tags: 'java, java developer, kotlin, sql, postgresql, hawapi, spring, spring boot, spring mvc, kotlin developer, backend, backend developer, portfolio, lucasjosino, lucas josino, lucjosin, lucjos.in, josino, developer, @lucjoin, @lucjos.in, desenvolvedor, desenvolvedor backend, desenvolvedor kotlin',
-  icon: '/favicon.ico',
-  banner: '/static/banner.png',
+  banner: 'static/banner.png',
   robots: 'index,follow',
-  canonical: 'https://lucasjosino.dev',
+  canonical: 'https://lucasjosino.com',
+  alternative: 'https://lucasjosino.dev',
 };
 
 export default headConfig;
