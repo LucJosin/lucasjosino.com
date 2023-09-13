@@ -1,6 +1,5 @@
 ---
 import Avatar from '@components/core/Avatar.astro';
-import Background from '@components/core/Background.astro';
 import Divider from '@components/core/Divider.astro';
 import Title from '@components/core/Title.astro';
 import Links from '@components/data/Links.astro';
@@ -15,43 +14,21 @@ import Layout from '@layouts/Layout.astro';
   description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development. "
   shortlink="https://lucjos.in/"
 >
-  <main>
-    <div class="container">
+  <MenuContainer>
+    <div class="profile">
       <Avatar />
-      <MenuContainer>
-        <div class="info">
-          <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.2em" />
-          <p class="menu-subtitle">Backend Developer</p>
-        </div>
-        <Divider height="1px" width="80%" />
-        <Links />
-        <Socials />
-        <Projects />
-      </MenuContainer>
+      <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.4em" />
+      <span class="menu-subtitle">Backend Developer</span>
+      <span class="menu-subtitle">Java · Spring Boot</span>
     </div>
-    <Background />
-  </main>
+    <Divider height="1px" width="80%" />
+    <Links />
+    <Socials />
+    <Projects />
+  </MenuContainer>
 </Layout>
 
 <style>
-  main {
-    height: 100vh;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .container {
-    z-index: 2;
-    display: inherit;
-    flex-direction: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-  }
-
   .credits {
     z-index: 2;
     position: absolute;
@@ -69,39 +46,11 @@ import Layout from '@layouts/Layout.astro';
     border-bottom: 1px solid var(--border-color);
   }
 
-  .info {
+  .profile {
     text-align: center;
-  }
-
-  @media (prefers-color-scheme: light) {
-    .credits-link {
-      color: var(--primary-color);
-      border-bottom: 1px solid transparent;
-    }
-
-    .credits {
-      opacity: 1;
-      color: var(--primary-color);
-    }
-
-    .credits-link:hover {
-      border-bottom: 1px solid var(--primary-color);
-    }
-  }
-
-  @media (max-width: 415px) {
-    main {
-      justify-content: flex-start;
-    }
-
-    .info {
-      margin-top: 3rem;
-    }
-
-    .container {
-      width: 100%;
-      box-sizing: content-box;
-      padding: 2rem 0 5rem 0;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
   }
 </style>

@@ -1,5 +1,4 @@
 ---
-import Background from '@components/core/Background.astro';
 import Button from '@components/core/Button.astro';
 import Divider from '@components/core/Divider.astro';
 import MenuContainer from '@components/data/MenuContainer.astro';
@@ -15,7 +14,6 @@ const encodedCode = encodeURI('Status: 404');
 >
   <main>
     <MenuContainer className="menu-404">
-      <p class="path">{Astro.url.pathname}</p>
       <h1 class="text404">404</h1>
       <p>This page could not be found.</p>
 
@@ -43,8 +41,6 @@ const encodedCode = encodeURI('Status: 404');
         </span>
       </div>
     </MenuContainer>
-
-    <Background />
   </main>
 </Layout>
 
@@ -57,10 +53,6 @@ const encodedCode = encodeURI('Status: 404');
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-
-  .path {
-    font-size: 0.9em;
   }
 
   .menu-404 {
@@ -91,19 +83,5 @@ const encodedCode = encodeURI('Status: 404');
 
   .contact-link:hover {
     border-bottom: 1px solid var(--contrast-color);
-  }
-
-  @media (max-width: 415px) {
-    .text404 {
-      font-size: 5em;
-    }
-
-    .help {
-      font-size: 0.7em;
-    }
-
-    .menu-404 {
-      padding: 4rem 0 !important;
-    }
   }
 </style>
