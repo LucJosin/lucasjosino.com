@@ -7,8 +7,6 @@ import { links } from '@constants/links';
   {
     links.map((data) => (
       <LinkBox
-        height="var(--link-box-height)"
-        width="var(--link-box-width)"
         link={data.url}
         icon={data.icon}
         iconSize="20"
@@ -21,18 +19,9 @@ import { links } from '@constants/links';
 
 <style>
   .links {
-    height: 50px;
     width: 80%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  @media (max-width: 415px) {
-    .links {
-      height: max-content;
-      gap: 1rem;
-      align-items: center;
-      flex-direction: column;
-    }
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   }
 </style>

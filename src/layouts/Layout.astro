@@ -12,7 +12,7 @@ export interface Props {
 const { title, description, banner, robots, shortlink } = Astro.props as Props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Configurations -->
@@ -113,7 +113,9 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <title>{headConfig.titleStart + title}</title>
   </head>
   <body>
-    <slot />
+    <main>
+      <slot />
+    </main>
     <style>
       :root {
         /* Global */
@@ -140,23 +142,11 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
 
         /* Transition */
         --transition-duration: 0.4s;
-
-        /* LinkBox (default) */
-        --link-box-height: 3.1rem;
-        --link-box-width: 11.2rem;
-
-        /* LinkBox (social) */
-        --social-lb-height: 4.3rem;
-        --social-lb-width: 5rem;
-
-        /* LinkBox (project) */
-        --project-lb-height: 8.75rem;
-        --project-lb-width: 11.2rem;
       }
 
       @media (prefers-color-scheme: dark) {
         :root {
-          --primary-color: #191919;
+          --primary-color: #111111;
           --secondary-color: #151515;
 
           --contrast-color: #fff;
@@ -192,6 +182,12 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
 
       * {
         box-sizing: border-box;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       :global([astro-icon]) {

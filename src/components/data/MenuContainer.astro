@@ -12,8 +12,10 @@ const { className } = Astro.props as Props;
 
 <style>
   .menu-container {
-    height: 35rem;
-    width: 30rem;
+    margin: 10vh 0;
+    max-width: 35rem;
+    width: 30%;
+    min-width: 30rem;
     background-color: var(--primary-color);
     border-radius: var(--layout-border-radius);
     display: flex;
@@ -22,10 +24,10 @@ const { className } = Astro.props as Props;
     justify-content: center;
   }
 
-  @media (max-width: 394px) {
+  @media (max-width: 395px) {
     .menu-container {
-      height: max-content;
       width: 80%;
+      min-width: initial;
     }
   }
 </style>

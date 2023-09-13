@@ -11,7 +11,6 @@ import { projects } from '@constants/projects';
     {
       projects.map((data) => (
         <ProjectItem
-          alt={data.alt}
           title={data.title}
           description={data.description}
           git={data.git}
@@ -29,22 +28,9 @@ import { projects } from '@constants/projects';
   }
 
   .projects-container {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  @media (max-width: 415px) {
-    .projects {
-      text-align: center;
-      height: max-content;
-    }
-
-    .projects-container {
-      gap: 1rem;
-      text-align: initial;
-      align-items: center;
-      flex-direction: column;
-      padding-bottom: 4rem;
-    }
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 </style>

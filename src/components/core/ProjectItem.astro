@@ -7,37 +7,27 @@ import Title from './Title.astro';
 interface Props {
   title: string;
   description: string;
-  url: string;
+  url?: string;
   git: string;
-  alt?: string;
-  height?: string;
-  width?: string;
 }
 
-const {
-  title,
-  description,
-  url,
-  git,
-  alt,
-  height = 'var(--project-lb-height)',
-  width = 'var(--project-lb-width)',
-} = Astro.props as Props;
+const { title, description, url, git } = Astro.props as Props;
 ---
 
 <div class="project-item">
   <div class="item-header">
-    <Title title={title} url={url} alt={alt} fontSize="0.9em" />
-    <LinkIcon git={git} alt={title + ' - Github'} iconSize="18" />
+    <Title title={title} fontSize="1em" />
+    <div class="item-links">
+      <LinkIcon git={git} alt={title + ' - Github'} iconSize="20" />
+      {url && <LinkIcon url={url} alt={title + ' - Demo'} iconSize="22" />}
+    </div>
   </div>
   <Divider width="100%" margin="0 0" />
   <Description value={description} width="100%" />
 </div>
 
-<style define:vars={{ height, width }}>
+<style>
   .project-item {
-    height: var(--height);
-    width: var(--width);
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
     box-sizing: border-box;
@@ -49,5 +39,10 @@ const {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .item-links {
+    display: flex;
+    gap: 0.5rem;
   }
 </style>
