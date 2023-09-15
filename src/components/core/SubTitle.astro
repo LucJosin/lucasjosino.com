@@ -8,9 +8,9 @@ interface Props {
 const { title, fontSize = '1.4em' } = Astro.props as Props;
 ---
 
-<div class="sub-title">
+<h3 class="sub-title">
   {title}
-</div>
+</h3>
 
 <style define:vars={{ fontSize }}>
   .sub-title {
