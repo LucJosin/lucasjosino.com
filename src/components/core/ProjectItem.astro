@@ -17,7 +17,11 @@ const { project, titleSize, descSize } = Astro.props as Props;
 ---
 
 <div class="project-item">
-  {project.image && <img src={project.image} class="banner" />}
+  {
+    project.image && (
+      <img src={project.image} class="banner" title={`${project.title}`} />
+    )
+  }
   <div class="item-header">
     <Title title={project.title} fontSize={titleSize} margin="0" />
     <span class="language">
@@ -40,12 +44,24 @@ const { project, titleSize, descSize } = Astro.props as Props;
   <div class="item-links">
     {
       project.git && (
-        <LinkBox link={project.git} icon="simple-icons:github" title="Github" />
+        <LinkBox
+          link={project.git}
+          icon="simple-icons:github"
+          title="Github"
+          alt={`${project.title} - Github`}
+          isLocal={false}
+        />
       )
     }
     {
       project.url && (
-        <LinkBox link={project.url} icon="mdi:open-in-new" title="Demo" />
+        <LinkBox
+          link={project.url}
+          icon="mdi:open-in-new"
+          title="Demo"
+          alt={`${project.title} - Demo`}
+          isLocal={false}
+        />
       )
     }
   </div>
