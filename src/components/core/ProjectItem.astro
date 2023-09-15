@@ -33,7 +33,12 @@ const { project, titleSize, descSize } = Astro.props as Props;
     </span>
   </div>
   <Divider width="100%" margin="0 0" />
-  <Description value={project.description} fontSize={descSize} margin="0" />
+  <Description
+    value={project.description}
+    fontSize={descSize}
+    margin="0"
+    align={false}
+  />
   <div class="tags">
     {
       project.tags.map((item) => {

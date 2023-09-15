@@ -9,17 +9,14 @@ interface Props {
   description: string;
   url?: string;
   git?: string;
-  titleSize?: string;
-  descSize?: string;
 }
 
-const { title, description, url, git, titleSize, descSize } =
-  Astro.props as Props;
+const { title, description, url, git } = Astro.props as Props;
 ---
 
 <div class="mini-project-item">
   <div class="mini-item-header">
-    <Title title={title} fontSize={titleSize} margin="0" />
+    <Title title={title} margin="0" />
     <div class="mini-item-links">
       {
         git && (
@@ -46,7 +43,13 @@ const { title, description, url, git, titleSize, descSize } =
     </div>
   </div>
   <Divider width="100%" margin="0 0" />
-  <Description value={description} fontSize={descSize} margin="0" />
+  <Description
+    value={description}
+    margin="0"
+    fontSize=".8em"
+    maxLine="3"
+    align={false}
+  />
 </div>
 
 <style>

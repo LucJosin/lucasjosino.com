@@ -4,21 +4,25 @@ interface Props {
   margin?: string;
   fontSize?: string;
   maxLine?: string;
+  align?: boolean;
 }
 
 const {
   value,
   margin = '1rem 0',
-  fontSize = '0.8em',
+  fontSize = '1em',
   maxLine,
+  align = true,
 } = Astro.props as Props;
+
+const textAlign = align ? 'center' : 'initial';
 ---
 
 <p class="description">
   {value}
 </p>
 
-<style define:vars={{ margin, fontSize, maxLine }}>
+<style define:vars={{ margin, fontSize, maxLine, textAlign }}>
   .description {
     overflow: hidden;
     width: 100%;
@@ -27,5 +31,6 @@ const {
     -webkit-box-orient: vertical;
     margin: var(--margin);
     font-size: var(--fontSize);
+    text-align: var(--textAlign);
   }
 </style>
