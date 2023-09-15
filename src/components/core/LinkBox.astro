@@ -1,16 +1,16 @@
 ---
 import { Icon } from 'astro-icon';
-import SubTitle from './SubTitle.astro';
 
 interface Props {
   link: string;
   icon?: string;
-  iconSize: string;
+  iconSize?: string;
   title?: string;
   alt?: string;
+  id?: string;
 }
 
-const { link, icon, iconSize, title, alt } = Astro.props as Props;
+const { link, icon, iconSize = '18', title, alt, id } = Astro.props as Props;
 ---
 
 <a
@@ -19,10 +19,11 @@ const { link, icon, iconSize, title, alt } = Astro.props as Props;
   title={alt ?? title ?? link}
   area-label={alt ?? title ?? link}
   rel="noopener noreferrer"
+  id={id}
 >
   <div class="link-box">
     <Icon name={icon} size={iconSize} />
-    {title && <SubTitle subTitle={title} />}
+    {title && <span>{title}</span>}
   </div>
 </a>
 

@@ -1,16 +1,23 @@
 ---
-import ProjectItem from '@components/core/ProjectItem.astro';
-import Title from '@components/core/Title.astro';
+import MiniProjectItem from '@components/core/MiniProjectItem.astro';
+import SubTitle from '@components/core/SubTitle.astro';
 import { projects } from '@constants/projects';
+import Icon from 'astro-icon';
 ---
 
 <div class="projects">
-  <Title title="Projects" fontSize="1.3em" />
+  <div class="projects-header">
+    <SubTitle title="Projects" />
+    <a href="/projects/" title="See more projects" class="projects-see-more">
+      See more
+      <Icon name="mdi:arrow-right" size="18" />
+    </a>
+  </div>
 
   <div class="projects-container">
     {
       projects.map((data) => (
-        <ProjectItem
+        <MiniProjectItem
           title={data.title}
           description={data.description}
           git={data.git}
@@ -25,6 +32,24 @@ import { projects } from '@constants/projects';
   .projects {
     height: max-content;
     width: 80%;
+  }
+
+  .projects-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .projects-see-more {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: gap 0.2s;
+  }
+
+  .projects-see-more:hover {
+    cursor: pointer;
+    gap: 0.2rem;
   }
 
   .projects-container {

@@ -1,27 +1,21 @@
 ---
 interface Props {
   value: string;
-  width: string;
   margin?: string;
   fontSize?: string;
 }
 
-const {
-  value,
-  width,
-  margin = '1rem 0',
-  fontSize = '0.8em',
-} = Astro.props as Props;
+const { value, margin = '1rem 0', fontSize = '0.8em' } = Astro.props as Props;
 ---
 
 <div class="description">
   {value}
 </div>
 
-<style define:vars={{ margin, fontSize, width }}>
+<style define:vars={{ margin, fontSize }}>
   .description {
     overflow: hidden;
-    width: var(--width);
+    width: 100%;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -29,3 +23,11 @@ const {
     font-size: var(--fontSize);
   }
 </style>
+
+<script>
+  const desc = document.querySelector('.description') as HTMLInputElement;
+
+  desc?.addEventListener('click', () => {
+    desc.style.webkitLineClamp = 'unset';
+  });
+</script>

@@ -1,19 +1,21 @@
 ---
 interface Props {
-  subTitle: string;
+  title: string;
   margin?: string;
   fontSize?: string;
 }
 
-const { subTitle, fontSize = '1em' } = Astro.props as Props;
+const { title, fontSize = '1.4em' } = Astro.props as Props;
 ---
 
 <div class="sub-title">
-  {subTitle}
+  {title}
 </div>
 
 <style define:vars={{ fontSize }}>
   .sub-title {
+    margin: 1rem 0;
+    font-weight: bold;
     font-size: var(--fontSize);
   }
 </style>

@@ -8,9 +8,9 @@ interface Props {
 const { title, margin = '1rem 0', fontSize = '0.9em 0' } = Astro.props as Props;
 ---
 
-<div class="title">
+<h1 class="title">
   {title}
-</div>
+</h1>
 
 <style define:vars={{ margin, fontSize }}>
   .title {

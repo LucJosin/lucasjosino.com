@@ -46,8 +46,14 @@
   const placeholder = document.querySelector(
     '.placeholder'
   ) as HTMLInputElement;
+
   avatar?.addEventListener('click', () => {
     avatar.style.visibility = 'hidden';
     placeholder.style.visibility = 'visible';
+  });
+
+  placeholder?.addEventListener('click', () => {
+    avatar.style.visibility = 'visible';
+    placeholder.style.visibility = 'hidden';
   });
 </script>
