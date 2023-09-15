@@ -1,21 +1,20 @@
 ---
 import LinkBox from '@components/core/LinkBox.astro';
-import Title from '@components/core/Title.astro';
+import SubTitle from '@components/core/SubTitle.astro';
 import { socials } from '@constants/socials';
 ---
 
 <div class="socials">
-  <Title title="Socials" fontSize="1.3em" />
+  <SubTitle title="Socials" />
   <div class="socials-container">
     {
       socials.map((data) => (
         <LinkBox
-          height="var(--link-box-height)"
-          width="100%"
           link={data.url}
           icon={data.icon}
           iconSize="20"
           alt={data.alt}
+          isLocal={false}
         />
       ))
     }
@@ -29,22 +28,11 @@ import { socials } from '@constants/socials';
   }
 
   .socials-container {
+    width: 100%;
     display: grid;
     align-items: center;
     justify-content: space-between;
-    grid-template-columns: repeat(auto-fit, minmax(4.3rem, 7rem));
-    grid-auto-rows: minmax(1rem, auto);
-  }
-
-  @media (max-width: 415px) {
-    .socials {
-      text-align: center;
-    }
-
-    .socials-container {
-      gap: 1rem;
-      justify-content: center;
-      grid-template-columns: repeat(1, var(--project-lb-width));
-    }
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: 1rem;
   }
 </style>

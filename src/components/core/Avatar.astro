@@ -14,8 +14,6 @@
 
 <style>
   .avatar {
-    margin-top: -8%;
-    transform: translateY(50%);
     height: 5rem;
     width: 5rem;
     background-color: var(--primary-color);
@@ -36,14 +34,26 @@
   }
 
   .placeholder {
+    height: 3rem;
+    width: 3rem;
     position: absolute;
-    z-index: -1;
+    visibility: hidden;
   }
 </style>
 
 <script>
   const avatar = document.querySelector('.img') as HTMLInputElement;
+  const placeholder = document.querySelector(
+    '.placeholder'
+  ) as HTMLInputElement;
+
   avatar?.addEventListener('click', () => {
     avatar.style.visibility = 'hidden';
+    placeholder.style.visibility = 'visible';
+  });
+
+  placeholder?.addEventListener('click', () => {
+    avatar.style.visibility = 'visible';
+    placeholder.style.visibility = 'hidden';
   });
 </script>

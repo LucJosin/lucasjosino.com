@@ -12,17 +12,16 @@ export interface Props {
 const { title, description, banner, robots, shortlink } = Astro.props as Props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Configurations -->
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="content-language" content="en-US" />
     <meta http-equiv="content-type" content="text/html" />
 
     <!-- Default  -->
-    <meta name="copyright" content={headConfig.copyRight} />
+    <meta name="copyright" content={headConfig.copyright} />
     <meta
       name="description"
       content={description + headConfig.endDescription}
@@ -34,10 +33,10 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta name="robots" content={robots ?? headConfig.robots} />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content={headConfig.social} />
     <meta name="twitter:site" content={headConfig.social} />
-    <meta name="twitter:domain" content={Astro.url} />
+    <meta name="twitter:domain" content={Astro.site} />
     <meta name="twitter:title" content={headConfig.titleStart + title} />
     <meta
       name="twitter:description"
@@ -48,11 +47,11 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={banner ?? headConfig.banner}
+      content={Astro.site + (banner ?? headConfig.banner)}
     />
 
     <!-- Open Graph -->
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={Astro.site} />
     <meta property="og:title" content={headConfig.titleStart + title} />
     <meta property="og:site_name" content={headConfig.name} />
     <meta
@@ -60,27 +59,60 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
       content={description + headConfig.endDescription}
     />
     <meta property="og:type" content="portfolio" />
-    <meta property="og:image" content={banner ?? headConfig.banner} />
+    <meta
+      property="og:image"
+      content={Astro.site + (banner ?? headConfig.banner)}
+    />
 
     <!-- Links -->
-    {shortlink && <link rel="shortlink" type="text/html" href={shortlink} />}
+    {
+      shortlink && (
+        <link
+          rel="shortlink"
+          type="text/html"
+          href={headConfig.shortLink + shortlink}
+        />
+      )
+    }
+    <link
+      rel="alternative"
+      href={headConfig.alternative + Astro.url.pathname}
+    />
     <link rel="canonical" href={headConfig.canonical + Astro.url.pathname} />
 
     <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={`${Astro.site}apple-touch-icon.png`}
+    />
     <link
       rel="icon"
-      href="/favicon.ico"
+      type="image/png"
+      sizes="32x32"
+      href={`${Astro.site}favicon-32x32.png`}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href={`${Astro.site}favicon-16x16.png`}
+    />
+    <link
+      rel="icon"
+      href={`${Astro.site}favicon.ico`}
       media="(prefers-color-scheme:no-preference)"
     />
     <link
       rel="icon"
-      href="/favicon-light.ico"
+      href={`${Astro.site}favicon-light.ico`}
       media="(prefers-color-scheme:dark)"
     />
-    <link rel="icon" href="/favicon.ico" media="(prefers-color-scheme:light)" />
+    <link
+      rel="icon"
+      href={`${Astro.site}favicon.ico`}
+      media="(prefers-color-scheme:light)"
+    />
 
     <!-- Astro -->
     <meta name="generator" content={Astro.generator} />
@@ -89,7 +121,9 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <title>{headConfig.titleStart + title}</title>
   </head>
   <body>
-    <slot />
+    <main>
+      <slot />
+    </main>
     <style>
       :root {
         /* Global */
@@ -99,40 +133,24 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
         --contrast-color: #000;
 
         --divider-color: #000;
-        --divider-height: 1px;
-        --divider-width: 1rem;
-        --divider-size: 1px;
-        --divider-margin: 1.5rem 0;
 
         --border-color: #000;
         --border-size: 1px;
 
-        --text-color: #000;
-        --text-color-inv: #fff;
+        --primary-text-color: #000;
+        --secondary-text-color: #fff;
 
         /* Border radius */
         --border-radius: 10px;
         --layout-border-radius: 20px;
 
         /* Transition */
-        --transition-duration: 0.4s;
-
-        /* LinkBox (default) */
-        --link-box-height: 3.1rem;
-        --link-box-width: 11.2rem;
-
-        /* LinkBox (social) */
-        --social-lb-height: 4.3rem;
-        --social-lb-width: 5rem;
-
-        /* LinkBox (project) */
-        --project-lb-height: 8.75rem;
-        --project-lb-width: 11.2rem;
+        --transition-duration: 0.2s;
       }
 
       @media (prefers-color-scheme: dark) {
         :root {
-          --primary-color: #191919;
+          --primary-color: #111111;
           --secondary-color: #151515;
 
           --contrast-color: #fff;
@@ -141,8 +159,8 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
 
           --border-color: #fff;
 
-          --text-color: #fff;
-          --text-color-inv: #121212;
+          --primary-text-color: #fff;
+          --secondary-text-color: #121212;
         }
       }
 
@@ -163,21 +181,27 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
           Helvetica Neue,
           sans-serif;
         background-color: var(--primary-color);
-        color: var(--text-color);
+        color: var(--primary-text-color);
       }
 
       * {
         box-sizing: border-box;
       }
 
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
       :global([astro-icon]) {
-        fill: var(--text-color);
-        color: var(--text-color);
+        fill: var(--primary-text-color);
+        color: var(--primary-text-color);
         transition: all var(--transition-duration);
       }
 
       :global(a) {
-        color: var(--text-color);
+        color: var(--primary-text-color);
         text-decoration: none;
       }
 

@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  alt: string;
+  isLocal?: boolean;
+}
+
+const { title, href, alt, isLocal = true } = Astro.props as Props;
+---
+
+<a
+  href={href}
+  title={alt}
+  rel={isLocal ? undefined : 'noopener noreferrer'}
+  target={isLocal ? undefined : '_blank'}
+  class="link"
+>
+  {title}
+</a>
+
+<style>
+  .link {
+    border-bottom: var(--border-size) solid transparent;
+    transition: var(--transition-duration);
+    cursor: pointer;
+  }
+
+  .link:hover {
+    border-bottom: var(--border-size) solid var(--border-color);
+  }
+</style>

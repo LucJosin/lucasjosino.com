@@ -1,0 +1,77 @@
+---
+import Description from './Description.astro';
+import Divider from './Divider.astro';
+import LinkIcon from './LinkIcon.astro';
+import Title from './Title.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  url?: string;
+  git?: string;
+}
+
+const { title, description, url, git } = Astro.props as Props;
+---
+
+<div class="mini-project-item">
+  <div class="mini-item-header">
+    <Title title={title} margin="0" />
+    <div class="mini-item-links">
+      {
+        git && (
+          <LinkIcon
+            href={git}
+            icon="simple-icons:github"
+            alt={title + ' - Github'}
+            iconSize="20"
+            isLocal={false}
+          />
+        )
+      }
+      {
+        url && (
+          <LinkIcon
+            href={url}
+            icon="gridicons:external"
+            alt={title + ' - Demo'}
+            iconSize="22"
+            isLocal={false}
+          />
+        )
+      }
+    </div>
+  </div>
+  <Divider width="100%" margin="0 0" />
+  <Description
+    value={description}
+    margin="0"
+    fontSize=".8em"
+    maxLine="3"
+    align={false}
+  />
+</div>
+
+<style>
+  .mini-project-item {
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    padding: 1rem;
+    transition: all var(--transition-duration);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mini-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mini-item-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+</style>
