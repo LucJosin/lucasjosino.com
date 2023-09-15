@@ -2,8 +2,8 @@
 import Avatar from '@components/core/Avatar.astro';
 import Divider from '@components/core/Divider.astro';
 import Title from '@components/core/Title.astro';
+import Container from '@components/data/Container.astro';
 import Links from '@components/data/Links.astro';
-import MenuContainer from '@components/data/MenuContainer.astro';
 import Projects from '@components/data/Projects.astro';
 import Socials from '@components/data/Socials.astro';
 import Layout from '@layouts/Layout.astro';
@@ -14,7 +14,7 @@ import Layout from '@layouts/Layout.astro';
   description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development. "
   shortlink="https://lucjos.in/"
 >
-  <MenuContainer>
+  <Container>
     <div class="profile">
       <Avatar />
       <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.4em" />
@@ -25,7 +25,7 @@ import Layout from '@layouts/Layout.astro';
     <Links />
     <Socials />
     <Projects />
-  </MenuContainer>
+  </Container>
 </Layout>
 
 <style>

@@ -2,7 +2,7 @@
 import Divider from '@components/core/Divider.astro';
 import ProjectItem from '@components/core/ProjectItem.astro';
 import Title from '@components/core/Title.astro';
-import MenuContainer from '@components/data/MenuContainer.astro';
+import Container from '@components/data/Container.astro';
 import { projects } from '@constants/projects';
 import Layout from '@layouts/Layout.astro';
 ---
@@ -12,7 +12,7 @@ import Layout from '@layouts/Layout.astro';
   description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development. "
   shortlink="https://lucjos.in/p"
 >
-  <MenuContainer>
+  <Container>
     <Title title="Projects" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
 
@@ -23,7 +23,7 @@ import Layout from '@layouts/Layout.astro';
         ))
       }
     </div>
-  </MenuContainer>
+  </Container>
 </Layout>
 
 <style>

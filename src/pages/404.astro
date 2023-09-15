@@ -1,7 +1,7 @@
 ---
 import Button from '@components/core/Button.astro';
 import Divider from '@components/core/Divider.astro';
-import MenuContainer from '@components/data/MenuContainer.astro';
+import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
 
 const encodedUrl = encodeURI(`[${Astro.url.pathname}]`);
@@ -13,7 +13,7 @@ const encodedCode = encodeURI('Status: 404');
   description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development. "
 >
   <main>
-    <MenuContainer className="menu-404">
+    <Container className="menu-404">
       <h1 class="text404">404</h1>
       <p>This page could not be found.</p>
 
@@ -40,7 +40,7 @@ const encodedCode = encodeURI('Status: 404');
           </a>
         </span>
       </div>
-    </MenuContainer>
+    </Container>
   </main>
 </Layout>
 
