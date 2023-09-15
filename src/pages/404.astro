@@ -1,6 +1,6 @@
 ---
-import Button from '@components/core/Button.astro';
 import Divider from '@components/core/Divider.astro';
+import Link from '@components/core/Link.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
 
@@ -18,7 +18,7 @@ const encodedCode = encodeURI('Status: 404');
       <p>This page could not be found.</p>
 
       <Divider width="80%" />
-      <Button title="Go Back" href="/" alt="Go back to home page" />
+      <Link title="Go Back" href="/" alt="Go back to home page" />
 
       <div class="help-container">
         <span class="help"

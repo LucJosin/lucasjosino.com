@@ -2,13 +2,19 @@
 interface Props {
   title: string;
   href: string;
-  alt?: string;
+  alt: string;
+  isLocal?: boolean;
 }
 
-const { title, href, alt } = Astro.props as Props;
+const { title, href, alt, isLocal = true } = Astro.props as Props;
 ---
 
-<a href={href} title={alt ?? title} aria-label={alt ?? title}>
+<a
+  href={href}
+  title={alt}
+  rel={isLocal ? undefined : 'noopener noreferrer'}
+  target={isLocal ? undefined : '_blank'}
+>
   {title}
 </a>
 
