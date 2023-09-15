@@ -3,28 +3,35 @@ import { Icon } from 'astro-icon';
 
 interface Props {
   link: string;
+  alt: string;
   icon?: string;
   iconSize?: string;
   title?: string;
-  alt?: string;
   id?: string;
+  isLocal?: boolean;
 }
 
-const { link, icon, iconSize = '18', title, alt, id } = Astro.props as Props;
+const {
+  link,
+  alt,
+  icon,
+  iconSize = '18',
+  title,
+  id,
+  isLocal = true,
+} = Astro.props as Props;
 ---
 
 <a
   href={link}
-  target="_blank"
-  title={alt ?? title ?? link}
-  area-label={alt ?? title ?? link}
-  rel="noopener noreferrer"
+  rel={isLocal ? undefined : 'noopener noreferrer'}
+  target={isLocal ? undefined : '_blank'}
+  title={alt}
   id={id}
+  class="link-box"
 >
-  <div class="link-box">
-    <Icon name={icon} size={iconSize} />
-    {title && <span>{title}</span>}
-  </div>
+  <Icon name={icon} size={iconSize} />
+  {title && <>{title}</>}
 </a>
 
 <style>

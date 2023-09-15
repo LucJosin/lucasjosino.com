@@ -2,28 +2,31 @@
 import Icon from 'astro-icon';
 
 interface Props {
-  git?: string;
-  url?: string;
-  alt?: string;
+  icon: string;
+  href: string;
+  alt: string;
   iconSize?: string;
+  isLocal?: boolean;
 }
 
-const { git, url, alt, iconSize = '24' } = Astro.props as Props;
+const {
+  icon,
+  href,
+  alt,
+  iconSize = '24',
+  isLocal = true,
+} = Astro.props as Props;
 ---
 
 <a
-  href={git || url}
-  rel="noopener noreferrer"
-  target="_blank"
+  href={href}
+  rel={isLocal ? undefined : 'noopener noreferrer'}
+  target={isLocal ? undefined : '_blank'}
   class="link-icon"
   title={alt}
   area-label={alt}
 >
-  <Icon
-    name={git ? 'simple-icons:github' : 'gridicons:external'}
-    size={iconSize}
-    class="link-icon-st"
-  />
+  <Icon name={icon} size={iconSize} class="link-icon-st" />
 </a>
 
 <style>
