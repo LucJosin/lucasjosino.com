@@ -1,6 +1,9 @@
 ---
+import Description from '@components/core/Description.astro';
 import Divider from '@components/core/Divider.astro';
 import Link from '@components/core/Link.astro';
+import LinkBox from '@components/core/LinkBox.astro';
+import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
 
@@ -12,76 +15,46 @@ const encodedCode = encodeURI('Status: 404');
   title="404"
   description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development. "
 >
-  <main>
-    <Container className="menu-404">
-      <h1 class="text404">404</h1>
-      <p>This page could not be found.</p>
+  <Container>
+    <Title title="404" fontSize="5em" />
+    <Description value="This page could not be found." margin="0" />
 
-      <Divider width="80%" />
-      <Link title="Go Back" href="/" alt="Go back to home page" />
+    <Divider width="80%" />
+    <LinkBox title="Go Back" link="/" alt="Go back to home page" />
 
-      <div class="help-container">
-        <span class="help"
-          >Need help?
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://github.com/LucJosin/lucasjosino.com/issues/new?title=${encodedUrl}&labels=${encodedCode}`}
-            class="contact-link"
-            >Github
-          </a>
-           |
-          <a
-            href=`mailto:contact@lucasjosino.com?subject=[404] Page: ${Astro.url.pathname}`
-            class="contact-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            >contact@lucasjosino.com
-          </a>
-        </span>
-      </div>
-    </Container>
-  </main>
+    <div class="help-container">
+      Need help? Contact using:
+      <Link
+        title="Github"
+        alt="Repository of lucasjosino.com project"
+        isLocal={false}
+        href={`https://github.com/LucJosin/lucasjosino.com/issues/new?title=${encodedUrl}&labels=${encodedCode}`}
+      />
+       or
+      <Link
+        title="contact@lucasjosino.com"
+        alt="Email for contact"
+        href={`mailto:contact@lucasjosino.com?subject=${encodeURI(
+          `[404] Page: ${Astro.url.pathname}`
+        )}`}
+      />
+    </div>
+  </Container>
 </Layout>
 
 <style>
-  main {
-    height: 100vh;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .menu-404 {
-    z-index: 1;
-    position: relative;
-    padding-bottom: 1rem 0 !important;
-  }
-
-  .text404 {
-    font-size: 8em;
-  }
-
   .help-container {
     height: 2rem;
-    width: fit-content;
+    width: 100%;
     position: absolute;
     bottom: 0;
+    text-align: center;
+    font-size: 0.88em;
   }
 
-  .help {
-    font-size: 0.8em;
-  }
-
-  .contact-link {
-    border-bottom: 1px solid transparent;
-    transition: var(--transition-duration);
-  }
-
-  .contact-link:hover {
-    border-bottom: 1px solid var(--contrast-color);
+  @media (max-width: 425px) {
+    .help-container {
+      bottom: 1rem;
+    }
   }
 </style>
