@@ -21,8 +21,28 @@ const { title, description, url, git, titleSize, descSize } =
   <div class="mini-item-header">
     <Title title={title} fontSize={titleSize} margin="0" />
     <div class="mini-item-links">
-      {git && <LinkIcon git={git} alt={title + ' - Github'} iconSize="20" />}
-      {url && <LinkIcon url={url} alt={title + ' - Demo'} iconSize="22" />}
+      {
+        git && (
+          <LinkIcon
+            href={git}
+            icon="simple-icons:github"
+            alt={title + ' - Github'}
+            iconSize="20"
+            isLocal={false}
+          />
+        )
+      }
+      {
+        url && (
+          <LinkIcon
+            href={url}
+            icon="gridicons:external"
+            alt={title + ' - Demo'}
+            iconSize="22"
+            isLocal={false}
+          />
+        )
+      }
     </div>
   </div>
   <Divider width="100%" margin="0 0" />
