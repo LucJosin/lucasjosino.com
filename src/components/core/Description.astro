@@ -3,31 +3,29 @@ interface Props {
   value: string;
   margin?: string;
   fontSize?: string;
+  maxLine?: string;
 }
 
-const { value, margin = '1rem 0', fontSize = '0.8em' } = Astro.props as Props;
+const {
+  value,
+  margin = '1rem 0',
+  fontSize = '0.8em',
+  maxLine,
+} = Astro.props as Props;
 ---
 
-<div class="description">
+<p class="description">
   {value}
-</div>
+</p>
 
-<style define:vars={{ margin, fontSize }}>
+<style define:vars={{ margin, fontSize, maxLine }}>
   .description {
     overflow: hidden;
     width: 100%;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: var(--maxLine);
     -webkit-box-orient: vertical;
     margin: var(--margin);
     font-size: var(--fontSize);
   }
 </style>
-
-<script>
-  const desc = document.querySelector('.description') as HTMLInputElement;
-
-  desc?.addEventListener('click', () => {
-    desc.style.webkitLineClamp = 'unset';
-  });
-</script>
