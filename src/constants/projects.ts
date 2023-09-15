@@ -7,7 +7,14 @@ export interface ProjectModel {
   tags: string[];
   language: string;
   category: 'Project' | 'Collection';
-  children?: ProjectModel[];
+  children?: ChildrenProjectModel[];
+}
+
+interface ChildrenProjectModel {
+  title: string;
+  description: string;
+  git?: string;
+  url?: string;
 }
 
 export const projects: ProjectModel[] = [
@@ -40,18 +47,12 @@ export const projects: ProjectModel[] = [
         description: 'Main website for HawAPI',
         git: 'https://github.com/HawAPI/website',
         url: 'https://hawapi.theproject.id/',
-        tags: ['Git', 'Astro', 'TypeScript', 'JavaScript', 'CSS'],
-        language: 'Astro',
-        category: 'Project',
       },
       {
         title: 'HawAPI/js-sdk',
         description: 'HawAPI SDK for JavaScript/TypeScript',
         git: 'https://github.com/HawAPI/js-sdk',
         url: 'https://www.npmjs.com/package/@hawapi/js-sdk',
-        tags: ['Git', 'TypeScript', 'JavaScript'],
-        language: 'Astro',
-        category: 'Project',
       },
     ],
   },
