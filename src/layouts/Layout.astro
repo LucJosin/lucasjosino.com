@@ -36,7 +36,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content={headConfig.social} />
     <meta name="twitter:site" content={headConfig.social} />
-    <meta name="twitter:domain" content={Astro.url} />
+    <meta name="twitter:domain" content={Astro.site} />
     <meta name="twitter:title" content={headConfig.titleStart + title} />
     <meta
       name="twitter:description"
@@ -47,11 +47,11 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={Astro.url + (banner ?? headConfig.banner)}
+      content={Astro.site + (banner ?? headConfig.banner)}
     />
 
     <!-- Open Graph -->
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={Astro.site} />
     <meta property="og:title" content={headConfig.titleStart + title} />
     <meta property="og:site_name" content={headConfig.name} />
     <meta
@@ -61,7 +61,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta property="og:type" content="portfolio" />
     <meta
       property="og:image"
-      content={Astro.url + (banner ?? headConfig.banner)}
+      content={Astro.site + (banner ?? headConfig.banner)}
     />
 
     <!-- Links -->
@@ -76,33 +76,33 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href={`${Astro.url}apple-touch-icon.png`}
+      href={`${Astro.site}apple-touch-icon.png`}
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href={`${Astro.url}favicon-32x32.png`}
+      href={`${Astro.site}favicon-32x32.png`}
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href={`${Astro.url}favicon-16x16.png`}
+      href={`${Astro.site}favicon-16x16.png`}
     />
     <link
       rel="icon"
-      href={`${Astro.url}favicon.ico`}
+      href={`${Astro.site}favicon.ico`}
       media="(prefers-color-scheme:no-preference)"
     />
     <link
       rel="icon"
-      href={`${Astro.url}favicon-light.ico`}
+      href={`${Astro.site}favicon-light.ico`}
       media="(prefers-color-scheme:dark)"
     />
     <link
       rel="icon"
-      href={`${Astro.url}favicon.ico`}
+      href={`${Astro.site}favicon.ico`}
       media="(prefers-color-scheme:light)"
     />
 
