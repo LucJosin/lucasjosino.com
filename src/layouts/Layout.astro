@@ -65,7 +65,15 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     />
 
     <!-- Links -->
-    {shortlink && <link rel="shortlink" type="text/html" href={shortlink} />}
+    {
+      shortlink && (
+        <link
+          rel="shortlink"
+          type="text/html"
+          href={headConfig.shortLink + shortlink}
+        />
+      )
+    }
     <link
       rel="alternative"
       href={headConfig.alternative + Astro.url.pathname}
