@@ -125,23 +125,19 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
         --contrast-color: #000;
 
         --divider-color: #000;
-        --divider-height: 1px;
-        --divider-width: 1rem;
-        --divider-size: 1px;
-        --divider-margin: 1.5rem 0;
 
         --border-color: #000;
         --border-size: 1px;
 
-        --text-color: #000;
-        --text-color-inv: #fff;
+        --primary-text-color: #000;
+        --secondary-text-color: #fff;
 
         /* Border radius */
         --border-radius: 10px;
         --layout-border-radius: 20px;
 
         /* Transition */
-        --transition-duration: 0.4s;
+        --transition-duration: 0.2s;
       }
 
       @media (prefers-color-scheme: dark) {
@@ -155,8 +151,8 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
 
           --border-color: #fff;
 
-          --text-color: #fff;
-          --text-color-inv: #121212;
+          --primary-text-color: #fff;
+          --secondary-text-color: #121212;
         }
       }
 
@@ -177,7 +173,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
           Helvetica Neue,
           sans-serif;
         background-color: var(--primary-color);
-        color: var(--text-color);
+        color: var(--primary-text-color);
       }
 
       * {
@@ -191,13 +187,13 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
       }
 
       :global([astro-icon]) {
-        fill: var(--text-color);
-        color: var(--text-color);
+        fill: var(--primary-text-color);
+        color: var(--primary-text-color);
         transition: all var(--transition-duration);
       }
 
       :global(a) {
-        color: var(--text-color);
+        color: var(--primary-text-color);
         text-decoration: none;
       }
 
