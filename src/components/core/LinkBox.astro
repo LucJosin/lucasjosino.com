@@ -30,7 +30,7 @@ const {
   id={id}
   class="link-box"
 >
-  <Icon name={icon} size={iconSize} />
+  {icon && <Icon name={icon} size={iconSize} />}
   {title && <>{title}</>}
 </a>
 
@@ -43,7 +43,7 @@ const {
     justify-content: center;
     transition: all var(--transition-duration);
     gap: 0.5rem;
-    padding: 0.8rem 0.4rem;
+    padding: 0.8rem 2rem;
   }
 
   .link-box:hover {
