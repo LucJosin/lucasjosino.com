@@ -7,17 +7,17 @@
 
   <p align="center">
     <br>
-    <a href="https://www.lucasjosino.com">
+    <a href="https://www.lucasjosino.com#gh-dark-mode-only">
       <img align="center" alt="Lucas Josino - Website" src="https://shields.io/badge/WEBSITE-LUCASJOSINO.COM-%230D1117?style=for-the-badge&labelColor=%230D1117#gh-dark-mode-only">
-    </p>
-    <a href="https://www.lucasjosino.com">
+    </a>
+    <a href="https://www.lucasjosino.com#gh-light-mode-only">
       <img align="center" alt="Lucas Josino - Website" src="https://shields.io/badge/WEBSITE-LUCASJOSINO.COM-white?style=for-the-badge&labelColor=white#gh-light-mode-only">
-    </p>
+    </a>
   </a>
-  <a href="./LICENSE" target="_blank">
+  <a href="./LICENSE#gh-dark-mode-only" target="_blank">
     <img align="center" alt="Project license" src="https://img.shields.io/github/license/lucjosin/lucasjosino.com?color=%230D1117&style=for-the-badge&labelColor=%230D1117#gh-dark-mode-only">
   </a>
-  <a href="./LICENSE" target="_blank">
+  <a href="./LICENSE#gh-light-mode-only" target="_blank">
     <img align="center" alt="Project license" src="https://img.shields.io/github/license/lucjosin/lucasjosino.com?color=white&style=for-the-badge&labelColor=white#gh-light-mode-only">
   </a>
 </p>
