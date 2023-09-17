@@ -1,8 +1,21 @@
 ---
+import Icon from 'astro-icon';
 
+interface Props {
+  back?: string;
+}
+
+const { back } = Astro.props;
 ---
 
 <div class="container">
+  {
+    back && (
+      <a href={back} class="back" title="Back">
+        <Icon name="mdi:arrow-left" width="24" />
+      </a>
+    )
+  }
   <slot />
 </div>
 
@@ -10,7 +23,7 @@
   .container {
     margin: 10vh 0;
     max-width: 35rem;
-    width: 30%;
+    width: 50%;
     min-width: 30rem;
     background-color: var(--primary-color);
     border-radius: var(--layout-border-radius);
@@ -18,6 +31,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+  }
+
+  .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .back:hover > [astro-icon] {
+    fill: gray;
+    color: gray;
   }
 
   @media (max-width: 560px) {
