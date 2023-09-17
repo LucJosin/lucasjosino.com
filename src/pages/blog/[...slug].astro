@@ -5,29 +5,46 @@ import Container from '@components/data/Container.astro';
 import Tags from '@components/data/Tags.astro';
 import Layout from '@layouts/Layout.astro';
 
-interface Props {
-  image: string;
-  publish_date: string;
-  title: string;
-  description: string;
-  category: string;
-  tags: string[];
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
 
-const { image, publish_date, title, description, category, tags } = Astro.props;
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
 ---
 
-<Layout title={title} description={description}>
+<Layout title={post.data.title} description={post.data.description}>
   <Container>
     <span> Blog • Lucas Josino</span>
-    <Title title={title} fontSize="2.5em" />
+    <Title title={post.data.title} fontSize="2.5em" />
     <div class="post-info">
-      <span>{publish_date}</span> •
-      <span>{category}</span> •
-      <Tags tags={tags} />
+      <span>{post.data.published_at}</span> •
+      <span>{post.data.category}</span> •
+      <Tags tags={post.data.tags} />
     </div>
-    {image && <img src={image} alt={`Post - ${title}`} class="post-banner" />}
+    {
+      post.data.image && (
+        <img
+          src={post.data.image}
+          alt={`Post - ${post.data.title}`}
+          class="post-banner"
+        />
+      )
+    }
     <Divider />
+    <article class="post-content">
+      <Content />
+    </article>
   </Container>
 </Layout>
 
@@ -47,5 +64,10 @@ const { image, publish_date, title, description, category, tags } = Astro.props;
     flex-direction: row;
     gap: 1rem;
     text-wrap: nowrap;
+  }
+
+  .post-content {
+    padding: 1rem;
+    line-height: 1.85em;
   }
 </style>

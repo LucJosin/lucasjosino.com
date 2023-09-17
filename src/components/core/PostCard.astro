@@ -4,7 +4,7 @@ import Description from './Description.astro';
 import Link from './Link.astro';
 
 interface Props {
-  image: string;
+  image?: string;
   publish_date: string;
   title: string;
   description: string;
@@ -16,7 +16,7 @@ const { image, publish_date, title, description, tags, href } = Astro.props;
 ---
 
 <div class="post-card">
-  <img src={image} alt={`Post - ${title}`} class="post-card-img" />
+  {image && <img src={image} alt={`Post - ${title}`} class="post-card-img" />}
   <span class="post-card-info">{publish_date}</span>
   <div class="post-card-header">
     <h3>{title}</h3>

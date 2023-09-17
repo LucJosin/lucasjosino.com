@@ -1,8 +1,12 @@
 ---
 import Divider from '@components/core/Divider.astro';
+import PostCard from '@components/core/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
 ---
 
 <Layout
@@ -13,7 +17,22 @@ import Layout from '@layouts/Layout.astro';
   <Container>
     <Title title="Blog" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
-    <div class="posts"></div>
+    <div class="posts">
+      {
+        posts.map((post) => {
+          return (
+            <PostCard
+              image={post.data.image}
+              title={post.data.title}
+              description={post.data.description}
+              href={post.slug}
+              publish_date={post.data.published_at}
+              tags={post.data.tags}
+            />
+          );
+        })
+      }
+    </div>
   </Container>
 </Layout>
 
