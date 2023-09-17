@@ -1,0 +1,27 @@
+---
+import Divider from '@components/core/Divider.astro';
+import Title from '@components/core/Title.astro';
+import Container from '@components/data/Container.astro';
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout
+  title="Blog"
+  description="A minimalist developer blog with thoughts, ideas and other stuff "
+  shortlink="/blog"
+>
+  <Container>
+    <Title title="Blog" fontSize="2.5em" />
+    <Divider height="1px" width="80%" />
+    <div class="posts"></div>
+  </Container>
+</Layout>
+
+<style>
+  .posts {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import Tags from '@components/data/Tags.astro';
+import Description from './Description.astro';
+import Link from './Link.astro';
+
+interface Props {
+  image: string;
+  publish_date: string;
+  title: string;
+  description: string;
+  tags: string[];
+  href: string;
+}
+
+const { image, publish_date, title, description, tags, href } = Astro.props;
+---
+
+<div class="post-card">
+  <img src={image} alt={`Post - ${title}`} class="post-card-img" />
+  <span class="post-card-info">{publish_date}</span>
+  <div class="post-card-header">
+    <h3>{title}</h3>
+  </div>
+  <Tags tags={tags} />
+  <Description
+    value={description}
+    margin="0"
+    align={false}
+    fontSize="0.85em"
+    maxLine="3"
+  />
+  <div class="post-card-read-more">
+    <Link title="Read more" href={`/blog/${href}`} alt="Read more about" />
+  </div>
+</div>
+
+<style>
+  .post-card {
+    height: fit-content;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    transition: all var(--transition-duration);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .post-card:hover {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+  }
+
+  .post-card:first-child {
+    grid-column: 1 / -1;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  .post-card-img {
+    height: 60%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+  }
+
+  .post-card:first-child > .post-card-img {
+    height: 75%;
+  }
+
+  .post-card-info {
+    font-size: 0.85em;
+    font-style: italic;
+  }
+
+  .post-card-read-more {
+    display: flex;
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+import Divider from '@components/core/Divider.astro';
+import Title from '@components/core/Title.astro';
+import Container from '@components/data/Container.astro';
+import Tags from '@components/data/Tags.astro';
+import Layout from '@layouts/Layout.astro';
+
+interface Props {
+  image: string;
+  publish_date: string;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+}
+
+const { image, publish_date, title, description, category, tags } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <Container>
+    <span> Blog • Lucas Josino</span>
+    <Title title={title} fontSize="2.5em" />
+    <div class="post-info">
+      <span>{publish_date}</span> •
+      <span>{category}</span> •
+      <Tags tags={tags} />
+    </div>
+    {image && <img src={image} alt={`Post - ${title}`} class="post-banner" />}
+    <Divider />
+  </Container>
+</Layout>
+
+<style>
+  .post-banner {
+    height: fit-content;
+    width: 100%;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+  }
+
+  .post-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+    text-wrap: nowrap;
+  }
+</style>
