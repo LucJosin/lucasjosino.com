@@ -37,7 +37,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta name="twitter:creator" content={headConfig.social} />
     <meta name="twitter:site" content={headConfig.social} />
     <meta name="twitter:domain" content={Astro.site} />
-    <meta name="twitter:title" content={headConfig.titleStart + title} />
+    <meta name="twitter:title" content={title + ' | ' + headConfig.name} />
     <meta
       name="twitter:description"
       property="og:description"
@@ -52,7 +52,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
 
     <!-- Open Graph -->
     <meta property="og:url" content={Astro.site} />
-    <meta property="og:title" content={headConfig.titleStart + title} />
+    <meta property="og:title" content={title + ' | ' + headConfig.name} />
     <meta property="og:site_name" content={headConfig.name} />
     <meta
       property="og:description"
@@ -118,7 +118,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta name="generator" content={Astro.generator} />
 
     <!-- Title -->
-    <title>{headConfig.titleStart + title}</title>
+    <title>{title + ' | ' + headConfig.name}</title>
   </head>
   <body>
     <main>
