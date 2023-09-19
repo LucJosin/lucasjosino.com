@@ -10,13 +10,13 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v3
 
       - name: Setup Node with yarn caching
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: yarn
@@ -27,6 +27,12 @@ jobs:
       - name: Build Astro
         run: yarn build
 
-      - uses: LucJosin/publish-orphan-branch@main
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          ARGS: '--dir "dist" --branch "release"'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: release
+          enable_jekyll: false
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
