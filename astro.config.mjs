@@ -2,6 +2,9 @@ import sitemap from '@astrojs/sitemap';
 import swup from '@swup/astro';
 import compress from 'astro-compress';
 import { defineConfig } from 'astro/config';
+import remarkCollapse from 'remark-collapse';
+import remarkToc from 'remark-toc';
+import astroExpressiveCode from 'astro-expressive-code';
 
 import robotsTxt from 'astro-robots-txt';
 
@@ -27,7 +30,21 @@ export default defineConfig({
     sitemap(),
     robotsTxt({ sitemap: false }),
     compress(),
+    astroExpressiveCode(),
   ],
+  // Markdown configuration
+  markdown: {
+    remarkPlugins: [
+      remarkToc,
+      [
+        remarkCollapse,
+        {
+          test: 'Table of contents',
+        },
+      ],
+    ],
+    extendDefaultPlugins: true,
+  },
   // Astro icon.
   //
   // Ref: https://github.com/natemoo-re/astro-icon#setup
