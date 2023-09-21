@@ -3,17 +3,22 @@ import Tag from '@components/core/Tag.astro';
 
 interface Props {
   tags: string[];
+  title?: string;
+  id?: string;
 }
 
-const { tags } = Astro.props;
+const { title, tags, id } = Astro.props;
 ---
 
-<div class="tags">
-  {
-    tags.map((item) => {
-      return <Tag>{item}</Tag>;
-    })
-  }
+<div id={id}>
+  {title && <h2>{title}</h2>}
+  <div class="tags">
+    {
+      tags.map((item) => {
+        return <Tag>{item}</Tag>;
+      })
+    }
+  </div>
 </div>
 
 <style>
