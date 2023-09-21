@@ -1,9 +1,14 @@
 ---
 import Divider from '@components/core/Divider.astro';
+import Link from '@components/core/Link.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Tags from '@components/data/Tags.astro';
+import headConfig from '@constants/head';
 import Layout from '@layouts/Layout.astro';
+import '@styles/markdown.css';
+import { getFormatedDate } from '@utils/date';
+import Icon from 'astro-icon';
 
 import { getCollection, type CollectionEntry } from 'astro:content';
 
@@ -24,13 +29,13 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <Container>
-    <span> Blog • Lucas Josino</span>
-    <Title title={post.data.title} fontSize="2.5em" />
-    <div class="post-info">
-      <span>{post.data.published_at}</span> •
-      <span>{post.data.category}</span> •
-      <Tags tags={post.data.tags} />
+  <Container maxWidth="45rem" gap="1rem">
+    <a href="" class="back-to-top">
+      <Icon name="mdi:arrow-up" width="24" />
+    </a>
+    <div>
+      <Link title="Blog" href="/blog/" alt="Blog homepage" /> •
+      <Link title="Lucas Josino" href="/" alt="Homepage" />
     </div>
     {
       post.data.image && (
@@ -41,33 +46,158 @@ const { Content } = await post.render();
         />
       )
     }
+    <Title title={post.data.title} fontSize="2.5em" />
+    <div class="post-info">
+      <span class="post-info-item">
+        <Icon name="mdi:calendar-range" width="18" />
+        {getFormatedDate(post.data.published_at)}
+      </span>
+      <span class="post-info-item">
+        <Icon name="ic:outline-article" width="18" />
+        <Link
+          href=""
+          title={post.data.category ?? ''}
+          alt="See more from this category"
+        />
+      </span>
+      <span class="post-info-item">
+        <Icon name="ic:outline-tag" width="18" />
+        <Link href="#tags" title="Tags" alt="See all tags" />
+      </span>
+      <span class="post-info-item">
+        <Icon name="mdi:comment-multiple-outline" width="18" />
+        <Link href="#comments" title="Comments" alt="Go to comments" />
+      </span>
+      <span class="post-info-item">
+        <Icon name="mdi:content-copy" width="18" />
+        <a
+          class="post-share-item"
+          data-clipboard-text={headConfig.shortLink + post.data.shortlink}
+        >
+          Share
+        </a>
+      </span>
+    </div>
     <Divider />
-    <article class="post-content">
+    <article class="markdown markdown-lg">
       <Content />
     </article>
+    <div class="post-footer">
+      <Tags tags={post.data.tags} id="tags" title="Tags" />
+      <h2 id="comments">Comments</h2>
+    </div>
   </Container>
 </Layout>
 
 <style>
+  .back-to-top.show {
+    opacity: 1;
+    pointer-events: initial;
+  }
+
+  .back-to-top {
+    display: flex;
+    height: 2rem;
+    width: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px var(--contrast-color) solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-duration) linear;
+    z-index: 10;
+  }
+
+  .back-to-top {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .back-to-top:hover {
+    background-color: var(--contrast-color);
+  }
+
+  .back-to-top:hover > [astro-icon] {
+    color: var(--primary-color);
+    fill: var(--primary-color);
+  }
+
   .post-banner {
     height: fit-content;
     width: 100%;
     border-radius: var(--border-radius);
-    margin-top: 1rem;
   }
 
   .post-info {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     gap: 1rem;
-    text-wrap: nowrap;
   }
 
-  .post-content {
-    padding: 1rem;
-    line-height: 1.85em;
+  .post-info-item,
+  .post-share-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .post-info-item::after {
+    content: '•';
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .post-share-item {
+    border-bottom: var(--border-size) solid transparent;
+    transition: var(--transition-duration);
+    cursor: pointer;
+  }
+
+  .post-share-item:hover {
+    border-bottom: var(--border-size) solid var(--border-color);
+  }
+
+  .post-info-item:last-child::after {
+    content: '';
+  }
+
+  .post-footer {
+    width: 100%;
   }
 </style>
+
+<script>
+  const backButton = document.querySelector('.back-to-top') as HTMLLinkElement;
+  const shareButton = document.querySelector('.post-share-item') as HTMLElement;
+
+  window.onload = () => {
+    shareButton.addEventListener('click', async () => {
+      const value = shareButton.getAttribute('data-clipboard-text')!;
+
+      console.log(window.isSecureContext);
+      await navigator.clipboard.writeText(value);
+
+      shareButton.innerText = 'Copied!';
+      setTimeout(() => {
+        shareButton.innerText = 'Share';
+      }, 2000);
+    });
+  };
+
+  window.onscroll = () => {
+    const pageOffset =
+      document.documentElement.scrollTop || document.body.scrollTop;
+
+    pageOffset > 900
+      ? backButton.classList.add('show')
+      : backButton.classList.remove('show');
+  };
+</script>
