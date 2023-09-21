@@ -1,4 +1,4 @@
-import { z } from 'astro:content';
+import { reference, z } from 'astro:content';
 
 export const blogSchema = z.object({
   image: z.string().optional(),
@@ -7,8 +7,10 @@ export const blogSchema = z.object({
   title: z.string(),
   description: z.string(),
   tags: z.array(z.string()),
-  category: z.string().optional(),
+  category: z.string(),
   language: z.enum(['en', 'pt']),
   shortlink: z.string(),
-  isDraft: z.boolean().default(false),
+  isVisible: z.boolean().default(true),
+  enableComments: z.boolean().default(true),
+  relatedPosts: z.array(reference('blog')).optional(),
 });
