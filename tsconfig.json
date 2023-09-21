@@ -22,7 +22,9 @@
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@data/*": ["data/*"],
-      "@layouts/*": ["layouts/*"]
+      "@layouts/*": ["layouts/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"]
     }
   }
 }
