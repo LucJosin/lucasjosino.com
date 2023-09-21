@@ -1,5 +1,6 @@
 ---
 import Divider from '@components/core/Divider.astro';
+import Link from '@components/core/Link.astro';
 import ProjectItem from '@components/core/ProjectItem.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
@@ -13,6 +14,10 @@ import Layout from '@layouts/Layout.astro';
   shortlink="/p"
 >
   <Container>
+    <span>
+      <Link title="Home" href="/" alt="Blog homepage" /> •
+      <Link title="Blog" href="/blog" alt="Homepage" />
+    </span>
     <Title title="Projects" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
 
