@@ -26,7 +26,7 @@ const { image, publish_date, title, description, tags, href } = Astro.props;
     value={description}
     margin="0"
     align={false}
-    fontSize="0.85em"
+    fontSize="0.9em"
     maxLine="3"
   />
   <div class="post-card-read-more">
@@ -44,11 +44,6 @@ const { image, publish_date, title, description, tags, href } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-  }
-
-  .post-card:hover {
-    cursor: pointer;
-    background-color: var(--secondary-color);
   }
 
   .post-card:first-child {
