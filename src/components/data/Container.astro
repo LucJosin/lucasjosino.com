@@ -3,9 +3,11 @@ import Icon from 'astro-icon';
 
 interface Props {
   back?: string;
+  maxWidth?: string;
+  gap?: string;
 }
 
-const { back } = Astro.props;
+const { back, maxWidth = '35rem', gap } = Astro.props;
 ---
 
 <div class="container">
@@ -19,10 +21,10 @@ const { back } = Astro.props;
   <slot />
 </div>
 
-<style>
+<style define:vars={{ maxWidth, gap }}>
   .container {
     margin: 10vh 0;
-    max-width: 35rem;
+    max-width: var(--maxWidth);
     width: 50%;
     min-width: 30rem;
     background-color: var(--primary-color);
@@ -32,6 +34,7 @@ const { back } = Astro.props;
     align-items: center;
     justify-content: center;
     position: relative;
+    gap: var(--gap);
   }
 
   .back {
@@ -47,7 +50,7 @@ const { back } = Astro.props;
 
   @media (max-width: 560px) {
     .container {
-      width: 80%;
+      width: 90%;
       min-width: initial;
     }
   }
