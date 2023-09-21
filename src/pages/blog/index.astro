@@ -1,5 +1,6 @@
 ---
 import Divider from '@components/core/Divider.astro';
+import Link from '@components/core/Link.astro';
 import PostCard from '@components/core/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
@@ -15,6 +16,10 @@ const posts = await getCollection('blog');
   shortlink="/blog"
 >
   <Container>
+    <span>
+      <Link title="Home" href="/" alt="Blog homepage" /> •
+      <Link title="Projects" href="/projects" alt="Homepage" />
+    </span>
     <Title title="Blog" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
     <div class="posts">
@@ -25,7 +30,7 @@ const posts = await getCollection('blog');
               image={post.data.image}
               title={post.data.title}
               description={post.data.description}
-              href={post.slug}
+              href={`${post.slug}/`}
               publish_date={post.data.published_at}
               tags={post.data.tags}
             />
