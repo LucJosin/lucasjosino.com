@@ -1,0 +1,550 @@
+img {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+
+summary {
+  cursor: pointer;
+}
+
+.markdown {
+  max-width: 50rem;
+  width: 100%;
+}
+
+.markdown > details {
+  border: 1px var(--contrast-color) solid;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+}
+
+.markdown [class~='lead'] {
+  color: #4b5563;
+  font-size: 1.25em;
+  line-height: 1.6;
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+}
+
+.markdown a {
+  color: var(--primary-text-color);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.markdown a:hover {
+  opacity: 0.7;
+}
+
+.markdown strong {
+  color: var(--primary-text-color);
+  font-weight: 600;
+}
+
+.markdown ol[type='A'] {
+  --list-counter-style: upper-alpha;
+}
+
+.markdown ol[type='a'] {
+  --list-counter-style: lower-alpha;
+}
+
+.markdown ol[type='A' s] {
+  --list-counter-style: upper-alpha;
+}
+
+.markdown ol[type='a' s] {
+  --list-counter-style: lower-alpha;
+}
+
+.markdown ol[type='I'] {
+  --list-counter-style: upper-roman;
+}
+
+.markdown ol[type='i'] {
+  --list-counter-style: lower-roman;
+}
+
+.markdown ol[type='I' s] {
+  --list-counter-style: upper-roman;
+}
+
+.markdown ol[type='i' s] {
+  --list-counter-style: lower-roman;
+}
+
+.markdown ol[type='1'] {
+  --list-counter-style: decimal;
+}
+
+.markdown ol > li {
+  position: relative;
+  padding-left: 1em;
+}
+
+.markdown ul > li {
+  position: relative;
+  padding-left: 1em;
+}
+
+.markdown hr {
+  border-color: #e5e7eb;
+  border-top-width: 1px;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.markdown blockquote {
+  font-weight: 500;
+  font-style: italic;
+  color: var(--primary-text-color);
+  border-left-width: 0.25rem;
+  border-left-color: #e5e7eb;
+  quotes: '\201C' '\201D' '\2018' '\2019';
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  padding-left: 1em;
+}
+
+.markdown blockquote p:first-of-type::before {
+  content: open-quote;
+}
+
+.markdown blockquote p:last-of-type::after {
+  content: close-quote;
+}
+
+.markdown h1 {
+  color: var(--primary-text-color);
+  font-weight: 800;
+  font-size: 2.25em;
+  margin-top: 0;
+  margin-bottom: 0.8888889em;
+  line-height: 1.1111111;
+}
+
+.markdown h2 {
+  color: var(--primary-text-color);
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+}
+
+.markdown h3 {
+  color: var(--primary-text-color);
+  font-weight: 600;
+  font-size: 1.25em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.6;
+}
+
+.markdown h4 {
+  color: var(--primary-text-color);
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+.markdown figure figcaption {
+  color: #6b7280;
+  font-size: 0.875em;
+  line-height: 1.4285714;
+  margin-top: 0.8571429em;
+}
+
+.markdown a code {
+  color: var(--primary-text-color);
+}
+
+.markdown pre {
+  color: var(--primary-text-color);
+  background-color: #1f2937;
+  overflow-x: scroll;
+  font-size: 0.875em;
+  line-height: 1.7142857;
+  margin-top: 1.7142857em;
+  margin-bottom: 1.7142857em;
+  border-radius: 0.375rem;
+  padding-top: 0.8571429em;
+  padding-right: 1.1428571em;
+  padding-bottom: 0.8571429em;
+  padding-left: 1.1428571em;
+}
+
+.markdown pre code {
+  background-color: transparent;
+  border-width: 0;
+  border-radius: 0;
+  padding: 0;
+  font-weight: 400;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  width: 100%;
+}
+
+.markdown pre code::before {
+  content: none;
+}
+
+.markdown pre code::after {
+  content: none;
+}
+
+.markdown table {
+  width: 100%;
+  table-layout: auto;
+  text-align: left;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  font-size: 0.875em;
+  line-height: 1.7142857;
+  border-collapse: collapse;
+}
+
+.markdown thead {
+  color: var(--primary-text-color);
+  font-weight: 600;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--contrast-color);
+}
+
+.markdown thead th {
+  vertical-align: bottom;
+  padding-right: 0.5714286em;
+  padding-bottom: 0.5714286em;
+  padding-left: 0.5714286em;
+  border: 1px solid var(--contrast-color);
+}
+
+.markdown tbody tr {
+  border-bottom-width: 1px;
+  border-bottom-color: var(--contrast-color);
+}
+
+.markdown tbody td {
+  vertical-align: top;
+  padding-top: 0.5714286em;
+  padding-right: 0.5714286em;
+  padding-bottom: 0.5714286em;
+  padding-left: 0.5714286em;
+  border: 1px solid var(--contrast-color);
+}
+
+.markdown {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.markdown p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.markdown img {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.markdown video {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.markdown figure {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.markdown figure > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown h2 code {
+  font-size: 0.875em;
+}
+
+.markdown h3 code {
+  font-size: 0.9em;
+}
+
+.markdown ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.markdown ul {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-inline-start: 20px;
+}
+
+.markdown li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.markdown > ul > li p {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.markdown > ul > li > *:first-child {
+  margin-top: 1.25em;
+}
+
+.markdown > ul > li > *:last-child {
+  margin-bottom: 1.25em;
+}
+
+.markdown > ol > li > *:first-child {
+  margin-top: 1.25em;
+}
+
+.markdown > ol > li > *:last-child {
+  margin-bottom: 1.25em;
+}
+
+.markdown ul ul,
+.markdown ul ol,
+.markdown ol ul,
+.markdown ol ol {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.markdown hr + * {
+  margin-top: 0;
+}
+
+.markdown h2 + * {
+  margin-top: 0;
+}
+
+.markdown h3 + * {
+  margin-top: 0;
+}
+
+.markdown h4 + * {
+  margin-top: 0;
+}
+
+.markdown > :first-child {
+  margin-top: 0;
+}
+
+.markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-lg {
+  font-size: 1.125rem;
+  line-height: 1.7777778;
+}
+
+.markdown-lg p {
+  margin-top: 1.3333333em;
+  margin-bottom: 1.3333333em;
+}
+
+.markdown-lg [class~='lead'] {
+  font-size: 1.2222222em;
+  line-height: 1.4545455;
+  margin-top: 1.0909091em;
+  margin-bottom: 1.0909091em;
+}
+
+.markdown-lg blockquote {
+  margin-top: 1.6666667em;
+  margin-bottom: 1.6666667em;
+  padding-left: 1em;
+}
+
+.markdown-lg h1 {
+  font-size: 2.6666667em;
+  margin-top: 0;
+  margin-bottom: 0.8333333em;
+  line-height: 1;
+}
+
+.markdown-lg h2 {
+  font-size: 1.6666667em;
+  margin-top: 1.8666667em;
+  margin-bottom: 1.0666667em;
+  line-height: 1.3333333;
+}
+
+.markdown-lg h3 {
+  font-size: 1.3333333em;
+  margin-top: 1.6666667em;
+  margin-bottom: 0.6666667em;
+  line-height: 1.5;
+}
+
+.markdown-lg h4 {
+  margin-top: 1.7777778em;
+  margin-bottom: 0.4444444em;
+  line-height: 1.5555556;
+}
+
+.markdown-lg img {
+  margin-top: 1.7777778em;
+  margin-bottom: 1.7777778em;
+}
+
+.markdown-lg video {
+  margin-top: 1.7777778em;
+  margin-bottom: 1.7777778em;
+}
+
+.markdown-lg figure {
+  margin-top: 1.7777778em;
+  margin-bottom: 1.7777778em;
+}
+
+.markdown-lg figure > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-lg figure figcaption {
+  font-size: 0.8888889em;
+  line-height: 1.5;
+  margin-top: 1em;
+}
+
+.markdown-lg code {
+  font-size: 0.8888889em;
+}
+
+.markdown-lg h2 code {
+  font-size: 0.8666667em;
+}
+
+.markdown-lg h3 code {
+  font-size: 0.875em;
+}
+
+.markdown-lg pre {
+  font-size: 0.8888889em;
+  line-height: 1.75;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 0.375rem;
+  padding-top: 1em;
+  padding-right: 1.5em;
+  padding-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+.markdown-lg ol {
+  margin-top: 1.3333333em;
+  margin-bottom: 1.3333333em;
+}
+
+.markdown-lg ul {
+  margin-top: 1.3333333em;
+  margin-bottom: 1.3333333em;
+}
+
+.markdown-lg li {
+  margin-top: 0.6666667em;
+  margin-bottom: 0.6666667em;
+}
+
+.markdown-lg ol > li {
+  padding-left: 0.5em;
+}
+
+.markdown-lg ol > li::before {
+  left: 0;
+}
+
+.markdown-lg ul > li {
+  padding-left: 0.5em;
+}
+
+.markdown-lg ul > li::before {
+  width: 0.3333333em;
+  height: 0.3333333em;
+  top: calc(0.8888889em - 0.1666667em);
+  left: 0.2222222em;
+}
+
+.markdown-lg > ul > li p {
+  margin-top: 0.8888889em;
+  margin-bottom: 0.8888889em;
+}
+
+.markdown-lg > ul > li > *:first-child {
+  margin-top: 1.3333333em;
+}
+
+.markdown-lg > ul > li > *:last-child {
+  margin-bottom: 1.3333333em;
+}
+
+.markdown-lg > ol > li > *:first-child {
+  margin-top: 1.3333333em;
+}
+
+.markdown-lg > ol > li > *:last-child {
+  margin-bottom: 1.3333333em;
+}
+
+.markdown-lg ul ul,
+.markdown-lg ul ol,
+.markdown-lg ol ul,
+.markdown-lg ol ol {
+  margin-top: 0.8888889em;
+  margin-bottom: 0.8888889em;
+}
+
+.markdown-lg hr + * {
+  margin-top: 0;
+}
+
+.markdown-lg h2 + * {
+  margin-top: 0;
+}
+
+.markdown-lg h3 + * {
+  margin-top: 0;
+}
+
+.markdown-lg h4 + * {
+  margin-top: 0;
+}
+
+.markdown-lg table {
+  font-size: 0.8888889em;
+  line-height: 1.5;
+}
+
+.markdown-lg thead th {
+  padding: 0.75em;
+}
+
+.markdown-lg tbody td {
+  padding-top: 0.75em;
+  padding-right: 0.75em;
+  padding-bottom: 0.75em;
+  padding-left: 0.75em;
+}
+
+.markdown-lg > :first-child,
+#introduction {
+  margin-top: 0;
+}
+
+.markdown-lg > :last-child {
+  margin-bottom: 0;
+}
