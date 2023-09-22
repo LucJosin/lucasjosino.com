@@ -1,7 +1,7 @@
 ---
 image: 'https://lucasjosino.com/static/banner.png'
-published_at: '0000-00-00'
-updated_at: '0000-00-00'
+publishedAt: '2023-09-22'
+updatedAt: '2023-09-22'
 title: 'Markdown file example'
 description: 'A markdown example shows how to write a markdown file.'
 tags:
