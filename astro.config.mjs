@@ -1,10 +1,9 @@
 import sitemap from '@astrojs/sitemap';
-import swup from '@swup/astro';
 import compress from 'astro-compress';
+import astroExpressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
 import remarkCollapse from 'remark-collapse';
 import remarkToc from 'remark-toc';
-import astroExpressiveCode from 'astro-expressive-code';
 
 import robotsTxt from 'astro-robots-txt';
 
@@ -19,14 +18,16 @@ export default defineConfig({
   //
   // ‘static’ - Building a static site to be deploy to any static host.
   output: 'static',
-  // Astro sitemap.
+  // Astro integrations.
   //
+  // Ref: https://docs.astro.build/en/guides/integrations-guide/
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
   integrations: [
-    swup({
-      theme: 'fade',
-      accessibility: false,
-    }),
+    // swup({
+    //   theme: 'fade',
+    //   accessibility: false,
+    //   cache: false,
+    // }),
     sitemap(),
     robotsTxt({ sitemap: false }),
     compress(),
