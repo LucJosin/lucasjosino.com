@@ -16,14 +16,16 @@ import Icon from 'astro-icon';
 
   <div class="projects-container">
     {
-      projects.map((data) => (
-        <MiniProjectItem
-          title={data.title}
-          description={data.description}
-          git={data.git}
-          url={data.url}
-        />
-      ))
+      projects
+        .slice(0, 2)
+        .map((data) => (
+          <MiniProjectItem
+            title={data.title}
+            description={data.description}
+            git={data.git}
+            url={data.url}
+          />
+        ))
     }
   </div>
 </div>
