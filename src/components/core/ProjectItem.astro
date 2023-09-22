@@ -64,6 +64,17 @@ const { project, titleSize, descSize } = Astro.props as Props;
         />
       )
     }
+    {
+      project.article && (
+        <LinkBox
+          link={project.article}
+          icon="ic:outline-article"
+          title="Read"
+          alt={`${project.title} - Blog post`}
+          isLocal={true}
+        />
+      )
+    }
   </div>
   {
     project.children && (
