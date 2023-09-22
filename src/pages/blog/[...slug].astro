@@ -37,11 +37,15 @@ const { linkedin, twitter, reddit } = getSocialsShare(
 
 <Layout title={post.data.title} description={post.data.description}>
   <Container maxWidth="45rem" gap="1rem">
+    <div class="progress-bar-container">
+      <div class="progress-bar"></div>
+    </div>
     <a class="back-to-top">
       <Icon name="mdi:arrow-up" width="24" />
     </a>
-    <div>
-      <Link title="Blog" href="/blog/" alt="See all posts" /> •
+    <div class="navigation">
+      <Icon name="mdi:arrow-left" width="18" />
+      <Link title="Posts" href="/blog/" alt="See all posts" /> •
       <Link title="Lucas Josino" href="/" alt="Homepage" />
     </div>
     {
@@ -129,9 +133,30 @@ const { linkedin, twitter, reddit } = getSocialsShare(
 </Layout>
 
 <style>
+  .progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--secondary-color);
+    z-index: 20;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: var(--contrast-color);
+    width: 0;
+  }
+
   .back-to-top.show {
     opacity: 1;
     pointer-events: initial;
+  }
+
+  .navigation {
+    display: flex;
+    gap: 0.2rem;
   }
 
   .back-to-top {
@@ -235,6 +260,12 @@ const { linkedin, twitter, reddit } = getSocialsShare(
   };
 
   window.onscroll = () => {
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = (window.scrollY / totalHeight) * 100;
+    (
+      document.querySelector('.progress-bar') as HTMLElement
+    ).style.width = `${progress}%`;
+
     const pageOffset =
       document.documentElement.scrollTop || document.body.scrollTop;
 
