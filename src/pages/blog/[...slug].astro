@@ -1,6 +1,7 @@
 ---
 import Divider from '@components/core/Divider.astro';
 import Link from '@components/core/Link.astro';
+import LinkBox from '@components/core/LinkBox.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Tags from '@components/data/Tags.astro';
@@ -8,6 +9,7 @@ import headConfig from '@constants/head';
 import Layout from '@layouts/Layout.astro';
 import '@styles/markdown.css';
 import { getFormatedDate } from '@utils/date';
+import { getSocialsShare } from '@utils/share';
 import Icon from 'astro-icon';
 
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -26,6 +28,11 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const { linkedin, twitter, reddit } = getSocialsShare(
+  Astro.url.toString(),
+  post.data.title,
+  headConfig.social
+);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
@@ -34,7 +41,7 @@ const { Content } = await post.render();
       <Icon name="mdi:arrow-up" width="24" />
     </a>
     <div>
-      <Link title="Blog" href="/blog/" alt="Blog homepage" /> •
+      <Link title="Blog" href="/blog/" alt="See all posts" /> •
       <Link title="Lucas Josino" href="/" alt="Homepage" />
     </div>
     {
@@ -50,7 +57,7 @@ const { Content } = await post.render();
     <div class="post-info">
       <span class="post-info-item">
         <Icon name="mdi:calendar-range" width="18" />
-        {getFormatedDate(post.data.published_at)}
+        {getFormatedDate(post.data.publishedAt)}
       </span>
       <span class="post-info-item">
         <Icon name="ic:outline-article" width="18" />
@@ -64,19 +71,50 @@ const { Content } = await post.render();
         <Icon name="ic:outline-tag" width="18" />
         <Link href="#tags" title="Tags" alt="See all tags" />
       </span>
-      <span class="post-info-item">
-        <Icon name="mdi:comment-multiple-outline" width="18" />
-        <Link href="#comments" title="Comments" alt="Go to comments" />
-      </span>
-      <span class="post-info-item">
-        <Icon name="mdi:content-copy" width="18" />
-        <a
-          class="post-share-item"
-          data-clipboard-text={headConfig.shortLink + post.data.shortlink}
-        >
-          Share
-        </a>
-      </span>
+      {
+        post.data.enableComments && (
+          <span class="post-info-item">
+            <Icon name="mdi:comment-multiple-outline" width="18" />
+            <Link href="#comments" title="Comments" alt="Go to comments" />
+          </span>
+        )
+      }
+    </div>
+    <div class="post-share">
+      <LinkBox
+        link={twitter}
+        alt="Share to Twitter"
+        icon="simple-icons:twitter"
+        iconSize="16"
+        padding="0.6rem"
+        isLocal={false}
+      />
+      <LinkBox
+        link={linkedin}
+        alt="Share to Linkedin"
+        icon="simple-icons:linkedin"
+        iconSize="16"
+        padding="0.6rem"
+        isLocal={false}
+      />
+      <LinkBox
+        link={reddit}
+        alt="Share to Reddit"
+        icon="simple-icons:reddit"
+        iconSize="16"
+        padding="0.6rem"
+        isLocal={false}
+      />
+      <LinkBox
+        link={headConfig.shortLink + post.data.shortlink}
+        alt="Copy post permalink"
+        icon="mdi:link"
+        iconSize="16"
+        padding="0.6rem"
+        id="share"
+        title="Share"
+        titleId="share-title"
+      />
     </div>
     <Divider />
     <article class="markdown markdown-lg">
@@ -84,7 +122,8 @@ const { Content } = await post.render();
     </article>
     <div class="post-footer">
       <Tags tags={post.data.tags} id="tags" title="Tags" />
-      <h2 id="comments">Comments</h2>
+      {post.data.enableComments && <h2 id="comments">Comments</h2>}
+      {post.data.relatedPosts && <h2 id="comments">Related posts</h2>}
     </div>
   </Container>
 </Layout>
@@ -142,8 +181,7 @@ const { Content } = await post.render();
     gap: 1rem;
   }
 
-  .post-info-item,
-  .post-share-item {
+  .post-info-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -156,14 +194,12 @@ const { Content } = await post.render();
     gap: 0.5rem;
   }
 
-  .post-share-item {
-    border-bottom: var(--border-size) solid transparent;
-    transition: var(--transition-duration);
-    cursor: pointer;
-  }
-
-  .post-share-item:hover {
-    border-bottom: var(--border-size) solid var(--border-color);
+  .post-share {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
   .post-info-item:last-child::after {
@@ -177,24 +213,25 @@ const { Content } = await post.render();
 
 <script>
   const backButton = document.querySelector('.back-to-top') as HTMLLinkElement;
-  const shareButton = document.querySelector('.post-share-item') as HTMLElement;
+  const shareButton = document.querySelector('#share') as HTMLElement;
+  const shareButtonText = document.querySelector('#share-title') as HTMLElement;
 
   window.onload = () => {
-    shareButton.addEventListener('click', async () => {
-      const value = shareButton.getAttribute('data-clipboard-text')!;
+    shareButton.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
 
-      console.log(window.isSecureContext);
+      const value = shareButton.getAttribute('href')!;
       await navigator.clipboard.writeText(value);
 
-      shareButton.innerText = 'Copied!';
+      shareButtonText.innerText = 'Copied!';
       setTimeout(() => {
-        shareButton.innerText = 'Share';
+        shareButtonText.innerText = 'Share';
       }, 2000);
     });
 
-    backButton.addEventListener('click', () => {
-      document.getElementsByTagName('main')[0]?.scrollIntoView(true);
-    });
+    backButton.addEventListener('click', () => window.scrollTo(0, 0));
   };
 
   window.onscroll = () => {
