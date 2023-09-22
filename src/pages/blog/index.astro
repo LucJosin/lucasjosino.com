@@ -5,6 +5,7 @@ import PostCard from '@components/core/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
+import { getFormatedDate } from '@utils/date';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
@@ -17,8 +18,8 @@ const posts = await getCollection('blog');
 >
   <Container>
     <span>
-      <Link title="Home" href="/" alt="Blog homepage" /> •
-      <Link title="Projects" href="/projects" alt="Homepage" />
+      <Link title="Projects" href="/projects" alt="See all projects" /> •
+      <Link title="Lucas Josino" href="/" alt="Homepage" />
     </span>
     <Title title="Blog" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
@@ -31,7 +32,7 @@ const posts = await getCollection('blog');
               title={post.data.title}
               description={post.data.description}
               href={`${post.slug}/`}
-              publish_date={post.data.published_at}
+              publish_date={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
             />
           );
@@ -44,8 +45,10 @@ const posts = await getCollection('blog');
 <style>
   .posts {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    display: flex;
+    flex-direction: column;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); */
     gap: 1rem;
   }
 </style>
