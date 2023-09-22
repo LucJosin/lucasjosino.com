@@ -9,6 +9,8 @@ interface Props {
   title?: string;
   id?: string;
   isLocal?: boolean;
+  padding?: string;
+  titleId?: string;
 }
 
 const {
@@ -19,6 +21,8 @@ const {
   title,
   id,
   isLocal = true,
+  padding = '0.8rem 2rem',
+  titleId,
 } = Astro.props as Props;
 ---
 
@@ -31,10 +35,10 @@ const {
   class="link-box"
 >
   {icon && <Icon name={icon} size={iconSize} />}
-  {title && <>{title}</>}
+  {title && <span id={titleId}>{title}</span>}
 </a>
 
-<style>
+<style define:vars={{ padding }}>
   .link-box {
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
@@ -43,7 +47,7 @@ const {
     justify-content: center;
     transition: all var(--transition-duration);
     gap: 0.5rem;
-    padding: 0.8rem 2rem;
+    padding: var(--padding);
   }
 
   .link-box:hover {
