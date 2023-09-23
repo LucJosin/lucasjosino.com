@@ -4,6 +4,7 @@ import astroExpressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
 import remarkCollapse from 'remark-collapse';
 import remarkToc from 'remark-toc';
+import { paragraphCustomAlerts } from '@hashicorp/remark-plugins';
 
 import robotsTxt from 'astro-robots-txt';
 
@@ -36,6 +37,7 @@ export default defineConfig({
   // Markdown configuration
   markdown: {
     remarkPlugins: [
+      paragraphCustomAlerts,
       remarkToc,
       [
         remarkCollapse,
