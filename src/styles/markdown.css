@@ -8,6 +8,10 @@ summary {
   cursor: pointer;
 }
 
+.autolink-header {
+  margin-left: 0.5rem;
+}
+
 .markdown {
   max-width: 50rem;
   width: 100%;
