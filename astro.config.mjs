@@ -1,13 +1,14 @@
 import sitemap from '@astrojs/sitemap';
-import { s } from 'hastscript';
 import { paragraphCustomAlerts } from '@hashicorp/remark-plugins';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
+import { s } from 'hastscript';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import remarkCollapse from 'remark-collapse';
-import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
+import remarkCollapse from 'remark-collapse';
+import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
+import remarkToc from 'remark-toc';
 
 import robotsTxt from 'astro-robots-txt';
 
@@ -70,6 +71,7 @@ export default defineConfig({
       ],
     ],
     remarkPlugins: [
+      numberedFootnoteLabels,
       paragraphCustomAlerts,
       remarkToc,
       [
