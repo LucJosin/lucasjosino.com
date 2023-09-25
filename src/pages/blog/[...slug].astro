@@ -48,15 +48,6 @@ const { linkedin, twitter, reddit } = getSocialsShare(
       <Link title="Posts" href="/blog/" alt="See all posts" /> •
       <Link title="Lucas Josino" href="/" alt="Homepage" />
     </div>
-    {
-      post.data.image && (
-        <img
-          src={post.data.image}
-          alt={`Post - ${post.data.title}`}
-          class="post-banner"
-        />
-      )
-    }
     <Title title={post.data.title} fontSize="2.5em" />
     <div class="post-info">
       <span class="post-info-item">
@@ -84,7 +75,26 @@ const { linkedin, twitter, reddit } = getSocialsShare(
         )
       }
     </div>
+    {
+      post.data.image && (
+        <img
+          src={post.data.image}
+          alt={`Post - ${post.data.title}`}
+          class="post-banner"
+        />
+      )
+    }
     <div class="post-share">
+      <LinkBox
+        link={headConfig.shortLink + post.data.shortlink}
+        alt="Copy post permalink"
+        icon="mdi:link"
+        iconSize="16"
+        padding="0.6rem 0.8rem"
+        id="share"
+        title="Permalink"
+        titleId="share-title"
+      />
       <LinkBox
         link={twitter}
         alt="Share to Twitter"
@@ -108,16 +118,6 @@ const { linkedin, twitter, reddit } = getSocialsShare(
         iconSize="16"
         padding="0.6rem 0.8rem"
         isLocal={false}
-      />
-      <LinkBox
-        link={headConfig.shortLink + post.data.shortlink}
-        alt="Copy post permalink"
-        icon="mdi:link"
-        iconSize="16"
-        padding="0.6rem 0.8rem"
-        id="share"
-        title="Share"
-        titleId="share-title"
       />
     </div>
     <Divider />
@@ -233,10 +233,18 @@ const { linkedin, twitter, reddit } = getSocialsShare(
 
   .post-footer {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 </style>
 
 <script>
+  import mediumZoom from 'medium-zoom';
+  mediumZoom(document.querySelector('img') as HTMLImageElement, {
+    background: '#000000e0',
+  });
+
   const backButton = document.querySelector('.back-to-top') as HTMLLinkElement;
   const shareButton = document.querySelector('#share') as HTMLElement;
   const shareButtonText = document.querySelector('#share-title') as HTMLElement;
