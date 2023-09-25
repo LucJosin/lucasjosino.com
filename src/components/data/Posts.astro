@@ -1,0 +1,65 @@
+---
+import BlogItem from '@components/core/BlogItem.astro';
+import SubTitle from '@components/core/SubTitle.astro';
+import Icon from 'astro-icon';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+---
+
+<div class="posts">
+  <div class="posts-header">
+    <SubTitle title="Posts" />
+    <a href="/blog/" title="See more posts" class="posts-see-more">
+      See more
+      <Icon name="mdi:arrow-right" size="18" />
+    </a>
+  </div>
+
+  <div class="posts-container">
+    {
+      posts
+        .slice(0, 1)
+        .map((e) => (
+          <BlogItem
+            image={e.data.image}
+            href={`/blog/${e.slug}`}
+            title={e.data.title}
+            description={e.data.description}
+          />
+        ))
+    }
+  </div>
+</div>
+
+<style>
+  .posts {
+    height: max-content;
+    width: 80%;
+  }
+
+  .posts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .posts-see-more {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: gap 0.2s;
+  }
+
+  .posts-see-more:hover {
+    cursor: pointer;
+    gap: 0.2rem;
+  }
+
+  .posts-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>
