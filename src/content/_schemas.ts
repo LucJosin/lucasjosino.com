@@ -12,6 +12,7 @@ export const blogSchema = z.object({
   language: z.enum(['en', 'pt']),
   shortlink: z.string().default('/blog'),
   isVisible: z.boolean().default(true),
+  isDraft: z.boolean().default(false),
   enableComments: z.boolean().default(true),
   relatedPosts: z.array(reference('blog')).optional(),
 });
