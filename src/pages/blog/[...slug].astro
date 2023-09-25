@@ -1,18 +1,8 @@
 ---
-import Divider from '@components/core/Divider.astro';
-import Link from '@components/core/Link.astro';
-import LinkBox from '@components/core/LinkBox.astro';
-import Title from '@components/core/Title.astro';
-import Container from '@components/data/Container.astro';
 import Tags from '@components/data/Tags.astro';
-import headConfig from '@constants/head';
-import Layout from '@layouts/Layout.astro';
 import '@styles/markdown.css';
-import { getFormatedDate } from '@lib/date';
-import { getSocialsShare } from '@lib/share';
-import Icon from 'astro-icon';
-
 import { getCollection, type CollectionEntry } from 'astro:content';
+import PostLayout from '@layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -28,257 +18,23 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
-const { linkedin, twitter, reddit } = getSocialsShare(
-  Astro.url.toString(),
-  post.data.title,
-  headConfig.social
-);
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
-  <Container maxWidth="45rem" gap="1rem">
-    <div class="progress-bar-container">
-      <div class="progress-bar"></div>
-    </div>
-    <a class="back-to-top">
-      <Icon name="mdi:arrow-up" width="24" />
-    </a>
-    <div class="navigation">
-      <Icon name="mdi:arrow-left" width="18" />
-      <Link title="Posts" href="/blog/" alt="See all posts" /> •
-      <Link title="Lucas Josino" href="/" alt="Homepage" />
-    </div>
-    <Title title={post.data.title} fontSize="2.5em" />
-    <div class="post-info">
-      <span class="post-info-item">
-        <Icon name="mdi:calendar-range" width="18" />
-        {getFormatedDate(post.data.publishedAt)}
-      </span>
-      <span class="post-info-item">
-        <Icon name="ic:outline-article" width="18" />
-        <Link
-          href=""
-          title={post.data.category ?? ''}
-          alt="See more from this category"
-        />
-      </span>
-      <span class="post-info-item">
-        <Icon name="ic:outline-tag" width="18" />
-        <Link href="#tags" title="Tags" alt="See all tags" />
-      </span>
-      {
-        post.data.enableComments && (
-          <span class="post-info-item">
-            <Icon name="mdi:comment-multiple-outline" width="18" />
-            <Link href="#comments" title="Comments" alt="Go to comments" />
-          </span>
-        )
-      }
-    </div>
-    {
-      post.data.image && (
-        <img
-          src={post.data.image}
-          alt={`Post - ${post.data.title}`}
-          class="post-banner"
-        />
-      )
-    }
-    <div class="post-share">
-      <LinkBox
-        link={headConfig.shortLink + post.data.shortlink}
-        alt="Copy post permalink"
-        icon="mdi:link"
-        iconSize="16"
-        padding="0.6rem 0.8rem"
-        id="share"
-        title="Permalink"
-        titleId="share-title"
-      />
-      <LinkBox
-        link={twitter}
-        alt="Share to Twitter"
-        icon="simple-icons:twitter"
-        iconSize="16"
-        padding="0.6rem 0.8rem"
-        isLocal={false}
-      />
-      <LinkBox
-        link={linkedin}
-        alt="Share to Linkedin"
-        icon="simple-icons:linkedin"
-        iconSize="16"
-        padding="0.6rem 0.8rem"
-        isLocal={false}
-      />
-      <LinkBox
-        link={reddit}
-        alt="Share to Reddit"
-        icon="simple-icons:reddit"
-        iconSize="16"
-        padding="0.6rem 0.8rem"
-        isLocal={false}
-      />
-    </div>
-    <Divider />
-    <article class="markdown markdown-lg">
-      <Content />
-    </article>
-    <div class="post-footer">
-      <Tags tags={post.data.tags} id="tags" title="Tags" />
-      {post.data.enableComments && <h2 id="comments">Comments</h2>}
-      {post.data.relatedPosts && <h2 id="comments">Related posts</h2>}
-    </div>
-  </Container>
-</Layout>
+<PostLayout
+  title={post.data.title}
+  description={post.data.description}
+  post={post}
+>
+  <article class="markdown markdown-lg">
+    <Content />
+  </article>
+</PostLayout>
 
-<style>
-  .progress-bar-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: var(--secondary-color);
-    z-index: 20;
-  }
-
-  .progress-bar {
-    height: 100%;
-    background-color: var(--contrast-color);
-    width: 0;
-  }
-
-  .back-to-top.show {
-    opacity: 1;
-    pointer-events: initial;
-  }
-
-  .navigation {
-    display: flex;
-    gap: 0.2rem;
-  }
-
-  .back-to-top {
-    display: flex;
-    height: 2rem;
-    width: 2rem;
-    border-radius: var(--border-radius);
-    border: 1px var(--contrast-color) solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-duration) linear;
-    z-index: 10;
-    cursor: pointer;
-  }
-
-  .back-to-top {
-    position: fixed;
-    opacity: 0;
-    pointer-events: none;
-    bottom: 1.5rem;
-    right: 1.5rem;
-  }
-
-  .back-to-top:hover {
-    background-color: var(--contrast-color);
-  }
-
-  .back-to-top:hover > [astro-icon] {
-    color: var(--primary-color);
-    fill: var(--primary-color);
-  }
-
-  .post-banner {
-    height: fit-content;
-    width: 100%;
-    border-radius: var(--border-radius);
-  }
-
-  .post-info {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 1rem;
-  }
-
-  .post-info-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .post-info-item::after {
-    content: '•';
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .post-share {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .post-info-item:last-child::after {
-    content: '';
-  }
-
-  .post-footer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-</style>
+<style></style>
 
 <script>
   import mediumZoom from 'medium-zoom';
   mediumZoom(document.querySelector('img') as HTMLImageElement, {
     background: '#000000e0',
   });
-
-  const backButton = document.querySelector('.back-to-top') as HTMLLinkElement;
-  const shareButton = document.querySelector('#share') as HTMLElement;
-  const shareButtonText = document.querySelector('#share-title') as HTMLElement;
-
-  window.onload = () => {
-    shareButton.addEventListener('click', async (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-
-      const value = shareButton.getAttribute('href')!;
-      await navigator.clipboard.writeText(value);
-
-      shareButtonText.innerText = 'Copied!';
-      setTimeout(() => {
-        shareButtonText.innerText = 'Share';
-      }, 2000);
-    });
-
-    backButton.addEventListener('click', () => window.scrollTo(0, 0));
-  };
-
-  window.onscroll = () => {
-    const totalHeight = document.body.scrollHeight - window.innerHeight;
-    const progress = (window.scrollY / totalHeight) * 100;
-    (
-      document.querySelector('.progress-bar') as HTMLElement
-    ).style.width = `${progress}%`;
-
-    const pageOffset =
-      document.documentElement.scrollTop || document.body.scrollTop;
-
-    pageOffset > 900
-      ? backButton.classList.add('show')
-      : backButton.classList.remove('show');
-  };
 </script>

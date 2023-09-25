@@ -1,0 +1,54 @@
+---
+import LinkBox from '@components/core/LinkBox.astro';
+import headConfig from '@constants/head';
+
+interface PostShareItem {
+  href: string;
+  icon: string;
+  alt: string;
+}
+
+interface Props {
+  permalink: string;
+  items: PostShareItem[];
+}
+
+const { permalink, items } = Astro.props;
+---
+
+<div class="post-share">
+  <LinkBox
+    link={headConfig.shortLink + permalink}
+    alt="Copy post permalink"
+    icon="mdi:link"
+    iconSize="16"
+    padding="0.6rem 0.8rem"
+    id="share"
+    title="Permalink"
+    titleId="share-title"
+  />
+  {
+    items.map((item) => {
+      return (
+        <LinkBox
+          link={item.href}
+          alt={item.alt}
+          icon={item.icon}
+          iconSize="16"
+          padding="0.6rem 0.8rem"
+          isLocal={false}
+        />
+      );
+    })
+  }
+</div>
+
+<style>
+  .post-share {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+</style>

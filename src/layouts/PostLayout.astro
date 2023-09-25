@@ -1,0 +1,115 @@
+---
+import BackToTop from '@components/core/BackToTop.astro';
+import Divider from '@components/core/Divider.astro';
+import Link from '@components/core/Link.astro';
+import PostImage from '@components/core/Post/PostImage.astro';
+import PostInfoItem from '@components/core/Post/PostInfoItem.astro';
+import ProgressBar from '@components/core/ProgressBar.astro';
+import Title from '@components/core/Title.astro';
+import Container from '@components/data/Container.astro';
+import PostComments from '@components/data/Post/PostComments.astro';
+import PostInfo from '@components/data/Post/PostInfo.astro';
+import PostRelated from '@components/data/Post/PostRelated.astro';
+import PostShare from '@components/data/Post/PostShare.astro';
+import Tags from '@components/data/Tags.astro';
+import headConfig from '@constants/head';
+import { getFormatedDate } from '@lib/date';
+import { getSocialsShare } from '@lib/share';
+import type { CollectionEntry } from 'astro:content';
+import Layout from './Layout.astro';
+import Navigation from './Navigation.astro';
+import PostFooter from './PostFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  post: CollectionEntry<'blog'>;
+}
+
+const { title, description, post } = Astro.props;
+
+const { linkedin, twitter, reddit } = getSocialsShare(
+  Astro.url.toString(),
+  post.data.title,
+  headConfig.social
+);
+---
+
+<Layout title={title} description={description}>
+  <Container maxWidth="45rem" gap="1rem">
+    <ProgressBar />
+    <BackToTop />
+
+    <Navigation
+      backTitle="Posts"
+      backHref="/blog/"
+      backAlt="See all posts"
+      showIcon
+    />
+
+    <Title title={post.data.title} fontSize="2.5em" />
+
+    <PostInfo>
+      <PostInfoItem icon="mdi:calendar-range">
+        {getFormatedDate(post.data.publishedAt)}
+      </PostInfoItem>
+
+      <PostInfoItem icon="ic:outline-article">
+        <Link
+          href={'/blog/categories/' + post.data.category}
+          title={post.data.category}
+          alt="See more from this category"
+        />
+      </PostInfoItem>
+
+      <PostInfoItem icon="ic:outline-tag">
+        <Link href="#tags" title="Tags" alt="See all tags" />
+      </PostInfoItem>
+
+      {
+        post.data.enableComments && (
+          <PostInfoItem icon="mdi:comment-multiple-outline">
+            <Link href="#comments" title="Comments" alt="Go to comments" />
+          </PostInfoItem>
+        )
+      }
+    </PostInfo>
+
+    <PostImage src={post.data.image} title={post.data.title} />
+
+    <PostShare
+      permalink={post.data.shortlink}
+      items={[
+        {
+          href: linkedin,
+          icon: 'simple-icons:linkedin',
+          alt: 'Share to Linkedin',
+        },
+        {
+          href: twitter,
+          icon: 'simple-icons:twitter',
+          alt: 'Share to Twitter',
+        },
+        {
+          href: reddit,
+          icon: 'simple-icons:reddit',
+          alt: 'Share to Reddit',
+        },
+      ]}
+    />
+
+    <Divider />
+
+    <slot />
+
+    <PostFooter>
+      <Tags tags={post.data.tags} id="tags" title="Tags" />
+      {post.data.enableComments && <PostComments />}
+      {post.data.relatedPosts && <PostRelated />}
+    </PostFooter>
+  </Container>
+</Layout>
+
+<style></style>
+
+<script src="../lib/browser/post.ts"></script>
