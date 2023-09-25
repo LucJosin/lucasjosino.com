@@ -1,5 +1,6 @@
 ---
 import Tags from '@components/data/Tags.astro';
+import Icon from 'astro-icon';
 import Description from './Description.astro';
 import Link from './Link.astro';
 
@@ -31,6 +32,7 @@ const { image, publish_date, title, description, tags, href } = Astro.props;
   />
   <div class="post-card-read-more">
     <Link title="Read more" href={`/blog/${href}`} alt="Read more about" />
+    <Icon name="mdi:arrow-right-thin" width="18" />
   </div>
 </div>
 
