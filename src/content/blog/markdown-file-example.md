@@ -10,11 +10,97 @@ tags:
 category: 'Example'
 language: 'en'
 shortlink: '/blog'
-isVisible: false
+isVisible: true
 enableComments: false
 ---
 
 ## Table of contents
+
+## Footnotes
+
+Code:
+
+```
+`remark-numbered-footnote-labels` is a quality plugin[^quality]!
+
+[^quality]: If you do not find it so, please file a GitHub issue or pull request!
+```
+
+Preview:
+
+---
+
+`remark-numbered-footnote-labels` is a quality plugin[^quality]!
+
+[^quality]: If you do not find it so, please file a GitHub issue or pull request!
+
+---
+
+## Alers
+
+### Success
+
+Code:
+
+```
+=> Some success message
+```
+
+Preview:
+
+---
+
+=> Some success message
+
+---
+
+### Info
+
+Code:
+
+```
+-> Some info message
+```
+
+Preview:
+
+---
+
+-> Some info message
+
+---
+
+### Warning
+
+Code:
+
+```
+~> Some warning message
+```
+
+Preview:
+
+---
+
+~> Some warning message
+
+---
+
+### Danger
+
+Code:
+
+```
+!> Some danger message
+```
+
+Preview:
+
+---
+
+!> Some danger message
+
+---
 
 ## Block Elements
 
