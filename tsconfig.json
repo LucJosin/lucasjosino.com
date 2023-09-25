@@ -24,7 +24,7 @@
       "@data/*": ["data/*"],
       "@layouts/*": ["layouts/*"],
       "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"]
+      "@lib/*": ["lib/*"]
     }
   }
 }
