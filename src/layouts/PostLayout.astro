@@ -19,6 +19,7 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from './Layout.astro';
 import Navigation from './Navigation.astro';
 import PostFooter from './PostFooter.astro';
+import { getReadTime } from '@lib/time';
 
 interface Props {
   title: string;
@@ -64,6 +65,10 @@ const { linkedin, twitter, reddit } = getSocialsShare(
 
       <PostInfoItem icon="ic:outline-tag">
         <Link href="#tags" title="Tags" alt="See all tags" />
+      </PostInfoItem>
+
+      <PostInfoItem icon="mdi:clock-outline">
+        {getReadTime(post.body)}
       </PostInfoItem>
 
       {
@@ -113,3 +118,4 @@ const { linkedin, twitter, reddit } = getSocialsShare(
 <style></style>
 
 <script src="../lib/browser/post.ts"></script>
+ @lib/date
