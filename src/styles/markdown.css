@@ -1,78 +1,6 @@
-img {
-  margin-top: 1rem;
-  width: 100%;
-  border-radius: var(--border-radius);
-}
-
-summary {
-  cursor: pointer;
-}
-
-.autolink-header {
-  margin-left: 0.5rem;
-}
-
 .markdown {
   max-width: 50rem;
   width: 100%;
-}
-
-.alert {
-  background-color: var(--secondary-color);
-  position: relative;
-  border-radius: var(--border-radius);
-  display: flex;
-  align-items: center;
-  padding-left: 1rem;
-  margin: 1.3333333em 0 1.3333333em 0;
-}
-
-.alert > p {
-  margin: 0;
-}
-
-.alert-success {
-  border-left: 5px #3fb950 solid;
-}
-
-.alert-info {
-  border-left: 5px #58a6ff solid;
-}
-
-.alert-warning {
-  border-left: 5px #d29922 solid;
-}
-
-.alert-danger {
-  border-left: 5px #f85149 solid;
-}
-
-.alert > p::before {
-  content: '';
-  margin-bottom: 0.5rem;
-  display: block;
-  height: 20px;
-  width: 100px;
-}
-
-.alert-success > p::before {
-  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/success.svg)
-    no-repeat;
-}
-
-.alert-info > p::before {
-  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/info.svg)
-    no-repeat;
-}
-
-.alert-warning > p::before {
-  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/warning.svg)
-    no-repeat;
-}
-
-.alert-danger > p::before {
-  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/danger.svg)
-    no-repeat;
 }
 
 .markdown > details {
@@ -262,14 +190,14 @@ summary {
 
 .markdown .table {
   overflow-x: auto;
+  margin: 2rem 0;
 }
 
 .markdown table {
   width: 100%;
   table-layout: auto;
   text-align: left;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin: 0 0 0.5em 0;
   font-size: 0.875em;
   line-height: 1.7142857;
   border-collapse: collapse;
