@@ -17,7 +17,6 @@ export async function getStaticPaths() {
 interface Props {
   post: CollectionEntry<'blog'>;
 }
-
 const { post } = Astro.props;
 const { Content } = await post.render();
 ---
