@@ -14,5 +14,5 @@ export const blogSchema = z.object({
   isVisible: z.boolean().default(true),
   isDraft: z.boolean().default(false),
   enableComments: z.boolean().default(true),
-  relatedPosts: z.array(reference('blog')).optional(),
+  relatedPosts: z.array(reference('blog')).max(4).optional(),
 });
