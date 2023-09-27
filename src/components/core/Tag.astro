@@ -1,10 +1,15 @@
 ---
+interface Props {
+  href: string;
+  value: string;
+}
 
+const { href, value } = Astro.props;
 ---
 
-<span class="tag">
-  <slot />
-</span>
+<a href={href} class="tag">
+  {value}
+</a>
 
 <style>
   .tag {

@@ -1,0 +1,72 @@
+---
+import Icon from 'astro-icon';
+import Description from './Description.astro';
+import Link from './Link.astro';
+
+interface Props {
+  image?: string;
+  publish_date: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const { image, publish_date, title, description, href } = Astro.props;
+---
+
+<div class="mini-post-card">
+  {
+    image && (
+      <img src={image} alt={`Post - ${title}`} class="mini-post-card-img" />
+    )
+  }
+  <span class="mini-post-card-info">{publish_date}</span>
+  <div class="mini-post-card-header">
+    <h3>{title}</h3>
+  </div>
+  <Description
+    value={description}
+    margin="0"
+    align={false}
+    fontSize="0.9em"
+    maxLine="3"
+  />
+  <div class="mini-post-card-read-more">
+    <Link title="Read more" href={`/blog/${href}`} alt="Read more about" />
+    <Icon name="mdi:arrow-right-thin" width="18" />
+  </div>
+</div>
+
+<style>
+  .mini-post-card {
+    height: 20rem;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    transition: all var(--transition-duration);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  .mini-post-card-img {
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+  }
+
+  .mini-post-card-info {
+    font-size: 0.85em;
+    font-style: italic;
+  }
+
+  .mini-post-card-read-more {
+    display: flex;
+    align-items: center;
+  }
+</style>
