@@ -35,7 +35,7 @@ const { Content } = await post.render();
 
 <script>
   import mediumZoom from 'medium-zoom';
-  mediumZoom(document.querySelector('img') as HTMLImageElement, {
+  mediumZoom(document.querySelectorAll('img') as NodeListOf<HTMLImageElement>, {
     background: '#000000e0',
   });
 </script>
