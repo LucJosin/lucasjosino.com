@@ -1,12 +1,41 @@
 ---
+import MiniPostCard from '@components/core/MiniPostCard.astro';
+import type { CollectionEntry } from 'astro:content';
 
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
 ---
 
 <div class="post-releated">
   <h2>Related Posts</h2>
+  <span class="post-related-items">
+    {
+      posts.map((item) => {
+        return (
+          <MiniPostCard
+            image={item.data.image}
+            title={item.data.title}
+            description={item.data.description}
+            publish_date={item.data.publishedAt}
+            href={item.slug}
+          />
+        );
+      })
+    }
+  </span>
 </div>
 
 <style>
   .post-releated {
+    width: 100%;
+  }
+
+  .post-related-items {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   }
 </style>
