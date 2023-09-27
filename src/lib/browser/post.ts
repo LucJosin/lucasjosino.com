@@ -38,7 +38,6 @@ function listenToBackToTop() {
 function showHideBackToTopButton() {
   const pageOffset =
     document.documentElement.scrollTop || document.body.scrollTop;
-  console.log(pageOffset);
 
   pageOffset > 900
     ? backButton.classList.add('show')
