@@ -13,3 +13,13 @@ export async function getAllPosts(sortByDate: boolean = true) {
 
   return posts;
 }
+
+export async function getPostLength(tag: string) {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.data.tags.includes(tag)).length;
+}
+
+export async function getUniqueTags() {
+  const posts = await getAllPosts();
+  return [...new Set(posts.map((post) => post.data.tags).flat())];
+}
