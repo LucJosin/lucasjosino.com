@@ -5,10 +5,10 @@ import PostCard from '@components/core/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
+import { getAllPosts } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
-import { getCollection } from 'astro:content';
 
-const posts = await getCollection('blog');
+const posts = await getAllPosts();
 ---
 
 <Layout
