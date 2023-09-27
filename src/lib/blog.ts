@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 
 export async function getAllPosts(sortByDate: boolean = true) {
   const posts = await getCollection('blog', (post) => {
-    return !post.data.isDraft && !post.data.isVisible;
+    return !post.data.isDraft && post.data.isVisible;
   });
 
   if (sortByDate) {
