@@ -5,7 +5,7 @@ import Icon from 'astro-icon';
 import Description from './Description.astro';
 import Divider from './Divider.astro';
 import LinkBox from './LinkBox.astro';
-import MiniProjectItem from './MiniProjectItem.astro';
+import MiniProjectCard from './MiniProjectCard.astro';
 import Title from './Title.astro';
 
 interface Props {
@@ -82,7 +82,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
         <summary>More from this project</summary>
         <div class="children">
           {project.children.map((item) => (
-            <MiniProjectItem
+            <MiniProjectCard
               title={item.title}
               description={item.description}
               git={item.git}
