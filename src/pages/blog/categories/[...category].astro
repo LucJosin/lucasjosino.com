@@ -1,0 +1,84 @@
+---
+import Divider from '@components/core/Divider.astro';
+import PostCard from '@components/core/PostCard.astro';
+import Title from '@components/core/Title.astro';
+import Container from '@components/data/Container.astro';
+import Layout from '@layouts/Layout.astro';
+import Navigation from '@layouts/Navigation.astro';
+import { getAllPosts, getUniqueCategories } from '@lib/blog';
+import { getFormatedDate } from '@lib/date';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allPosts = await getAllPosts();
+  const uniqueCategories = await getUniqueCategories();
+
+  return uniqueCategories.map((category) => {
+    const filteredPosts = allPosts.filter(
+      (post) => post.data.category === category
+    );
+    return {
+      params: { category },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout
+  title={'Category: ' + category}
+  description="A minimalist developer blog with thoughts, ideas and other stuff "
+  shortlink="/blog"
+>
+  <Container>
+    <Navigation
+      backTitle="Categories"
+      backAlt="Go back to tags page"
+      backHref="/blog/categories/"
+      showIcon
+    />
+    <Title title={'Category: ' + category} fontSize="2.5em" />
+    <Divider height="1px" width="80%" />
+    <div class="posts">
+      {
+        posts.map((post) => {
+          return (
+            <PostCard
+              image={post.data.image}
+              title={post.data.title}
+              description={post.data.description}
+              category={post.data.category}
+              href={`${post.slug}/`}
+              publish_date={getFormatedDate(post.data.publishedAt)}
+              tags={post.data.tags}
+            />
+          );
+        })
+      }
+    </div>
+  </Container>
+</Layout>
+
+<style>
+  .posts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .posts-tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+</style>
