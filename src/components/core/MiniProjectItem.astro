@@ -6,15 +6,21 @@ import Title from './Title.astro';
 
 interface Props {
   title: string;
+  image?: string;
   description: string;
   url?: string;
   git?: string;
 }
 
-const { title, description, url, git } = Astro.props as Props;
+const { title, image, description, url, git } = Astro.props as Props;
 ---
 
 <div class="mini-project-item">
+  {
+    image && (
+      <img src={image} alt={`Post - ${title}`} class="mini-project-img" />
+    )
+  }
   <div class="mini-item-header">
     <Title title={title} margin="0" />
     <div class="mini-item-links">
@@ -61,7 +67,14 @@ const { title, description, url, git } = Astro.props as Props;
     transition: all var(--transition-duration);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
+  }
+
+  .mini-project-img {
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
   }
 
   .mini-item-header {
