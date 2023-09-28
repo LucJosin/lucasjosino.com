@@ -1,5 +1,6 @@
 ---
 import headConfig from '@constants/head';
+import '@styles/global.css';
 
 export interface Props {
   title: string;
@@ -124,113 +125,42 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <main>
       <slot />
     </main>
-    <style>
-      :root {
-        /* Global */
-        --primary-color: #f0f0f0;
-        --secondary-color: #e9e9e7;
-
-        --contrast-color: #000;
-
-        --divider-color: #000;
-
-        --border-color: #000;
-        --border-size: 1px;
-
-        --primary-text-color: #000;
-        --secondary-text-color: #fff;
-
-        /* Border radius */
-        --border-radius: 10px;
-        --layout-border-radius: 20px;
-
-        /* Transition */
-        --transition-duration: 0.2s;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --primary-color: #111111;
-          --secondary-color: #181818;
-
-          --contrast-color: #fff;
-
-          --divider-color: #fff;
-
-          --border-color: #fff;
-
-          --primary-text-color: #fff;
-          --secondary-text-color: #121212;
-        }
-      }
-
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family:
-          -apple-system,
-          BlinkMacSystemFont,
-          Segoe UI,
-          Roboto,
-          Oxygen,
-          Ubuntu,
-          Cantarell,
-          Fira Sans,
-          Droid Sans,
-          Helvetica Neue,
-          sans-serif;
-        background-color: var(--primary-color);
-        color: var(--primary-text-color);
-        --scroll-behavior: smooth !important;
-        scroll-behavior: smooth !important;
-        scroll-padding-top: 2rem;
-      }
-
-      /* Scroll */
-      :global(::-webkit-scrollbar) {
-        width: 7px;
-        background-color: var(--secondary-color);
-      }
-
-      :global(::-webkit-scrollbar-thumb) {
-        background-color: var(--contrast-color);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      :global([astro-icon]) {
-        fill: var(--primary-text-color);
-        color: var(--primary-text-color);
-        transition: all var(--transition-duration);
-      }
-
-      :global(a) {
-        color: var(--primary-text-color);
-        text-decoration: none;
-      }
-
-      :global(p) {
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0;
-        margin-inline-end: 0;
-      }
-
-      :global(h1) {
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0;
-        margin-inline-end: 0;
-      }
-    </style>
   </body>
 </html>
+
+<style>
+  /* Scroll */
+  :global(::-webkit-scrollbar) {
+    width: 7px;
+    background-color: var(--secondary-color);
+  }
+
+  :global(::-webkit-scrollbar-thumb) {
+    background-color: var(--contrast-color);
+  }
+
+  :global([astro-icon]) {
+    fill: var(--primary-text-color);
+    color: var(--primary-text-color);
+    transition: all var(--transition-duration);
+  }
+
+  :global(a) {
+    color: var(--primary-text-color);
+    text-decoration: none;
+  }
+
+  :global(p) {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+
+  :global(h1) {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+</style>
