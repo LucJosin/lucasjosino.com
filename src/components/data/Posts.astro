@@ -26,6 +26,7 @@ const posts = await getCollection('blog');
             href={`/blog/${e.slug}`}
             title={e.data.title}
             description={e.data.description}
+            publishedAt={e.data.publishedAt}
           />
         ))
     }

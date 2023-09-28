@@ -1,4 +1,5 @@
 ---
+import { getFormatedDate } from '@lib/date';
 import Description from './Description.astro';
 import Title from './Title.astro';
 
@@ -7,14 +8,18 @@ interface Props {
   href: string;
   title: string;
   description: string;
+  publishedAt: string;
 }
 
-const { image, href, title, description } = Astro.props;
+const { image, href, title, description, publishedAt } = Astro.props;
 ---
 
 <a href={href} class="blog-item">
   <img src={image} alt="" class="blog-item-image" />
   <div class="blog-item-info">
+    <span class="blog-item-info-publish">
+      {getFormatedDate(publishedAt)}
+    </span>
     <Title title={title} margin="0" fontSize="1.1em" align={false} />
     <Description
       value={description}
@@ -28,7 +33,6 @@ const { image, href, title, description } = Astro.props;
 
 <style>
   .blog-item {
-    height: 8rem;
     width: 100%;
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
@@ -46,15 +50,18 @@ const { image, href, title, description } = Astro.props;
   .blog-item-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 0.2rem;
+    gap: 0.4rem;
   }
 
   .blog-item-image {
-    width: 10rem;
+    width: 12rem;
     border-radius: var(--border-radius);
     object-fit: cover;
+  }
+
+  .blog-item-info-publish {
+    font-size: 0.8em;
   }
 
   @media (max-width: 560px) {
