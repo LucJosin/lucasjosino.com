@@ -20,7 +20,7 @@ const headConfig: HeadConfig = {
   banner: 'static/banner.png',
   robots: 'index,follow',
   shortLink: 'https://lucjos.in',
-  canonical: 'https://lucasjosino.com',
+  canonical: 'https://www.lucasjosino.com',
   alternative: 'https://lucasjosino.dev',
 };
 
