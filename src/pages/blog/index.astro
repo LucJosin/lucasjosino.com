@@ -33,7 +33,7 @@ const posts = await getAllPosts();
               description={post.data.description}
               category={post.data.category}
               href={`${post.slug}/`}
-              publish_date={getFormatedDate(post.data.publishedAt)}
+              publishedAt={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
             />
           );
