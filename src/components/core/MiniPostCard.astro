@@ -1,72 +1,76 @@
 ---
-import Icon from 'astro-icon';
+import { getFormatedDate } from '@lib/date';
 import Description from './Description.astro';
-import Link from './Link.astro';
+import Title from './Title.astro';
 
 interface Props {
-  image?: string;
-  publish_date: string;
+  image: string;
+  href: string;
   title: string;
   description: string;
-  href: string;
+  publishedAt: string;
 }
 
-const { image, publish_date, title, description, href } = Astro.props;
+const { image, href, title, description, publishedAt } = Astro.props;
 ---
 
-<div class="mini-post-card">
-  {
-    image && (
-      <img src={image} alt={`Post - ${title}`} class="mini-post-card-img" />
-    )
-  }
-  <span class="mini-post-card-info">{publish_date}</span>
-  <div class="mini-post-card-header">
-    <h3>{title}</h3>
+<a href={href} class="blog-item">
+  <img src={image} alt="" class="blog-item-image" />
+  <div class="blog-item-info">
+    <span class="blog-item-info-publish">
+      {getFormatedDate(publishedAt)}
+    </span>
+    <Title title={title} margin="0" fontSize="1.1em" align={false} />
+    <Description
+      value={description}
+      margin="0"
+      fontSize="0.8em"
+      align={false}
+    />
   </div>
-  <Description
-    value={description}
-    margin="0"
-    align={false}
-    fontSize="0.9em"
-    maxLine="3"
-  />
-  <div class="mini-post-card-read-more">
-    <Link title="Read more" href={`/blog/${href}`} alt="Read more about" />
-    <Icon name="mdi:arrow-right-thin" width="18" />
-  </div>
-</div>
+</a>
 
 <style>
-  .mini-post-card {
-    height: 20rem;
+  .blog-item {
+    height: 10rem;
+    width: 100%;
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
+    display: flex;
     padding: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
     transition: all var(--transition-duration);
+  }
+
+  .blog-item:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .blog-item-info {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.4rem;
   }
 
-  h3 {
-    margin: 0;
-  }
-
-  .mini-post-card-img {
-    height: 50%;
-    width: 100%;
-    object-fit: cover;
+  .blog-item-image {
+    width: 12rem;
     border-radius: var(--border-radius);
+    object-fit: cover;
   }
 
-  .mini-post-card-info {
-    font-size: 0.85em;
-    font-style: italic;
+  .blog-item-info-publish {
+    font-size: 0.8em;
   }
 
-  .mini-post-card-read-more {
-    display: flex;
-    align-items: center;
+  @media (max-width: 560px) {
+    .blog-item {
+      height: fit-content;
+      flex-direction: column;
+    }
+
+    .blog-item-image {
+      width: 100%;
+    }
   }
 </style>

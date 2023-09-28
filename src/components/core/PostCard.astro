@@ -7,21 +7,21 @@ import Link from './Link.astro';
 interface Props {
   image?: string;
   category: string;
-  publish_date: string;
+  publishedAt: string;
   title: string;
   description: string;
   tags: string[];
   href: string;
 }
 
-const { image, category, publish_date, title, description, tags, href } =
+const { image, category, publishedAt, title, description, tags, href } =
   Astro.props;
 ---
 
 <div class="post-card">
   {image && <img src={image} alt={`Post - ${title}`} class="post-card-img" />}
   <span class="post-card-info">
-    {publish_date} •
+    {publishedAt} •
     <Link
       title={category}
       alt="See all posts with this category"

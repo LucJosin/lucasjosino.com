@@ -1,5 +1,5 @@
 ---
-import BlogItem from '@components/core/BlogItem.astro';
+import MiniPostCard from '@components/core/MiniPostCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import Icon from 'astro-icon';
 import { getCollection } from 'astro:content';
@@ -21,7 +21,7 @@ const posts = await getCollection('blog');
       posts
         .slice(0, 2)
         .map((e) => (
-          <BlogItem
+          <MiniPostCard
             image={e.data.image}
             href={`/blog/${e.slug}`}
             title={e.data.title}

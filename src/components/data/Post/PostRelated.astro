@@ -1,5 +1,5 @@
 ---
-import MiniPostCard from '@components/core/MiniPostCard.astro';
+import PostCard from '@components/core/PostCard.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -15,12 +15,14 @@ const { posts } = Astro.props;
     {
       posts.map((item) => {
         return (
-          <MiniPostCard
+          <PostCard
             image={item.data.image}
             title={item.data.title}
             description={item.data.description}
-            publish_date={item.data.publishedAt}
+            publishedAt={item.data.publishedAt}
             href={item.slug}
+            category={item.data.category}
+            tags={item.data.tags}
           />
         );
       })
