@@ -19,7 +19,7 @@ const posts = await getCollection('blog');
   <div class="posts-container">
     {
       posts
-        .slice(0, 1)
+        .slice(0, 2)
         .map((e) => (
           <BlogItem
             image={e.data.image}
