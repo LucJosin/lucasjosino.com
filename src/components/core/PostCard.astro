@@ -6,6 +6,7 @@ import Link from './Link.astro';
 
 interface Props {
   image?: string;
+  category: string;
   publish_date: string;
   title: string;
   description: string;
@@ -13,16 +14,24 @@ interface Props {
   href: string;
 }
 
-const { image, publish_date, title, description, tags, href } = Astro.props;
+const { image, category, publish_date, title, description, tags, href } =
+  Astro.props;
 ---
 
 <div class="post-card">
   {image && <img src={image} alt={`Post - ${title}`} class="post-card-img" />}
-  <span class="post-card-info">{publish_date}</span>
+  <span class="post-card-info">
+    {publish_date} •
+    <Link
+      title={category}
+      alt="See all posts with this category"
+      href={`/blog/categories/${category}`}
+    />
+  </span>
   <div class="post-card-header">
     <h3>{title}</h3>
   </div>
-  <Tags tags={tags} />
+  <Tags values={tags} target="tags" />
   <Description
     value={description}
     margin="0"
@@ -48,10 +57,6 @@ const { image, publish_date, title, description, tags, href } = Astro.props;
     gap: 0.6rem;
   }
 
-  .post-card:first-child {
-    grid-column: 1 / -1;
-  }
-
   h3 {
     margin: 0;
   }
@@ -62,10 +67,6 @@ const { image, publish_date, title, description, tags, href } = Astro.props;
     object-fit: cover;
     border-radius: var(--border-radius);
   }
-
-  /* .post-card:first-child > .post-card-img {
-    height: 12.5rem;
-  } */
 
   .post-card-info {
     font-size: 0.85em;

@@ -31,6 +31,7 @@ const posts = await getAllPosts();
               image={post.data.image}
               title={post.data.title}
               description={post.data.description}
+              category={post.data.category}
               href={`${post.slug}/`}
               publish_date={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
