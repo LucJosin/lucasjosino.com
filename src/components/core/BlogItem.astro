@@ -25,7 +25,6 @@ const { image, href, title, description, publishedAt } = Astro.props;
       value={description}
       margin="0"
       fontSize="0.8em"
-      maxLine="3"
       align={false}
     />
   </div>
@@ -33,6 +32,7 @@ const { image, href, title, description, publishedAt } = Astro.props;
 
 <style>
   .blog-item {
+    height: 10rem;
     width: 100%;
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
@@ -50,7 +50,6 @@ const { image, href, title, description, publishedAt } = Astro.props;
   .blog-item-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 0.4rem;
   }
 
