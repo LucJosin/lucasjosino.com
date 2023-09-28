@@ -110,7 +110,7 @@ const { linkedin, twitter, reddit } = getSocialsShare(
     <slot />
 
     <PostFooter>
-      <Tags tags={post.data.tags} id="tags" title="Tags" />
+      <Tags values={post.data.tags} target="tags" id="tags" title="Tags" />
       {post.data.enableComments && <PostComments />}
       {post.data.relatedPosts && <PostRelated posts={relatedPosts} />}
     </PostFooter>

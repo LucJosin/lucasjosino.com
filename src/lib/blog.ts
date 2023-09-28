@@ -14,12 +14,19 @@ export async function getAllPosts(sortByDate: boolean = true) {
   return posts;
 }
 
-export async function getPostLength(tag: string) {
+export async function getPostLength(tag: string, target: string) {
   const posts = await getAllPosts();
-  return posts.filter((post) => post.data.tags.includes(tag)).length;
+  if (target === 'tags') {
+    return posts.filter((post) => post.data.tags.includes(tag)).length;
+  }
+  return posts.filter((post) => post.data.category === tag).length;
 }
 
 export async function getUniqueTags() {
   const posts = await getAllPosts();
   return [...new Set(posts.map((post) => post.data.tags).flat())];
+}
+export async function getUniqueCategories() {
+  const posts = await getAllPosts();
+  return [...new Set(posts.map((post) => post.data.category).flat())];
 }

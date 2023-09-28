@@ -40,7 +40,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
     margin="0"
     align={false}
   />
-  <Tags tags={project.tags} />
+  <Tags values={project.tags} target="tags" />
   <div class="item-links">
     {
       project.git && (

@@ -3,14 +3,22 @@ import Tag from '@components/core/Tag.astro';
 import { getPostLength } from '@lib/blog';
 
 interface Props {
-  tags: string[];
+  values: string[];
+  target: string;
   title?: string;
   showLength?: boolean;
   id?: string;
   center?: boolean;
 }
 
-const { title, tags, id, center = false, showLength = false } = Astro.props;
+const {
+  title,
+  target,
+  values,
+  id,
+  center = false,
+  showLength = false,
+} = Astro.props;
 const justifyContent = center ? 'center' : 'initial';
 ---
 
@@ -18,12 +26,14 @@ const justifyContent = center ? 'center' : 'initial';
   {title && <h2>{title}</h2>}
   <div class="tags">
     {
-      tags.map(async (tag) => {
-        const filteredPosts = showLength ? await getPostLength(tag) : null;
+      values.map(async (tag) => {
+        const filteredPosts = showLength
+          ? await getPostLength(tag, target)
+          : null;
         return (
           <Tag
             value={tag + (filteredPosts ? ` (${filteredPosts})` : '')}
-            href={`/blog/tags/${tag}`}
+            href={`/blog/${target}/${tag}`}
           />
         );
       })

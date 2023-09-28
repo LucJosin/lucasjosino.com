@@ -33,7 +33,7 @@ const { posts } = Astro.props;
 ---
 
 <Layout
-  title={tag!}
+  title={'Tag: ' + tag}
   description="A minimalist developer blog with thoughts, ideas and other stuff "
   shortlink="/blog"
 >
@@ -44,7 +44,7 @@ const { posts } = Astro.props;
       backHref="/blog/tags/"
       showIcon
     />
-    <Title title={'Tag: ' + tag!} fontSize="2.5em" />
+    <Title title={'Tag: ' + tag} fontSize="2.5em" />
     <Divider height="1px" width="80%" />
     <div class="posts">
       {
@@ -54,6 +54,7 @@ const { posts } = Astro.props;
               image={post.data.image}
               title={post.data.title}
               description={post.data.description}
+              category={post.data.category}
               href={`${post.slug}/`}
               publish_date={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
