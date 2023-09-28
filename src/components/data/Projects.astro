@@ -1,5 +1,5 @@
 ---
-import MiniProjectItem from '@components/core/MiniProjectItem.astro';
+import MiniProjectCard from '@components/core/MiniProjectCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import { projects } from '@constants/projects';
 import Icon from 'astro-icon';
@@ -19,7 +19,7 @@ import Icon from 'astro-icon';
       projects
         .slice(0, 2)
         .map((data) => (
-          <MiniProjectItem
+          <MiniProjectCard
             title={data.title}
             description={data.description}
             git={data.git}
