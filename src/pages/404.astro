@@ -11,10 +11,7 @@ const encodedUrl = encodeURI(`[${Astro.url.pathname}]`);
 const encodedCode = encodeURI('Status: 404');
 ---
 
-<Layout
-  title="404"
-  description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development. "
->
+<Layout title="404" description="Page not found!">
   <Container>
     <Title title="404" fontSize="5em" />
     <Description value="This page could not be found." margin="0" />

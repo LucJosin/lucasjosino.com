@@ -34,7 +34,7 @@ const { posts } = Astro.props;
 
 <Layout
   title={'Tag: ' + tag}
-  description="A minimalist developer blog with thoughts, ideas and other stuff "
+  description={`Posts tagged with: ${tag}`}
   shortlink="/blog"
 >
   <Container>
