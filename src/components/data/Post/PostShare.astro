@@ -18,7 +18,7 @@ const { permalink, items } = Astro.props;
 
 <div class="post-share">
   <LinkBox
-    link={headConfig.shortLink + permalink}
+    href={headConfig.shortLink + permalink}
     alt="Copy post permalink"
     icon="mdi:link"
     iconSize="16"
@@ -31,7 +31,7 @@ const { permalink, items } = Astro.props;
     items.map((item) => {
       return (
         <LinkBox
-          link={item.href}
+          href={item.href}
           alt={item.alt}
           icon={item.icon}
           iconSize="16"

@@ -45,7 +45,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
     {
       project.git && (
         <LinkBox
-          link={project.git}
+          href={project.git}
           icon="simple-icons:github"
           title="Github"
           alt={`${project.title} - Github`}
@@ -56,7 +56,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
     {
       project.url && (
         <LinkBox
-          link={project.url}
+          href={project.url}
           icon="mdi:open-in-new"
           title="Demo"
           alt={`${project.title} - Demo`}
@@ -67,7 +67,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
     {
       project.article && (
         <LinkBox
-          link={project.article}
+          href={project.article}
           icon="ic:outline-article"
           title="Read"
           alt={`${project.title} - Blog post`}
