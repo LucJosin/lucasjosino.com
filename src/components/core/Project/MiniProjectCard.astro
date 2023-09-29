@@ -1,7 +1,7 @@
 ---
 import Description from '../Description.astro';
 import Divider from '../Divider.astro';
-import LinkIcon from '../LinkIcon.astro';
+import Link from '../Link.astro';
 import Title from '../Title.astro';
 
 interface Props {
@@ -26,23 +26,25 @@ const { title, image, description, url, git } = Astro.props as Props;
     <div class="mini-item-links">
       {
         git && (
-          <LinkIcon
+          <Link
             href={git}
             icon="simple-icons:github"
             alt={title + ' - Github'}
             iconSize="20"
             isLocal={false}
+            hasBorderBottom={false}
           />
         )
       }
       {
         url && (
-          <LinkIcon
+          <Link
             href={url}
             icon="gridicons:external"
             alt={title + ' - Demo'}
             iconSize="22"
             isLocal={false}
+            hasBorderBottom={false}
           />
         )
       }

@@ -1,12 +1,29 @@
 ---
+import Icon from 'astro-icon';
+
 interface Props {
-  title: string;
   href: string;
   alt: string;
+  title?: string;
   isLocal?: boolean;
+  icon?: string;
+  iconSide?: 'left' | 'right';
+  iconSize?: string;
+  hasBorderBottom?: boolean;
 }
 
-const { title, href, alt, isLocal = true } = Astro.props as Props;
+const {
+  href,
+  alt,
+  title,
+  isLocal = true,
+  icon,
+  iconSide = 'left',
+  iconSize = '18',
+  hasBorderBottom = true,
+} = Astro.props as Props;
+
+const borderBottom = hasBorderBottom ? 'var(--border-color)' : 'transparent';
 ---
 
 <a
@@ -16,17 +33,25 @@ const { title, href, alt, isLocal = true } = Astro.props as Props;
   target={isLocal ? undefined : '_blank'}
   class="link"
 >
-  {title}
+  {icon && iconSide === 'left' && <Icon name={icon} size={iconSize} />}
+  {title && <span>{title}</span>}
+  {icon && iconSide === 'right' && <Icon name={icon} size={iconSize} />}
 </a>
 
-<style>
+<style define:vars={{ borderBottom }}>
   .link {
     border-bottom: var(--border-size) solid transparent;
-    transition: var(--transition-duration);
+    transition: all var(--transition-duration);
     cursor: pointer;
   }
 
   .link:hover {
-    border-bottom: var(--border-size) solid var(--border-color);
+    border-bottom: var(--border-size) solid var(--borderBottom);
+    transition: all var(--transition-duration);
+  }
+
+  .link:hover > [astro-icon] {
+    fill: gray;
+    color: gray;
   }
 </style>
