@@ -1,7 +1,7 @@
 ---
+import Link from '@components/core/Link/Link.astro';
 import MiniPostCard from '@components/core/Post/MiniPostCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
-import Icon from 'astro-icon';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
@@ -10,10 +10,15 @@ const posts = await getCollection('blog');
 <div class="posts">
   <div class="posts-header">
     <SubTitle title="Posts" />
-    <a href="/blog/" title="See more posts" class="posts-see-more">
-      See more
-      <Icon name="mdi:arrow-right" size="18" />
-    </a>
+    <Link
+      href="/blog/"
+      alt="See more posts"
+      title="See more"
+      icon="mdi:arrow-right"
+      iconSide="right"
+      hasBorderBottom={false}
+      animatedIcon
+    />
   </div>
 
   <div class="posts-container">
@@ -43,18 +48,6 @@ const posts = await getCollection('blog');
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .posts-see-more {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    transition: gap 0.2s;
-  }
-
-  .posts-see-more:hover {
-    cursor: pointer;
-    gap: 0.2rem;
   }
 
   .posts-container {
