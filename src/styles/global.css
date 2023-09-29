@@ -20,7 +20,7 @@
   /* Transition */
   --transition-duration: 0.2s;
 
-  --padding: 0.8rem;
+  --card-padding: 0.8rem;
 }
 
 @media (prefers-color-scheme: dark) {
