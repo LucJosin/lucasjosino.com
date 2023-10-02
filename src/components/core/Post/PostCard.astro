@@ -1,6 +1,5 @@
 ---
 import Tags from '@components/data/Tags.astro';
-import Icon from 'astro-icon';
 import Description from '../Description.astro';
 import Link from '../Link/Link.astro';
 
@@ -21,7 +20,7 @@ const { image, category, publishedAt, title, description, tags, href } =
 <div class="post-card">
   {image && <img src={image} alt={`Post - ${title}`} class="post-card-img" />}
   <span class="post-card-info">
-    {publishedAt} •
+    <span>{publishedAt}</span> •
     <Link
       title={category}
       alt="See all posts with this category"
@@ -40,8 +39,16 @@ const { image, category, publishedAt, title, description, tags, href } =
     maxLine="3"
   />
   <div class="post-card-read-more">
-    <Link title="Read more" href={`/blog/${href}`} alt="Read more about" />
-    <Icon name="mdi:arrow-right-thin" width="18" />
+    <Link
+      href={`/blog/${href}`}
+      alt="Read more about"
+      title="Read post"
+      icon="mdi:arrow-right-thin"
+      iconSide="right"
+      hasBorderBottom={false}
+      animatedIcon
+      reverseAnimation
+    />
   </div>
 </div>
 
@@ -71,6 +78,8 @@ const { image, category, publishedAt, title, description, tags, href } =
   .post-card-info {
     font-size: 0.85em;
     font-style: italic;
+    display: flex;
+    gap: 0.4rem;
   }
 
   .post-card-read-more {
