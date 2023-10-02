@@ -12,6 +12,7 @@ interface Props {
   iconSize?: string;
   hasBorderBottom?: boolean;
   animatedIcon?: boolean;
+  reverseAnimation?: boolean;
 }
 
 const {
@@ -25,11 +26,17 @@ const {
   iconSize = '18',
   hasBorderBottom = true,
   animatedIcon = false,
+  reverseAnimation = false,
 } = Astro.props as Props;
 
 const borderBottom = hasBorderBottom ? 'var(--border-color)' : 'transparent';
 
-const animatedGap = animatedIcon ? '0.2rem' : gap;
+const currentGap = reverseAnimation ? '0' : gap;
+const animatedGap = animatedIcon
+  ? reverseAnimation
+    ? '0.6rem'
+    : '0.2rem'
+  : gap;
 const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
 ---
 
@@ -45,14 +52,14 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
   {icon && iconSide === 'right' && <Icon name={icon} size={iconSize} />}
 </a>
 
-<style define:vars={{ borderBottom, gap, animatedGap, iconColor }}>
+<style define:vars={{ borderBottom, currentGap, animatedGap, iconColor }}>
   .link {
     border-bottom: var(--border-size) solid transparent;
     transition: all var(--transition-duration);
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: var(--gap);
+    gap: var(--currentGap);
   }
 
   .link:hover {
