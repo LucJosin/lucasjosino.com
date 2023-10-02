@@ -441,6 +441,11 @@
 
 .markdown-lg code {
   font-size: 0.8888889em;
+  background-color: rgba(var(--contrast-color-rgb), 0.8);
+  border-radius: var(--border-radius);
+  padding: 0.2rem 0.3rem;
+  color: var(--secondary-text-color);
+  overflow-wrap: anywhere;
 }
 
 .markdown-lg h2 code {
