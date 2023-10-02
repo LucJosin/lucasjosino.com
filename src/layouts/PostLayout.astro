@@ -85,7 +85,6 @@ const { linkedin, twitter, reddit } = getSocialsShare(
     <PostImage src={post.data.image} title={post.data.title} />
 
     <PostShare
-      permalink={post.data.shortlink}
       items={[
         {
           href: linkedin,
@@ -101,6 +100,13 @@ const { linkedin, twitter, reddit } = getSocialsShare(
           href: reddit,
           icon: 'simple-icons:reddit',
           alt: 'Share to Reddit',
+        },
+        {
+          href: headConfig.shortLink + post.data.shortlink,
+          icon: 'mdi:link',
+          alt: 'Copy link',
+          id: 'share',
+          messageId: 'share-title',
         },
       ]}
     />
