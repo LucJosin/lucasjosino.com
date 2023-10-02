@@ -1,0 +1,45 @@
+---
+interface Props {
+  message: string;
+  href?: string;
+  id?: string;
+  messageId?: string;
+}
+
+const { message, href, id, messageId } = Astro.props;
+---
+
+<div class="post-share-item" data-href={href} id={id}>
+  <span class="post-share-item-tooltip" id={messageId}>{message}</span>
+  <slot />
+</div>
+
+<style>
+  .post-share-item {
+    position: relative;
+    display: inline-block;
+  }
+
+  .post-share-item-tooltip {
+    min-width: 120px;
+    position: absolute;
+    background-color: var(--contrast-color);
+    color: var(--secondary-text-color);
+    text-align: center;
+    padding: 5px 5px;
+    border-radius: var(--border-radius);
+    visibility: hidden;
+    z-index: 1;
+    font-size: 0.85em;
+
+    /* Location */
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 10px;
+    margin-left: -60px;
+  }
+
+  .post-share-item:hover .post-share-item-tooltip {
+    visibility: visible;
+  }
+</style>

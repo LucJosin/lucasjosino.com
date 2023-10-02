@@ -1,43 +1,41 @@
 ---
 import LinkBox from '@components/core/Link/LinkBox.astro';
-import headConfig from '@constants/head';
+import Tooltip from '@components/core/Tooltip.astro';
 
 interface PostShareItem {
   href: string;
   icon: string;
   alt: string;
+  id?: string;
+  messageId?: string;
 }
 
 interface Props {
-  permalink: string;
   items: PostShareItem[];
 }
 
-const { permalink, items } = Astro.props;
+const { items } = Astro.props;
 ---
 
 <div class="post-share">
-  <LinkBox
-    href={headConfig.shortLink + permalink}
-    alt="Copy post permalink"
-    icon="mdi:link"
-    iconSize="16"
-    padding="0.6rem 0.8rem"
-    id="share"
-    title="Permalink"
-    titleId="share-title"
-  />
   {
     items.map((item) => {
       return (
-        <LinkBox
+        <Tooltip
+          message={item.alt}
+          id={item.id}
+          messageId={item.messageId}
           href={item.href}
-          alt={item.alt}
-          icon={item.icon}
-          iconSize="16"
-          padding="0.6rem 0.8rem"
-          isLocal={false}
-        />
+        >
+          <LinkBox
+            href={item.href}
+            alt={item.alt}
+            icon={item.icon}
+            iconSize="16"
+            padding="0.6rem 0.8rem"
+            isLocal={false}
+          />
+        </Tooltip>
       );
     })
   }
