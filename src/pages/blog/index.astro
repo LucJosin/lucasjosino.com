@@ -1,10 +1,10 @@
 ---
 import Divider from '@components/core/Divider.astro';
-import Link from '@components/core/Link/Link.astro';
 import PostCard from '@components/core/Post/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
+import Navigation from '@layouts/Navigation.astro';
 import { getAllPosts } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 
@@ -17,10 +17,11 @@ const posts = await getAllPosts();
   shortlink="/blog"
 >
   <Container>
-    <span>
-      <Link title="Projects" href="/projects" alt="See all projects" /> •
-      <Link title="Lucas Josino" href="/" alt="Homepage" />
-    </span>
+    <Navigation
+      backAlt="See all projects"
+      backHref="/projects/"
+      backTitle="Projects"
+    />
     <Title title="Blog" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
     <div class="posts">

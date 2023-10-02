@@ -1,11 +1,11 @@
 ---
 import Divider from '@components/core/Divider.astro';
-import Link from '@components/core/Link/Link.astro';
 import ProjectCard from '@components/core/Project/ProjectCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import { projects } from '@constants/projects';
 import Layout from '@layouts/Layout.astro';
+import Navigation from '@layouts/Navigation.astro';
 ---
 
 <Layout
@@ -14,10 +14,7 @@ import Layout from '@layouts/Layout.astro';
   shortlink="/projects"
 >
   <Container>
-    <span>
-      <Link title="Blog" href="/blog" alt="See blog" /> •
-      <Link title="Lucas Josino" href="/" alt="Homepage" />
-    </span>
+    <Navigation backAlt="See all posts" backHref="/blog/" backTitle="Blog" />
     <Title title="Projects" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
 
