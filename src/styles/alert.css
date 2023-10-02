@@ -4,24 +4,31 @@
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
-  padding-left: 1rem;
   margin: 1.3333333em 0;
 }
 
 .alert-success {
   border-left: 5px #3fb950 solid;
+  color: #3fb950;
 }
 
 .alert-info {
   border-left: 5px #58a6ff solid;
+  color: #58a6ff;
 }
 
 .alert-warning {
   border-left: 5px #d29922 solid;
+  color: #d29922;
 }
 
 .alert-danger {
   border-left: 5px #f85149 solid;
+  color: #f85149;
+}
+
+.alert > p {
+  padding: 0 1rem;
 }
 
 .alert > p::before {
