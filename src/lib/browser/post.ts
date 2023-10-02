@@ -53,12 +53,12 @@ function listenToOnShareClick() {
     e.stopPropagation();
     e.stopImmediatePropagation();
 
-    const value = shareButton.getAttribute('href')!;
+    const value = shareButton.getAttribute('data-href')!;
     await navigator.clipboard.writeText(value);
 
     shareButtonText.innerText = 'Copied!';
     setTimeout(() => {
-      shareButtonText.innerText = 'Share';
+      shareButtonText.innerText = 'Copy link';
     }, 2000);
   });
 }
