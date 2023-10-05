@@ -38,7 +38,11 @@ const { linkedin, twitter, reddit } = getSocialsShare(
 );
 ---
 
-<Layout title={title} description={description}>
+<Layout
+  title={title}
+  description={description}
+  robots={post.data.isVisible ? 'index,follow' : 'noindex,nofollow'}
+>
   <Container maxWidth="45rem" gap="1rem">
     <ProgressBar />
     <BackToTop />
