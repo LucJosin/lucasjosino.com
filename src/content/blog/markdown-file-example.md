@@ -5,16 +5,66 @@ updatedAt: '2023-09-22'
 title: 'Markdown file example'
 description: 'A markdown example shows how to write a markdown file.'
 tags:
-  - 'Lorem'
-  - 'Ipsum'
+  - 'example'
+  - 'markdown'
 category: 'Example'
 language: 'en'
 shortlink: '/blog'
-isVisible: true
+isVisible: false
 enableComments: false
 ---
 
 ## Table of contents
+
+## Code highlight
+
+### Example
+
+Code:
+
+```
+`Lorem ipsum dolor sit amet{lorem#chartreuse-gray}`, consectetur adipiscing elit. Integer in massa ipsum. `Morbi neque sapien, ornare fermentum tincidunt pulvinar{morbi#lightblue-black}`, varius eu quam. `Praesent consectetur{praesent#aqua-blue}` pellentesque venenatis. `Aliquam erat volutpat{aliquam#lightpink-green}`. Quisque vulputate eros id turpis volutpat bibendum. Donec egestas, tortor in facilisis iaculis, neque ipsum suscipit ipsum, `eget lacinia orci turpis vel enim{eget#lightsalmon-#000}`. Curabitur vel gravida mauris, vitae ultrices arcu. `Etiam in ligula quis dui faucibus consectetur{etiam#lightskyblue-crimson}`. Phasellus venenatis eu mauris ac tempus. Nullam sollicitudin malesuada lacus eget tristique.
+```
+
+Preview:
+
+---
+
+`Lorem ipsum dolor sit amet{lorem#chartreuse-gray}`, consectetur adipiscing elit. Integer in massa ipsum. `Morbi neque sapien, ornare fermentum tincidunt pulvinar{morbi#lightblue-black}`, varius eu quam. `Praesent consectetur{praesent#aqua-blue}` pellentesque venenatis. `Aliquam erat volutpat{aliquam#lightpink-green}`. Quisque vulputate eros id turpis volutpat bibendum. Donec egestas, tortor in facilisis iaculis, neque ipsum suscipit ipsum, `eget lacinia orci turpis vel enim{eget#lightsalmon-#000}`. Curabitur vel gravida mauris, vitae ultrices arcu. `Etiam in ligula quis dui faucibus consectetur{etiam#lightskyblue-crimson}`. Phasellus venenatis eu mauris ac tempus. Nullam sollicitudin malesuada lacus eget tristique.
+
+---
+
+### Named color
+
+Code:
+
+```
+`Lorem Ipsum{classname#red-white}`
+```
+
+Preview:
+
+---
+
+`Lorem Ipsum{classname#red-white}`
+
+---
+
+### Hex color
+
+Code:
+
+```
+`Lorem Ipsum{classname#lightgreen-#000}`
+```
+
+Preview:
+
+---
+
+`Lorem Ipsum{classname#lightgreen-#000}`
+
+---
 
 ## Footnotes
 
@@ -36,37 +86,64 @@ Preview:
 
 ---
 
-## Alers
+## Alerts
 
-### Success
-
-Code:
-
-```
-=> Some success message
-```
-
-Preview:
-
----
-
-=> Some success message
-
----
+- [Info](#info)
+- Note
+- [Tip](#tip)
+- [Success](#success)
+- Solution
+- Check
+- Complete
+- [Warning](#warning)
+- Error
+- [Danger](#danger)
 
 ### Info
 
 Code:
 
 ```
--> Some info message
+!!!info Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
 ```
 
 Preview:
 
 ---
 
--> Some info message
+!!!info Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+
+---
+
+### Tip
+
+Code:
+
+```
+!!!tip Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+```
+
+Preview:
+
+---
+
+!!!tip Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+
+---
+
+### Success
+
+Code:
+
+```
+!!!success Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+```
+
+Preview:
+
+---
+
+!!!success Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
 
 ---
 
@@ -75,14 +152,14 @@ Preview:
 Code:
 
 ```
-~> Some warning message
+!!!warning Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
 ```
 
 Preview:
 
 ---
 
-~> Some warning message
+!!!warning Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
 
 ---
 
@@ -91,14 +168,14 @@ Preview:
 Code:
 
 ```
-!> Some danger message
+!!!danger Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
 ```
 
 Preview:
 
 ---
 
-!> Some danger message
+!!!danger Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
 
 ---
 
