@@ -1,0 +1,25 @@
+.highlight-bottom-red,
+.highlight-bottom-blue {
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  color: var(--primary-text-color) !important;
+}
+
+.highlight-bottom-red {
+  background-image: linear-gradient(
+    to bottom left,
+    rgb(184 40 32 / 1),
+    rgb(184 40 32 / 1)
+  );
+}
+
+.highlight-bottom-blue {
+  background-image: linear-gradient(
+    to bottom left,
+    rgb(66 218 218 / 1),
+    rgb(66 218 218 / 1)
+  );
+}
