@@ -26,7 +26,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@hashicorp/remark-plugins": "^4.1.1",
+    "@lucjosin/remark-alert-blocks": "./plugins/remark-alert-blocks",
+    "@lucjosin/remark-code-highlight": "./plugins/remark-code-highlight",
     "@swup/astro": "^1.3.2",
     "astro-expressive-code": "^0.26.1",
     "medium-zoom": "^1.0.8",

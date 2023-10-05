@@ -1,5 +1,5 @@
 import sitemap from '@astrojs/sitemap';
-import { paragraphCustomAlerts } from '@hashicorp/remark-plugins';
+import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
@@ -10,6 +10,7 @@ import remarkCollapse from 'remark-collapse';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
 
+import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
 import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
@@ -72,7 +73,8 @@ export default defineConfig({
     ],
     remarkPlugins: [
       numberedFootnoteLabels,
-      paragraphCustomAlerts,
+      remarkAlertBlocks,
+      remarkCodeHighlight,
       remarkToc,
       [
         remarkCollapse,
