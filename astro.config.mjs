@@ -1,7 +1,9 @@
 import sitemap from '@astrojs/sitemap';
 import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
+import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
+import robotsTxt from 'astro-robots-txt';
 import { defineConfig } from 'astro/config';
 import { s } from 'hastscript';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -10,8 +12,7 @@ import remarkCollapse from 'remark-collapse';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
 
-import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
-import robotsTxt from 'astro-robots-txt';
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,9 +36,12 @@ export default defineConfig({
     //   cache: false,
     // }),
     sitemap(),
-    robotsTxt({ sitemap: false }),
+    robotsTxt({
+      sitemap: false,
+    }),
     compress(),
     astroExpressiveCode(),
+    react(),
   ],
   // Markdown configuration
   markdown: {
@@ -90,8 +94,11 @@ export default defineConfig({
   // Ref: https://github.com/natemoo-re/astro-icon#setup
   vite: {
     ssr: {
-      external: ['svgo'],
+      external: ['svgo', '@resvg/resvg-js'],
     },
+    // Fix 'resvg' on dev mode
+    optimizeDeps: { exclude: ['@resvg/resvg-js'] },
+    build: { rollupOptions: { external: ['@resvg/resvg-js'] } },
   },
   // Listen on all addresses, including LAN and public addresses.
   //

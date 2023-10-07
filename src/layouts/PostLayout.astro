@@ -20,6 +20,7 @@ import Layout from './Layout.astro';
 import Navigation from './Navigation.astro';
 import PostFooter from './PostFooter.astro';
 import { getReadTime } from '@lib/time';
+import { getPostImage } from 'open-graph/generator';
 
 interface Props {
   title: string;
@@ -36,12 +37,16 @@ const { linkedin, twitter, reddit } = getSocialsShare(
   post.data.title,
   headConfig.social
 );
+const image = import.meta.env.PROD
+  ? await getPostImage(post)
+  : 'static/banner.png';
 ---
 
 <Layout
   title={title}
   description={description}
   robots={post.data.isVisible ? 'index,follow' : 'noindex,nofollow'}
+  banner={image}
 >
   <Container maxWidth="45rem" gap="1rem">
     <ProgressBar />
