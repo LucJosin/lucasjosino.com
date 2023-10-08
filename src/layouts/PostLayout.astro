@@ -21,6 +21,7 @@ import Navigation from './Navigation.astro';
 import PostFooter from './PostFooter.astro';
 import { getReadTime } from '@lib/time';
 import { getPostImage } from 'open-graph/generator';
+import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
 
 interface Props {
   title: string;
@@ -91,6 +92,8 @@ const image = import.meta.env.PROD
       }
     </PostInfo>
 
+    <PostImage src={post.data.image} title={post.data.title} />
+
     <PostShare
       items={[
         {
@@ -118,13 +121,12 @@ const image = import.meta.env.PROD
       ]}
     />
 
-    <PostImage src={post.data.image} title={post.data.title} />
-
-    <Divider />
+    <Divider margin="0" />
 
     <slot />
 
     <PostFooter>
+      {post.data.updatedAt && <PostUpdatedAt updatedAt={post.data.updatedAt} />}
       <Tags values={post.data.tags} target="tags" id="tags" title="Tags" />
       {post.data.enableComments && <PostComments />}
       {post.data.relatedPosts && <PostRelated posts={relatedPosts} />}

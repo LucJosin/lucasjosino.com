@@ -1,0 +1,23 @@
+---
+import { getFormatedDate } from '@lib/date';
+import Icon from 'astro-icon';
+
+interface Props {
+  updatedAt: string;
+}
+
+const { updatedAt } = Astro.props;
+---
+
+<div class="post-updated-at">
+  <Icon name="mdi:update" width="18" />
+  <i>Last modified: {getFormatedDate(updatedAt, true)} UTC</i>
+</div>
+
+<style>
+  .post-updated-at {
+    margin: 1rem 0 0 0;
+    display: flex;
+    gap: 0.2rem;
+  }
+</style>
