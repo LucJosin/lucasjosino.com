@@ -4,7 +4,7 @@ export const blogSchema = z.object({
   refFile: z.string().optional(),
   image: z.string().default('/static/banner.png'),
   publishedAt: z.string(),
-  updatedAt: z.string(),
+  updatedAt: z.string().optional(),
   title: z.string().max(65),
   description: z.string().max(160),
   tags: z.array(z.string()),
