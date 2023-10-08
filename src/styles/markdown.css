@@ -1,5 +1,4 @@
 .markdown {
-  max-width: 50rem;
   width: 100%;
 }
 
@@ -143,7 +142,6 @@
 
 .markdown figure figcaption {
   color: #6b7280;
-  font-size: 0.875em;
   line-height: 1.4285714;
   margin-top: 0.8571429em;
 }
@@ -276,8 +274,7 @@
 }
 
 .markdown figure {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin: 3rem 0;
 }
 
 .markdown figure > * {
@@ -423,18 +420,13 @@
   margin-bottom: 1.7777778em;
 }
 
-.markdown-lg figure {
-  margin-top: 1.7777778em;
-  margin-bottom: 1.7777778em;
-}
-
 .markdown-lg figure > * {
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .markdown-lg figure figcaption {
-  font-size: 0.8888889em;
+  font-size: 0.8em;
   line-height: 1.5;
   margin-top: 1em;
 }
