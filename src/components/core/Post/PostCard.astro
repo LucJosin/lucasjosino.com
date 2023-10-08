@@ -1,5 +1,6 @@
 ---
 import Tags from '@components/data/Tags.astro';
+import { getFormatedDate } from '@lib/date';
 import Description from '../Description.astro';
 import Link from '../Link/Link.astro';
 
@@ -20,7 +21,7 @@ const { image, category, publishedAt, title, description, tags, href } =
 <div class="post-card">
   {image && <img src={image} alt={`Post - ${title}`} class="post-card-img" />}
   <span class="post-card-info">
-    <span>{publishedAt}</span> •
+    <span>{getFormatedDate(publishedAt)}</span> •
     <Link
       title={category}
       alt="See all posts with this category"
@@ -69,7 +70,7 @@ const { image, category, publishedAt, title, description, tags, href } =
   }
 
   .post-card-img {
-    height: 60%;
+    height: 50%;
     width: 100%;
     object-fit: cover;
     border-radius: var(--border-radius);
