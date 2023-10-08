@@ -1742,6 +1742,11 @@
   dependencies:
     unist-util-visit "^5.0.0"
 
+"@lucjosin/remark-image-caption@./plugins/remark-image-caption":
+  version "1.0.0"
+  dependencies:
+    unist-util-visit "^5.0.0"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

@@ -30,6 +30,7 @@
     "@astrojs/rss": "^3.0.0",
     "@lucjosin/remark-alert-blocks": "./plugins/remark-alert-blocks",
     "@lucjosin/remark-code-highlight": "./plugins/remark-code-highlight",
+    "@lucjosin/remark-image-caption": "./plugins/remark-image-caption",
     "@resvg/resvg-js": "^2.4.1",
     "@swup/astro": "^1.3.2",
     "@types/react": "^18.0.21",

@@ -1,6 +1,7 @@
 import sitemap from '@astrojs/sitemap';
 import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
 import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
+import remarkImageCaption from '@lucjosin/remark-image-caption';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
 import robotsTxt from 'astro-robots-txt';
@@ -79,6 +80,7 @@ export default defineConfig({
       numberedFootnoteLabels,
       remarkAlertBlocks,
       remarkCodeHighlight,
+      remarkImageCaption,
       remarkToc,
       [
         remarkCollapse,
