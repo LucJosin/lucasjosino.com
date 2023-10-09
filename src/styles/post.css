@@ -8,7 +8,12 @@ summary {
 }
 
 .autolink-header {
-  margin-left: 0.5rem;
+  margin-left: 0.3rem;
+}
+
+.external-links {
+  margin-left: 0.1rem;
+  margin-bottom: -0.15rem;
 }
 
 .medium-zoom-image {
