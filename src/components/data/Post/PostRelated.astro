@@ -23,6 +23,7 @@ const { posts } = Astro.props;
             href={item.slug}
             category={item.data.category}
             tags={item.data.tags}
+            maxTags={1}
           />
         );
       })

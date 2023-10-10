@@ -12,26 +12,43 @@ interface Props {
   description: string;
   tags: string[];
   href: string;
+  maxTags?: number;
 }
 
-const { image, category, publishedAt, title, description, tags, href } =
-  Astro.props;
+const {
+  image,
+  category,
+  publishedAt,
+  title,
+  description,
+  tags,
+  href,
+  maxTags = 5,
+} = Astro.props;
 ---
 
 <div class="post-card">
-  {image && <img src={image} alt={`Post - ${title}`} class="post-card-img" />}
-  <span class="post-card-info">
-    <span>{getFormatedDate(publishedAt)}</span> •
-    <Link
-      title={category}
-      alt="See all posts with this category"
-      href={`/blog/categories/${category}`}
-    />
-  </span>
+  {
+    image && (
+      <a href={`/blog/${href}`} title={`Read more about: ${title}`}>
+        <img src={image} alt={`Post - ${title}`} class="post-card-img" />
+      </a>
+    )
+  }
+  <div class="post-card-info">
+    <span class="post-card-info-left">
+      <span>{getFormatedDate(publishedAt)}</span> •
+      <Link
+        title={category}
+        alt="See all posts with this category"
+        href={`/blog/categories/${category}`}
+      />
+    </span>
+    <Tags values={tags.slice(0, maxTags)} target="tags" />
+  </div>
   <div class="post-card-header">
     <h3>{title}</h3>
   </div>
-  <Tags values={tags} target="tags" />
   <Description
     value={description}
     margin="0"
@@ -70,7 +87,7 @@ const { image, category, publishedAt, title, description, tags, href } =
   }
 
   .post-card-img {
-    height: 50%;
+    height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: var(--border-radius);
@@ -79,6 +96,12 @@ const { image, category, publishedAt, title, description, tags, href } =
   .post-card-info {
     font-size: 0.85em;
     font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .post-card-info-left {
     display: flex;
     gap: 0.4rem;
   }
