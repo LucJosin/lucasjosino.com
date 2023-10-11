@@ -2,9 +2,9 @@
 import Link from '@components/core/Link/Link.astro';
 import MiniPostCard from '@components/core/Post/MiniPostCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
-import { getCollection } from 'astro:content';
+import { getAllPosts } from '@lib/blog';
 
-const posts = await getCollection('blog');
+const posts = await getAllPosts();
 ---
 
 <div class="posts">
