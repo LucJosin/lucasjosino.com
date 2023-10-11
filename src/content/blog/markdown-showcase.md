@@ -1,15 +1,15 @@
 ---
 image: 'https://lucasjosino.com/static/banner.png'
 publishedAt: '2023-09-22 12:10 UTC'
-updatedAt: '2023-09-22 12:10 UTC'
-title: 'Markdown file example'
-description: 'A markdown example shows how to write a markdown file.'
+updatedAt: '2023-10-11 20:16 UTC'
+title: 'Markdown showcase'
+description: 'A markdown showcase to show all features from blog posts.'
 tags:
   - 'example'
   - 'markdown'
 category: 'Example'
 language: 'en'
-shortlink: '/blog'
+shortlink: '/b/fspKnFOq'
 isVisible: false
 enableComments: false
 ---
