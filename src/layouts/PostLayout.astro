@@ -30,17 +30,29 @@ interface Props {
 }
 
 const { title, description, post } = Astro.props;
+
 const relatedPosts = post.data.relatedPosts
   ? await getEntries(post.data.relatedPosts)
   : [];
+
 const { linkedin, twitter, reddit } = getSocialsShare(
   Astro.url.toString(),
   post.data.title,
   headConfig.social
 );
+
 const image = import.meta.env.PROD
   ? await getPostImage(post)
   : 'static/banner.png';
+
+const article = {
+  title: post.data.title,
+  description: post.data.description,
+  updatedAt: post.data.updatedAt,
+  publishedAt: post.data.publishedAt,
+  tags: post.data.tags,
+  category: post.data.category,
+};
 ---
 
 <Layout
@@ -48,6 +60,7 @@ const image = import.meta.env.PROD
   description={description}
   robots={post.data.isVisible ? 'index,follow' : 'noindex,nofollow'}
   banner={image}
+  article={article}
 >
   <Container maxWidth="45rem" gap="1rem">
     <ProgressBar />
