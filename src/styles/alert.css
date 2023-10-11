@@ -30,11 +30,14 @@
 
 .remark-alert-info a,
 .remark-alert-info strong,
-.remark-alert-info code,
 .remark-alert-note a,
-.remark-alert-note strong,
-.remark-alert-note code {
+.remark-alert-note strong {
   color: var(--blue-color);
+}
+
+.remark-alert-info code,
+.remark-alert-note code {
+  background-color: var(--blue-color);
 }
 
 .remark-alert-tip {
@@ -44,7 +47,8 @@
     var(--border-left-width);
 }
 
-.remark-alert-tip a {
+.remark-alert-tip code {
+  background-color: #000;
   color: var(--white-color);
 }
 
@@ -59,6 +63,10 @@
   color: var(--purple-color);
 }
 
+.remark-alert-issue code {
+  background-color: var(--purple-color);
+}
+
 .remark-alert-success,
 .remark-alert-solution,
 .remark-alert-check,
@@ -71,17 +79,20 @@
 
 .remark-alert-success a,
 .remark-alert-success strong,
-.remark-alert-success code,
 .remark-alert-solution a,
 .remark-alert-solution strong,
-.remark-alert-solution code,
 .remark-alert-check a,
 .remark-alert-check strong,
-.remark-alert-check code,
 .remark-alert-complete a,
-.remark-alert-complete strong,
-.remark-alert-complete code {
+.remark-alert-complete strong {
   color: var(--green-color);
+}
+
+.remark-alert-success code,
+.remark-alert-solution code,
+.remark-alert-check code,
+.remark-alert-complete code {
+  background-color: var(--green-color);
 }
 
 .remark-alert-warning {
@@ -92,9 +103,12 @@
 }
 
 .remark-alert-warning a,
-.remark-alert-warning strong,
-.remark-alert-warning code {
+.remark-alert-warning strong {
   color: var(--orange-color);
+}
+
+.remark-alert-warning code {
+  background-color: var(--orange-color);
 }
 
 .remark-alert-error,
@@ -107,11 +121,14 @@
 
 .remark-alert-error a,
 .remark-alert-error strong,
-.remark-alert-error code,
-.remark-alert-dange a,
-.remark-alert-dange strong,
-.remark-alert-dange code {
+.remark-alert-danger a,
+.remark-alert-danger strong {
   color: var(--red-color);
+}
+
+.remark-alert-error code,
+.remark-alert-danger code {
+  background-color: var(--red-color);
 }
 
 .remark-alerts > p {
@@ -187,6 +204,10 @@
     border-color: #000000;
     border-width: var(--border-width) var(--border-width) var(--border-width)
       var(--border-left-width);
+  }
+
+  .remark-alert-tip p a {
+    color: #000000 !important;
   }
 
   .remark-alert-tip > p::before {
