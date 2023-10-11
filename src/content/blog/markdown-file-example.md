@@ -23,14 +23,14 @@ enableComments: false
 Code:
 
 ```
-`Lorem ipsum dolor sit amet{lorem#chartreuse-gray}`, consectetur adipiscing elit. Integer in massa ipsum. `Morbi neque sapien, ornare fermentum tincidunt pulvinar{morbi#lightblue-black}`, varius eu quam. `Praesent consectetur{praesent#aqua-blue}` pellentesque venenatis. `Aliquam erat volutpat{aliquam#lightpink-green}`. Quisque vulputate eros id turpis volutpat bibendum. Donec egestas, tortor in facilisis iaculis, neque ipsum suscipit ipsum, `eget lacinia orci turpis vel enim{eget#lightsalmon-#000}`. Curabitur vel gravida mauris, vitae ultrices arcu. `Etiam in ligula quis dui faucibus consectetur{etiam#lightskyblue-crimson}`. Phasellus venenatis eu mauris ac tempus. Nullam sollicitudin malesuada lacus eget tristique.
+`Lorem ipsum dolor sit amet{lorem#chartreuse-gray}`, consectetur adipiscing elit. Integer in massa ipsum. `Morbi neque sapien, ornare fermentum tincidunt pulvinar{morbi#lightblue-black}`, varius eu quam. `Praesent consectetur{praesent#aqua-blue}` pellentesque venenatis. `Aliquam erat volutpat{aliquam#lightpink-green}`. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents) Donec egestas, tortor in facilisis iaculis, neque ipsum suscipit ipsum, `eget lacinia orci turpis vel enim{eget#lightsalmon-#000}`. Curabitur vel gravida mauris, vitae ultrices arcu. `Etiam in ligula quis dui faucibus consectetur{etiam#lightskyblue-crimson}`. Phasellus venenatis eu mauris ac tempus. Nullam sollicitudin malesuada lacus eget tristique.
 ```
 
 Preview:
 
 ---
 
-`Lorem ipsum dolor sit amet{lorem#chartreuse-gray}`, consectetur adipiscing elit. Integer in massa ipsum. `Morbi neque sapien, ornare fermentum tincidunt pulvinar{morbi#lightblue-black}`, varius eu quam. `Praesent consectetur{praesent#aqua-blue}` pellentesque venenatis. `Aliquam erat volutpat{aliquam#lightpink-green}`. Quisque vulputate eros id turpis volutpat bibendum. Donec egestas, tortor in facilisis iaculis, neque ipsum suscipit ipsum, `eget lacinia orci turpis vel enim{eget#lightsalmon-#000}`. Curabitur vel gravida mauris, vitae ultrices arcu. `Etiam in ligula quis dui faucibus consectetur{etiam#lightskyblue-crimson}`. Phasellus venenatis eu mauris ac tempus. Nullam sollicitudin malesuada lacus eget tristique.
+`Lorem ipsum dolor sit amet{lorem#chartreuse-gray}`, consectetur adipiscing elit. Integer in massa ipsum. `Morbi neque sapien, ornare fermentum tincidunt pulvinar{morbi#lightblue-black}`, varius eu quam. `Praesent consectetur{praesent#aqua-blue}` pellentesque venenatis. `Aliquam erat volutpat{aliquam#lightpink-green}`. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents) Donec egestas, tortor in facilisis iaculis, neque ipsum suscipit ipsum, `eget lacinia orci turpis vel enim{eget#lightsalmon-#000}`. Curabitur vel gravida mauris, vitae ultrices arcu. `Etiam in ligula quis dui faucibus consectetur{etiam#lightskyblue-crimson}`. Phasellus venenatis eu mauris ac tempus. Nullam sollicitudin malesuada lacus eget tristique.
 
 ---
 
@@ -89,29 +89,29 @@ Preview:
 ## Alerts
 
 - [Info](#info)
-- Note
+  - Note
 - [Tip](#tip)
 - [Success](#success)
-- Solution
-- Check
-- Complete
+  - Solution
+  - Check
+  - Complete
 - [Warning](#warning)
-- Error
 - [Danger](#danger)
+  - Error
 
 ### Info
 
 Code:
 
 ```
-!!!info Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!info Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 ```
 
 Preview:
 
 ---
 
-!!!info Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!info Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 
 ---
 
@@ -120,14 +120,14 @@ Preview:
 Code:
 
 ```
-!!!tip Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!tip Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 ```
 
 Preview:
 
 ---
 
-!!!tip Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!tip Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 
 ---
 
@@ -136,14 +136,14 @@ Preview:
 Code:
 
 ```
-!!!success Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!success Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 ```
 
 Preview:
 
 ---
 
-!!!success Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!success Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 
 ---
 
@@ -152,14 +152,14 @@ Preview:
 Code:
 
 ```
-!!!warning Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!warning Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 ```
 
 Preview:
 
 ---
 
-!!!warning Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!warning Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 
 ---
 
@@ -168,14 +168,14 @@ Preview:
 Code:
 
 ```
-!!!danger Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!danger Lorem ipsum dolor sit amet, `consectetur adipiscing eli`t. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 ```
 
 Preview:
 
 ---
 
-!!!danger Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. Quisque vulputate eros id turpis volutpat bibendum.
+!!!danger Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
 
 ---
 
