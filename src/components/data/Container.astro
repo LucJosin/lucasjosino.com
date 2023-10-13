@@ -10,10 +10,10 @@ interface Props {
 const { back, maxWidth = '35rem', gap } = Astro.props;
 ---
 
-<div class="container">
+<div class="layout-container">
   {
     back && (
-      <a href={back} class="back" title="Back">
+      <a href={back} class="back-button" title="Back">
         <Icon name="mdi:arrow-left" width="24" />
       </a>
     )
@@ -22,7 +22,7 @@ const { back, maxWidth = '35rem', gap } = Astro.props;
 </div>
 
 <style define:vars={{ maxWidth, gap }}>
-  .container {
+  .layout-container {
     margin: 8vh 0 4vh 0;
     max-width: var(--maxWidth);
     width: 90%;
@@ -37,19 +37,19 @@ const { back, maxWidth = '35rem', gap } = Astro.props;
     gap: var(--gap);
   }
 
-  .back {
+  .back-button {
     position: absolute;
     top: 0;
     left: 0;
   }
 
-  .back:hover > [astro-icon] {
+  .back-button:hover > [astro-icon] {
     fill: gray;
     color: gray;
   }
 
   @media (max-width: 560px) {
-    .container {
+    .layout-container {
       min-width: initial;
     }
   }

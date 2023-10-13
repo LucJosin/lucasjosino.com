@@ -24,7 +24,7 @@ const posts = await getAllPosts();
     />
     <Title title="Blog" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
-    <div class="posts">
+    <div class="blog-posts">
       {
         posts.map((post) => {
           return (
@@ -45,7 +45,7 @@ const posts = await getAllPosts();
 </Layout>
 
 <style>
-  .posts {
+  .blog-posts {
     width: 100%;
     display: flex;
     flex-direction: column;

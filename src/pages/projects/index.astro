@@ -18,7 +18,7 @@ import Navigation from '@layouts/Navigation.astro';
     <Title title="Projects" fontSize="2.5em" />
     <Divider height="1px" width="80%" />
 
-    <div class="projects">
+    <div class="projects-list">
       {
         projects.map((data) => (
           <ProjectCard project={data} titleSize="1.2em" descSize="1em" />
@@ -37,7 +37,7 @@ import Navigation from '@layouts/Navigation.astro';
     gap: 0.2rem;
   }
 
-  .projects {
+  .projects-list {
     width: 100%;
     display: flex;
     flex-direction: column;
