@@ -6,6 +6,8 @@ export default function remarkImageCaption() {
       const src = imageNode.url;
       const alt = imageNode.alt;
 
+      if (!src.match('\\.(jpeg|jpg|gif|png|webp|svg)$')) return;
+
       let newNode = null;
       if (alt) {
         newNode = {
