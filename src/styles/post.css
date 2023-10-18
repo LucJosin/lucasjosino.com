@@ -19,12 +19,3 @@ summary {
 .medium-zoom-image {
   z-index: 2;
 }
-
-.remark-image-caption {
-  width: 100%;
-  text-align: center;
-}
-
-.remark-image-caption > figcaption {
-  margin: 0 !important;
-}
