@@ -22,6 +22,7 @@ import PostFooter from '../components/core/Post/PostFooter.astro';
 import { getReadTime } from '@lib/time';
 import { getPostImage } from 'open-graph/generator';
 import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
+import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
 
 interface Props {
   title: string;
@@ -141,7 +142,19 @@ const article = {
 
     <PostFooter>
       {post.data.updatedAt && <PostUpdatedAt updatedAt={post.data.updatedAt} />}
-      <Tags values={post.data.tags} target="tags" id="tags" title="Tags" />
+      <PostShareBanner
+        link={post.data.shortlink}
+        twitter={twitter}
+        linkedin={linkedin}
+        reddit={reddit}
+      />
+      <Tags
+        values={post.data.tags}
+        target="tags"
+        id="tags"
+        title="Tags"
+        active
+      />
       {post.data.enableComments && <PostComments />}
       {post.data.relatedPosts && <PostRelated posts={relatedPosts} />}
     </PostFooter>

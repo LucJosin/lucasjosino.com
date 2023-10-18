@@ -1,0 +1,82 @@
+---
+import PostShare from '@components/data/Post/PostShare.astro';
+import headConfig from '@constants/head';
+import Icon from 'astro-icon';
+
+interface Props {
+  link: string;
+  linkedin: string;
+  twitter: string;
+  reddit: string;
+}
+
+const { link, linkedin, twitter, reddit } = Astro.props;
+---
+
+<div class="post-extra-share">
+  <span class="post-extra-share-left">
+    <Icon name="mdi:cards-heart" width="18" />
+     Enjoy this post? Feel free to share!
+  </span>
+  <PostShare
+    items={[
+      {
+        href: linkedin,
+        icon: 'simple-icons:linkedin',
+        alt: 'Share to Linkedin',
+      },
+      {
+        href: twitter,
+        icon: 'simple-icons:twitter',
+        alt: 'Share to Twitter',
+      },
+      {
+        href: reddit,
+        icon: 'simple-icons:reddit',
+        alt: 'Share to Reddit',
+      },
+      {
+        href: headConfig.shortLink + link,
+        icon: 'mdi:link',
+        alt: 'Copy link',
+        id: 'share',
+        messageId: 'share-title',
+      },
+    ]}
+  />
+</div>
+
+<style>
+  .post-extra-share {
+    width: 100%;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--card-padding);
+    gap: 1rem;
+  }
+
+  .post-extra-share-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.4rem;
+  }
+
+  @media (max-width: 670px) {
+    .post-extra-share {
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .post-extra-share-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+  }
+</style>
