@@ -16,6 +16,40 @@ enableComments: false
 
 ## Table of contents
 
+## Repository reference
+
+Source: [github.com/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
+
+Code:
+
+```
+!!!ref:repo anuraghazra/github-readme-stats
+```
+
+Preview:
+
+---
+
+!!!ref:repo anuraghazra/github-readme-stats
+
+---
+
+## Post reference
+
+Code:
+
+```
+!!!ref [](http://127.0.0.1:4321/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/)
+```
+
+Preview:
+
+---
+
+!!!ref [](http://127.0.0.1:4321/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/)
+
+---
+
 ## Code highlight
 
 ### Example
