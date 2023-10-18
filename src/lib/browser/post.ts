@@ -1,5 +1,9 @@
-const shareButton = document.querySelector('#share') as HTMLElement;
-const shareButtonText = document.querySelector('#share-title') as HTMLElement;
+const shareButtons = document.querySelectorAll(
+  '#share'
+) as NodeListOf<HTMLElement>;
+const shareButtonTexts = document.querySelectorAll(
+  '#share-title'
+) as NodeListOf<HTMLElement>;
 
 const backButton = document.querySelector('.back-to-top') as HTMLLinkElement;
 
@@ -48,17 +52,22 @@ function showHideBackToTopButton() {
  * Copy post permalink on button click.
  */
 function listenToOnShareClick() {
-  shareButton.addEventListener('click', async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
+  for (let i = 0; i < shareButtons.length; i++) {
+    const shareButton = shareButtons[i];
+    const shareButtonText = shareButtonTexts[i];
 
-    const value = shareButton.getAttribute('data-href')!;
-    await navigator.clipboard.writeText(value);
+    shareButton.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
 
-    shareButtonText.innerText = 'Copied!';
-    setTimeout(() => {
-      shareButtonText.innerText = 'Copy link';
-    }, 2000);
-  });
+      const value = shareButton.getAttribute('data-href')!;
+      await navigator.clipboard.writeText(value);
+
+      shareButtonText.innerText = 'Copied!';
+      setTimeout(() => {
+        shareButtonText.innerText = 'Copy link';
+      }, 2000);
+    });
+  }
 }
