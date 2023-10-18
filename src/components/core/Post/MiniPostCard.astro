@@ -1,5 +1,6 @@
 ---
 import { getFormatedDate } from '@lib/date';
+import { getReadTime } from '@lib/time';
 import Description from '../Description.astro';
 import Title from '../Title.astro';
 
@@ -9,9 +10,10 @@ interface Props {
   title: string;
   description: string;
   publishedAt: string;
+  body: string;
 }
 
-const { image, href, title, description, publishedAt } = Astro.props;
+const { image, href, title, description, publishedAt, body } = Astro.props;
 ---
 
 <a href={href} class="blog-item">
@@ -19,6 +21,8 @@ const { image, href, title, description, publishedAt } = Astro.props;
   <div class="blog-item-info">
     <span class="blog-item-info-publish">
       {getFormatedDate(publishedAt)}
+       •
+      {getReadTime(body)}
     </span>
     <Title title={title} margin="0" fontSize="1.1em" align={false} />
     <Description
