@@ -6,47 +6,54 @@ import LinkBox from '@components/core/Link/LinkBox.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
+import Navigation from '@layouts/Navigation.astro';
 
 const encodedUrl = encodeURI(`[${Astro.url.pathname}]`);
 const encodedCode = encodeURI('Status: 404');
 ---
 
 <Layout title="404" description="Page not found!">
-  <Container>
+  <Container gap="0.5rem">
+    <Navigation backAlt="Go back to home page" backHref="/" backTitle="Home" />
+
     <Title title="404" fontSize="5em" />
-    <Description value="This page could not be found." margin="0" />
+    <Description
+      value="Page not found. Maybe something was deleted or moved."
+      margin="0"
+    />
 
     <Divider width="80%" />
     <LinkBox title="Go Back" href="/" alt="Go back to home page" />
-
-    <div class="help-container">
-      Need help? Contact using:
-      <Link
-        title="Github"
-        alt="Repository of lucasjosino.com project"
-        isLocal={false}
-        href={`https://github.com/LucJosin/lucasjosino.com/issues/new?title=${encodedUrl}&labels=${encodedCode}`}
-      />
-       or
-      <Link
-        title="contact@lucasjosino.com"
-        alt="Email for contact"
-        href={`mailto:contact@lucasjosino.com?subject=${encodeURI(
-          `[404] Page: ${Astro.url.pathname}`
-        )}`}
-      />
-    </div>
   </Container>
+  <div class="help-container">
+    Need help? Contact using:
+    <Link
+      title="Github"
+      alt="Repository of lucasjosino.com project"
+      isLocal={false}
+      href={`https://github.com/LucJosin/lucasjosino.com/issues/new?title=${encodedUrl}&labels=${encodedCode}`}
+    />
+     or
+    <Link
+      title="contact@lucasjosino.com"
+      alt="Email for contact"
+      href={`mailto:contact@lucasjosino.com?subject=${encodeURI(
+        `[404] Page: ${Astro.url.pathname}`
+      )}`}
+    />
+  </div>
 </Layout>
 
 <style>
   .help-container {
-    height: 2rem;
-    width: 100%;
-    position: absolute;
     bottom: 0;
     text-align: center;
     font-size: 0.88em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 425px) {
