@@ -1,13 +1,18 @@
+import { defineConfig } from 'astro/config';
+import { s } from 'hastscript';
+
+import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import compress from 'astro-compress';
+import astroExpressiveCode from 'astro-expressive-code';
+import rename from 'astro-rename';
+import robotsTxt from 'astro-robots-txt';
+
 import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
 import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
 import remarkImageCaption from '@lucjosin/remark-image-caption';
 import remarkPostReference from '@lucjosin/remark-post-reference';
-import compress from 'astro-compress';
-import astroExpressiveCode from 'astro-expressive-code';
-import robotsTxt from 'astro-robots-txt';
-import { defineConfig } from 'astro/config';
-import { s } from 'hastscript';
+import remarkReadmeStats from '@lucjosin/remark-readme-stats';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
@@ -15,7 +20,10 @@ import remarkCollapse from 'remark-collapse';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
 
-import react from '@astrojs/react';
+import HashRenamer from './src/lib/hash-reanamer';
+
+const cssPrefix = 'astro-';
+const renamer = new HashRenamer(cssPrefix);
 
 // https://astro.build/config
 export default defineConfig({
@@ -41,6 +49,11 @@ export default defineConfig({
     sitemap(),
     robotsTxt({
       sitemap: false,
+    }),
+    rename({
+      rename: {
+        strategy: (key) => renamer.rename(key),
+      },
     }),
     compress(),
     astroExpressiveCode(),
@@ -102,6 +115,14 @@ export default defineConfig({
       ],
     ],
     remarkPlugins: [
+      [
+        remarkReadmeStats,
+        {
+          darkBgColor: '111111',
+          lightBgColor: 'f0f0f0',
+          borderRadius: '10',
+        },
+      ],
       remarkPostReference,
       numberedFootnoteLabels,
       remarkAlertBlocks,
