@@ -39,7 +39,6 @@ export const projects: ProjectModel[] = [
       'A Free and Open Source API for Stranger Things built with Java (Spring Boot) and PostgreSQL with support for multiple languages (English and Portuguese).',
     git: 'https://github.com/HawAPI/HawAPI',
     url: 'https://hawapi.theproject.id/',
-    article: 'blog/hawapi-the-stranger-things-api/',
     tags: ['Git', 'Java', 'Spring Boot', 'JUnit', 'PostgreSQL', 'SQL', 'JSON'],
     language: 'Java',
     category: 'Collection',
