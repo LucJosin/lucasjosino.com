@@ -2,14 +2,21 @@
 interface Props {
   href: string;
   value: string;
+  active?: boolean;
 }
 
-const { href, value } = Astro.props;
+const { href, value, active = false } = Astro.props;
 ---
 
-<a href={href} class="tag">
-  {value}
-</a>
+{
+  active ? (
+    <a href={href} class="tag" title={`See more posts from '${value}' tag`}>
+      {value}
+    </a>
+  ) : (
+    <span class="tag">{value}</span>
+  )
+}
 
 <style>
   .tag {
