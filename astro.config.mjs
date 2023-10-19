@@ -48,7 +48,7 @@ export default defineConfig({
     // }),
     sitemap(),
     robotsTxt({
-      sitemap: false,
+      sitemap: true,
     }),
     rename({
       rename: {
