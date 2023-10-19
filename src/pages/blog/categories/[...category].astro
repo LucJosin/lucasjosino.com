@@ -58,6 +58,7 @@ const { posts } = Astro.props;
               href={`${post.slug}/`}
               publishedAt={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
+              body={post.body}
             />
           );
         })
