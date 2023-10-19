@@ -22,24 +22,11 @@
   </a>
 </p>
 
-Personal website built with [Astro](https://astro.build) + [Typescript](https://www.typescriptlang.org/).
+Minimalist portfolio website/blog built with [Astro](https://astro.build) + [Typescript](https://www.typescriptlang.org/).
 
 </div>
 
 **Note**: The source for this site was not created to be a template or theme, but for my use. Feel free to take whatever inspiration from it that you want, but this code was not written to be cloned and deployed. As such, I do not provide support or guidance for doing that.
-
-## Astro Integrations
-
-See more Astro [integrations](https://astro.build/integrations/)
-
-- [@astrojs/sitemap](https://www.npmjs.com/package/@astrojs/sitemap)
-- [@swup/astro](https://www.npmjs.com/package/@swup/astro)
-- [astro](https://www.npmjs.com/package/astro)
-- [astro-icon](https://www.npmjs.com/package/astro-icon)
-- [astro-compress](https://www.npmjs.com/package/astro-compress)
-- [astro-robots-txt](https://www.npmjs.com/package/astro-robots-txt)
-- [eslint-plugin-astro](https://www.npmjs.com/package/eslint-plugin-astro)
-- [prettier-plugin-astro](https://www.npmjs.com/package/prettier-plugin-astro)
 
 ## Commands
 
