@@ -39,14 +39,14 @@ Preview:
 Code:
 
 ```
-!!!ref [](http://127.0.0.1:4321/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/)
+!!!ref [](https://www.lucasjosino.com/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/)
 ```
 
 Preview:
 
 ---
 
-!!!ref [](http://127.0.0.1:4321/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/)
+!!!ref [](https://www.lucasjosino.com/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/)
 
 ---
 
