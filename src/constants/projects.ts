@@ -75,7 +75,7 @@ export const projects: ProjectModel[] = [
     description:
       'Flutter Plugin used to query audios/songs infos from device storage.',
     git: 'https://github.com/LucJosin/on_audio_query',
-    url: 'https://pub.dev/packages/on_audio_query',
+    url: 'https://pub.dev/packages/on_audio_query#gif-examples',
     tags: ['Git', 'Kotlin', 'Flutter', 'Dart'],
     language: 'Dart',
     category: 'Project',
