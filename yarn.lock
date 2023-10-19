@@ -2643,10 +2643,9 @@ astro-icon@^0.8.1:
     resolve-pkg "^2.0.0"
     svgo "^2.8.0"
 
-astro-rename@^1.1.0:
+"astro-rename@https://github.com/LucJosin/astro-rename.git":
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/astro-rename/-/astro-rename-1.1.0.tgz#2bb66a0ba98d3e8ee6ff9017fdeb8e4e226ec05d"
-  integrity sha512-GgKO5fzQhAVhGwsimWnJpBGR97rwSGPt3SeaOgkwD5uUvbMAhWoR01NvDLn+u4+0ufxT5dXQms4CPny/rSjcyw==
+  resolved "https://github.com/LucJosin/astro-rename.git#1ef009e8f457213a00765ab4c3e468aedb9707ae"
   dependencies:
     console-table-printer "2.11.1"
     md5 "2.3.0"

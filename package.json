@@ -38,7 +38,7 @@
     "@types/react": "^18.2.29",
     "@types/react-dom": "^18.2.14",
     "astro-expressive-code": "^0.26.2",
-    "astro-rename": "^1.1.0",
+    "astro-rename": "https://github.com/LucJosin/astro-rename.git",
     "medium-zoom": "^1.0.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
