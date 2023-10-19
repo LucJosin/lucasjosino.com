@@ -26,7 +26,7 @@ const justifyContent = center ? 'center' : 'initial';
 
 <div id={id}>
   {title && <h2>{title}</h2>}
-  <div class="tags">
+  <div class="tags-list">
     {
       values.map(async (tag) => {
         const filteredPosts = showLength
@@ -45,7 +45,7 @@ const justifyContent = center ? 'center' : 'initial';
 </div>
 
 <style define:vars={{ justifyContent }}>
-  .tags {
+  .tags-list {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
