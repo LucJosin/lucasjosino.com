@@ -20,7 +20,7 @@ import remarkCollapse from 'remark-collapse';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
 
-import HashRenamer from './src/lib/hash-reanamer';
+import HashRenamer from './src/lib/hash-renamer';
 
 const cssPrefix = 'astro-';
 const renamer = new HashRenamer(cssPrefix);
