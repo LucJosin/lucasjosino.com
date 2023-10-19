@@ -36,6 +36,7 @@ const posts = await getAllPosts();
               href={`${post.slug}/`}
               publishedAt={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
+              body={post.body}
             />
           );
         })

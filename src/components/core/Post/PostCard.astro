@@ -1,12 +1,14 @@
 ---
 import Tags from '@components/data/Tags.astro';
 import { getFormatedDate } from '@lib/date';
+import { getReadTime } from '@lib/time';
 import Description from '../Description.astro';
 import Link from '../Link/Link.astro';
 
 interface Props {
   image?: string;
   category: string;
+  body: string;
   publishedAt: string;
   title: string;
   description: string;
@@ -18,6 +20,7 @@ interface Props {
 const {
   image,
   category,
+  body,
   publishedAt,
   title,
   description,
@@ -42,7 +45,8 @@ const {
         title={category}
         alt="See all posts with this category"
         href={`/blog/categories/${category}`}
-      />
+      /> •
+      <span>{getReadTime(body)}</span>
     </span>
   </div>
   <Tags values={tags.slice(0, maxTags)} target="tags" active />
@@ -95,7 +99,6 @@ const {
 
   .post-card-info {
     font-size: 0.85em;
-    font-style: italic;
     display: flex;
     align-items: center;
     justify-content: space-between;
