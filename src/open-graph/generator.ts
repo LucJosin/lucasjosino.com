@@ -29,7 +29,7 @@ const SATORI_OPTIONS: SatoriOptions = {
 
 function svgToPng(svg: string) {
   const resvg = new Resvg(svg, {
-    background: 'rgb(17,17,7)',
+    background: 'rgb(17,17,17)',
   });
 
   const pngData = resvg.render();
