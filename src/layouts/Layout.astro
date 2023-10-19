@@ -20,12 +20,12 @@ export interface Props {
   };
 }
 
-const { title, description, banner, robots, shortlink, article } =
+const { title, description, banner, robots, shortlink, locale, article } =
   Astro.props as Props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale || 'en'}>
   <head>
     <!-- Configurations -->
     <meta charset="UTF-8" />
