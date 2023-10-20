@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://www.lucasjosino.com/sitemap-index.xml
