@@ -53,7 +53,7 @@ export default defineConfig({
     rename({
       rename: {
         strategy: (key) => renamer.rename(key),
-        except: ['details'],
+        except: ['details', 'show'],
       },
     }),
     compress(),
