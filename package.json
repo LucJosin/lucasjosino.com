@@ -1,5 +1,6 @@
 {
   "name": "@lucjosin/lucasjosino.com",
+  "packageManager": "yarn@3.6.4",
   "version": "1.4.0",
   "private": true,
   "scripts": {
