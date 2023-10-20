@@ -2436,41 +2436,41 @@ __metadata:
 
 "@lucjosin/remark-alert-blocks@file:./plugins/remark-alert-blocks::locator=%40lucjosin%2Flucasjosino.com%40workspace%3A.":
   version: 1.0.0
-  resolution: "@lucjosin/remark-alert-blocks@file:./plugins/remark-alert-blocks#./plugins/remark-alert-blocks::hash=c74d99&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
+  resolution: "@lucjosin/remark-alert-blocks@file:./plugins/remark-alert-blocks#./plugins/remark-alert-blocks::hash=f6b628&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
   dependencies:
     hastscript: ^8.0.0
     unist-util-is: ^6.0.0
     unist-util-visit: ^5.0.0
-  checksum: 1990a15a20b3d9c11f9bd75b1f5f68eafc23040ad0429b4360e11e98bba6c0bb8e2ed604ba73678e2d4d2f54ad07d57127db152eff4aac5aaca56afd3c3b976e
+  checksum: 6af9a7c7683dc9cc029d2b5a935158ca2a30c4a25586ef76f5d2c6b9d3376c18007633711c624c58b8600a2905cb1349186c7002003ba85f1efc18fe75056262
   languageName: node
   linkType: hard
 
 "@lucjosin/remark-code-highlight@file:./plugins/remark-code-highlight::locator=%40lucjosin%2Flucasjosino.com%40workspace%3A.":
   version: 1.0.0
-  resolution: "@lucjosin/remark-code-highlight@file:./plugins/remark-code-highlight#./plugins/remark-code-highlight::hash=2138cf&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
+  resolution: "@lucjosin/remark-code-highlight@file:./plugins/remark-code-highlight#./plugins/remark-code-highlight::hash=7d2582&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
   dependencies:
     unist-util-visit: ^5.0.0
-  checksum: 5ec7c219d10cde49b974ad269412a8091ff793d4b47354daad635c5582d9fbcdbed5caaa96ec0b3190d29ef0485dfc9c0b059c692e979cff648695e213862989
+  checksum: f1b2fa9304b1890d451d6a6083e9a98ecd20049cb5c407360243d50b0d495b9007270f657c4e9ce6f4156493317ac3840b0bcdb43c16b40d9ce5d735e30ff1b5
   languageName: node
   linkType: hard
 
 "@lucjosin/remark-image-caption@file:./plugins/remark-image-caption::locator=%40lucjosin%2Flucasjosino.com%40workspace%3A.":
   version: 1.0.0
-  resolution: "@lucjosin/remark-image-caption@file:./plugins/remark-image-caption#./plugins/remark-image-caption::hash=6893f2&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
+  resolution: "@lucjosin/remark-image-caption@file:./plugins/remark-image-caption#./plugins/remark-image-caption::hash=bc7280&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
   dependencies:
     unist-util-visit: ^5.0.0
-  checksum: 9f73c776676860ccf2596b59469e1452259d3e6fd62751f69121da70affb4058cde28973e28600a1d1636e454dd9e8fe1a900de6d63563fec042f07857da3e63
+  checksum: 5871ce8a80324142401b61b404795e27bf109451ee0425f2d99f486608f9411f03bdd6fc9991575945c6b46cfb917e6854060ea4d95d62ee7ab9a15d366df64a
   languageName: node
   linkType: hard
 
 "@lucjosin/remark-post-reference@file:./plugins/remark-post-reference::locator=%40lucjosin%2Flucasjosino.com%40workspace%3A.":
   version: 1.0.0
-  resolution: "@lucjosin/remark-post-reference@file:./plugins/remark-post-reference#./plugins/remark-post-reference::hash=95eee8&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
+  resolution: "@lucjosin/remark-post-reference@file:./plugins/remark-post-reference#./plugins/remark-post-reference::hash=c7c6ce&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
   dependencies:
     open-graph-scraper: ^6.3.0
     unist-util-is: ^6.0.0
     unist-util-visit: ^5.0.0
-  checksum: 2112572f7ec15b66c603e72dccc2994c87096c9e2511aadf95493ad925b23125761ee0e18547d02fc17aea44e37c5b566249693207a31c4ac9257dde639230fe
+  checksum: 4c741b16300735ee1195f70c7d2a7bab6cc72a04506d6fe96a6e7fe954142787afaa628f7e8dca3cd56f965f6db601f77cc375ff2a73e77c514a40dcded3aff2
   languageName: node
   linkType: hard
 
