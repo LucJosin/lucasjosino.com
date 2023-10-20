@@ -1,14 +1,14 @@
-.markdown {
+.post-content {
   width: 100%;
 }
 
-.markdown > details {
+.post-content > details {
   border: 1px var(--contrast-color) solid;
   border-radius: var(--border-radius);
   padding: 1rem;
 }
 
-.markdown [class~='lead'] {
+.post-content [class~='lead'] {
   color: #4b5563;
   font-size: 1.25em;
   line-height: 1.6;
@@ -16,76 +16,76 @@
   margin-bottom: 1.2em;
 }
 
-.markdown a {
+.post-content a {
   color: var(--primary-text-color);
   text-decoration: underline;
   font-weight: 500;
   transition: opacity 0.2s;
 }
 
-.markdown a:hover {
+.post-content a:hover {
   opacity: 0.7;
 }
 
-.markdown strong {
+.post-content strong {
   color: var(--primary-text-color);
   font-weight: 600;
 }
 
-.markdown ol[type='A'] {
+.post-content ol[type='A'] {
   --list-counter-style: upper-alpha;
 }
 
-.markdown ol[type='a'] {
+.post-content ol[type='a'] {
   --list-counter-style: lower-alpha;
 }
 
-.markdown ol[type='A' s] {
+.post-content ol[type='A' s] {
   --list-counter-style: upper-alpha;
 }
 
-.markdown ol[type='a' s] {
+.post-content ol[type='a' s] {
   --list-counter-style: lower-alpha;
 }
 
-.markdown ol[type='I'] {
+.post-content ol[type='I'] {
   --list-counter-style: upper-roman;
 }
 
-.markdown ol[type='i'] {
+.post-content ol[type='i'] {
   --list-counter-style: lower-roman;
 }
 
-.markdown ol[type='I' s] {
+.post-content ol[type='I' s] {
   --list-counter-style: upper-roman;
 }
 
-.markdown ol[type='i' s] {
+.post-content ol[type='i' s] {
   --list-counter-style: lower-roman;
 }
 
-.markdown ol[type='1'] {
+.post-content ol[type='1'] {
   --list-counter-style: decimal;
 }
 
-.markdown ol > li {
+.post-content ol > li {
   position: relative;
   padding-left: 1em;
 }
 
-.markdown ul > li {
+.post-content ul > li {
   position: relative;
   padding-left: 1em;
 }
 
-.markdown hr {
+.post-content hr {
   border-color: #e5e7eb;
   border-top-width: 1px;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
 
-.markdown blockquote {
+.post-content blockquote {
   font-weight: 500;
   font-style: italic;
   color: var(--primary-text-color);
@@ -97,15 +97,15 @@
   padding-left: 1em;
 }
 
-.markdown blockquote p:first-of-type::before {
+.post-content blockquote p:first-of-type::before {
   content: open-quote;
 }
 
-.markdown blockquote p:last-of-type::after {
+.post-content blockquote p:last-of-type::after {
   content: close-quote;
 }
 
-.markdown h1 {
+.post-content h1 {
   color: var(--primary-text-color);
   font-weight: 800;
   font-size: 2.25em;
@@ -114,7 +114,7 @@
   line-height: 1.1111111;
 }
 
-.markdown h2 {
+.post-content h2 {
   color: var(--primary-text-color);
   font-weight: 700;
   font-size: 1.5em;
@@ -123,7 +123,7 @@
   line-height: 1.3333333;
 }
 
-.markdown h3 {
+.post-content h3 {
   color: var(--primary-text-color);
   font-weight: 600;
   font-size: 1.25em;
@@ -132,7 +132,7 @@
   line-height: 1.6;
 }
 
-.markdown h4 {
+.post-content h4 {
   color: var(--primary-text-color);
   font-weight: 600;
   margin-top: 1.5em;
@@ -140,17 +140,17 @@
   line-height: 1.5;
 }
 
-.markdown figure figcaption {
+.post-content figure figcaption {
   color: #6b7280;
   line-height: 1.4285714;
   margin-top: 0.8571429em;
 }
 
-.markdown a code {
+.post-content a code {
   color: var(--primary-text-color);
 }
 
-.markdown pre {
+.post-content pre {
   color: var(--primary-text-color);
   background-color: #1f2937;
   overflow-x: scroll;
@@ -165,7 +165,7 @@
   padding-left: 1.1428571em;
 }
 
-.markdown pre code {
+.post-content pre code {
   background-color: transparent;
   border-width: 0;
   border-radius: 0;
@@ -178,20 +178,20 @@
   width: 100%;
 }
 
-.markdown pre code::before {
+.post-content pre code::before {
   content: none;
 }
 
-.markdown pre code::after {
+.post-content pre code::after {
   content: none;
 }
 
-.markdown .table {
+.post-content .table {
   overflow-x: auto;
   margin: 2rem 0;
 }
 
-.markdown table {
+.post-content table {
   width: 100%;
   table-layout: auto;
   text-align: left;
@@ -201,37 +201,37 @@
   border-collapse: collapse;
 }
 
-.markdown .table::-webkit-scrollbar,
-.markdown .table::-webkit-scrollbar-track {
+.post-content .table::-webkit-scrollbar,
+.post-content .table::-webkit-scrollbar-track {
   background-color: inherit;
   border-radius: calc(0.3rem + 1.5px);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.markdown .table::-webkit-scrollbar,
-.markdown .table::-webkit-scrollbar-track {
+.post-content .table::-webkit-scrollbar,
+.post-content .table::-webkit-scrollbar-track {
   background-color: inherit;
   border-radius: calc(0.3rem + 1.5px);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.markdown .table::-webkit-scrollbar-thumb {
+.post-content .table::-webkit-scrollbar-thumb {
   background-color: var(--contrast-color);
   border: 4px solid transparent;
   background-clip: content-box;
   border-radius: 10px;
 }
 
-.markdown thead {
+.post-content thead {
   color: var(--primary-text-color);
   font-weight: 600;
   border-bottom-width: 1px;
   border-bottom-color: var(--contrast-color);
 }
 
-.markdown thead th {
+.post-content thead th {
   vertical-align: bottom;
   padding-right: 0.5714286em;
   padding-bottom: 0.5714286em;
@@ -239,12 +239,12 @@
   border: 1px solid var(--contrast-color);
 }
 
-.markdown tbody tr {
+.post-content tbody tr {
   border-bottom-width: 1px;
   border-bottom-color: var(--contrast-color);
 }
 
-.markdown tbody td {
+.post-content tbody td {
   vertical-align: top;
   padding-top: 0.5714286em;
   padding-right: 0.5714286em;
@@ -253,185 +253,185 @@
   border: 1px solid var(--contrast-color);
 }
 
-.markdown {
+.post-content {
   font-size: 1rem;
   line-height: 1.75;
 }
 
-.markdown p {
+.post-content p {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
 }
 
-.markdown img {
+.post-content img {
   margin-top: 2em;
   margin-bottom: 2em;
 }
 
-.markdown video {
+.post-content video {
   margin-top: 2em;
   margin-bottom: 2em;
 }
 
-.markdown figure {
+.post-content figure {
   margin: 3rem 0;
 }
 
-.markdown figure > * {
+.post-content figure > * {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.markdown h2 code {
+.post-content h2 code {
   font-size: 0.875em;
 }
 
-.markdown h3 code {
+.post-content h3 code {
   font-size: 0.9em;
 }
 
-.markdown ol {
+.post-content ol {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
 }
 
-.markdown ul {
+.post-content ul {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
   padding-inline-start: 20px;
 }
 
-.markdown li {
+.post-content li {
   word-wrap: break-word;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-.markdown > ul > li p {
+.post-content > ul > li p {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-.markdown > ul > li > *:first-child {
+.post-content > ul > li > *:first-child {
   margin-top: 1.25em;
 }
 
-.markdown > ul > li > *:last-child {
+.post-content > ul > li > *:last-child {
   margin-bottom: 1.25em;
 }
 
-.markdown > ol > li > *:first-child {
+.post-content > ol > li > *:first-child {
   margin-top: 1.25em;
 }
 
-.markdown > ol > li > *:last-child {
+.post-content > ol > li > *:last-child {
   margin-bottom: 1.25em;
 }
 
-.markdown ul ul,
-.markdown ul ol,
-.markdown ol ul,
-.markdown ol ol {
+.post-content ul ul,
+.post-content ul ol,
+.post-content ol ul,
+.post-content ol ol {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-.markdown hr + * {
+.post-content hr + * {
   margin-top: 0;
 }
 
-.markdown h2 + * {
+.post-content h2 + * {
   margin-top: 0;
 }
 
-.markdown h3 + * {
+.post-content h3 + * {
   margin-top: 0;
 }
 
-.markdown h4 + * {
+.post-content h4 + * {
   margin-top: 0;
 }
 
-.markdown > :first-child {
+.post-content > :first-child {
   margin-top: 0;
 }
 
-.markdown > :last-child {
+.post-content > :last-child {
   margin-bottom: 0;
 }
 
-.markdown-lg {
+.post-content-lg {
   font-size: 1.125rem;
   line-height: 1.7777778;
 }
 
-.markdown-lg p {
+.post-content-lg p {
   margin-top: 1.3333333em;
   margin-bottom: 1.3333333em;
 }
 
-.markdown-lg [class~='lead'] {
+.post-content-lg [class~='lead'] {
   font-size: 1.2222222em;
   line-height: 1.4545455;
   margin-top: 1.0909091em;
   margin-bottom: 1.0909091em;
 }
 
-.markdown-lg blockquote {
+.post-content-lg blockquote {
   margin-top: 1.6666667em;
   margin-bottom: 1.6666667em;
   padding-left: 1em;
 }
 
-.markdown-lg h1 {
+.post-content-lg h1 {
   font-size: 2.6666667em;
   margin-top: 0;
   margin-bottom: 0.8333333em;
   line-height: 1;
 }
 
-.markdown-lg h2 {
+.post-content-lg h2 {
   font-size: 1.6666667em;
   margin-top: 1.2666667em;
   margin-bottom: 1.0666667em;
   line-height: 1.3333333;
 }
 
-.markdown-lg h3 {
+.post-content-lg h3 {
   font-size: 1.3333333em;
   margin-top: 1.4666667em;
   margin-bottom: 0.6666667em;
   line-height: 1.5;
 }
 
-.markdown-lg h4 {
+.post-content-lg h4 {
   margin-top: 1.7777778em;
   margin-bottom: 0.4444444em;
   line-height: 1.5555556;
 }
 
-.markdown-lg img {
+.post-content-lg img {
   margin-top: 1.7777778em;
   margin-bottom: 1.7777778em;
 }
 
-.markdown-lg video {
+.post-content-lg video {
   margin-top: 1.7777778em;
   margin-bottom: 1.7777778em;
 }
 
-.markdown-lg figure > * {
+.post-content-lg figure > * {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.markdown-lg figure figcaption {
+.post-content-lg figure figcaption {
   font-size: 0.8em;
   line-height: 1.5;
   margin-top: 1em;
 }
 
-.markdown-lg code {
+.post-content-lg code {
   font-size: 0.8888889em;
   background-color: rgba(var(--contrast-color-rgb), 0.8);
   border-radius: var(--border-radius);
@@ -440,15 +440,15 @@
   overflow-wrap: anywhere;
 }
 
-.markdown-lg h2 code {
+.post-content-lg h2 code {
   font-size: 0.8666667em;
 }
 
-.markdown-lg h3 code {
+.post-content-lg h3 code {
   font-size: 0.875em;
 }
 
-.markdown-lg pre {
+.post-content-lg pre {
   font-size: 0.8888889em;
   line-height: 1.75;
   margin-top: 2em;
@@ -460,106 +460,106 @@
   padding-left: 1.5em;
 }
 
-.markdown-lg ol {
+.post-content-lg ol {
   margin-top: 1.3333333em;
   margin-bottom: 1.3333333em;
 }
 
-.markdown-lg ul {
+.post-content-lg ul {
   margin-top: 1.3333333em;
   margin-bottom: 1.3333333em;
 }
 
-.markdown-lg li {
+.post-content-lg li {
   margin-top: 0.6666667em;
   margin-bottom: 0.6666667em;
 }
 
-.markdown-lg ol > li {
+.post-content-lg ol > li {
   padding-left: 0.5em;
 }
 
-.markdown-lg ol > li::before {
+.post-content-lg ol > li::before {
   left: 0;
 }
 
-.markdown-lg ul > li {
+.post-content-lg ul > li {
   padding-left: 0.5em;
 }
 
-.markdown-lg ul > li::before {
+.post-content-lg ul > li::before {
   width: 0.3333333em;
   height: 0.3333333em;
   top: calc(0.8888889em - 0.1666667em);
   left: 0.2222222em;
 }
 
-.markdown-lg > ul > li p {
+.post-content-lg > ul > li p {
   margin-top: 0.8888889em;
   margin-bottom: 0.8888889em;
 }
 
-.markdown-lg > ul > li > *:first-child {
+.post-content-lg > ul > li > *:first-child {
   margin-top: 1.3333333em;
 }
 
-.markdown-lg > ul > li > *:last-child {
+.post-content-lg > ul > li > *:last-child {
   margin-bottom: 1.3333333em;
 }
 
-.markdown-lg > ol > li > *:first-child {
+.post-content-lg > ol > li > *:first-child {
   margin-top: 1.3333333em;
 }
 
-.markdown-lg > ol > li > *:last-child {
+.post-content-lg > ol > li > *:last-child {
   margin-bottom: 1.3333333em;
 }
 
-.markdown-lg ul ul,
-.markdown-lg ul ol,
-.markdown-lg ol ul,
-.markdown-lg ol ol {
+.post-content-lg ul ul,
+.post-content-lg ul ol,
+.post-content-lg ol ul,
+.post-content-lg ol ol {
   margin-top: 0.8888889em;
   margin-bottom: 0.8888889em;
 }
 
-.markdown-lg hr + * {
+.post-content-lg hr + * {
   margin-top: 0;
 }
 
-.markdown-lg h2 + * {
+.post-content-lg h2 + * {
   margin-top: 0;
 }
 
-.markdown-lg h3 + * {
+.post-content-lg h3 + * {
   margin-top: 0;
 }
 
-.markdown-lg h4 + * {
+.post-content-lg h4 + * {
   margin-top: 0;
 }
 
-.markdown-lg table {
+.post-content-lg table {
   font-size: 0.8888889em;
   line-height: 1.5;
 }
 
-.markdown-lg thead th {
+.post-content-lg thead th {
   padding: 0.75em;
 }
 
-.markdown-lg tbody td {
+.post-content-lg tbody td {
   padding-top: 0.75em;
   padding-right: 0.75em;
   padding-bottom: 0.75em;
   padding-left: 0.75em;
 }
 
-.markdown-lg > :first-child,
+.post-content-lg > :first-child,
 #introduction {
   margin-top: 0;
 }
 
-.markdown-lg > :last-child {
+.post-content-lg > :last-child {
   margin-bottom: 0;
 }
