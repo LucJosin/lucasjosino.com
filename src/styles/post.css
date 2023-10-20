@@ -1,0 +1,21 @@
+img {
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+
+summary {
+  cursor: pointer;
+}
+
+.autolink-header {
+  margin-left: 0.3rem;
+}
+
+.external-links {
+  margin-left: 0.1rem;
+  margin-bottom: -0.15rem;
+}
+
+.medium-zoom-image {
+  z-index: 2;
+}

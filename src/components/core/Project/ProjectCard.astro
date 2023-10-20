@@ -1,11 +1,12 @@
 ---
+import Tags from '@components/data/Tags.astro';
 import type { ProjectModel } from '@constants/projects';
 import Icon from 'astro-icon';
-import Description from './Description.astro';
-import Divider from './Divider.astro';
-import LinkBox from './LinkBox.astro';
-import MiniProjectItem from './MiniProjectItem.astro';
-import Title from './Title.astro';
+import Description from '../Description.astro';
+import Divider from '../Divider.astro';
+import LinkBox from '../Link/LinkBox.astro';
+import Title from '../Title.astro';
+import MiniProjectCard from './MiniProjectCard.astro';
 
 interface Props {
   project: ProjectModel;
@@ -39,18 +40,12 @@ const { project, titleSize, descSize } = Astro.props as Props;
     margin="0"
     align={false}
   />
-  <div class="tags">
-    {
-      project.tags.map((item) => {
-        return <span>{item}</span>;
-      })
-    }
-  </div>
+  <Tags values={project.tags} target="tags" />
   <div class="item-links">
     {
       project.git && (
         <LinkBox
-          link={project.git}
+          href={project.git}
           icon="simple-icons:github"
           title="Github"
           alt={`${project.title} - Github`}
@@ -61,11 +56,22 @@ const { project, titleSize, descSize } = Astro.props as Props;
     {
       project.url && (
         <LinkBox
-          link={project.url}
+          href={project.url}
           icon="mdi:open-in-new"
           title="Demo"
           alt={`${project.title} - Demo`}
           isLocal={false}
+        />
+      )
+    }
+    {
+      project.article && (
+        <LinkBox
+          href={project.article}
+          icon="ic:outline-article"
+          title="Read"
+          alt={`${project.title} - Blog post`}
+          isLocal={true}
         />
       )
     }
@@ -76,7 +82,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
         <summary>More from this project</summary>
         <div class="children">
           {project.children.map((item) => (
-            <MiniProjectItem
+            <MiniProjectCard
               title={item.title}
               description={item.description}
               git={item.git}
@@ -94,7 +100,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
     box-sizing: border-box;
-    padding: 1rem;
+    padding: var(--card-padding);
     transition: all var(--transition-duration);
     display: flex;
     flex-direction: column;
@@ -125,30 +131,6 @@ const { project, titleSize, descSize } = Astro.props as Props;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
     gap: 0.5rem;
-  }
-
-  .tags {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 0.5rem;
-    font-size: 0.9em;
-  }
-
-  .tags > span {
-    padding: 0.4rem;
-    border-radius: var(--border-radius);
-    border: var(--border-size) solid var(--border-color);
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-
-  .tags > span:hover {
-    border: var(--border-size) solid var(--primary-color);
-    background-color: var(--border-color);
-    color: var(--primary-color);
-    cursor: pointer;
   }
 
   .details > summary {

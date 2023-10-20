@@ -2,39 +2,46 @@
 import { Icon } from 'astro-icon';
 
 interface Props {
-  link: string;
+  href: string;
   alt: string;
   icon?: string;
+  iconSide?: 'left' | 'right';
   iconSize?: string;
   title?: string;
   id?: string;
   isLocal?: boolean;
+  padding?: string;
+  titleId?: string;
 }
 
 const {
-  link,
+  href,
   alt,
   icon,
+  iconSide = 'left',
   iconSize = '18',
   title,
   id,
   isLocal = true,
+  padding = '0.8rem 2rem',
+  titleId,
 } = Astro.props as Props;
 ---
 
 <a
-  href={link}
+  href={href}
   rel={isLocal ? undefined : 'noopener noreferrer'}
   target={isLocal ? undefined : '_blank'}
   title={alt}
   id={id}
   class="link-box"
 >
-  {icon && <Icon name={icon} size={iconSize} />}
-  {title && <>{title}</>}
+  {icon && iconSide === 'left' && <Icon name={icon} size={iconSize} />}
+  {title && <span id={titleId}>{title}</span>}
+  {icon && iconSide === 'right' && <Icon name={icon} size={iconSize} />}
 </a>
 
-<style>
+<style define:vars={{ padding }}>
   .link-box {
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
@@ -43,13 +50,14 @@ const {
     justify-content: center;
     transition: all var(--transition-duration);
     gap: 0.5rem;
-    padding: 0.8rem 2rem;
+    padding: var(--padding);
   }
 
   .link-box:hover {
     border: var(--border-size) solid var(--primary-color);
     background-color: var(--border-color);
     color: var(--primary-color);
+    cursor: pointer;
   }
 
   .link-box:hover > [astro-icon] {

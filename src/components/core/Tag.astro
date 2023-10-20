@@ -1,0 +1,36 @@
+---
+interface Props {
+  href: string;
+  value: string;
+  active?: boolean;
+}
+
+const { href, value, active = false } = Astro.props;
+---
+
+{
+  active ? (
+    <a href={href} class="tag" title={`See more posts from '${value}' tag`}>
+      {value}
+    </a>
+  ) : (
+    <span class="tag">{value}</span>
+  )
+}
+
+<style>
+  .tag {
+    padding: 0.4rem;
+    border-radius: var(--border-radius);
+    border: var(--border-size) solid var(--border-color);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tag:hover {
+    border: var(--border-size) solid var(--primary-color);
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+</style>

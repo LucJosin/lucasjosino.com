@@ -1,0 +1,72 @@
+.remark-post-reference {
+  height: 10rem;
+  width: 100%;
+  border-radius: var(--border-radius);
+  border: var(--border-size) solid var(--border-color);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.remark-post-reference-image {
+  height: 100%;
+  width: 40%;
+  border-radius: var(--border-radius);
+  object-fit: cover;
+  margin: 0 !important;
+}
+
+.remark-post-reference-content {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--card-padding);
+}
+
+.remark-post-reference-info {
+  font-size: 0.8em;
+}
+
+.remark-post-reference-title {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+  overflow: hidden;
+}
+
+.remark-post-reference-desc {
+  width: 100%;
+  font-size: 0.8em;
+  margin: 0 !important;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.remark-post-reference-link {
+  width: fit-content;
+  font-size: 0.8em !important;
+}
+
+@media (max-width: 470px) {
+  .remark-post-reference {
+    height: fit-content;
+    flex-direction: column;
+  }
+
+  .remark-post-reference-image {
+    width: 100%;
+  }
+
+  .remark-post-reference-content {
+    width: 100%;
+    padding: 1rem 0 0 0;
+  }
+}

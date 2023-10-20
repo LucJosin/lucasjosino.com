@@ -1,0 +1,44 @@
+---
+import Icon from 'astro-icon';
+---
+
+<a class="back-to-top">
+  <Icon name="mdi:arrow-up" width="24" />
+</a>
+
+<style>
+  .back-to-top.show {
+    opacity: 1;
+    pointer-events: initial;
+  }
+
+  .back-to-top {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    border: 1px var(--contrast-color) solid;
+    cursor: pointer;
+    transition: all var(--transition-duration) linear;
+    z-index: 10;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    position: fixed;
+  }
+
+  .back-to-top {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .back-to-top:hover {
+    background-color: var(--contrast-color);
+  }
+
+  .back-to-top:hover > [astro-icon] {
+    color: var(--primary-color);
+    fill: var(--primary-color);
+  }
+</style>

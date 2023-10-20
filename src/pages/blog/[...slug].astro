@@ -1,0 +1,45 @@
+---
+import '@styles/markdown.css';
+import '@styles/post.css';
+import '@styles/remark/remark-alert-blocks.css';
+import '@styles/remark/remark-code-highlight.css';
+import '@styles/remark/remark-image-caption.css';
+import '@styles/remark/remark-post-reference.css';
+import '@styles/remark/remark-readme-stats.css';
+import { type CollectionEntry } from 'astro:content';
+import PostLayout from '@layouts/PostLayout.astro';
+import { getAllPosts } from '@lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts(true, false);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<PostLayout
+  title={post.data.title}
+  description={post.data.description}
+  post={post}
+>
+  <article class="markdown markdown-lg">
+    <Content />
+  </article>
+</PostLayout>
+
+<style></style>
+
+<script>
+  import mediumZoom from 'medium-zoom';
+  mediumZoom(document.querySelectorAll('img') as NodeListOf<HTMLImageElement>, {
+    background: '#000000e0',
+  });
+</script>

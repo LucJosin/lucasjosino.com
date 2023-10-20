@@ -1,16 +1,31 @@
 ---
+import Icon from 'astro-icon';
 
+interface Props {
+  back?: string;
+  maxWidth?: string;
+  gap?: string;
+}
+
+const { back, maxWidth = '35rem', gap } = Astro.props;
 ---
 
-<div class="container">
+<div class="layout-container">
+  {
+    back && (
+      <a href={back} class="back-button" title="Back">
+        <Icon name="mdi:arrow-left" width="24" />
+      </a>
+    )
+  }
   <slot />
 </div>
 
-<style>
-  .container {
-    margin: 10vh 0;
-    max-width: 35rem;
-    width: 30%;
+<style define:vars={{ maxWidth, gap }}>
+  .layout-container {
+    margin: 8vh 0 4vh 0;
+    max-width: var(--maxWidth);
+    width: 90%;
     min-width: 30rem;
     background-color: var(--primary-color);
     border-radius: var(--layout-border-radius);
@@ -18,11 +33,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    gap: var(--gap);
+  }
+
+  .back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .back-button:hover > [astro-icon] {
+    fill: gray;
+    color: gray;
   }
 
   @media (max-width: 560px) {
-    .container {
-      width: 80%;
+    .layout-container {
       min-width: initial;
     }
   }

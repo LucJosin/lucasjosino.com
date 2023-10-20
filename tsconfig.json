@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "jsx": "react-jsx",
     // Enable top-level await, and other modern ESM features.
     "target": "ESNext",
     "module": "ESNext",
@@ -22,7 +23,12 @@
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@data/*": ["data/*"],
-      "@layouts/*": ["layouts/*"]
-    }
-  }
+      "@layouts/*": ["layouts/*"],
+      "@styles/*": ["styles/*"],
+      "@lib/*": ["lib/*"]
+    },
+    "jsxImportSource": "react"
+  },
+  "jsx": "react-jsx",
+  "jsxImportSource": "react"
 }

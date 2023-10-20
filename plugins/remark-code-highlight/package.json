@@ -1,0 +1,30 @@
+{
+  "name": "@lucjosin/remark-code-highlight",
+  "version": "1.0.0",
+  "type": "module",
+  "author": {
+    "name": "Lucas Josino",
+    "username": "LucJosin",
+    "email": "contact@lucasjosino.com",
+    "url": "https://lucasjosino.com"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "homepage": "https://github.com/LucJosin/lucasjosino.com",
+  "bugs": {
+    "url": "https://github.com/LucJosin/lucasjosino.com",
+    "email": "hawapi@lucasjosino.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "remark-plugin",
+    "remark-text-highlight",
+    "text-highlight"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "unist-util-visit": "^5.0.0"
+  }
+}

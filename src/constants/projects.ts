@@ -4,6 +4,7 @@ export interface ProjectModel {
   description: string;
   git?: string;
   url?: string;
+  article?: string;
   tags: string[];
   language: string;
   category: 'Project' | 'Collection';
@@ -60,7 +61,8 @@ export const projects: ProjectModel[] = [
     image:
       'https://repository-images.githubusercontent.com/527544916/e59a3b38-f658-4e42-b4a8-fe6d4a3b551c',
     title: 'lucasjosino.com',
-    description: 'Personal website built with Astro & Typescript.',
+    description:
+      'Minimalist portfolio website/blog built with Astro & Typescript.',
     git: 'https://github.com/LucJosin/lucasjosino.com',
     tags: ['Git', 'Astro', 'TypeScript', 'JavaScript', 'CSS'],
     language: 'Astro',
@@ -73,7 +75,7 @@ export const projects: ProjectModel[] = [
     description:
       'Flutter Plugin used to query audios/songs infos from device storage.',
     git: 'https://github.com/LucJosin/on_audio_query',
-    url: 'https://pub.dev/packages/on_audio_query',
+    url: 'https://pub.dev/packages/on_audio_query#gif-examples',
     tags: ['Git', 'Kotlin', 'Flutter', 'Dart'],
     language: 'Dart',
     category: 'Project',

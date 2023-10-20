@@ -1,0 +1,44 @@
+---
+import PostCard from '@components/core/Post/PostCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="post-releated">
+  <h2>Related Posts</h2>
+  <span class="post-related-items">
+    {
+      posts.map((item) => {
+        return (
+          <PostCard
+            image={item.data.image}
+            title={item.data.title}
+            description={item.data.description}
+            publishedAt={item.data.publishedAt}
+            href={item.slug}
+            category={item.data.category}
+            tags={item.data.tags}
+            maxTags={1}
+          />
+        );
+      })
+    }
+  </span>
+</div>
+
+<style>
+  .post-releated {
+    width: 100%;
+  }
+
+  .post-related-items {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+</style>

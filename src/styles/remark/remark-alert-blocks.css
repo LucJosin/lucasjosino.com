@@ -1,0 +1,217 @@
+:root {
+  --border-left-width: 5px;
+  --border-width: 2px;
+
+  --blue-color: #58a6ff;
+  --white-color: #eaeef2;
+  --purple-color: #a371f7;
+  --green-color: #3fb950;
+  --orange-color: #d29922;
+  --red-color: #f85149;
+}
+
+.remark-alerts {
+  background-color: var(--secondary-color);
+  position: relative;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  margin: 1.3333333em 0;
+  border-style: solid;
+}
+
+.remark-alert-info,
+.remark-alert-note {
+  color: var(--blue-color);
+  border-color: var(--blue-color);
+  border-width: var(--border-width) var(--border-width) var(--border-width)
+    var(--border-left-width);
+}
+
+.remark-alert-info a,
+.remark-alert-info strong,
+.remark-alert-note a,
+.remark-alert-note strong {
+  color: var(--blue-color);
+}
+
+.remark-alert-info code,
+.remark-alert-note code {
+  background-color: var(--blue-color);
+}
+
+.remark-alert-tip {
+  color: var(--white-color);
+  border-color: var(--white-color);
+  border-width: var(--border-width) var(--border-width) var(--border-width)
+    var(--border-left-width);
+}
+
+.remark-alert-tip code {
+  background-color: #000;
+  color: var(--white-color);
+}
+
+.remark-alert-issue {
+  color: var(--purple-color);
+  border-color: var(--purple-color);
+  border-width: var(--border-width) var(--border-width) var(--border-width)
+    var(--border-left-width);
+}
+
+.remark-alert-issue a {
+  color: var(--purple-color);
+}
+
+.remark-alert-issue code {
+  background-color: var(--purple-color);
+}
+
+.remark-alert-success,
+.remark-alert-solution,
+.remark-alert-check,
+.remark-alert-complete {
+  color: var(--green-color);
+  border-color: var(--green-color);
+  border-width: var(--border-width) var(--border-width) var(--border-width)
+    var(--border-left-width);
+}
+
+.remark-alert-success a,
+.remark-alert-success strong,
+.remark-alert-solution a,
+.remark-alert-solution strong,
+.remark-alert-check a,
+.remark-alert-check strong,
+.remark-alert-complete a,
+.remark-alert-complete strong {
+  color: var(--green-color);
+}
+
+.remark-alert-success code,
+.remark-alert-solution code,
+.remark-alert-check code,
+.remark-alert-complete code {
+  background-color: var(--green-color);
+}
+
+.remark-alert-warning {
+  color: var(--orange-color);
+  border-color: var(--orange-color);
+  border-width: var(--border-width) var(--border-width) var(--border-width)
+    var(--border-left-width);
+}
+
+.remark-alert-warning a,
+.remark-alert-warning strong {
+  color: var(--orange-color);
+}
+
+.remark-alert-warning code {
+  background-color: var(--orange-color);
+}
+
+.remark-alert-error,
+.remark-alert-danger {
+  color: var(--red-color);
+  border-color: var(--red-color);
+  border-width: var(--border-width) var(--border-width) var(--border-width)
+    var(--border-left-width);
+}
+
+.remark-alert-error a,
+.remark-alert-error strong,
+.remark-alert-danger a,
+.remark-alert-danger strong {
+  color: var(--red-color);
+}
+
+.remark-alert-error code,
+.remark-alert-danger code {
+  background-color: var(--red-color);
+}
+
+.remark-alerts > p {
+  padding: 0 1rem;
+}
+
+.remark-alerts > p::before {
+  content: '';
+  margin-bottom: 0.5rem;
+  display: block;
+  height: 20px;
+  width: 100px;
+}
+
+.remark-alert-info > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/info.svg)
+    no-repeat;
+}
+
+.remark-alert-note > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/note.svg)
+    no-repeat;
+}
+
+.remark-alert-tip > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/tip.svg)
+    no-repeat;
+}
+
+.remark-alert-issue > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/issue.svg)
+    no-repeat;
+}
+
+.remark-alert-success > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/success.svg)
+    no-repeat;
+}
+
+.remark-alert-solution > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/solution.svg)
+    no-repeat;
+}
+
+.remark-alert-check > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/check.svg)
+    no-repeat;
+}
+
+.remark-alert-complete > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/complete.svg)
+    no-repeat;
+}
+
+.remark-alert-warning > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/warning.svg)
+    no-repeat;
+}
+
+.remark-alert-error > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/error.svg)
+    no-repeat;
+}
+
+.remark-alert-danger > p::before {
+  background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/danger.svg)
+    no-repeat;
+}
+
+@media (prefers-color-scheme: light) {
+  .remark-alert-tip {
+    color: #000000;
+    border-color: #000000;
+    border-width: var(--border-width) var(--border-width) var(--border-width)
+      var(--border-left-width);
+  }
+
+  .remark-alert-tip p a {
+    color: #000000 !important;
+  }
+
+  .remark-alert-tip > p::before {
+    background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/tip.svg)
+      no-repeat;
+  }
+}

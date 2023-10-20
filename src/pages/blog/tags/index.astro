@@ -1,0 +1,27 @@
+---
+import Divider from '@components/core/Divider.astro';
+import Title from '@components/core/Title.astro';
+import Container from '@components/data/Container.astro';
+import Tags from '@components/data/Tags.astro';
+import Layout from '@layouts/Layout.astro';
+import Navigation from '@layouts/Navigation.astro';
+import { getUniqueTags } from '@lib/blog';
+
+const tags = await getUniqueTags();
+---
+
+<Layout title="Tags" description="All tags from blog">
+  <Container>
+    <Navigation
+      backTitle="Blog"
+      backHref="/blog/"
+      backAlt="Go back to blog page"
+      showIcon
+    />
+    <Title title="Tags" fontSize="2.5em" />
+    <Divider height="1px" width="80%" />
+    <Tags values={tags} target="tags" center showLength />
+  </Container>
+</Layout>
+
+<style></style>

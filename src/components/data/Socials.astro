@@ -1,16 +1,22 @@
 ---
-import LinkBox from '@components/core/LinkBox.astro';
+import LinkBox from '@components/core/Link/LinkBox.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import { socials } from '@constants/socials';
+
+interface Props {
+  hasTitle?: boolean;
+}
+
+const { hasTitle = true } = Astro.props;
 ---
 
 <div class="socials">
-  <SubTitle title="Socials" />
+  {hasTitle && <SubTitle title="Socials" />}
   <div class="socials-container">
     {
       socials.map((data) => (
         <LinkBox
-          link={data.url}
+          href={data.url}
           icon={data.icon}
           iconSize="20"
           alt={data.alt}

@@ -1,0 +1,33 @@
+---
+import Icon from 'astro-icon';
+
+interface Props {
+  icon: string;
+}
+
+const { icon } = Astro.props;
+---
+
+<span class="post-info-item">
+  <Icon name={icon} width="18" />
+  <slot />
+</span>
+
+<style>
+  .post-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .post-info-item::after {
+    content: '•';
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .post-info-item:last-child::after {
+    content: '';
+  }
+</style>

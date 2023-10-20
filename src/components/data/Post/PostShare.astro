@@ -1,0 +1,51 @@
+---
+import LinkBox from '@components/core/Link/LinkBox.astro';
+import Tooltip from '@components/core/Tooltip.astro';
+
+interface PostShareItem {
+  href: string;
+  icon: string;
+  alt: string;
+  id?: string;
+  messageId?: string;
+}
+
+interface Props {
+  items: PostShareItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="post-share">
+  {
+    items.map((item) => {
+      return (
+        <Tooltip
+          message={item.alt}
+          id={item.id}
+          messageId={item.messageId}
+          href={item.href}
+        >
+          <LinkBox
+            href={item.href}
+            alt={item.alt}
+            icon={item.icon}
+            iconSize="16"
+            padding="0.6rem 0.8rem"
+            isLocal={false}
+          />
+        </Tooltip>
+      );
+    })
+  }
+</div>
+
+<style>
+  .post-share {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

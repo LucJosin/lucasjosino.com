@@ -1,35 +1,43 @@
 ---
-import MiniProjectItem from '@components/core/MiniProjectItem.astro';
+import Link from '@components/core/Link/Link.astro';
+import MiniProjectCard from '@components/core/Project/MiniProjectCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import { projects } from '@constants/projects';
-import Icon from 'astro-icon';
 ---
 
-<div class="projects">
+<div class="projects-data">
   <div class="projects-header">
     <SubTitle title="Projects" />
-    <a href="/projects/" title="See more projects" class="projects-see-more">
-      See more
-      <Icon name="mdi:arrow-right" size="18" />
-    </a>
+    <Link
+      href="/projects/"
+      alt="See more projects"
+      title="See more"
+      icon="mdi:arrow-right"
+      iconSide="right"
+      hasBorderBottom={false}
+      animatedIcon
+    />
   </div>
 
   <div class="projects-container">
     {
-      projects.map((data) => (
-        <MiniProjectItem
-          title={data.title}
-          description={data.description}
-          git={data.git}
-          url={data.url}
-        />
-      ))
+      projects
+        .slice(0, 2)
+        .map((data) => (
+          <MiniProjectCard
+            title={data.title}
+            description={data.description}
+            git={data.git}
+            url={data.url}
+            image={data.image}
+          />
+        ))
     }
   </div>
 </div>
 
 <style>
-  .projects {
+  .projects-data {
     height: max-content;
     width: 80%;
   }
@@ -38,18 +46,6 @@ import Icon from 'astro-icon';
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .projects-see-more {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    transition: gap 0.2s;
-  }
-
-  .projects-see-more:hover {
-    cursor: pointer;
-    gap: 0.2rem;
   }
 
   .projects-container {

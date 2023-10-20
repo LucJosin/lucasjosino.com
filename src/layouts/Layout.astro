@@ -1,5 +1,6 @@
 ---
 import headConfig from '@constants/head';
+import '@styles/global.css';
 
 export interface Props {
   title: string;
@@ -7,13 +8,24 @@ export interface Props {
   banner?: string;
   robots?: string;
   shortlink?: string;
+  type?: string;
+  locale?: string;
+  article?: {
+    title: string;
+    description: string;
+    category: string;
+    publishedAt: string;
+    updatedAt?: string;
+    tags: string[];
+  };
 }
 
-const { title, description, banner, robots, shortlink } = Astro.props as Props;
+const { title, description, banner, robots, shortlink, locale, article } =
+  Astro.props as Props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale || 'en'}>
   <head>
     <!-- Configurations -->
     <meta charset="UTF-8" />
@@ -24,7 +36,7 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta name="copyright" content={headConfig.copyright} />
     <meta
       name="description"
-      content={description + headConfig.endDescription}
+      content={article?.description || description + headConfig.endDescription}
     />
     <meta name="author" content={headConfig.name} />
     <meta name="tags" content={headConfig.tags} />
@@ -37,12 +49,15 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta name="twitter:creator" content={headConfig.social} />
     <meta name="twitter:site" content={headConfig.social} />
     <meta name="twitter:domain" content={Astro.site} />
-    <meta name="twitter:title" content={headConfig.titleStart + title} />
+    <meta
+      name="twitter:title"
+      content={article?.title || title + ' | ' + headConfig.name}
+    />
     <meta
       name="twitter:description"
       property="og:description"
       itemprop="description"
-      content={description + headConfig.endDescription}
+      content={article?.description || description + headConfig.endDescription}
     />
     <meta
       property="twitter:image"
@@ -52,17 +67,35 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
 
     <!-- Open Graph -->
     <meta property="og:url" content={Astro.site} />
-    <meta property="og:title" content={headConfig.titleStart + title} />
+    <meta
+      property="og:title"
+      content={article?.title || title + ' | ' + headConfig.name}
+    />
     <meta property="og:site_name" content={headConfig.name} />
     <meta
       property="og:description"
-      content={description + headConfig.endDescription}
+      content={article?.description || description + headConfig.endDescription}
     />
-    <meta property="og:type" content="portfolio" />
+    <meta property="og:type" content={article ? 'article' : 'portfolio'} />
     <meta
       property="og:image"
       content={Astro.site + (banner ?? headConfig.banner)}
     />
+
+    {
+      article && (
+        <>
+          <meta
+            property="article:published_time"
+            content={article?.publishedAt}
+          />
+          <meta property="article:modified_time" content={article?.updatedAt} />
+          <meta property="article:author" content={headConfig.name} />
+          <meta property="article:section" content={article?.category} />
+          <meta property="article:tag" content={article?.tags.join(' ')} />
+        </>
+      )
+    }
 
     <!-- Links -->
     {
@@ -118,118 +151,49 @@ const { title, description, banner, robots, shortlink } = Astro.props as Props;
     <meta name="generator" content={Astro.generator} />
 
     <!-- Title -->
-    <title>{headConfig.titleStart + title}</title>
+    <title>{article?.title || title + ' | ' + headConfig.name}</title>
   </head>
   <body>
     <main>
       <slot />
     </main>
-    <style>
-      :root {
-        /* Global */
-        --primary-color: #f0f0f0;
-        --secondary-color: #dfdfdd;
-
-        --contrast-color: #000;
-
-        --divider-color: #000;
-
-        --border-color: #000;
-        --border-size: 1px;
-
-        --primary-text-color: #000;
-        --secondary-text-color: #fff;
-
-        /* Border radius */
-        --border-radius: 10px;
-        --layout-border-radius: 20px;
-
-        /* Transition */
-        --transition-duration: 0.2s;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --primary-color: #111111;
-          --secondary-color: #151515;
-
-          --contrast-color: #fff;
-
-          --divider-color: #fff;
-
-          --border-color: #fff;
-
-          --primary-text-color: #fff;
-          --secondary-text-color: #121212;
-        }
-      }
-
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family:
-          -apple-system,
-          BlinkMacSystemFont,
-          Segoe UI,
-          Roboto,
-          Oxygen,
-          Ubuntu,
-          Cantarell,
-          Fira Sans,
-          Droid Sans,
-          Helvetica Neue,
-          sans-serif;
-        background-color: var(--primary-color);
-        color: var(--primary-text-color);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      :global([astro-icon]) {
-        fill: var(--primary-text-color);
-        color: var(--primary-text-color);
-        transition: all var(--transition-duration);
-      }
-
-      :global(a) {
-        color: var(--primary-text-color);
-        text-decoration: none;
-      }
-
-      :global(p) {
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0;
-        margin-inline-end: 0;
-      }
-
-      :global(h1) {
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0;
-        margin-inline-end: 0;
-      }
-
-      :global(code) {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
-      }
-    </style>
   </body>
 </html>
+
+<style>
+  /* Scroll */
+  :global(::-webkit-scrollbar) {
+    width: 7px;
+    background-color: var(--secondary-color);
+  }
+
+  :global(::-webkit-scrollbar-thumb) {
+    background-color: var(--contrast-color);
+    border-radius: var(--border-radius);
+  }
+
+  :global([astro-icon]) {
+    fill: var(--primary-text-color);
+    color: var(--primary-text-color);
+    transition: all var(--transition-duration);
+  }
+
+  :global(a) {
+    color: var(--primary-text-color);
+    text-decoration: none;
+  }
+
+  :global(p) {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+
+  :global(h1) {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import Icon from 'astro-icon';
+
+interface Props {
+  href: string;
+  alt: string;
+  title?: string;
+  isLocal?: boolean;
+  gap?: string;
+  icon?: string;
+  iconSide?: 'left' | 'right';
+  iconSize?: string;
+  hasBorderBottom?: boolean;
+  animatedIcon?: boolean;
+  reverseAnimation?: boolean;
+}
+
+const {
+  href,
+  alt,
+  title,
+  isLocal = true,
+  gap = '0.6rem',
+  icon,
+  iconSide = 'left',
+  iconSize = '18',
+  hasBorderBottom = true,
+  animatedIcon = false,
+  reverseAnimation = false,
+} = Astro.props as Props;
+
+const borderBottom = hasBorderBottom ? 'var(--border-color)' : 'transparent';
+
+const currentGap = reverseAnimation ? '0' : gap;
+const animatedGap = animatedIcon
+  ? reverseAnimation
+    ? '0.6rem'
+    : '0.2rem'
+  : gap;
+const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
+---
+
+<a
+  href={href}
+  title={alt}
+  rel={isLocal ? undefined : 'noopener noreferrer'}
+  target={isLocal ? undefined : '_blank'}
+  class="link-data"
+>
+  {icon && iconSide === 'left' && <Icon name={icon} size={iconSize} />}
+  {title && <span>{title}</span>}
+  {icon && iconSide === 'right' && <Icon name={icon} size={iconSize} />}
+</a>
+
+<style define:vars={{ borderBottom, currentGap, animatedGap, iconColor }}>
+  .link-data {
+    border-bottom: var(--border-size) solid transparent;
+    transition: all var(--transition-duration);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--currentGap);
+  }
+
+  .link-data:hover {
+    border-bottom: var(--border-size) solid var(--borderBottom);
+    gap: var(--animatedGap);
+  }
+
+  .link-data:hover > [astro-icon] {
+    fill: var(--iconColor);
+    color: var(--iconColor);
+  }
+</style>
