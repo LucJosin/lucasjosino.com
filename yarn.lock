@@ -3787,7 +3787,7 @@ __metadata:
 
 "astro-rename@https://github.com/LucJosin/astro-rename.git":
   version: 1.1.0
-  resolution: "astro-rename@https://github.com/LucJosin/astro-rename.git#commit=1ef009e8f457213a00765ab4c3e468aedb9707ae"
+  resolution: "astro-rename@https://github.com/LucJosin/astro-rename.git#commit=befdb8f4872e37db9bfc35488e6918dd0c5590d5"
   dependencies:
     console-table-printer: 2.11.1
     md5: 2.3.0
@@ -3795,7 +3795,7 @@ __metadata:
     postcss-load-config: 4.0.1
     postcss-rename: 0.6.1
     pretty-bytes: 6.1.0
-  checksum: 867732acf08abe5edc3b1a8c6d19a98be659458cf9a3a013808e049b4fecc1c6a913cc9c7a3ef0eea4654ecc79cf40aee0b7ffcfe8d6e88bc2ebcad8d3ce6e65
+  checksum: e36e19d105eb6f75186228a6bae1d972105bb5d139ac62f4fa8a7e6672f6f884e1d58bb6bfd6bf56d22eaf21be64d3f20769272ea98398af42df48d658bc5c26
   languageName: node
   linkType: hard
 
