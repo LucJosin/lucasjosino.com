@@ -1,5 +1,6 @@
 .post-content {
   width: 100%;
+  color: #cfcfcf;
 }
 
 .post-content > details {
@@ -433,7 +434,7 @@
 
 .post-content-lg code {
   font-size: 0.8888889em;
-  background-color: rgba(var(--contrast-color-rgb), 0.8);
+  background-color: var(--contrast-color);
   border-radius: var(--border-radius);
   padding: 0.2rem 0.3rem;
   color: var(--secondary-text-color);
@@ -562,4 +563,11 @@
 
 .post-content-lg > :last-child {
   margin-bottom: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  .post-content {
+    width: 100%;
+    color: #404040;
+  }
 }
