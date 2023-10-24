@@ -2410,7 +2410,7 @@ __metadata:
     astro-compress: ^2.0.15
     astro-expressive-code: ^0.26.2
     astro-icon: ^0.8.1
-    astro-rename: "https://github.com/LucJosin/astro-rename.git"
+    astro-rename: ^1.1.1
     astro-robots-txt: ^1.0.0
     eslint: ^8.51.0
     eslint-config-prettier: ^9.0.0
@@ -3785,9 +3785,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-rename@https://github.com/LucJosin/astro-rename.git":
-  version: 1.1.0
-  resolution: "astro-rename@https://github.com/LucJosin/astro-rename.git#commit=befdb8f4872e37db9bfc35488e6918dd0c5590d5"
+"astro-rename@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "astro-rename@npm:1.1.1"
   dependencies:
     console-table-printer: 2.11.1
     md5: 2.3.0
@@ -3795,7 +3795,7 @@ __metadata:
     postcss-load-config: 4.0.1
     postcss-rename: 0.6.1
     pretty-bytes: 6.1.0
-  checksum: e36e19d105eb6f75186228a6bae1d972105bb5d139ac62f4fa8a7e6672f6f884e1d58bb6bfd6bf56d22eaf21be64d3f20769272ea98398af42df48d658bc5c26
+  checksum: df389e8670464070c19780b88b2ed01564460d69dd3ebad12ab05bd39bb3b6dafc9a134c74ad7cef4fd4d66f0ea8c7f3c1a4a20b87585075a1129d19ce176e7c
   languageName: node
   linkType: hard
 
