@@ -1,8 +1,9 @@
 ---
-image: 'https://astro.build/og/social.jpg'
-publishedAt: '2023-10-14 18:00 UTC'
 title: 'How to hash class names in Astro using astro-rename integration'
 description: 'Learn how to use the astro-rename integration to hash all CSS class names from your Astro project'
+image:
+  src: 'https://astro.build/og/social.jpg'
+  position: 'left'
 tags:
   - 'astro'
   - 'integration'
@@ -13,6 +14,8 @@ language: 'en'
 shortlink: '/b/pNCgOiQi'
 isVisible: true
 enableComments: true
+publishedAt: '2023-10-14 18:00 UTC-3'
+updatedAt: '2023-10-23 12:20 UTC-3'
 ---
 
 ## Table of Contents
@@ -103,7 +106,7 @@ import rename from 'astro-rename';
 
 Add to integrations option:
 
-```js title="astro.config.mjs" {3, 7-8}
+```js title="astro.config.mjs" {3, 8-12}
 import { defineConfig } from 'astro/config';
 
 import rename from 'astro-rename';
