@@ -1,17 +1,18 @@
 ---
-image: 'https://lucasjosino.com/static/banner.png'
-publishedAt: '2023-09-22 12:10 UTC'
-updatedAt: '2023-10-11 20:16 UTC'
 title: 'Markdown showcase'
 description: 'A markdown showcase to show all features from blog posts.'
+image:
+  src: 'https://lucasjosino.com/static/banner.png'
 tags:
   - 'example'
   - 'markdown'
 category: 'Example'
 language: 'en'
-shortlink: '/b/fspKnFOq'
+shortlink: '/blog'
 isVisible: false
 enableComments: false
+publishedAt: '2023-09-22 12:10 UTC-3'
+updatedAt: '2023-10-23 12:25 UTC-3'
 ---
 
 ## Table of contents
