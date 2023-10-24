@@ -1,27 +1,42 @@
 ---
 import { getFormatedDate } from '@lib/date';
+import Link from '../Link/Link.astro';
 
 interface Props {
+  slug: string;
   updatedAt: string;
 }
 
-const { updatedAt } = Astro.props;
+const { slug, updatedAt } = Astro.props;
+const GIT_REF = `https://github.com/LucJosin/lucasjosino.com/commits/main/src/content/blog/${slug}.md`;
 ---
 
 <div class="post-updated-at">
-  <i>Last modified: {getFormatedDate(updatedAt, true)} UTC</i>
+  <i class="post-updated-at-content">
+    Last modified: {getFormatedDate(updatedAt, true)}
+    <span>-</span>
+    <Link
+      href={GIT_REF}
+      alt="See post history"
+      title="See history"
+      isLocal={false}
+    />
+  </i>
 </div>
 
 <style>
   .post-updated-at {
     width: 100%;
-    margin: 1rem 0 0 0;
+    margin: 0 0 1rem 0;
     display: flex;
     gap: 0.2rem;
     text-align: center;
   }
 
-  .post-updated-at > i {
+  .post-updated-at-content {
     width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
   }
 </style>

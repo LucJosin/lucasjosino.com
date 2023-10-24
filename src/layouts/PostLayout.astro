@@ -142,7 +142,11 @@ const article = {
     <slot />
 
     <PostFooter>
-      {post.data.updatedAt && <PostUpdatedAt updatedAt={post.data.updatedAt} />}
+      {
+        post.data.updatedAt && (
+          <PostUpdatedAt updatedAt={post.data.updatedAt} slug={post.slug} />
+        )
+      }
       <PostShareBanner
         link={post.data.shortlink}
         twitter={twitter}
