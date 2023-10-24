@@ -11,13 +11,22 @@ interface Props {
   description: string;
   publishedAt: string;
   body: string;
+  imageAlign?: string;
 }
 
-const { image, href, title, description, publishedAt, body } = Astro.props;
+const {
+  image,
+  href,
+  title,
+  description,
+  publishedAt,
+  body,
+  imageAlign = 'center',
+} = Astro.props;
 ---
 
 <a href={href} class="blog-item">
-  <img src={image} alt="" class="blog-item-image" />
+  <img src={image} alt={`Post - ${title}`} class="blog-item-image" />
   <div class="blog-item-info">
     <span class="blog-item-info-publish">
       {getFormatedDate(publishedAt)}
@@ -35,7 +44,7 @@ const { image, href, title, description, publishedAt, body } = Astro.props;
   </div>
 </a>
 
-<style>
+<style define:vars={{ imageAlign }}>
   .blog-item {
     height: 10rem;
     width: 100%;
@@ -62,6 +71,7 @@ const { image, href, title, description, publishedAt, body } = Astro.props;
     width: 12rem;
     border-radius: var(--border-radius);
     object-fit: cover;
+    object-position: var(--imageAlign);
   }
 
   .blog-item-info-publish {

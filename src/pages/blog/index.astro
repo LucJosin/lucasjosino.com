@@ -29,7 +29,7 @@ const posts = await getAllPosts();
         posts.map((post) => {
           return (
             <PostCard
-              image={post.data.image}
+              image={post.data.image.src}
               title={post.data.title}
               description={post.data.description}
               category={post.data.category}
