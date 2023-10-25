@@ -22,6 +22,7 @@
   text-decoration: underline;
   font-weight: 500;
   transition: opacity 0.2s;
+  line-break: anywhere;
 }
 
 .post-content a:hover {
