@@ -19,13 +19,13 @@
     "@lucjosin/remark-readme-stats": "./plugins/remark-readme-stats",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
-    "astro": "^3.3.2",
-    "astro-compress": "^2.0.15",
+    "astro": "^3.3.4",
+    "astro-compress": "^2.1.5",
     "astro-expressive-code": "^0.26.2",
     "astro-icon": "^0.8.1",
     "astro-rename": "^1.1.1",
     "astro-robots-txt": "^1.0.0",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-astro": "^0.29.1",
     "prettier": "^3.0.3",
@@ -50,8 +50,8 @@
     "@types/react": "^18.2.29",
     "@types/react-dom": "^18.2.14",
     "medium-zoom": "^1.0.8",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "reading-time": "^1.5.0"
   }
 }
