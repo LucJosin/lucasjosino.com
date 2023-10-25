@@ -11,7 +11,7 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
-        padding: '1rem',
+        padding: '2.5rem',
         color: '#fff',
       }}
     >
@@ -23,10 +23,11 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
-          justifyContent: 'space-between',
+          justifyContent: 'center',
           border: '2px solid #fff',
-          padding: '1rem',
+          padding: '2.5rem',
           borderRadius: '10px',
+          position: 'relative',
         }}
       >
         <div
@@ -36,18 +37,14 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
             alignItems: 'center',
             textAlign: 'center',
             width: '100%',
+            position: 'absolute',
+            top: '2rem',
           }}
         >
-          <h1
-            style={{
-              margin: '1rem 0 0 0',
-            }}
-          >
-            lucasjosino.com
-          </h1>
+          <h1>lucasjosino.com</h1>
           <span
             style={{
-              margin: '0.5rem 0',
+              margin: '0.6rem 0',
               height: '2px',
               width: '50%',
               backgroundColor: '#fff',
@@ -59,11 +56,12 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            marginTop: '3.5rem',
           }}
         >
           <span
             style={{
-              marginBottom: '0.6rem',
+              marginBottom: '0.8rem',
               fontWeight: '300',
               fontSize: '1.3em',
             }}
@@ -73,7 +71,7 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
           <h1
             style={{
               width: '80%',
-              fontSize: '4.2em',
+              fontSize: '3.2em',
               fontWeight: '500',
               margin: '0',
             }}
@@ -83,25 +81,13 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
           <p
             style={{
               width: '80%',
-              fontSize: '2.4em',
+              fontSize: '2em',
               fontWeight: '300',
               overflow: 'hidden',
             }}
           >
             {post.data.description}
           </p>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            gap: '1rem',
-            fontSize: '1.2em',
-            fontWeight: '300',
-          }}
-        >
-          {post.data.tags.map((item) => {
-            return <span>#{item}</span>;
-          })}
         </div>
       </div>
     </div>
