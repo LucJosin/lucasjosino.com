@@ -17,6 +17,72 @@ updatedAt: '2023-10-23 12:25 UTC-3'
 
 ## Table of contents
 
+## Tab list
+
+Code:
+
+`````
+````codeset
+```js
+console.log("Hello World");
+```
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main () {
+    fmt.Println("Hello World")
+}
+```
+
+```java
+public class MainApplication {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+````
+`````
+
+Preview:
+
+---
+
+````codeset
+```js
+console.log("Hello World");
+```
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main () {
+    fmt.Println("Hello World")
+}
+```
+
+```java
+public class MainApplication {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+````
+
+---
+
 ## Repository reference
 
 Source: [github.com/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
