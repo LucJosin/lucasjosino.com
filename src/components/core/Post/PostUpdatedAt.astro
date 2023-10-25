@@ -13,12 +13,11 @@ const GIT_REF = `https://github.com/LucJosin/lucasjosino.com/commits/main/src/co
 
 <div class="post-updated-at">
   <i class="post-updated-at-content">
-    Last modified: {getFormatedDate(updatedAt, true)}
-    <span>-</span>
+    Last modified:
     <Link
       href={GIT_REF}
       alt="See post history"
-      title="See history"
+      title={getFormatedDate(updatedAt, true)}
       isLocal={false}
     />
   </i>
@@ -36,6 +35,7 @@ const GIT_REF = `https://github.com/LucJosin/lucasjosino.com/commits/main/src/co
   .post-updated-at-content {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     justify-content: center;
   }
