@@ -15,7 +15,7 @@ shortlink: '/b/pNCgOiQi'
 isVisible: true
 enableComments: true
 publishedAt: '2023-10-14 18:00 UTC-3'
-updatedAt: '2023-10-23 12:20 UTC-3'
+updatedAt: '2023-10-24 21:08 UTC-3'
 ---
 
 ## Table of Contents
@@ -35,16 +35,15 @@ So, we'll use the `strategy` option with a custom hash generator.
 
 Let's get started creating a new Astro project:
 
-```bash
-# create a new project with npm
+````codeset
+```bash label=npm
 npm create astro@latest
+```
 
-# create a new project with pnpm
-pnpm create astro@latest
-
-# create a new project with yarn
+```bash label=yarn
 yarn create astro
 ```
+````
 
 All you have to do is follow the step-by-step instructions.
 
@@ -52,16 +51,15 @@ All you have to do is follow the step-by-step instructions.
 
 Once you have created your Astro project, you can start the dev server using:
 
-```bash
-# run dev server with npm
+````codeset
+```bash label=npm
 npm run dev
+```
 
-# run dev server with pnpm
-pnpm run dev
-
-# run dev server with yarn
+```bash label=yarn
 yarn run dev
 ```
+````
 
 Now, the Astro project is running on localhost using the default port `:4321`:
 
@@ -81,16 +79,15 @@ As you can see, all CSS class names are "exposed".
 
 First of all, let's install the [astro-rename](https://github.com/RodrigoTomeES/astro-rename) dependency:
 
-```bash
-# install 'astro-rename' dependency with npm
+````codeset
+```bash label=npm
 npm install astro-rename --save-dev
+```
 
-# install 'astro-rename' dependency with pnpm
-pnpm install astro-rename --dev
-
-# install 'astro-rename' dependency with yarn
+```bash label=yarn
 yarn add astro-rename --dev
 ```
+````
 
 !!!note The **astro-rename** package require `node >= 18.18`. You don't actually need this version and can use the `--ignore-engines` flag to bypass this error.
 
@@ -130,16 +127,15 @@ export default defineConfig({
 
 At this point, you already can build the project using:
 
-```bash
-# run build with npm
+````codeset
+```bash label=npm
 npm run build
+```
 
-# run build with pnpm
-pnpm run build
-
-# run build with yarn
+```bash label=yarn
 yarn run build
 ```
+````
 
 Now, run the output file using the [VSCode Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) and take a look at the DevTools:
 
@@ -286,16 +282,15 @@ See [my hash-renamer.ts file](https://github.com/LucJosin/lucasjosino.com/tree/m
 
 Build the project:
 
-```bash
-# run build with npm
+````codeset
+```bash label=npm
 npm run build
+```
 
-# run build with pnpm
-pnpm run build
-
-# run build with yarn
+```bash label=yarn
 yarn run build
 ```
+````
 
 Run the output file using the [VSCode Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) and take a look at the DevTools:
 
