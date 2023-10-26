@@ -11,10 +11,13 @@ const progressBar = document.querySelector('.progress-bar') as HTMLElement;
 
 const codes = document.querySelectorAll('.codeset-wrapper');
 
+document.addEventListener('DOMContentLoaded', () => {
+  listenToTabClick();
+});
+
 window.onload = () => {
   listenToBackToTop();
   listenToOnShareClick();
-  listenToTabClick();
 };
 
 window.onscroll = () => {
