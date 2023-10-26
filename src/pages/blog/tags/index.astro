@@ -1,4 +1,5 @@
 ---
+import Description from '@components/core/Description.astro';
 import Divider from '@components/core/Divider.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
@@ -10,7 +11,7 @@ import { getUniqueTags } from '@lib/blog';
 const tags = await getUniqueTags();
 ---
 
-<Layout title="Tags" description="All tags from blog">
+<Layout title="Tags" description="Explore all tags of my personal blog">
   <Container>
     <Navigation
       backTitle="Blog"
@@ -19,8 +20,13 @@ const tags = await getUniqueTags();
       showIcon
     />
     <Title title="Tags" fontSize="2.5em" />
+    <Description
+      value="Explore all tags of my personal blog"
+      margin="0"
+      width="80%"
+    />
     <Divider height="1px" width="80%" />
-    <Tags values={tags} target="tags" center showLength />
+    <Tags values={tags} target="tags" center showLength active />
   </Container>
 </Layout>
 

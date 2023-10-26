@@ -16,6 +16,7 @@ import remarkReadmeStats from '@lucjosin/remark-readme-stats';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
+import codeset from 'remark-codeset';
 import remarkCollapse from 'remark-collapse';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
@@ -41,23 +42,18 @@ export default defineConfig({
   // Ref: https://docs.astro.build/en/guides/integrations-guide/
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
   integrations: [
-    // swup({
-    //   theme: 'fade',
-    //   accessibility: false,
-    //   cache: false,
-    // }),
-    sitemap(),
-    robotsTxt({
-      sitemap: true,
-    }),
+    astroExpressiveCode(),
     rename({
       rename: {
         strategy: (key) => renamer.rename(key),
         except: ['details', 'show'],
       },
     }),
+    sitemap(),
+    robotsTxt({
+      sitemap: true,
+    }),
     compress(),
-    astroExpressiveCode(),
     react(),
   ],
   // Markdown configuration
@@ -129,6 +125,7 @@ export default defineConfig({
       remarkAlertBlocks,
       remarkCodeHighlight,
       remarkImageCaption,
+      codeset,
       remarkToc,
       [
         remarkCollapse,

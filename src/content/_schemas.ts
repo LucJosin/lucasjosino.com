@@ -2,7 +2,10 @@ import { reference, z } from 'astro:content';
 
 export const blogSchema = z.object({
   refFile: z.string().optional(),
-  image: z.string().default('/static/banner.png'),
+  image: z.object({
+    src: z.string().default('/static/banner.png'),
+    position: z.string().default('center'),
+  }),
   publishedAt: z.string(),
   updatedAt: z.string().optional(),
   title: z.string().max(65),
@@ -15,4 +18,5 @@ export const blogSchema = z.object({
   isDraft: z.boolean().default(false),
   enableComments: z.boolean().default(true),
   relatedPosts: z.array(reference('blog')).max(4).optional(),
+  easyShare: z.boolean().default(true),
 });

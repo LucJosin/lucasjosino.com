@@ -1,4 +1,5 @@
 ---
+import Description from '@components/core/Description.astro';
 import Divider from '@components/core/Divider.astro';
 import ProjectCard from '@components/core/Project/ProjectCard.astro';
 import Title from '@components/core/Title.astro';
@@ -16,6 +17,11 @@ import Navigation from '@layouts/Navigation.astro';
   <Container>
     <Navigation backAlt="See all posts" backHref="/blog/" backTitle="Blog" />
     <Title title="Projects" fontSize="2.5em" />
+    <Description
+      value="A showcase of all projects that have I have completed. Using tools/languages like Astro, Java, Spring Boot, Typescript, etc.."
+      margin="0"
+      width="80%"
+    />
     <Divider height="1px" width="80%" />
 
     <div class="projects-list">

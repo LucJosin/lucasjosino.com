@@ -1,4 +1,5 @@
 ---
+import Description from '@components/core/Description.astro';
 import Divider from '@components/core/Divider.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
@@ -10,7 +11,10 @@ import { getUniqueCategories } from '@lib/blog';
 const categories = await getUniqueCategories();
 ---
 
-<Layout title="Categories" description="All categories from blog">
+<Layout
+  title="Categories"
+  description="Explore all categories of my personal blog"
+>
   <Container>
     <Navigation
       backTitle="Blog"
@@ -19,8 +23,13 @@ const categories = await getUniqueCategories();
       showIcon
     />
     <Title title="Categories" fontSize="2.5em" />
+    <Description
+      value="Explore all categories of my personal blog"
+      margin="0"
+      width="80%"
+    />
     <Divider height="1px" width="80%" />
-    <Tags values={categories} target="categories" center showLength />
+    <Tags values={categories} target="categories" center showLength active />
   </Container>
 </Layout>
 

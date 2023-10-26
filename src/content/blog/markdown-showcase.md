@@ -1,20 +1,87 @@
 ---
-image: 'https://lucasjosino.com/static/banner.png'
-publishedAt: '2023-09-22 12:10 UTC'
-updatedAt: '2023-10-11 20:16 UTC'
 title: 'Markdown showcase'
 description: 'A markdown showcase to show all features from blog posts.'
+image:
+  src: 'https://lucasjosino.com/static/banner.png'
 tags:
   - 'example'
   - 'markdown'
 category: 'Example'
 language: 'en'
-shortlink: '/b/fspKnFOq'
+shortlink: '/blog'
 isVisible: false
 enableComments: false
+publishedAt: '2023-09-22 12:10 UTC-3'
+updatedAt: '2023-10-23 12:25 UTC-3'
 ---
 
 ## Table of contents
+
+## Tab list
+
+Code:
+
+`````
+````codeset
+```js
+console.log("Hello World");
+```
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main () {
+    fmt.Println("Hello World")
+}
+```
+
+```java
+public class MainApplication {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+````
+`````
+
+Preview:
+
+---
+
+````codeset
+```js
+console.log("Hello World");
+```
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main () {
+    fmt.Println("Hello World")
+}
+```
+
+```java
+public class MainApplication {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+````
+
+---
 
 ## Repository reference
 

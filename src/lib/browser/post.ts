@@ -9,6 +9,12 @@ const backButton = document.querySelector('.back-to-top') as HTMLLinkElement;
 
 const progressBar = document.querySelector('.progress-bar') as HTMLElement;
 
+const codes = document.querySelectorAll('.codeset-wrapper');
+
+document.addEventListener('DOMContentLoaded', () => {
+  listenToTabClick();
+});
+
 window.onload = () => {
   listenToBackToTop();
   listenToOnShareClick();
@@ -69,5 +75,63 @@ function listenToOnShareClick() {
         shareButtonText.innerText = 'Copy link';
       }, 2000);
     });
+  }
+}
+
+function listenToTabClick() {
+  for (let i = 0; i < codes.length; i++) {
+    const navTabs = document.querySelectorAll(
+      `#codeset-${i}-nav-tabs`
+    ) as NodeListOf<HTMLElement>;
+
+    const tabContent = document.querySelector(
+      `#codeset-${i}-tab-content`
+    ) as HTMLElement;
+
+    const tabPanes = tabContent.children as HTMLCollectionOf<HTMLElement>;
+
+    // Only show first tab content
+    for (let i = 1; i < tabPanes.length; i++) {
+      tabPanes[i].style.display = 'none';
+    }
+
+    // Loop over all nav tabs of this current 'codeset-wrapper'
+    for (const navTab of navTabs) {
+      // All tabs from the current 'codeset-wrapper'
+      const navItems = navTab.children as HTMLCollectionOf<HTMLElement>;
+
+      for (let x = 0; x < navItems.length; x++) {
+        const navItem = navItems[x];
+
+        const lang = navItem.classList[1].replace('nav-item-', '');
+
+        // Listen to click event
+        navItem.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+
+          // Select the code from current tab
+          const code = document.querySelector(
+            `#codeset-${i}-${x}-${lang}`
+          ) as HTMLElement;
+
+          // Hide all tab contents
+          for (let i = 0; i < tabPanes.length; i++) {
+            tabPanes[i].style.display = 'none';
+          }
+
+          // Remove all 'active' class from current 'codeset-wrapper' tab items
+          for (const pNavItem of navItems) {
+            (pNavItem.firstChild! as HTMLElement).classList.remove('active');
+          }
+
+          // Enable selected code
+          code.style.display = 'block';
+          // Set 'active' class to selected tab item
+          (navItem.firstChild! as HTMLElement).classList.add('active');
+        });
+      }
+    }
   }
 }

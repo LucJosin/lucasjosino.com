@@ -1,6 +1,7 @@
 ---
 interface Props {
   value: string;
+  width?: string;
   margin?: string;
   fontSize?: string;
   maxLine?: string;
@@ -10,6 +11,7 @@ interface Props {
 const {
   value,
   margin = '1rem 0',
+  width = '100%',
   fontSize = '1em',
   maxLine,
   align = true,
@@ -22,15 +24,22 @@ const textAlign = align ? 'center' : 'initial';
   {value}
 </p>
 
-<style define:vars={{ margin, fontSize, maxLine, textAlign }}>
+<style define:vars={{ width, margin, fontSize, maxLine, textAlign }}>
   .description-container {
     overflow: hidden;
-    width: 100%;
+    width: var(--width);
     display: -webkit-box;
     -webkit-line-clamp: var(--maxLine);
     -webkit-box-orient: vertical;
     margin: var(--margin);
     font-size: var(--fontSize);
     text-align: var(--textAlign);
+    color: #cfcfcf;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .description-container {
+      color: #404040;
+    }
   }
 </style>

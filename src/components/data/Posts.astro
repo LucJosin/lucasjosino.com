@@ -27,7 +27,8 @@ const posts = await getAllPosts();
         .slice(0, 2)
         .map((e) => (
           <MiniPostCard
-            image={e.data.image}
+            image={e.data.image.src}
+            imageAlign={e.data.image.position}
             href={`/blog/${e.slug}`}
             title={e.data.title}
             description={e.data.description}

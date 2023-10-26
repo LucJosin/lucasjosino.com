@@ -108,7 +108,7 @@ const article = {
       }
     </PostInfo>
 
-    <PostImage src={post.data.image} title={post.data.title} />
+    <PostImage src={post.data.image.src} title={post.data.title} />
 
     <PostShare
       items={[
@@ -142,7 +142,11 @@ const article = {
     <slot />
 
     <PostFooter>
-      {post.data.updatedAt && <PostUpdatedAt updatedAt={post.data.updatedAt} />}
+      {
+        post.data.updatedAt && (
+          <PostUpdatedAt updatedAt={post.data.updatedAt} slug={post.slug} />
+        )
+      }
       <PostShareBanner
         link={post.data.shortlink}
         twitter={twitter}
