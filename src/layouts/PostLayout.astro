@@ -37,7 +37,7 @@ const relatedPosts = post.data.relatedPosts
   : [];
 
 const { linkedin, twitter, reddit } = getSocialsShare(
-  Astro.url.toString(),
+  headConfig.shortLink + post.data.shortlink,
   post.data.title,
   headConfig.social
 );
