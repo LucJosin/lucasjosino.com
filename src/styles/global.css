@@ -73,3 +73,14 @@ main {
   flex-direction: column;
   align-items: center;
 }
+
+/* Selection */
+*::-moz-selection {
+  background-color: var(---primary-text-color);
+  color: var(--secondary-color);
+}
+
+*::selection {
+  background-color: var(--primary-text-color);
+  color: var(--secondary-color);
+}
