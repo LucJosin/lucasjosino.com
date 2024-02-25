@@ -24,21 +24,20 @@
   --card-padding: 0.8rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #111111;
-    --secondary-color: #181818;
+:root[data-theme="dark"] {
+  --primary-color: #111111;
+  --secondary-color: #181818;
 
-    --contrast-color: #fff;
-    --contrast-color-rgb: 255, 255, 255;
+  --contrast-color: #fff;
+  --contrast-color-rgb: 255, 255, 255;
 
-    --divider-color: #fff;
+  --divider-color: #fff;
 
-    --border-color: #fff;
+  --border-color: #fff;
 
-    --primary-text-color: #fff;
-    --secondary-text-color: #121212;
-  }
+  --primary-text-color: #fff;
+  --secondary-text-color: #121212;
+  --description-text-color: #cfcfcf;
 }
 
 html,
@@ -62,6 +61,7 @@ body {
   --scroll-behavior: smooth !important;
   scroll-behavior: smooth !important;
   scroll-padding-top: 2rem;
+  transition: all 0.3s;
 }
 
 * {

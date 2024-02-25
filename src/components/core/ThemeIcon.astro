@@ -1,0 +1,51 @@
+---
+import Icon from 'astro-icon';
+---
+
+<button id="theme">
+  <Icon name="mdi:white-balance-sunny" width="18" />
+</button>
+
+<style>
+  #theme {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    top: 1.5rem;
+    right: 1.5rem;
+    position: fixed;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-duration) linear;
+    background-color: transparent;
+  }
+
+  #theme:hover {
+    background-color: var(--contrast-color);
+  }
+
+  #theme:hover > [astro-icon] {
+    color: var(--primary-color);
+    fill: var(--primary-color);
+  }
+</style>
+
+<script is:inline>
+  const html = document.documentElement;
+  document.getElementById('theme').addEventListener('click', () => {
+    const isLight = html.getAttribute('data-theme') === 'light';
+
+    if (isLight) {
+      html.setAttribute('data-theme', 'dark');
+    } else {
+      html.setAttribute('data-theme', 'light');
+    }
+
+    localStorage.setItem('theme', isLight ? 'dark' : 'light');
+  });
+</script>
