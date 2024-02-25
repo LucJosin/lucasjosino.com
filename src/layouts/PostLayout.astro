@@ -4,6 +4,8 @@ import Divider from '@components/core/Divider.astro';
 import Link from '@components/core/Link/Link.astro';
 import PostImage from '@components/core/Post/PostImage.astro';
 import PostInfoItem from '@components/core/Post/PostInfoItem.astro';
+import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
+import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
 import ProgressBar from '@components/core/ProgressBar.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
@@ -15,14 +17,12 @@ import Tags from '@components/data/Tags.astro';
 import headConfig from '@constants/head';
 import { getFormatedDate } from '@lib/date';
 import { getSocialsShare } from '@lib/share';
+import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
+import { getPostImage } from 'open-graph/generator';
+import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
 import Navigation from './Navigation.astro';
-import PostFooter from '../components/core/Post/PostFooter.astro';
-import { getReadTime } from '@lib/time';
-import { getPostImage } from 'open-graph/generator';
-import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
-import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
 
 interface Props {
   title: string;
