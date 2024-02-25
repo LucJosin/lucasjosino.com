@@ -77,11 +77,11 @@ main {
 
 /* Selection */
 *::-moz-selection {
-  background-color: var(---primary-text-color);
+  background-color: var(--description-text-color);
   color: var(--secondary-color);
 }
 
 *::selection {
-  background-color: var(--primary-text-color);
+  background-color: var(--description-text-color);
   color: var(--secondary-color);
 }
