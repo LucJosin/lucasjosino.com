@@ -18,3 +18,7 @@ summary {
 .medium-zoom-image {
   z-index: 2;
 }
+
+.expressive-code figure {
+  all: unset !important;
+}
