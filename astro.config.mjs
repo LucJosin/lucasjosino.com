@@ -3,6 +3,7 @@ import { s } from 'hastscript';
 
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
 import rename from 'astro-rename';
@@ -42,7 +43,13 @@ export default defineConfig({
   // Ref: https://docs.astro.build/en/guides/integrations-guide/
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
   integrations: [
-    astroExpressiveCode(),
+    astroExpressiveCode({
+      themes: ['dark-plus', 'light-plus'],
+      useDarkModeMediaQuery: true,
+      themeCssSelector: (theme) =>
+        `[data-theme='${theme.name.replace('-plus', '')}']`,
+      plugins: [pluginLineNumbers()],
+    }),
     rename({
       rename: {
         strategy: (key) => renamer.rename(key),
