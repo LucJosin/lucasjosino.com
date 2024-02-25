@@ -1,4 +1,5 @@
 ---
+import ThemeIcon from '@components/core/ThemeIcon.astro';
 import headConfig from '@constants/head';
 import '@styles/global.css';
 
@@ -27,12 +28,10 @@ const { title, description, banner, robots, shortlink, locale, article } =
 <!doctype html>
 <html lang={locale || 'en'}>
   <head>
-    <!-- Configurations -->
+    <!-- Metadata -->
     <meta charset="UTF-8" />
     <meta http-equiv="content-language" content="en-US" />
     <meta http-equiv="content-type" content="text/html" />
-
-    <!-- Default  -->
     <meta name="copyright" content={headConfig.copyright} />
     <meta
       name="description"
@@ -81,6 +80,36 @@ const { title, description, banner, robots, shortlink, locale, article } =
       property="og:image"
       content={Astro.site + (banner ?? headConfig.banner)}
     />
+    <meta
+      property="og:image:secure_url"
+      content={Astro.site + (banner ?? headConfig.banner)}
+    />
+    <meta
+      property="og:image:type"
+      content=`image/${(banner ?? headConfig.banner).split('.').pop()}`
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+
+    <script is:inline>
+      const theme = (() => {
+        if (
+          typeof localStorage !== 'undefined' &&
+          localStorage.getItem('theme')
+        ) {
+          return localStorage.getItem('theme');
+        }
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+
+        return 'light';
+      })();
+
+      document.documentElement.setAttribute('data-theme', theme);
+      window.localStorage.setItem('theme', theme);
+    </script>
 
     {
       article && (
@@ -155,6 +184,7 @@ const { title, description, banner, robots, shortlink, locale, article } =
   </head>
   <body>
     <main>
+      <ThemeIcon />
       <slot />
     </main>
   </body>
