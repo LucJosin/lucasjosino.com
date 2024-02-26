@@ -28,3 +28,12 @@
   data-loading="lazy"
   crossorigin="anonymous"
   async></script>
+<script is:inline>
+  const giscus = document.querySelector(
+    'script[src="https://giscus.app/client.js"]'
+  );
+
+  giscus.addEventListener('load', () => {
+    updateGiscusTheme(theme);
+  });
+</script>

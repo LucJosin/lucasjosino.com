@@ -46,6 +46,7 @@ import Icon from 'astro-icon';
       html.setAttribute('data-theme', 'light');
     }
 
+    updateGiscusTheme(isLight ? 'dark' : 'light');
     localStorage.setItem('theme', isLight ? 'dark' : 'light');
   });
 </script>
