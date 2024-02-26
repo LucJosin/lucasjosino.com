@@ -31,7 +31,7 @@
   background-color: var(--secondary-color);
   border-radius: var(--border-radius);
   display: grid;
-  grid-template-columns: repeat(auto-fit, 5rem);
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
   grid-template-rows: min-content auto;
   width: 100%;
   min-height: 10px;
