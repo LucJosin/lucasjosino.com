@@ -62,7 +62,7 @@ body {
   --scroll-behavior: smooth !important;
   scroll-behavior: smooth !important;
   scroll-padding-top: 2rem;
-  transition: all 0.3s;
+  transition: background-color 0.35s;
 }
 
 * {
