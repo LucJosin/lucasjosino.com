@@ -26,7 +26,7 @@ Code:
 ```js label=index.js
 console.log("Hello World");
 ```
---
+:-:
 ```go label=main.go
 package main
 
@@ -38,7 +38,7 @@ func main () {
     fmt.Println("Hello World")
 }
 ```
---
+:-:
 ```java label=Application.java
 public class Application {
 
@@ -58,7 +58,7 @@ Preview:
 ```js label=index.js
 console.log("Hello World");
 ```
---
+:-:
 ```go label=main.go
 package main
 
@@ -70,7 +70,7 @@ func main () {
     fmt.Println("Hello World")
 }
 ```
---
+:-:
 ```java label=Application.java
 public class Application {
 

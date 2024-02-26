@@ -2659,13 +2659,13 @@ __metadata:
 
 "@lucjosin/remark-code-set@file:./plugins/remark-code-set::locator=%40lucjosin%2Flucasjosino.com%40workspace%3A.":
   version: 1.0.0
-  resolution: "@lucjosin/remark-code-set@file:./plugins/remark-code-set#./plugins/remark-code-set::hash=9e567c&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
+  resolution: "@lucjosin/remark-code-set@file:./plugins/remark-code-set#./plugins/remark-code-set::hash=5ea7c6&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
   dependencies:
     hastscript: ^8.0.0
     remark: ^15.0.1
     unist-util-is: ^6.0.0
     unist-util-visit: ^5.0.0
-  checksum: 36f7c4999ff14d900c5496424213dc89e40e9fd80fd7576d62399a6e7cfc2dfc16c16d21fea3a96dbcced854d126e4b8dcb50334144d3340fd09a1bd52cadeb7
+  checksum: 0c865f67996141aa6f48e7b438e7ac4b869295f796f511946cda36baa12d98c0085e06f6588afd6bcc060047db83df11d4b1f4d2f63bed5fbc8fc7d50c13ddf2
   languageName: node
   linkType: hard
 

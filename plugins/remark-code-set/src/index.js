@@ -56,7 +56,7 @@ export default function remarkCodeTabs() {
       const meta = parse(node.meta ?? '', metaDelimiter);
       if (!meta.tabs) return;
 
-      const codeList = node.value.split('--');
+      const codeList = node.value.split(':-:');
 
       const tabs = [];
       for (let i = 0; i < codeList.length; i++) {

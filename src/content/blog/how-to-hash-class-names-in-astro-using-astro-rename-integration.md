@@ -39,7 +39,7 @@ Let's get started creating a new Astro project:
 ```bash label=npm showLineNumbers=false
 npm create astro@latest
 ```
---
+:-:
 ```bash label=yarn showLineNumbers=false
 yarn create astro
 ```
@@ -55,7 +55,7 @@ Once you have created your Astro project, you can start the dev server using:
 ```bash label=npm showLineNumbers=false
 npm run dev
 ```
---
+:-:
 ```bash label=yarn showLineNumbers=false
 yarn run dev
 ```
@@ -83,7 +83,7 @@ First of all, let's install the [astro-rename](https://github.com/RodrigoTomeES/
 ```bash label=npm showLineNumbers=false
 npm install astro-rename --save-dev
 ```
---
+:-:
 ```bash label=yarn showLineNumbers=false
 yarn add astro-rename --dev
 ```
@@ -131,7 +131,7 @@ At this point, you already can build the project using:
 ```bash label=npm showLineNumbers=false
 npm run build
 ```
---
+:-:
 ```bash label=yarn showLineNumbers=false
 yarn run build
 ```
@@ -286,7 +286,7 @@ Build the project:
 ```bash label=npm showLineNumbers=false
 npm run build
 ```
---
+:-:
 ```bash label=yarn showLineNumbers=false
 yarn run build
 ```
