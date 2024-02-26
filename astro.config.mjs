@@ -11,13 +11,13 @@ import robotsTxt from 'astro-robots-txt';
 
 import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
 import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
+import remarkCodeSet from '@lucjosin/remark-code-set';
 import remarkImageCaption from '@lucjosin/remark-image-caption';
 import remarkPostReference from '@lucjosin/remark-post-reference';
 import remarkReadmeStats from '@lucjosin/remark-readme-stats';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
-import codeset from 'remark-codeset';
 import remarkCollapse from 'remark-collapse';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
@@ -132,7 +132,7 @@ export default defineConfig({
       remarkAlertBlocks,
       remarkCodeHighlight,
       remarkImageCaption,
-      codeset,
+      remarkCodeSet,
       remarkToc,
       [
         remarkCollapse,
