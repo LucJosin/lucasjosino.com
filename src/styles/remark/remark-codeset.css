@@ -1,61 +1,86 @@
-.codeset-wrapper {
+.remark-code-tabs>label {
+  display: flex;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.remark-code-tabs>label>[type=radio] {
+  appearance: none;
+  margin: 0;
+}
+
+.remark-code-tabs> :not(label) {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.remark-code-tabs>label:not(:has(:checked))+* {
+  visibility: hidden;
+}
+
+.remark-code-tabs-x {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.remark-code-tabs {
   margin: 20px 0;
-}
-
-.tab-content {
-  height: 300px;
-  overflow: auto;
-}
-
-.nav-tabs {
-  border-bottom: 1px solid var(--border-color);
-  list-style-type: none;
-  display: flex;
-  gap: 0.3rem;
-  padding-inline-start: 0 !important;
-  margin: 0 !important;
-}
-
-.nav-tabs .nav-item {
-  height: 2.8rem;
-  width: 6rem;
-  margin-bottom: -1px;
-  display: flex;
-  padding-inline-start: 0 !important;
-}
-
-.nav-tabs .nav-item .nav-link {
-  height: 100%;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 5rem);
+  grid-template-rows: min-content auto;
   width: 100%;
+  min-height: 10px;
+}
+
+.remark-code-tab {
+  height: 2.5rem;
+  width: fit-content;
+  margin-left: 1rem;
+  padding-inline-start: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: var(--border-size) solid var(--border-color);
+}
+
+.remark-code-tab:first-child {
   border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-  border-bottom: none;
-  text-decoration: none;
 }
 
-.nav-tabs .nav-link[class~='active'] {
+.remark-code-tab:has(:checked) {
   display: flex;
-  background-color: #24292e;
-  color: #fff;
+  background-color: var(--secondary-color);
+  color: var(--primary-text-color);
 }
 
-.tab-content {
-  height: fit-content;
-  border: var(--border-size) solid var(--border-color);
-  border-top: 0;
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  background: #1f2428;
+
+.remark-code-tab:not(:has(:checked)) {
+  background-color: var(--secondary-color);
+  color: var(--description-text-color);
+  border-bottom: var(--border-size) transparent;
 }
 
-.tab-pane > pre {
+.remark-code-tab:has(:checked)>span {
+  border-bottom: var(--border-size) solid var(--border-color);
+}
+
+.remark-code-content {
+  overflow: auto;
+  padding: 0.5rem;
+}
+
+.remark-code-content pre {
+  margin: 0.6rem;
+}
+
+.remark-code-tabs-x {
   margin: 0 !important;
 }
 
-.frame > pre {
-  border-radius: 0 !important;
+.remark-code-tabs>label:not(:has(:checked))+* {
+  display: none;
 }
