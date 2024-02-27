@@ -16,7 +16,7 @@ const { posts } = Astro.props;
       posts.map((item) => {
         return (
           <PostCard
-            image={item.data.image}
+            image={item.data.image.src}
             title={item.data.title}
             description={item.data.description}
             publishedAt={item.data.publishedAt}
@@ -24,6 +24,7 @@ const { posts } = Astro.props;
             category={item.data.category}
             tags={item.data.tags}
             maxTags={1}
+            body={item.body}
           />
         );
       })
@@ -39,6 +40,6 @@ const { posts } = Astro.props;
   .post-related-items {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   }
 </style>
