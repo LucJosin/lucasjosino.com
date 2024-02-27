@@ -36,17 +36,31 @@ import Icon from 'astro-icon';
 </style>
 
 <script is:inline>
+  function getGiscusTheme(theme) {
+    return `${window.location.origin}/static/css/giscus_${theme}.css`;
+  }
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
   const html = document.documentElement;
   document.getElementById('theme').addEventListener('click', () => {
-    const isLight = html.getAttribute('data-theme') === 'light';
+    const theme =
+      html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
 
-    if (isLight) {
-      html.setAttribute('data-theme', 'dark');
-    } else {
-      html.setAttribute('data-theme', 'light');
-    }
+    localStorage.setItem('theme', theme);
 
-    updateGiscusTheme(isLight ? 'dark' : 'light');
-    localStorage.setItem('theme', isLight ? 'dark' : 'light');
+    // Update 'data-theme'
+    html.setAttribute('data-theme', theme);
+
+    // Update giscus
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme),
+      },
+    });
   });
 </script>
