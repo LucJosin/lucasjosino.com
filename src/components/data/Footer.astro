@@ -1,0 +1,65 @@
+---
+import Link from '@components/core/Link/Link.astro';
+import LinkBox from '@components/core/Link/LinkBox.astro';
+---
+
+<div class="footer">
+  <div class="footer-left">
+    <div class="footer-links">
+      <LinkBox
+        href="/rss.xml"
+        isLocal={false}
+        alt="RSS"
+        icon="mdi:rss"
+        padding="0.5rem"
+      />
+      <LinkBox href="/blog/tags/" alt="Tags" icon="mdi:tags" padding="0.5rem" />
+      <LinkBox
+        href="https://github.com/LucJosin/lucasjosino.com"
+        isLocal={false}
+        alt="Source code"
+        icon="simple-icons:github"
+        padding="0.5rem"
+      />
+    </div>
+    © 2023
+    <span class="footer-home">
+      <Link href="/" alt="Lucas Josino" title="Lucas Josino" />
+    </span>
+    All Rights Reserved.
+  </div>
+</div>
+
+<style>
+  .footer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .footer-left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.89em;
+    color: gray;
+    gap: 0.2rem;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1rem;
+    margin: 0 0 1rem 0;
+  }
+</style>
