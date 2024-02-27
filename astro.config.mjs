@@ -123,7 +123,7 @@ export default defineConfig({
         remarkReadmeStats,
         {
           darkBgColor: '111111',
-          lightBgColor: 'f0f0f0',
+          lightBgColor: 'ffffff',
           borderRadius: '10',
         },
       ],
