@@ -160,8 +160,8 @@ const article = {
         title="Tags"
         active
       />
-      {post.data.enableComments && <PostComments />}
       {post.data.relatedPosts && <PostRelated posts={relatedPosts} />}
+      {post.data.enableComments && <PostComments />}
     </PostFooter>
   </Container>
 </Layout>
