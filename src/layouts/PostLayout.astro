@@ -78,6 +78,8 @@ const article = {
 
     <Title title={post.data.title} fontSize="2.5em" />
 
+    <PostImage src={post.data.image.src} title={post.data.title} />
+
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">
         {getFormatedDate(post.data.publishedAt)}
@@ -107,8 +109,6 @@ const article = {
         )
       }
     </PostInfo>
-
-    <PostImage src={post.data.image.src} title={post.data.title} />
 
     <PostShare
       items={[
@@ -195,5 +195,8 @@ const article = {
       giscusScript.setAttribute(key, value)
     );
     document.body.appendChild(giscusScript);
+    const t = document.createElement('p');
+    t.innerHTML = theme;
+    document.body.appendChild(t);
   });
 </script>
