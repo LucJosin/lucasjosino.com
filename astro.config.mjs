@@ -53,7 +53,7 @@ export default defineConfig({
     rename({
       rename: {
         strategy: (key) => renamer.rename(key),
-        except: ['details', 'show'],
+        except: ['details', 'show', 'expressive-code', 'giscus'],
       },
     }),
     sitemap(),
