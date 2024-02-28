@@ -65,7 +65,10 @@ const { title, description, banner, robots, shortlink, locale, article } =
     />
 
     <!-- Open Graph -->
-    <meta property="og:url" content={Astro.site} />
+    <meta
+      property="og:url"
+      content={headConfig.canonical + Astro.url.pathname}
+    />
     <meta
       property="og:title"
       content={article?.title || title + ' | ' + headConfig.name}
