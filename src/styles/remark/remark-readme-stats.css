@@ -11,23 +11,12 @@
   width: 100%;
 }
 
-.remark-readme-stats-dark {
+:root[data-theme="light"] .remark-readme-stats-dark {
   visibility: hidden;
   display: none;
 }
 
-.remark-readme-stats-light {
-  display: block;
-}
-
-@media (prefers-color-scheme: dark) {
-  .remark-readme-stats-dark {
-    visibility: initial;
-    display: block;
-  }
-
-  .remark-readme-stats-light {
-    visibility: hidden;
-    display: none;
-  }
+:root[data-theme="dark"] .remark-readme-stats-light {
+  visibility: hidden;
+  display: none;
 }

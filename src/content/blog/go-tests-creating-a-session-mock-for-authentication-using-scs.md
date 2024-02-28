@@ -41,7 +41,7 @@ type Server struct {
 
 And now, create our main function, session, router and server
 
-```go title="main.go"
+```go title="main.go" ins={6-15}
 type Server struct {
 	session *scs.SessionManager
 	router  *chi.Mux
@@ -98,7 +98,7 @@ func (s *Server) handleAdmin(w http.ResponseWriter, r *http.Request) {
 
 Defining the handlers into router:
 
-```go title="main.go" {16-20, 25-45}
+```go title="main.go" ins={16-20, 25-45}
 type Server struct {
 	session *scs.SessionManager
 	router  *chi.Mux
@@ -166,7 +166,7 @@ func (s *Server) RequireAdmin(next http.Handler) http.Handler {
 
 We'll use this middleware inside the `router.Group`
 
-```go title="main.go" {4}
+```go title="main.go" ins={4}
 // Routes
 router.Get("/", server.handleHelloWorld)
 router.Group(func(router chi.Router) {
@@ -282,7 +282,7 @@ func LoadAndSaveMock(session *scs.SessionManager, key, value string) func(next h
 
 The final test code logic:
 
-```go title="main_test.go" {1-8, 42-70}
+```go title="main_test.go" ins={1-8, 42-70}
 func LoadAndSaveMock(session *scs.SessionManager, key, value string) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return session.LoadAndSave(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -360,7 +360,7 @@ func Test_main(t *testing.T) {
 
 And.. we get this result
 
-```bash
+```bash showLineNumbers=false title="go test ./..."
 === RUN   Test_main
 === RUN   Test_main/public_endpoint
 --- PASS: Test_main/public_endpoint (0.00s)

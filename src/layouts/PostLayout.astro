@@ -4,6 +4,8 @@ import Divider from '@components/core/Divider.astro';
 import Link from '@components/core/Link/Link.astro';
 import PostImage from '@components/core/Post/PostImage.astro';
 import PostInfoItem from '@components/core/Post/PostInfoItem.astro';
+import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
+import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
 import ProgressBar from '@components/core/ProgressBar.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
@@ -15,14 +17,12 @@ import Tags from '@components/data/Tags.astro';
 import headConfig from '@constants/head';
 import { getFormatedDate } from '@lib/date';
 import { getSocialsShare } from '@lib/share';
+import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
+import { getPostImage } from 'open-graph/generator';
+import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
 import Navigation from './Navigation.astro';
-import PostFooter from '../components/core/Post/PostFooter.astro';
-import { getReadTime } from '@lib/time';
-import { getPostImage } from 'open-graph/generator';
-import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
-import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
 
 interface Props {
   title: string;
@@ -65,7 +65,7 @@ const article = {
   shortlink={post.data.shortlink}
   locale={post.data.language}
 >
-  <Container maxWidth="45rem" gap="1rem">
+  <Container maxWidth="50rem" gap="1rem">
     <ProgressBar />
     <BackToTop />
 
@@ -77,6 +77,8 @@ const article = {
     />
 
     <Title title={post.data.title} fontSize="2.5em" />
+
+    <PostImage src={post.data.image.src} title={post.data.title} />
 
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">
@@ -107,8 +109,6 @@ const article = {
         )
       }
     </PostInfo>
-
-    <PostImage src={post.data.image.src} title={post.data.title} />
 
     <PostShare
       items={[
@@ -160,8 +160,8 @@ const article = {
         title="Tags"
         active
       />
-      {post.data.enableComments && <PostComments />}
       {post.data.relatedPosts && <PostRelated posts={relatedPosts} />}
+      {post.data.enableComments && <PostComments />}
     </PostFooter>
   </Container>
 </Layout>
@@ -169,3 +169,34 @@ const article = {
 <style></style>
 
 <script src="../lib/browser/post.ts"></script>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'LucJosin/lucasjosino.com',
+      'data-repo-id': 'R_kgDOH3GyVA',
+      'data-category': 'Announcements',
+      'data-category-id': 'DIC_kwDOH3GyVM4CZ9W5',
+      'data-mapping': 'pathname',
+      'data-strict': '0',
+      'data-reactions-enabled': '1',
+      'data-emit-metadata': '0',
+      'data-input-position': 'top',
+      'data-theme': getGiscusTheme(theme),
+      'data-lang': 'en',
+      'data-loading': 'lazy',
+      crossorigin: 'anonymous',
+      async: true,
+    };
+
+    // Dynamically create script tag
+    const giscusScript = document.createElement('script');
+    Object.entries(giscusAttributes).forEach(([key, value]) =>
+      giscusScript.setAttribute(key, value)
+    );
+    document.body.appendChild(giscusScript);
+    const t = document.createElement('p');
+    t.innerHTML = theme;
+    document.body.appendChild(t);
+  });
+</script>

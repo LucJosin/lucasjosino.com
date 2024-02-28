@@ -35,12 +35,12 @@ So, we'll use the `strategy` option with a custom hash generator.
 
 Let's get started creating a new Astro project:
 
-````codeset
-```bash label=npm
+````codeset tabs=create-astro-project
+```bash label=npm showLineNumbers=false
 npm create astro@latest
 ```
-
-```bash label=yarn
+:-:
+```bash label=yarn showLineNumbers=false
 yarn create astro
 ```
 ````
@@ -51,12 +51,12 @@ All you have to do is follow the step-by-step instructions.
 
 Once you have created your Astro project, you can start the dev server using:
 
-````codeset
-```bash label=npm
+````codeset tabs=run-dev
+```bash label=npm showLineNumbers=false
 npm run dev
 ```
-
-```bash label=yarn
+:-:
+```bash label=yarn showLineNumbers=false
 yarn run dev
 ```
 ````
@@ -79,12 +79,12 @@ As you can see, all CSS class names are "exposed".
 
 First of all, let's install the [astro-rename](https://github.com/RodrigoTomeES/astro-rename) dependency:
 
-````codeset
-```bash label=npm
+````codeset tabs=install-astro
+```bash label=npm showLineNumbers=false
 npm install astro-rename --save-dev
 ```
-
-```bash label=yarn
+:-:
+```bash label=yarn showLineNumbers=false
 yarn add astro-rename --dev
 ```
 ````
@@ -127,12 +127,12 @@ export default defineConfig({
 
 At this point, you already can build the project using:
 
-````codeset
-```bash label=npm
+````codeset tabs=run-build-default
+```bash label=npm showLineNumbers=false
 npm run build
 ```
-
-```bash label=yarn
+:-:
+```bash label=yarn showLineNumbers=false
 yarn run build
 ```
 ````
@@ -282,12 +282,12 @@ See [my hash-renamer.ts file](https://github.com/LucJosin/lucasjosino.com/tree/m
 
 Build the project:
 
-````codeset
-```bash label=npm
+````codeset tabs=run-build-custom
+```bash label=npm showLineNumbers=false
 npm run build
 ```
-
-```bash label=yarn
+:-:
+```bash label=yarn showLineNumbers=false
 yarn run build
 ```
 ````

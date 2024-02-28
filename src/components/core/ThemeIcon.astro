@@ -1,0 +1,66 @@
+---
+import Icon from 'astro-icon';
+---
+
+<button id="theme">
+  <Icon name="mdi:white-balance-sunny" width="18" />
+</button>
+
+<style>
+  #theme {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    top: 1.5rem;
+    right: 1.5rem;
+    position: fixed;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-duration) linear;
+    background-color: transparent;
+  }
+
+  #theme:hover {
+    background-color: var(--contrast-color);
+  }
+
+  #theme:hover > [astro-icon] {
+    color: var(--primary-color);
+    fill: var(--primary-color);
+  }
+</style>
+
+<script is:inline>
+  function getGiscusTheme(theme) {
+    return `${window.location.origin}/static/css/giscus_${theme}.css`;
+  }
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  const html = document.documentElement;
+  document.getElementById('theme').addEventListener('click', () => {
+    const theme =
+      html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+
+    localStorage.setItem('theme', theme);
+
+    // Update 'data-theme'
+    html.setAttribute('data-theme', theme);
+
+    // Update giscus
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme),
+      },
+    });
+  });
+</script>

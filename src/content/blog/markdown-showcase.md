@@ -22,12 +22,12 @@ updatedAt: '2023-10-23 12:25 UTC-3'
 Code:
 
 `````
-````codeset
-```js
+````codeset tabs=
+```js label=index.js
 console.log("Hello World");
 ```
-
-```go
+:-:
+```go label=main.go
 package main
 
 import (
@@ -38,9 +38,9 @@ func main () {
     fmt.Println("Hello World")
 }
 ```
-
-```java
-public class MainApplication {
+:-:
+```java label=Application.java
+public class Application {
 
     public static void main(String[] args) {
         System.out.println("Hello World");
@@ -54,12 +54,12 @@ Preview:
 
 ---
 
-````codeset
-```js
+````codeset tabs=codeset-preview
+```js label=index.js
 console.log("Hello World");
 ```
-
-```go
+:-:
+```go label=main.go
 package main
 
 import (
@@ -70,9 +70,9 @@ func main () {
     fmt.Println("Hello World")
 }
 ```
-
-```java
-public class MainApplication {
+:-:
+```java label=Application.java
+public class Application {
 
     public static void main(String[] args) {
         System.out.println("Hello World");

@@ -18,3 +18,8 @@ summary {
 .medium-zoom-image {
   z-index: 2;
 }
+
+.expressive-code .frame.is-terminal .header,
+.expressive-code .frame .header {
+  z-index: 0 !important;
+}

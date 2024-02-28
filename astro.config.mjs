@@ -3,6 +3,7 @@ import { s } from 'hastscript';
 
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
 import rename from 'astro-rename';
@@ -10,13 +11,13 @@ import robotsTxt from 'astro-robots-txt';
 
 import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
 import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
+import remarkCodeSet from '@lucjosin/remark-code-set';
 import remarkImageCaption from '@lucjosin/remark-image-caption';
 import remarkPostReference from '@lucjosin/remark-post-reference';
 import remarkReadmeStats from '@lucjosin/remark-readme-stats';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
-import codeset from 'remark-codeset';
 import remarkCollapse from 'remark-collapse';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
@@ -42,7 +43,13 @@ export default defineConfig({
   // Ref: https://docs.astro.build/en/guides/integrations-guide/
   // Ref: https://docs.astro.build/en/guides/integrations-guide/sitemap/
   integrations: [
-    astroExpressiveCode(),
+    astroExpressiveCode({
+      themes: ['dark-plus', 'light-plus'],
+      useDarkModeMediaQuery: true,
+      themeCssSelector: (theme) =>
+        `[data-theme='${theme.name.replace('-plus', '')}']`,
+      plugins: [pluginLineNumbers()],
+    }),
     rename({
       rename: {
         strategy: (key) => renamer.rename(key),
@@ -116,7 +123,7 @@ export default defineConfig({
         remarkReadmeStats,
         {
           darkBgColor: '111111',
-          lightBgColor: 'f0f0f0',
+          lightBgColor: 'ffffff',
           borderRadius: '10',
         },
       ],
@@ -125,7 +132,7 @@ export default defineConfig({
       remarkAlertBlocks,
       remarkCodeHighlight,
       remarkImageCaption,
-      codeset,
+      remarkCodeSet,
       remarkToc,
       [
         remarkCollapse,
