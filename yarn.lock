@@ -2442,6 +2442,7 @@ __metadata:
     astro-compress: ^2.2.10
     astro-expressive-code: ^0.33.4
     astro-icon: ^0.8.1
+    astro-meta-tags: ^0.2.1
     astro-rename: ^1.1.2
     astro-robots-txt: ^1.0.0
     eslint: ^8.57.0
@@ -3934,6 +3935,15 @@ __metadata:
     resolve-pkg: ^2.0.0
     svgo: ^2.8.0
   checksum: 8ac373eedbc9bd78186444696fa4d0682d9d001920d7ba10301f8e0a1d4c77688737270783cad34912307d4aaef61f50858e21d1eb4574b89835532b7320526b
+  languageName: node
+  linkType: hard
+
+"astro-meta-tags@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "astro-meta-tags@npm:0.2.1"
+  peerDependencies:
+    astro: ^4.0.0
+  checksum: 0bbfe8dc48e150cfd7434bc71691e18ab9732cad69c1d11b0bc802cda2a36332511f79a4ac0592c4d6316e1a131a57d899670b916648cf821d8c542dbe3814ad
   languageName: node
   linkType: hard
 

@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
+import astroMetaTags from 'astro-meta-tags';
 import rename from 'astro-rename';
 import robotsTxt from 'astro-robots-txt';
 
@@ -64,6 +65,7 @@ export default defineConfig({
         `[data-theme='${theme.name.replace('-plus', '')}']`,
       plugins: [pluginLineNumbers()],
     }),
+    astroMetaTags(),
     rename({
       rename: {
         strategy: (key) => renamer.rename(key),
