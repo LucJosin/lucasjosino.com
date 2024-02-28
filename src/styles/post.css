@@ -25,5 +25,5 @@ summary {
 }
 
 .expressive-code .frame {
-  all: unset !important;
+  margin: 0 !important;
 }
