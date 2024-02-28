@@ -23,3 +23,7 @@ summary {
 .expressive-code .frame .header {
   z-index: 0 !important;
 }
+
+.expressive-code .frame {
+  all: unset !important;
+}
