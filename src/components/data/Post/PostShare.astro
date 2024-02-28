@@ -12,9 +12,10 @@ interface PostShareItem {
 
 interface Props {
   items: PostShareItem[];
+  margin?: string;
 }
 
-const { items } = Astro.props;
+const { items, margin } = Astro.props;
 ---
 
 <div class="post-share">
@@ -41,12 +42,12 @@ const { items } = Astro.props;
   }
 </div>
 
-<style>
+<style define:vars={{ margin }}>
   .post-share {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
-    margin: 0 0 1rem 0;
+    margin: var(--margin);
   }
 </style>

@@ -111,6 +111,7 @@ const article = {
     </PostInfo>
 
     <PostShare
+      margin="0 0 1rem 0"
       items={[
         {
           href: linkedin,
@@ -195,8 +196,5 @@ const article = {
       giscusScript.setAttribute(key, value)
     );
     document.body.appendChild(giscusScript);
-    const t = document.createElement('p');
-    t.innerHTML = theme;
-    document.body.appendChild(t);
   });
 </script>

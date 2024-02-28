@@ -36,14 +36,13 @@ import Icon from 'astro-icon';
 </style>
 
 <script is:inline>
-  function getGiscusTheme(theme) {
-    return `${window.location.origin}/static/css/giscus_${theme}.css`;
-  }
-
   function sendMessage(message) {
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (!iframe) return;
-    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const giscusFrame = document.querySelector('iframe.giscus-frame');
+    if (!giscusFrame) return;
+    giscusFrame.contentWindow.postMessage(
+      { giscus: message },
+      'https://giscus.app'
+    );
   }
 
   const html = document.documentElement;

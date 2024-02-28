@@ -103,7 +103,7 @@ import rename from 'astro-rename';
 
 Add to integrations option:
 
-```js title="astro.config.mjs" {3, 8-12}
+```js title="astro.config.mjs" ins={3, 8-12}
 import { defineConfig } from 'astro/config';
 
 import rename from 'astro-rename';
@@ -198,7 +198,7 @@ See more: [Support multiple CSS files](https://github.com/google/postcss-rename/
 
 Now, let's create the `getHash` method. This function will loop from `0` to `maxSize` and take a random letter from `CHARS` constant.
 
-```ts title="src/lib/hash-renamer.ts" {1, 3-16}
+```ts title="src/lib/hash-renamer.ts" ins={1, 3-16}
 const CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_';
 
 /**
@@ -252,7 +252,7 @@ export default class HashRenamer {
 
 Open the `astro.config.cjs` file and add the custom strategy:
 
-```js title="astro.config.mjs" {5, 7, 13-17}
+```js title="astro.config.mjs" ins={5, 7, 13-17}
 import { defineConfig } from 'astro/config';
 
 import rename from 'astro-rename';

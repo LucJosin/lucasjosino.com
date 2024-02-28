@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
+import astroMetaTags from 'astro-meta-tags';
 import rename from 'astro-rename';
 import robotsTxt from 'astro-robots-txt';
 
@@ -26,6 +27,20 @@ import HashRenamer from './src/lib/hash-renamer';
 
 const cssPrefix = 'astro-';
 const renamer = new HashRenamer(cssPrefix);
+const exceptions = [
+  // Global
+  'details',
+  'show',
+
+  // Giscus
+  'giscus',
+
+  // Expressive code
+  'expressive-code',
+  'frame',
+  'header',
+  'is-terminal',
+];
 
 // https://astro.build/config
 export default defineConfig({
@@ -50,10 +65,11 @@ export default defineConfig({
         `[data-theme='${theme.name.replace('-plus', '')}']`,
       plugins: [pluginLineNumbers()],
     }),
+    astroMetaTags(),
     rename({
       rename: {
         strategy: (key) => renamer.rename(key),
-        except: ['details', 'show'],
+        except: exceptions,
       },
     }),
     sitemap(),
