@@ -26,6 +26,20 @@ import HashRenamer from './src/lib/hash-renamer';
 
 const cssPrefix = 'astro-';
 const renamer = new HashRenamer(cssPrefix);
+const exceptions = [
+  // Global
+  'details',
+  'show',
+
+  // Giscus
+  'giscus',
+
+  // Expressive code
+  'expressive-code',
+  'frame',
+  'header',
+  'is-terminal',
+];
 
 // https://astro.build/config
 export default defineConfig({
@@ -53,7 +67,7 @@ export default defineConfig({
     rename({
       rename: {
         strategy: (key) => renamer.rename(key),
-        except: ['details', 'show', 'expressive-code', 'giscus'],
+        except: exceptions,
       },
     }),
     sitemap(),
