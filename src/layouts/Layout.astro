@@ -92,6 +92,11 @@ const { title, description, banner, robots, shortlink, locale, article } =
     <meta property="og:image:height" content="600" />
 
     <script is:inline>
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      function getGiscusTheme(theme) {
+        return `${window.location.origin}/static/css/giscus_${theme}.css`;
+      }
+
       const theme = (() => {
         if (
           typeof localStorage !== 'undefined' &&
