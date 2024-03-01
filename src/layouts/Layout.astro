@@ -94,6 +94,15 @@ const { title, description, banner, robots, shortlink, locale, article } =
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
+    {
+      import.meta.env.PROD && (
+        <script
+          defer
+          src="https://analytics.us.umami.is/script.js"
+          data-website-id="986fb135-7659-4137-9c30-d74a3af505ca"
+        />
+      )
+    }
     <script is:inline>
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       function getGiscusTheme(theme) {
