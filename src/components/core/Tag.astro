@@ -10,11 +10,15 @@ const { href, value, active = false } = Astro.props;
 
 {
   active ? (
-    <a href={href} class="tag" title={`See more posts from '${value}' tag`}>
+    <a
+      href={href}
+      class="tag-item"
+      title={`See more posts with '${value}' tag`}
+    >
       {value}
     </a>
   ) : (
-    <span class="tag">{value}</span>
+    <span class="tag-item">{value}</span>
   )
 }
 
