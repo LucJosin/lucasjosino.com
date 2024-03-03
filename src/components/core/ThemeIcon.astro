@@ -1,9 +1,9 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 ---
 
 <button id="theme">
-  <Icon name="mdi:white-balance-sunny" width="18" />
+  <Icon name="mdi:white-balance-sunny" />
 </button>
 
 <style>
@@ -29,7 +29,7 @@ import Icon from 'astro-icon';
     background-color: var(--contrast-color);
   }
 
-  #theme:hover > [astro-icon] {
+  #theme:hover > [data-icon] {
     color: var(--primary-color);
     fill: var(--primary-color);
   }

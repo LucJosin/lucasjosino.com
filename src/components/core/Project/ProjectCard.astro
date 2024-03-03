@@ -1,7 +1,7 @@
 ---
 import Tags from '@components/data/Tags.astro';
 import type { ProjectModel } from '@constants/projects';
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 import Description from '../Description.astro';
 import Divider from '../Divider.astro';
 import LinkBox from '../Link/LinkBox.astro';
@@ -27,10 +27,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
     <Title title={project.title} fontSize={titleSize} margin="0" />
     <span class="language">
       {project.language}
-      <Icon
-        name={`simple-icons:${project.language.toLocaleLowerCase()}`}
-        width="16"
-      />
+      <Icon name={project.icon} />
     </span>
   </div>
   <Divider width="100%" margin="0 0" />
@@ -143,5 +140,9 @@ const { project, titleSize, descSize } = Astro.props as Props;
     width: 100%;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+
+  [data-icon] {
+    font-size: 1.3em;
   }
 </style>
