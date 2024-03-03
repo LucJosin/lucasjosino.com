@@ -12,7 +12,7 @@ import LinkBox from '@components/core/Link/LinkBox.astro';
         alt="RSS"
         icon="mdi:rss"
         padding="0.5rem"
-        event=`RSS (Footer) - (${window.location.pathname})`
+        event=`RSS (Footer) - (${Astro.url.pathname})`
       />
       <LinkBox href="/blog/tags/" alt="Tags" icon="mdi:tags" padding="0.5rem" />
       <LinkBox
