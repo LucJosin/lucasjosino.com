@@ -2438,8 +2438,8 @@ __metadata:
     "@types/react-dom": ^18.2.14
     "@typescript-eslint/eslint-plugin": ^6.8.0
     "@typescript-eslint/parser": ^6.8.0
-    astro: 4.4.6
-    astro-compress: ^2.2.10
+    astro: ^4.4.9
+    astro-compress: ^2.2.11
     astro-expressive-code: ^0.33.4
     astro-icon: ^0.8.1
     astro-meta-tags: ^0.2.1
@@ -2450,7 +2450,7 @@ __metadata:
     eslint-plugin-astro: ^0.31.4
     medium-zoom: ^1.1.0
     prettier: ^3.2.5
-    prettier-plugin-astro: ^0.12.0
+    prettier-plugin-astro: ^0.13.0
     react: ^18.2.0
     react-dom: ^18.2.0
     reading-time: ^1.5.0
@@ -2459,11 +2459,11 @@ __metadata:
     rehype-slug: ^6.0.0
     remark-collapse: ^0.1.2
     remark-numbered-footnote-labels: ^1.1.0
-    remark-toc: ^8.0.1
+    remark-toc: ^9.0.0
     satori: ^0.10.13
     satori-html: ^0.3.2
     svgo: 2.8.0
-    typescript: ^5.2.2
+    typescript: ^5.3.3
   languageName: unknown
   linkType: soft
 
@@ -3267,13 +3267,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/extend@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "@types/extend@npm:3.0.1"
-  checksum: 1ef199a1386be8744d4642eb5f599588829d9e82c55d399f1437d3543b9343203e6724231235793cb434410afb2d10bfbf18ea28f943d10c2246542c9e5c6203
-  languageName: node
-  linkType: hard
-
 "@types/hast@npm:^2.0.0":
   version: 2.3.4
   resolution: "@types/hast@npm:2.3.4"
@@ -3303,15 +3296,6 @@ __metadata:
   version: 7.0.12
   resolution: "@types/json-schema@npm:7.0.12"
   checksum: 00239e97234eeb5ceefb0c1875d98ade6e922bfec39dd365ec6bd360b5c2f825e612ac4f6e5f1d13601b8b30f378f15e6faa805a3a732f4a1bbe61915163d293
-  languageName: node
-  linkType: hard
-
-"@types/mdast@npm:^3.0.0":
-  version: 3.0.10
-  resolution: "@types/mdast@npm:3.0.10"
-  dependencies:
-    "@types/unist": "*"
-  checksum: 3f587bfc0a9a2403ecadc220e61031b01734fedaf82e27eb4d5ba039c0eb54db8c85681ccc070ab4df3f7ec711b736a82b990e69caa14c74bf7ac0ccf2ac7313
   languageName: node
   linkType: hard
 
@@ -3444,6 +3428,13 @@ __metadata:
   version: 7.5.0
   resolution: "@types/semver@npm:7.5.0"
   checksum: 0a64b9b9c7424d9a467658b18dd70d1d781c2d6f033096a6e05762d20ebbad23c1b69b0083b0484722aabf35640b78ccc3de26368bcae1129c87e9df028a22e2
+  languageName: node
+  linkType: hard
+
+"@types/ungap__structured-clone@npm:^0.3.0":
+  version: 0.3.3
+  resolution: "@types/ungap__structured-clone@npm:0.3.3"
+  checksum: 490a32e176d38407280675a590ae60b5a6ff9129e6b9a5eac5e0b3144e088516236055c197ddb4734562e0587bdedba2b8a4953d52442b082fea1dc201d4eba3
   languageName: node
   linkType: hard
 
@@ -3881,9 +3872,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-compress@npm:^2.2.10":
-  version: 2.2.10
-  resolution: "astro-compress@npm:2.2.10"
+"astro-compress@npm:^2.2.11":
+  version: 2.2.11
+  resolution: "astro-compress@npm:2.2.11"
   dependencies:
     "@types/csso": 5.0.4
     "@types/html-minifier-terser": 7.0.2
@@ -3891,11 +3882,11 @@ __metadata:
     files-pipe: 2.1.8
     html-minifier-terser: 7.2.0
     kleur: 4.1.5
-    lightningcss: 1.23.0
+    lightningcss: 1.24.0
     sharp: 0.33.2
     svgo: 3.2.0
-    terser: 5.27.0
-  checksum: b63c972874673dbb4c1a578317736926c4d00ba4061d2f8631e72e66a853ff8814e3f8f9ce3d4a524e01a3b9ab541a5e902039ca0c18f998daaeebb16e8c01f2
+    terser: 5.28.1
+  checksum: 149db38b138c77709a5b8a29b9d60d98379cd795bb0ec08154d0e3020bf73fdee30b26dd3af90f181b76c9d4e42964b9ac60c2dd86f48f397b9ede69ea3dc4f3
   languageName: node
   linkType: hard
 
@@ -3971,9 +3962,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:4.4.6":
-  version: 4.4.6
-  resolution: "astro@npm:4.4.6"
+"astro@npm:^4.4.9":
+  version: 4.4.9
+  resolution: "astro@npm:4.4.9"
   dependencies:
     "@astrojs/compiler": ^2.5.3
     "@astrojs/internal-helpers": 0.2.1
@@ -4035,7 +4026,7 @@ __metadata:
     tsconfck: ^3.0.0
     unist-util-visit: ^5.0.0
     vfile: ^6.0.1
-    vite: ^5.1.2
+    vite: ^5.1.4
     vitefu: ^0.2.5
     which-pm: ^2.1.1
     yargs-parser: ^21.1.1
@@ -4045,7 +4036,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 7f44d76076acc2c67f0b0b4ddd11f31cbf449e174fa94b41253a3d5891a96ea1311563d2e29d8c1fb98edfe53aa75b120448da2dca37d3c7a431b5d7ce72a34b
+  checksum: dc7b1e483ea50590e1ad692ebffe571792d542f6bbc0b102f836f285274285690eb367d7fdfaf4e8390c50599666eb5e0715e35634ef330457e544f7cddd3377
   languageName: node
   linkType: hard
 
@@ -7636,83 +7627,83 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lightningcss-darwin-arm64@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-darwin-arm64@npm:1.23.0"
+"lightningcss-darwin-arm64@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-darwin-arm64@npm:1.24.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"lightningcss-darwin-x64@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-darwin-x64@npm:1.23.0"
+"lightningcss-darwin-x64@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-darwin-x64@npm:1.24.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"lightningcss-freebsd-x64@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-freebsd-x64@npm:1.23.0"
+"lightningcss-freebsd-x64@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-freebsd-x64@npm:1.24.0"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"lightningcss-linux-arm-gnueabihf@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-linux-arm-gnueabihf@npm:1.23.0"
+"lightningcss-linux-arm-gnueabihf@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-linux-arm-gnueabihf@npm:1.24.0"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"lightningcss-linux-arm64-gnu@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-linux-arm64-gnu@npm:1.23.0"
+"lightningcss-linux-arm64-gnu@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-linux-arm64-gnu@npm:1.24.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"lightningcss-linux-arm64-musl@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-linux-arm64-musl@npm:1.23.0"
+"lightningcss-linux-arm64-musl@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-linux-arm64-musl@npm:1.24.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"lightningcss-linux-x64-gnu@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-linux-x64-gnu@npm:1.23.0"
+"lightningcss-linux-x64-gnu@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-linux-x64-gnu@npm:1.24.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"lightningcss-linux-x64-musl@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-linux-x64-musl@npm:1.23.0"
+"lightningcss-linux-x64-musl@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-linux-x64-musl@npm:1.24.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"lightningcss-win32-x64-msvc@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss-win32-x64-msvc@npm:1.23.0"
+"lightningcss-win32-x64-msvc@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss-win32-x64-msvc@npm:1.24.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"lightningcss@npm:1.23.0":
-  version: 1.23.0
-  resolution: "lightningcss@npm:1.23.0"
+"lightningcss@npm:1.24.0":
+  version: 1.24.0
+  resolution: "lightningcss@npm:1.24.0"
   dependencies:
     detect-libc: ^1.0.3
-    lightningcss-darwin-arm64: 1.23.0
-    lightningcss-darwin-x64: 1.23.0
-    lightningcss-freebsd-x64: 1.23.0
-    lightningcss-linux-arm-gnueabihf: 1.23.0
-    lightningcss-linux-arm64-gnu: 1.23.0
-    lightningcss-linux-arm64-musl: 1.23.0
-    lightningcss-linux-x64-gnu: 1.23.0
-    lightningcss-linux-x64-musl: 1.23.0
-    lightningcss-win32-x64-msvc: 1.23.0
+    lightningcss-darwin-arm64: 1.24.0
+    lightningcss-darwin-x64: 1.24.0
+    lightningcss-freebsd-x64: 1.24.0
+    lightningcss-linux-arm-gnueabihf: 1.24.0
+    lightningcss-linux-arm64-gnu: 1.24.0
+    lightningcss-linux-arm64-musl: 1.24.0
+    lightningcss-linux-x64-gnu: 1.24.0
+    lightningcss-linux-x64-musl: 1.24.0
+    lightningcss-win32-x64-msvc: 1.24.0
   dependenciesMeta:
     lightningcss-darwin-arm64:
       optional: true
@@ -7732,7 +7723,7 @@ __metadata:
       optional: true
     lightningcss-win32-x64-msvc:
       optional: true
-  checksum: c9cf793762a9c30ebf9376f461954e5667e9e034f3a76a5ab4f8823648c4012b5da929b93b54ad240d6fdb002efd82768685602f32a8a9c0b215d8af848ea66a
+  checksum: ac3e5d723182ee8e6d6e62f223690d22e7af00d1532b2183a5a3872a19e81e5594014aeed426efef631966f1f96f736948481d45916e48256b88d2eda77e4a0d
   languageName: node
   linkType: hard
 
@@ -8159,13 +8150,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-to-string@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "mdast-util-to-string@npm:3.1.0"
-  checksum: f42ddd4e22f2215a75715b92ea6e3149c4ba356e7781d7b94fc86ded1c79cec3f986afeecef3a4a80068c9b224a6520099783a12146b957de24f020a3e47dd29
-  languageName: node
-  linkType: hard
-
 "mdast-util-to-string@npm:^4.0.0":
   version: 4.0.0
   resolution: "mdast-util-to-string@npm:4.0.0"
@@ -8175,18 +8159,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-toc@npm:^6.0.0":
-  version: 6.1.1
-  resolution: "mdast-util-toc@npm:6.1.1"
+"mdast-util-toc@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "mdast-util-toc@npm:7.0.0"
   dependencies:
-    "@types/extend": ^3.0.0
-    "@types/mdast": ^3.0.0
-    extend: ^3.0.0
+    "@types/mdast": ^4.0.0
+    "@types/ungap__structured-clone": ^0.3.0
+    "@ungap/structured-clone": ^1.0.0
     github-slugger: ^2.0.0
-    mdast-util-to-string: ^3.1.0
-    unist-util-is: ^5.0.0
-    unist-util-visit: ^4.0.0
-  checksum: 4a50455729c139b1ac648be8edfdaed581c9ed51697bccfbd1f1a70f16dbb4b7014da703135bc49551d116f82517483fd032ed1c5f27741f5c05d78925fe68e6
+    mdast-util-to-string: ^4.0.0
+    unist-util-is: ^6.0.0
+    unist-util-visit: ^5.0.0
+  checksum: 3f85eefcff5fdd718385bd43a7966db9818aa807ebf9cd29972a1d71e62e1d44335dcf24bf4786e534fdb36801949117e1ec69708ee4fcc78e6e539d54761bf0
   languageName: node
   linkType: hard
 
@@ -9984,14 +9968,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-astro@npm:^0.12.0":
-  version: 0.12.3
-  resolution: "prettier-plugin-astro@npm:0.12.3"
+"prettier-plugin-astro@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "prettier-plugin-astro@npm:0.13.0"
   dependencies:
     "@astrojs/compiler": ^1.5.5
     prettier: ^3.0.0
     sass-formatter: ^0.7.6
-  checksum: b713d787950b6d0221a7932e13174f2156ec17e7ca92e08f5522cf7b5fe0e6248760e624b1c4d8a590dae6d385a9e4f0bb2d3af0b99f4fa9cc0e0dd7dbff1320
+  checksum: fd6114a817f8d5217932f44dc5b6f647f8607c7a296e018c981cc6d8fd7eae65f77f29fcab9e0913520125af76168238563b4a51dae7431cbb0324b9b203b04b
   languageName: node
   linkType: hard
 
@@ -10467,14 +10451,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-toc@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "remark-toc@npm:8.0.1"
+"remark-toc@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "remark-toc@npm:9.0.0"
   dependencies:
-    "@types/mdast": ^3.0.0
-    mdast-util-toc: ^6.0.0
-    unified: ^10.0.0
-  checksum: 4a8d6dbde402c9eece0fc8774c1d639fa5cd8d4ba75a7c2ff848f239d60f52e0d055467bbc11b7871508f0ecac13ec8013a89d4131f0b242bc08fb6fec7de517
+    "@types/mdast": ^4.0.0
+    mdast-util-toc: ^7.0.0
+  checksum: 2d167713ac1a064990296aece847a387ea79b998383ab64c455c05672403ed51574bbbd079aa967d904170dfee4035dd7b84b0eb28a01f9c7e93778a0e57c3c9
   languageName: node
   linkType: hard
 
@@ -11748,9 +11731,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser@npm:5.27.0":
-  version: 5.27.0
-  resolution: "terser@npm:5.27.0"
+"terser@npm:5.28.1":
+  version: 5.28.1
+  resolution: "terser@npm:5.28.1"
   dependencies:
     "@jridgewell/source-map": ^0.3.3
     acorn: ^8.8.2
@@ -11758,7 +11741,7 @@ __metadata:
     source-map-support: ~0.5.20
   bin:
     terser: bin/terser
-  checksum: c165052cfea061e8512e9b9ba42a098c2ff6382886ae122b040fd5b6153443070cc2dcb4862269f1669c09c716763e856125a355ff984aa72be525d6fffd8729
+  checksum: 2668823cbdf8ae4c62d17a899614c849ddbfa932fce2309e600bd9ed6e6adb87b2c0aca30acb6cdf0d8e83a77ae3858af14cd357a2cb25b9f289fae98c7f7537
   languageName: node
   linkType: hard
 
@@ -11970,7 +11953,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.2.2":
+"typescript@npm:^5.3.3":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
   bin:
@@ -11990,7 +11973,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.2.2#~builtin<compat/typescript>":
+"typescript@patch:typescript@^5.3.3#~builtin<compat/typescript>":
   version: 5.3.3
   resolution: "typescript@patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=29ae49"
   bin:
@@ -12435,7 +12418,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.1.2":
+"vite@npm:^5.1.4":
   version: 5.1.4
   resolution: "vite@npm:5.1.4"
   dependencies:
