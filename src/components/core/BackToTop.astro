@@ -1,9 +1,9 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 ---
 
 <a class="back-to-top">
-  <Icon name="mdi:arrow-up" width="24" />
+  <Icon name="mdi:arrow-up" />
 </a>
 
 <style>
@@ -37,7 +37,7 @@ import Icon from 'astro-icon';
     background-color: var(--contrast-color);
   }
 
-  .back-to-top:hover > [astro-icon] {
+  .back-to-top:hover > [data-icon] {
     color: var(--primary-color);
     fill: var(--primary-color);
   }

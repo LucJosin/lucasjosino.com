@@ -44,9 +44,9 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
           <h1>lucasjosino.com</h1>
           <span
             style={{
-              margin: '0.6rem 0',
+              margin: '0.8rem 0',
               height: '2px',
-              width: '50%',
+              width: '70%',
               backgroundColor: '#fff',
             }}
           ></span>
@@ -61,17 +61,17 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
         >
           <span
             style={{
-              marginBottom: '0.8rem',
+              margin: '1.2rem',
               fontWeight: '300',
-              fontSize: '1.3em',
+              fontSize: '1.6em',
             }}
           >
             {post.data.category} • {getFormatedDate(post.data.publishedAt)}
           </span>
           <h1
             style={{
-              width: '80%',
-              fontSize: '3.2em',
+              width: '90%',
+              fontSize: '3.5em',
               fontWeight: '500',
               margin: '0',
             }}
@@ -80,8 +80,8 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
           </h1>
           <p
             style={{
-              width: '80%',
-              fontSize: '2em',
+              width: '90%',
+              fontSize: '2.5em',
               fontWeight: '300',
               overflow: 'hidden',
             }}

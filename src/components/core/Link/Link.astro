@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   href: string;
@@ -13,6 +13,7 @@ interface Props {
   hasBorderBottom?: boolean;
   animatedIcon?: boolean;
   reverseAnimation?: boolean;
+  event?: string;
 }
 
 const {
@@ -23,11 +24,14 @@ const {
   gap = '0.6rem',
   icon,
   iconSide = 'left',
-  iconSize = '18',
+  iconSize = '1.2em',
   hasBorderBottom = true,
   animatedIcon = false,
   reverseAnimation = false,
+  event,
 } = Astro.props as Props;
+
+const attr = { 'data-umami-event': event };
 
 const borderBottom = hasBorderBottom ? 'var(--border-color)' : 'transparent';
 
@@ -46,13 +50,16 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
   rel={isLocal ? undefined : 'noopener noreferrer'}
   target={isLocal ? undefined : '_blank'}
   class="link-data"
+  {...attr}
 >
-  {icon && iconSide === 'left' && <Icon name={icon} size={iconSize} />}
+  {icon && iconSide === 'left' && <Icon name={icon} />}
   {title && <span>{title}</span>}
-  {icon && iconSide === 'right' && <Icon name={icon} size={iconSize} />}
+  {icon && iconSide === 'right' && <Icon name={icon} />}
 </a>
 
-<style define:vars={{ borderBottom, currentGap, animatedGap, iconColor }}>
+<style
+  define:vars={{ borderBottom, currentGap, animatedGap, iconColor, iconSize }}
+>
   .link-data {
     border-bottom: var(--border-size) solid transparent;
     transition: all var(--transition-duration);
@@ -67,8 +74,12 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
     gap: var(--animatedGap);
   }
 
-  .link-data:hover > [astro-icon] {
+  .link-data:hover > [data-icon] {
     fill: var(--iconColor);
     color: var(--iconColor);
+  }
+
+  [data-icon] {
+    font-size: var(--iconSize);
   }
 </style>

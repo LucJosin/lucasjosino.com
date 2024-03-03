@@ -1,6 +1,6 @@
 ---
 import Divider from '@components/core/Divider.astro';
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 import Footer from './Footer.astro';
 
 interface Props {
@@ -16,7 +16,7 @@ const { back, maxWidth = '35rem', gap } = Astro.props;
   {
     back && (
       <a href={back} class="back-button" title="Back">
-        <Icon name="mdi:arrow-left" width="24" />
+        <Icon name="mdi:arrow-left" />
       </a>
     )
   }
@@ -46,7 +46,7 @@ const { back, maxWidth = '35rem', gap } = Astro.props;
     left: 0;
   }
 
-  .back-button:hover > [astro-icon] {
+  .back-button:hover > [data-icon] {
     fill: gray;
     color: gray;
   }

@@ -4,12 +4,6 @@
 
 <div class="avatar">
   <span class="avatar-profile"></span>
-  <img
-    src="https://emoji.gg/assets/emoji/7279-vibecat.gif"
-    width="34"
-    class="avatar-fallback"
-    title="Vibecat gif"
-  />
 </div>
 
 <style>
@@ -33,27 +27,8 @@
     cursor: help;
   }
 
-  .avatar-fallback {
-    height: 3rem;
-    width: 3rem;
-    position: absolute;
-    visibility: hidden;
+  .avatar-profile:hover {
+    background: url('https://emoji.gg/assets/emoji/7279-vibecat.gif') no-repeat
+      center;
   }
 </style>
-
-<script>
-  const profile = document.querySelector('.avatar-profile') as HTMLInputElement;
-  const fallback = document.querySelector(
-    '.avatar-fallback'
-  ) as HTMLInputElement;
-
-  profile?.addEventListener('click', () => {
-    profile.style.visibility = 'hidden';
-    fallback.style.visibility = 'visible';
-  });
-
-  fallback?.addEventListener('click', () => {
-    profile.style.visibility = 'visible';
-    fallback.style.visibility = 'hidden';
-  });
-</script>

@@ -30,7 +30,6 @@ const { title, image, description, url, git } = Astro.props as Props;
             href={git}
             icon="simple-icons:github"
             alt={title + ' - Github'}
-            iconSize="20"
             isLocal={false}
             hasBorderBottom={false}
           />
@@ -40,9 +39,8 @@ const { title, image, description, url, git } = Astro.props as Props;
         url && (
           <Link
             href={url}
-            icon="gridicons:external"
+            icon="mdi:external-link"
             alt={title + ' - Demo'}
-            iconSize="22"
             isLocal={false}
             hasBorderBottom={false}
           />

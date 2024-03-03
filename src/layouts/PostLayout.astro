@@ -117,16 +117,19 @@ const article = {
           href: linkedin,
           icon: 'simple-icons:linkedin',
           alt: 'Share to Linkedin',
+          event: `Post Share (Top) - Linkedin (${post.data.shortlink})`,
         },
         {
           href: twitter,
           icon: 'simple-icons:twitter',
           alt: 'Share to Twitter',
+          event: `Post Share (Top) - Twitter (${post.data.shortlink})`,
         },
         {
           href: reddit,
           icon: 'simple-icons:reddit',
           alt: 'Share to Reddit',
+          event: `Post Share (Top) - Reddit (${post.data.shortlink})`,
         },
         {
           href: headConfig.shortLink + post.data.shortlink,
@@ -134,6 +137,7 @@ const article = {
           alt: 'Copy link',
           id: 'share',
           messageId: 'share-title',
+          event: `Post Share (Top) - Copy link (${post.data.shortlink})`,
         },
       ]}
     />

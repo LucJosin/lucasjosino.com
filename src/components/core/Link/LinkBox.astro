@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   href: string;
@@ -12,6 +12,7 @@ interface Props {
   isLocal?: boolean;
   padding?: string;
   titleId?: string;
+  event?: string;
 }
 
 const {
@@ -19,13 +20,16 @@ const {
   alt,
   icon,
   iconSide = 'left',
-  iconSize = '18',
+  iconSize = '1.2em',
   title,
   id,
   isLocal = true,
   padding = '0.8rem',
   titleId,
+  event,
 } = Astro.props as Props;
+
+const attr = { 'data-umami-event': event };
 ---
 
 <a
@@ -35,13 +39,14 @@ const {
   title={alt}
   id={id}
   class="link-box"
+  {...attr}
 >
-  {icon && iconSide === 'left' && <Icon name={icon} size={iconSize} />}
+  {icon && iconSide === 'left' && <Icon name={icon} />}
   {title && <span id={titleId}>{title}</span>}
-  {icon && iconSide === 'right' && <Icon name={icon} size={iconSize} />}
+  {icon && iconSide === 'right' && <Icon name={icon} />}
 </a>
 
-<style define:vars={{ padding }}>
+<style define:vars={{ padding, iconSize }}>
   .link-box {
     height: min-content;
     border: var(--border-size) solid var(--border-color);
@@ -61,8 +66,12 @@ const {
     cursor: pointer;
   }
 
-  .link-box:hover > [astro-icon] {
+  .link-box:hover > [data-icon] {
     fill: var(--secondary-text-color);
     color: var(--secondary-text-color);
+  }
+
+  [data-icon] {
+    font-size: var(--iconSize);
   }
 </style>

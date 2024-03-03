@@ -9,7 +9,7 @@ export const socials = [
   {
     name: 'Bluesky',
     alt: 'Bluesky - @lucjos.in',
-    icon: 'bsky',
+    icon: 'simple-icons:bluesky',
     user: 'lucjos.in',
     url: 'https://bsky.app/profile/lucjos.in/',
   },

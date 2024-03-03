@@ -7,6 +7,7 @@ export interface ProjectModel {
   article?: string;
   tags: string[];
   language: string;
+  icon: string;
   category: 'Project' | 'Collection';
   children?: ChildrenProjectModel[];
 }
@@ -29,6 +30,7 @@ export const projects: ProjectModel[] = [
     url: 'https://hawbrary.theproject.id/',
     tags: ['React.js', 'Next.js', 'SDK', 'CSS', 'Git', ' TypeScript'],
     language: 'Typescript',
+    icon: 'simple-icons:typescript',
     category: 'Project',
   },
   {
@@ -41,6 +43,7 @@ export const projects: ProjectModel[] = [
     url: 'https://hawapi.theproject.id/',
     tags: ['Git', 'Java', 'Spring Boot', 'JUnit', 'PostgreSQL', 'SQL', 'JSON'],
     language: 'Java',
+    icon: 'mdi:language-java',
     category: 'Collection',
     children: [
       {
@@ -66,6 +69,7 @@ export const projects: ProjectModel[] = [
     git: 'https://github.com/LucJosin/lucasjosino.com',
     tags: ['Git', 'Astro', 'TypeScript', 'JavaScript', 'CSS'],
     language: 'Astro',
+    icon: 'simple-icons:astro',
     category: 'Project',
   },
   {
@@ -78,6 +82,7 @@ export const projects: ProjectModel[] = [
     url: 'https://pub.dev/packages/on_audio_query#gif-examples',
     tags: ['Git', 'Kotlin', 'Flutter', 'Dart'],
     language: 'Dart',
+    icon: 'simple-icons:dart',
     category: 'Project',
   },
 ];

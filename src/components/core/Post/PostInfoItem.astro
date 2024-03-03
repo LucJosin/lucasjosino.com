@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   icon: string;
@@ -9,7 +9,7 @@ const { icon } = Astro.props;
 ---
 
 <span class="post-info-item">
-  <Icon name={icon} width="18" />
+  <Icon name={icon} />
   <slot />
 </span>
 
@@ -25,9 +25,14 @@ const { icon } = Astro.props;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-left: 0.2rem;
   }
 
   .post-info-item:last-child::after {
     content: '';
+  }
+
+  [data-icon] {
+    font-size: 1.2em;
   }
 </style>
