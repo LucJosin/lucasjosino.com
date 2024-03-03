@@ -16,7 +16,7 @@ const { link, linkedin, twitter, reddit } = Astro.props;
 <div class="post-extra-share">
   <span class="post-extra-share-left">
     <Icon name="mdi:cards-heart" width="18" />
-     Enjoy this post? Feel free to share!
+    Enjoy this post? Feel free to share!
   </span>
   <PostShare
     items={[
@@ -24,16 +24,19 @@ const { link, linkedin, twitter, reddit } = Astro.props;
         href: linkedin,
         icon: 'simple-icons:linkedin',
         alt: 'Share to Linkedin',
+        event: `Post Share (Footer) - Linkedin (${link})`,
       },
       {
         href: twitter,
         icon: 'simple-icons:twitter',
         alt: 'Share to Twitter',
+        event: `Post Share (Footer) - Twitter (${link})`,
       },
       {
         href: reddit,
         icon: 'simple-icons:reddit',
         alt: 'Share to Reddit',
+        event: `Post Share (Footer) - Reddit (${link})`,
       },
       {
         href: headConfig.shortLink + link,
@@ -41,6 +44,7 @@ const { link, linkedin, twitter, reddit } = Astro.props;
         alt: 'Copy link',
         id: 'share',
         messageId: 'share-title',
+        event: `Post Share (Footer) - Copy link (${link})`,
       },
     ]}
   />

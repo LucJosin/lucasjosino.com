@@ -13,6 +13,7 @@ import { links } from '@constants/links';
         title={data.name}
         alt={data.alt}
         isLocal={false}
+        event={data.event + ` (${window.location.pathname})`}
       />
     ))
   }

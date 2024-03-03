@@ -12,6 +12,7 @@ interface Props {
   isLocal?: boolean;
   padding?: string;
   titleId?: string;
+  event?: string;
 }
 
 const {
@@ -25,7 +26,10 @@ const {
   isLocal = true,
   padding = '0.8rem',
   titleId,
+  event,
 } = Astro.props as Props;
+
+const attr = {'data-umami-event': event};
 ---
 
 <a
@@ -35,6 +39,7 @@ const {
   title={alt}
   id={id}
   class="link-box"
+  {...attr}
 >
   {icon && iconSide === 'left' && <Icon name={icon} size={iconSize} />}
   {title && <span id={titleId}>{title}</span>}

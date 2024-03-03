@@ -8,6 +8,7 @@ interface PostShareItem {
   alt: string;
   id?: string;
   messageId?: string;
+  event?: string;
 }
 
 interface Props {
@@ -35,6 +36,7 @@ const { items, margin } = Astro.props;
             iconSize="16"
             padding="0.6rem 0.8rem"
             isLocal={false}
+            event={item.event}
           />
         </Tooltip>
       );

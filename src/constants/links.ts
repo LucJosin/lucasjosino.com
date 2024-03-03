@@ -5,6 +5,7 @@ export const links = [
     icon: 'simple-icons:github',
     user: 'LucJosin',
     url: 'https://github.com/LucJosin',
+    event: 'Github'
   },
   {
     name: 'Linkedin',
@@ -12,5 +13,6 @@ export const links = [
     icon: 'simple-icons:linkedin',
     user: 'LucJosin',
     url: 'https://linkedin.com/in/LucJosin',
+    event: 'Linkedin'
   },
 ];
