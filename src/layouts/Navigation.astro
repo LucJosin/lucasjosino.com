@@ -13,7 +13,7 @@ const { backTitle, backHref, backAlt, showIcon = false } = Astro.props;
 ---
 
 <div class="navigation">
-  {showIcon && <Icon name="mdi:arrow-left" width="18" />}
+  {showIcon && <Icon name="mdi:arrow-left" width={18} />}
   <Link title={backTitle} href={backHref} alt={backAlt} /> •
   <Link title="Lucas Josino" href="/" alt="Homepage" />
 </div>
