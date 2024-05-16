@@ -36,10 +36,11 @@ const relatedPosts = post.data.relatedPosts
   ? await getEntries(post.data.relatedPosts)
   : [];
 
-const { linkedin, twitter, reddit } = getSocialsShare(
+const { linkedin, twitter, reddit, bluesky } = getSocialsShare(
   headConfig.shortLink + post.data.shortlink,
   post.data.title,
-  headConfig.social
+  headConfig.social,
+  post.data.tags
 );
 
 const image = import.meta.env.PROD
@@ -130,6 +131,12 @@ const article = {
           icon: 'simple-icons:reddit',
           alt: 'Share to Reddit',
           event: `Post Share (Top) - Reddit (${post.data.shortlink})`,
+        },
+        {
+          href: bluesky,
+          icon: 'simple-icons:bluesky',
+          alt: 'Share to Bluesky',
+          event: `Post Share (Top) - Blueksy (${post.data.shortlink})`,
         },
         {
           href: headConfig.shortLink + post.data.shortlink,
