@@ -23,6 +23,11 @@
   font-weight: 500;
   transition: opacity 0.2s;
   line-break: anywhere;
+  text-decoration-line: underline;
+  text-decoration-color: var(--primary-text-color);
+  text-decoration-thickness: .125rem;
+  text-decoration-style: dashed;
+  text-underline-offset: .25rem;
 }
 
 .post-content a:hover {
