@@ -16,23 +16,23 @@ interface Props {
 const { project, titleSize, descSize } = Astro.props as Props;
 ---
 
-<div class="project-item">
-  <div class="project-item-img-container">
+<div class="project-card">
+  <div class="project-card-img-container">
     {
       project.image && (
         <img
           src={project.image}
-          class="project-item-img"
+          class="project-card-img"
           title={`${project.title}`}
         />
       )
     }
   </div>
 
-  <div class="project-item-container">
-    <div class="project-item-header">
+  <div class="project-card-container">
+    <div class="project-card-header">
       <Title title={project.title} fontSize={titleSize} margin="0" />
-      <div class="project-item-language">
+      <div class="project-card-language">
         {project.language}
         <Icon name={project.icon} />
       </div>
@@ -45,9 +45,9 @@ const { project, titleSize, descSize } = Astro.props as Props;
       align={false}
       maxLine="3"
     />
-    <div class="project-item-bottom">
+    <div class="project-card-bottom">
       <Tags values={project.tags} target="tags" />
-      <div class="project-item-links">
+      <div class="project-card-links">
         {
           project.git && (
             <LinkBox
@@ -90,7 +90,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
 </div>
 
 <style>
-  .project-item {
+  .project-card {
     height: 100%;
     width: 100%;
     min-height: 15rem;
@@ -103,20 +103,20 @@ const { project, titleSize, descSize } = Astro.props as Props;
     gap: 1rem;
   }
 
-  .project-item-img-container {
+  .project-card-img-container {
     width: 50%;
     max-width: 50%;
     min-width: 50%;
   }
 
-  .project-item-img {
+  .project-card-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: var(--border-radius);
   }
 
-  .project-item-container {
+  .project-card-container {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -124,14 +124,14 @@ const { project, titleSize, descSize } = Astro.props as Props;
     position: relative;
   }
 
-  .project-item-header {
+  .project-card-header {
     margin-top: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  .project-item-bottom {
+  .project-card-bottom {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -140,24 +140,24 @@ const { project, titleSize, descSize } = Astro.props as Props;
     bottom: 0;
   }
 
-  .project-item-language {
+  .project-card-language {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.8em;
   }
 
-  .project-item-links {
+  .project-card-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
     gap: 0.5rem;
   }
 
-  .project-item-details > summary {
+  .project-card-details > summary {
     cursor: pointer;
   }
 
-  .project-item-children {
+  .project-card-children {
     margin-top: 1rem;
     display: grid;
     width: 100%;
@@ -170,21 +170,21 @@ const { project, titleSize, descSize } = Astro.props as Props;
   }
 
   @media (max-width: 768px) {
-    .project-item-img-container {
+    .project-card-img-container {
       width: 100%;
       max-width: initial;
       min-width: initial;
     }
 
-    .project-item-container {
+    .project-card-container {
       width: 100%;
     }
 
-    .project-item {
+    .project-card {
       flex-direction: column;
     }
 
-    .project-item-bottom {
+    .project-card-bottom {
       position: initial;
     }
   }
