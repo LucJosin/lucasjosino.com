@@ -4,19 +4,26 @@ interface Props {
   margin?: string;
   fontSize?: string;
   textTransform?: string;
+  display?: string;
 }
 
-const { title, fontSize = '1.4em', textTransform } = Astro.props as Props;
+const {
+  title,
+  margin = '1rem 0',
+  fontSize = '1.4em',
+  display = 'initial',
+  textTransform,
+} = Astro.props as Props;
 ---
 
 {title ? <h3 class="sub-title">{title}</h3> : <slot />}
 
-<style define:vars={{ fontSize, textTransform }}>
+<style define:vars={{ margin, fontSize, textTransform, display }}>
   .sub-title {
-    margin: 1rem 0;
+    margin: var(--margin);
     font-weight: bold;
     font-size: var(--fontSize);
-    display: inline;
+    display: var(--display);
     text-transform: var(--textTransform);
   }
 </style>
