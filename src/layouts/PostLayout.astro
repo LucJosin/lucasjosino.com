@@ -22,7 +22,6 @@ import { getEntries, type CollectionEntry } from 'astro:content';
 import { getPostImage } from 'open-graph/generator';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
-import Navigation from './Navigation.astro';
 
 interface Props {
   title: string;
@@ -69,13 +68,6 @@ const article = {
   <Container maxWidth="50rem" gap="1rem">
     <ProgressBar />
     <BackToTop />
-
-    <Navigation
-      backTitle="Posts"
-      backHref="/blog/"
-      backAlt="See all posts"
-      showIcon
-    />
 
     <Title title={post.data.title} fontSize="2.5em" />
 

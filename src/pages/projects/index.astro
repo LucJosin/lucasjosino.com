@@ -6,7 +6,6 @@ import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import { projects } from '@constants/projects';
 import Layout from '@layouts/Layout.astro';
-import Navigation from '@layouts/Navigation.astro';
 ---
 
 <Layout
@@ -15,7 +14,6 @@ import Navigation from '@layouts/Navigation.astro';
   shortlink="/projects"
 >
   <Container>
-    <Navigation backAlt="See all posts" backHref="/blog/" backTitle="Blog" />
     <Title title="Projects" fontSize="2.5em" />
     <Description
       value="A showcase of all projects that have I have completed. Using tools/languages like Astro, Java, Spring Boot, Typescript, etc.."

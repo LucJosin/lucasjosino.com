@@ -5,7 +5,6 @@ import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Tags from '@components/data/Tags.astro';
 import Layout from '@layouts/Layout.astro';
-import Navigation from '@layouts/Navigation.astro';
 import { getUniqueCategories } from '@lib/blog';
 
 const categories = await getUniqueCategories();
@@ -16,12 +15,6 @@ const categories = await getUniqueCategories();
   description="Explore all categories of my personal blog"
 >
   <Container>
-    <Navigation
-      backTitle="Blog"
-      backHref="/blog/"
-      backAlt="Go back to blog page"
-      showIcon
-    />
     <Title title="Categories" fontSize="2.5em" />
     <Description
       value="Explore all categories of my personal blog"

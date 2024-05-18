@@ -5,7 +5,6 @@ import PostCard from '@components/core/Post/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
-import Navigation from '@layouts/Navigation.astro';
 import { getAllPosts } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 
@@ -18,11 +17,6 @@ const posts = await getAllPosts();
   shortlink="/blog"
 >
   <Container>
-    <Navigation
-      backAlt="See all projects"
-      backHref="/projects/"
-      backTitle="Projects"
-    />
     <Title title="Blog" fontSize="2.5em" />
     <Description
       value="A minimalist developer blog with thoughts, ideas and other stuff"

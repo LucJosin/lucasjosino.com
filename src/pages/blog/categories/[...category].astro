@@ -5,7 +5,6 @@ import PostCard from '@components/core/Post/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
-import Navigation from '@layouts/Navigation.astro';
 import { getAllPosts, getUniqueCategories } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
@@ -39,12 +38,6 @@ const { posts } = Astro.props;
   shortlink="/blog"
 >
   <Container>
-    <Navigation
-      backTitle="Categories"
-      backAlt="Go back to tags page"
-      backHref="/blog/categories/"
-      showIcon
-    />
     <Title title={'Category: ' + category} fontSize="2.5em" />
     <Description
       value={`Explore all posts categorized with: ${category}`}
