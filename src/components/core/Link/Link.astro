@@ -53,7 +53,7 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
   {...attr}
 >
   {icon && iconSide === 'left' && <Icon name={icon} />}
-  {title && <span>{title}</span>}
+  {title ? <span>{title}</span> : <slot />}
   {icon && iconSide === 'right' && <Icon name={icon} />}
 </a>
 
@@ -64,8 +64,6 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
     border-bottom: var(--border-size) solid transparent;
     transition: all var(--transition-duration);
     cursor: pointer;
-    display: flex;
-    align-items: center;
     gap: var(--currentGap);
   }
 
