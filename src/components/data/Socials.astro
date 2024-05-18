@@ -11,7 +11,9 @@ const { hasTitle = true } = Astro.props;
 ---
 
 <div class="socials">
-  {hasTitle && <SubTitle title="Socials" />}
+  <div class="socials-header">
+    {hasTitle && <SubTitle title="Socials" />}
+  </div>
   <div class="socials-container">
     {
       socials.map((data) => (
@@ -30,6 +32,12 @@ const { hasTitle = true } = Astro.props;
   .socials {
     height: max-content;
     width: 80%;
+  }
+
+  .socials-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .socials-container {
