@@ -40,7 +40,7 @@ const { posts } = Astro.props;
   <Container>
     <Title title={'Tag: ' + tag} fontSize="2.5em" />
     <Description
-      value={`Explore all posts tagged with: ${tag}`}
+      value={`Explore ${posts.length} post(s) tagged with "${tag}"`}
       margin="0"
       width="80%"
     />

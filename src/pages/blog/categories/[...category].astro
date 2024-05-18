@@ -40,7 +40,7 @@ const { posts } = Astro.props;
   <Container>
     <Title title={'Category: ' + category} fontSize="2.5em" />
     <Description
-      value={`Explore all posts categorized with: ${category}`}
+      value={`Explore ${posts.length} post(s) categorized with "${category}"`}
       margin="0"
       width="80%"
     />
