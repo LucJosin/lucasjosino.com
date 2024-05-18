@@ -8,14 +8,15 @@ interface Props {
   linkedin: string;
   twitter: string;
   reddit: string;
+  bluesky: string;
 }
 
-const { link, linkedin, twitter, reddit } = Astro.props;
+const { link, linkedin, twitter, reddit, bluesky } = Astro.props;
 ---
 
 <div class="post-extra-share">
   <span class="post-extra-share-left">
-    <Icon name="mdi:cards-heart" width="18" />
+    <Icon name="mdi:cards-heart" width={18} />
     Enjoy this post? Feel free to share!
   </span>
   <PostShare
@@ -37,6 +38,12 @@ const { link, linkedin, twitter, reddit } = Astro.props;
         icon: 'simple-icons:reddit',
         alt: 'Share to Reddit',
         event: `Post Share (Footer) - Reddit (${link})`,
+      },
+      {
+        href: bluesky,
+        icon: 'simple-icons:bluesky',
+        alt: 'Share to Bluesky',
+        event: `Post Share (Top) - Blueksy (${link})`,
       },
       {
         href: headConfig.shortLink + link,
