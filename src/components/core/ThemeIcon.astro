@@ -1,12 +1,18 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+interface Props {
+  position?: string;
+}
+
+const { position = 'initial' } = Astro.props;
 ---
 
 <button id="theme">
   <Icon name="mdi:white-balance-sunny" />
 </button>
 
-<style>
+<style define:vars={{ position }}>
   #theme {
     height: 2rem;
     width: 2rem;
@@ -14,15 +20,14 @@ import { Icon } from 'astro-icon/components';
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    position: absolute;
     z-index: 10;
     top: 1.5rem;
     right: 1.5rem;
-    position: fixed;
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
     transition: all var(--transition-duration) linear;
     background-color: transparent;
+    position: var(--position);
   }
 
   #theme:hover {
