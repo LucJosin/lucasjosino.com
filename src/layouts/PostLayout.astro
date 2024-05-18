@@ -22,6 +22,7 @@ import { getEntries, type CollectionEntry } from 'astro:content';
 import { getPostImage } from 'open-graph/generator';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
+import SubTitle from '@components/core/SubTitle.astro';
 
 interface Props {
   title: string;
@@ -69,21 +70,25 @@ const article = {
     <ProgressBar />
     <BackToTop />
 
-    <Title title={post.data.title} fontSize="2.5em" />
+    <Link
+      href={'/blog/categories/' + post.data.category}
+      alt="See more from this category"
+    >
+      <SubTitle
+        title={post.data.category}
+        margin="0"
+        textTransform="uppercase"
+        fontSize="1em"
+      />
+    </Link>
+
+    <Title title={post.data.title} fontSize="2.5em" margin="0 0 1rem 0" />
 
     <PostImage src={post.data.image.src} title={post.data.title} />
 
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">
         {getFormatedDate(post.data.publishedAt)}
-      </PostInfoItem>
-
-      <PostInfoItem icon="ic:outline-article">
-        <Link
-          href={'/blog/categories/' + post.data.category}
-          title={post.data.category}
-          alt="See more from this category"
-        />
       </PostInfoItem>
 
       <PostInfoItem icon="ic:outline-tag">
