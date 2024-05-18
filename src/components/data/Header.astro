@@ -1,0 +1,49 @@
+---
+import Link from '@components/core/Link/Link.astro';
+import ThemeIcon from '@components/core/ThemeIcon.astro';
+---
+
+<header>
+  <div class="header-container">
+    <div class="header-left">
+      <Link href="/" alt="Homepage" hasBorderBottom={false}>
+        <h3 class="header-title">LUCAS JOSINO</h3>
+      </Link>
+    </div>
+    <nav class="header-nav">
+      <Link title="Blog" href="/blog/" alt="Go to blog page" />
+      <Link title="Projects" href="/projects/" alt="Go to projects page" />
+      <ThemeIcon />
+    </nav>
+  </div>
+  <div class="header-menu-mobile"></div>
+</header>
+
+<style>
+  header {
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .header-title {
+    margin: 0;
+  }
+
+  .header-nav,
+  .header-left {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+</style>

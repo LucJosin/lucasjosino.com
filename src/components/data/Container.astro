@@ -1,25 +1,19 @@
 ---
 import Divider from '@components/core/Divider.astro';
-import { Icon } from 'astro-icon/components';
 import Footer from './Footer.astro';
+import Header from './Header.astro';
 
 interface Props {
-  back?: string;
+  hasHeader?: boolean;
   maxWidth?: string;
   gap?: string;
 }
 
-const { back, maxWidth = '50rem', gap } = Astro.props;
+const { hasHeader = true, maxWidth = '50rem', gap } = Astro.props;
 ---
 
 <div class="layout-container">
-  {
-    back && (
-      <a href={back} class="back-button" title="Back">
-        <Icon name="mdi:arrow-left" />
-      </a>
-    )
-  }
+  {hasHeader && <Header />}
   <slot />
   <Divider width="80%" />
   <Footer />
@@ -27,7 +21,7 @@ const { back, maxWidth = '50rem', gap } = Astro.props;
 
 <style define:vars={{ maxWidth, gap }}>
   .layout-container {
-    margin: 8vh 0 4vh 0;
+    margin: 3vh 0 4vh 0;
     max-width: var(--maxWidth);
     width: 90%;
     min-width: 30rem;
