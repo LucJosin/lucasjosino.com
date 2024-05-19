@@ -15,7 +15,6 @@ import PostRelated from '@components/data/Post/PostRelated.astro';
 import PostShare from '@components/data/Post/PostShare.astro';
 import Tags from '@components/data/Tags.astro';
 import headConfig from '@constants/head';
-import { getFormatedDate } from '@lib/date';
 import { getSocialsShare } from '@lib/share';
 import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
@@ -23,6 +22,7 @@ import { getPostImage } from 'open-graph/generator';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
 import SubTitle from '@components/core/SubTitle.astro';
+import PostDateTime from '@components/core/Post/PostDateTime.astro';
 
 interface Props {
   title: string;
@@ -88,7 +88,7 @@ const article = {
 
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">
-        {getFormatedDate(post.data.publishedAt)}
+        <PostDateTime date={post.data.publishedAt} />
       </PostInfoItem>
 
       <PostInfoItem icon="ic:outline-tag">
