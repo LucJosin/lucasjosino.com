@@ -3063,6 +3063,7 @@ __metadata:
     eslint: ^8.57.0
     eslint-config-prettier: ^9.1.0
     eslint-plugin-astro: ^0.31.4
+    javascript-time-ago: ^2.5.10
     medium-zoom: ^1.1.0
     prettier: ^3.2.5
     prettier-plugin-astro: ^0.13.0
@@ -8361,6 +8362,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"javascript-time-ago@npm:^2.5.10":
+  version: 2.5.10
+  resolution: "javascript-time-ago@npm:2.5.10"
+  dependencies:
+    relative-time-format: ^1.1.6
+  checksum: f0ddb6ba9361b96b3ec08fc4720fe84c45c8f71b044968e5c2a3c57d816b4b5d260a9513d25ed77ce9832ab5ac4a5bdd3f21bd0bebb4266b1292e19f39b070c6
+  languageName: node
+  linkType: hard
+
 "jest-worker@npm:^26.2.1":
   version: 26.6.2
   resolution: "jest-worker@npm:26.6.2"
@@ -11229,6 +11239,13 @@ __metadata:
   version: 0.2.7
   resolution: "relateurl@npm:0.2.7"
   checksum: 5891e792eae1dfc3da91c6fda76d6c3de0333a60aa5ad848982ebb6dccaa06e86385fb1235a1582c680a3d445d31be01c6bfc0804ebbcab5aaf53fa856fde6b6
+  languageName: node
+  linkType: hard
+
+"relative-time-format@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "relative-time-format@npm:1.1.6"
+  checksum: b0c14f2d81bb086d0bcedabab78cff0cd31d3ad5040db88f0dc671361c33bf5ec924fe897e9308a43c2f569b114dd543557b9df659f7a06e2d06d392b539d5d7
   languageName: node
   linkType: hard
 
