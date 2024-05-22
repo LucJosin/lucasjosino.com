@@ -15,6 +15,7 @@ language: 'en'
 shortlink: '/b/ZfgJzcJf'
 isVisible: true
 enableComments: true
+color: '#173d74'
 publishedAt: '2024-02-01 20:00 UTC-3'
 ---
 
