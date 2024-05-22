@@ -3,7 +3,7 @@ import { reference, z } from 'astro:content';
 export const blogSchema = z.object({
   refFile: z.string().optional(),
   image: z.object({
-    src: z.string().default('/static/banner.png'),
+    src: z.string().default('/static/default-og.png'),
     position: z.string().default('center'),
     showInPost: z.boolean().default(true),
   }),

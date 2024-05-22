@@ -2,7 +2,7 @@
 title: 'Markdown showcase'
 description: 'A markdown showcase to show all features from blog posts.'
 image:
-  src: 'https://lucasjosino.com/static/banner.png'
+  src: 'https://lucasjosino.com/static/default-og.png'
 tags:
   - 'example'
   - 'markdown'
@@ -1044,17 +1044,17 @@ Title is optional.
 
 Code:
 
-    ![Alt text](/static/banner.png)
+    ![Alt text](/static/default-og.png)
 
-    ![Alt text](/static/banner.png "Optional title")
+    ![Alt text](/static/default-og.png "Optional title")
 
 Preview:
 
 ---
 
-![Alt text](/static/banner.png)
+![Alt text](/static/default-og.png)
 
-![Alt text](/static/banner.png 'Optional title')
+![Alt text](/static/default-og.png 'Optional title')
 
 ---
 
@@ -1070,14 +1070,14 @@ Reference-style image syntax looks like this: `![Alt text][id]`
 
 Code:
 
-    [img id]: /static/banner.png  "Optional title attribute"
+    [img id]: /static/default-og.png  "Optional title attribute"
     ![Alt text][img id]
 
 Preview:
 
 ---
 
-[img id]: /static/banner.png 'Optional title attribute'
+[img id]: /static/default-og.png 'Optional title attribute'
 
 ![Alt text][img id]
 
