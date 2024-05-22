@@ -4,6 +4,7 @@ description: "In this article, we'll explore how to mock our session and inject 
 image:
   src: 'https://raw.githubusercontent.com/lucjosin/lucasjosino.com/main/public/static/blog/ZfgJzcJf/golang-session-tests.png'
   position: 'left'
+  showInPost: true
 tags:
   - 'golang'
   - 'go-chi'

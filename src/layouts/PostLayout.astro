@@ -84,7 +84,7 @@ const article = {
 
     <Title title={post.data.title} fontSize="2.5em" margin="0 0 1rem 0" />
 
-    <PostImage src={post.data.image.src} title={post.data.title} />
+    {post.data.image.showInPost && <PostImage src={post.data.image.src} title={post.data.title} />}
 
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">

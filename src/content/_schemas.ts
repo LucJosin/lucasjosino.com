@@ -5,6 +5,7 @@ export const blogSchema = z.object({
   image: z.object({
     src: z.string().default('/static/banner.png'),
     position: z.string().default('center'),
+    showInPost: z.boolean().default(true),
   }),
   color: z.string().default("#111"),
   publishedAt: z.string(),

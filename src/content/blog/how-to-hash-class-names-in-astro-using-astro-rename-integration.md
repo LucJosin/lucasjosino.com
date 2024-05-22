@@ -4,6 +4,7 @@ description: 'Learn how to use the astro-rename integration to hash all CSS clas
 image:
   src: 'https://astro.build/og/social.jpg'
   position: 'left'
+  showInPost: true
 tags:
   - 'astro'
   - 'integration'
