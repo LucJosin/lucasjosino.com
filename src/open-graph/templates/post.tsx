@@ -1,4 +1,3 @@
-import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
 
 export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
@@ -8,13 +7,49 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
         height: '100%',
         width: '100%',
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        padding: '2.5rem',
-        color: '#fff',
+        background: `linear-gradient(to bottom right, ${post.data.color} 5%, #111 30%)`,
+        position: 'relative'
       }}
     >
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          backgroundImage: 'url("https://www.lucasjosino.com/static/background-og.png")',
+          backgroundSize: '1200px 630px',
+          backgroundRepeat: 'no-repeat',
+          position: 'absolute',
+          opacity: '0.08',
+          filter: 'invert(100%)'
+        }}
+      >
+      </div>
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          flexDirection: 'column',
+          flexWrap: 'nowrap',
+          backgroundImage: `radial-gradient(circle at 25px 25px, ${post.data.color} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${post.data.color} 2%, transparent 0%)`,
+          backgroundSize: '100px 100px',
+          opacity: '0.6',
+          position: 'absolute',
+        }}
+      >
+      </div>
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          padding: '2.5rem',
+          color: '#fff',
+          position: 'relative'
+        }}
+      >
       <div
         style={{
           height: '100%',
@@ -30,66 +65,48 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
           position: 'relative',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            width: '100%',
-            position: 'absolute',
-            top: '2rem',
-          }}
-        >
-          <h1>lucasjosino.com</h1>
-          <span
-            style={{
-              margin: '0.8rem 0',
-              height: '2px',
-              width: '70%',
-              backgroundColor: '#fff',
-            }}
-          ></span>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            marginTop: '3.5rem',
-          }}
-        >
-          <span
-            style={{
-              margin: '1.2rem',
-              fontWeight: '300',
-              fontSize: '1.6em',
-            }}
-          >
-            {post.data.category} • {getFormatedDate(post.data.publishedAt)}
-          </span>
+      <span
+        style={{
+          fontWeight: 'bold',
+          fontSize: '1.2em',
+          position: 'absolute',
+          bottom: '0',
+          padding: '2rem'
+        }}
+      >
+        ~/lucasjosino.com/blog
+      </span>
+      <span
+        style={{
+          fontWeight: 'bold',
+          fontSize: '1.6em',
+          position: 'absolute',
+          top: '0',
+          padding: '2rem'
+        }}
+      >
+          {post.data.category.toUpperCase()}
+      </span>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
           <h1
             style={{
               width: '90%',
               fontSize: '3.5em',
-              fontWeight: '500',
+              fontWeight: 'bold',
               margin: '0',
             }}
           >
             {post.data.title}
           </h1>
-          <p
-            style={{
-              width: '90%',
-              fontSize: '2.5em',
-              fontWeight: '300',
-              overflow: 'hidden',
-            }}
-          >
-            {post.data.description}
-          </p>
         </div>
       </div>
     </div>
+  </div>
   );
 }
