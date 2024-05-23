@@ -32,6 +32,7 @@
 .remark-alert-note a,
 .remark-alert-note strong {
   color: var(--blue-color);
+  text-decoration-color: var(--blue-color);
 }
 
 .remark-alert-info code,
@@ -82,6 +83,7 @@
 .remark-alert-complete a,
 .remark-alert-complete strong {
   color: var(--green-color);
+  text-decoration-color: var(--green-color);
 }
 
 .remark-alert-success code,
@@ -100,6 +102,7 @@
 .remark-alert-warning a,
 .remark-alert-warning strong {
   color: var(--orange-color);
+  text-decoration-color: var(--orange-color);
 }
 
 .remark-alert-warning code {
@@ -118,6 +121,7 @@
 .remark-alert-danger a,
 .remark-alert-danger strong {
   color: var(--red-color);
+  text-decoration-color: var(--red-color);
 }
 
 .remark-alert-error code,
