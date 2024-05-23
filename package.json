@@ -11,6 +11,7 @@
     "astro": "astro"
   },
   "devDependencies": {
+    "@adapttive/remark-responsive-tables": "^1.0.1",
     "@astrojs/sitemap": "3.1.1",
     "@lucjosin/remark-alert-blocks": "./plugins/remark-alert-blocks",
     "@lucjosin/remark-code-highlight": "./plugins/remark-code-highlight",

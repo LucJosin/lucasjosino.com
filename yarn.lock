@@ -12,6 +12,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@adapttive/remark-responsive-tables@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@adapttive/remark-responsive-tables@npm:1.0.1"
+  dependencies:
+    unist-util-visit: ^2.0.3
+  checksum: 0c7d758dbf1e4117338d831f324f681c5015b982a76973c7a3e0c78fd22800d15884698d47bb8f8269115dfa8562cda19aec8cf2a2a9b3f4f39585cc03bf09eb
+  languageName: node
+  linkType: hard
+
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
@@ -2915,6 +2924,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lucjosin/lucasjosino.com@workspace:."
   dependencies:
+    "@adapttive/remark-responsive-tables": ^1.0.1
     "@astrojs/react": 3.0.10
     "@astrojs/rss": 4.0.5
     "@astrojs/sitemap": 3.1.1
@@ -2935,7 +2945,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^6.8.0
     "@typescript-eslint/parser": ^6.8.0
     astro: ^4.8.6
-    astro-compress: ^2.2.11
+    astro-compress: ^2.2.23
     astro-expressive-code: ^0.35.3
     astro-icon: ^1.1.0
     astro-meta-tags: ^0.3.0
@@ -4436,7 +4446,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-compress@npm:^2.2.11":
+"astro-compress@npm:^2.2.23":
   version: 2.2.23
   resolution: "astro-compress@npm:2.2.23"
   dependencies:
@@ -12957,7 +12967,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-visit@npm:^2.0.0":
+"unist-util-visit@npm:^2.0.0, unist-util-visit@npm:^2.0.3":
   version: 2.0.3
   resolution: "unist-util-visit@npm:2.0.3"
   dependencies:

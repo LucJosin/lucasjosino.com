@@ -11,6 +11,7 @@ import astroMetaTags from 'astro-meta-tags';
 import rename from 'astro-rename';
 import robotsTxt from 'astro-robots-txt';
 
+import responsiveTables from '@adapttive/remark-responsive-tables';
 import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
 import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
 import remarkCodeSet from '@lucjosin/remark-code-set';
@@ -150,6 +151,7 @@ export default defineConfig({
       remarkAlertBlocks,
       remarkCodeHighlight,
       remarkImageCaption,
+      responsiveTables,
       remarkCodeSet,
       remarkToc,
       [
