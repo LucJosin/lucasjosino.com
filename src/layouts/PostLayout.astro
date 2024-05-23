@@ -60,7 +60,7 @@ const article = {
 <Layout
   title={title}
   description={description}
-  robots={post.data.isVisible ? 'index,follow' : 'noindex,nofollow'}
+  robots={post.data.isIndexable ? 'index,follow' : 'noindex,nofollow'}
   banner={image}
   article={article}
   shortlink={post.data.shortlink}
