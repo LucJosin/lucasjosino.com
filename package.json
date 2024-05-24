@@ -1,7 +1,7 @@
 {
   "name": "@lucjosin/lucasjosino.com",
   "packageManager": "yarn@3.6.4",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
