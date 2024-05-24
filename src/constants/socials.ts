@@ -1,10 +1,11 @@
 export const socials = [
   {
-    name: 'Twitter',
-    alt: 'Twitter - @lucjosin',
-    icon: 'simple-icons:twitter',
+    name: 'X (Twitter)',
+    alt: 'X (Twitter) - @lucjosin',
+    icon: 'simple-icons:x',
     user: 'LucJosin',
-    url: 'https://twitter.com/LucJosin',
+    url: 'https://x.com/LucJosin',
+    event: 'X (Twitter)'
   },
   {
     name: 'Bluesky',
@@ -12,6 +13,7 @@ export const socials = [
     icon: 'simple-icons:bluesky',
     user: 'lucjos.in',
     url: 'https://bsky.app/profile/lucjos.in/',
+    event: 'Bluesky'
   },
   {
     name: 'StackOverFlow',
@@ -19,5 +21,6 @@ export const socials = [
     icon: 'simple-icons:stackoverflow',
     user: 'lucas-josino',
     url: 'https://stackoverflow.com/u/14500144/',
+    event: 'StackOverFlow'
   },
 ];

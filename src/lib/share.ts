@@ -1,4 +1,4 @@
-const TWITTER_SHARE = 'https://twitter.com/intent/tweet?url=';
+const TWITTER_SHARE = 'https://x.com/intent/tweet?url=';
 const LINKEDIN_SHARE = 'https://www.linkedin.com/sharing/share-offsite/?url=';
 const REDDIT_SHARE = 'https://reddit.com/submit?url=';
 const BLUESKY_SHARE = 'https://bsky.app/intent/compose?text=';
