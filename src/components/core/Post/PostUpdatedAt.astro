@@ -3,12 +3,12 @@ import { getFormatedDate } from '@lib/date';
 import Link from '../Link/Link.astro';
 
 interface Props {
-  slug: string;
+  id: string;
   updatedAt: string;
 }
 
-const { slug, updatedAt } = Astro.props;
-const GIT_REF = `https://github.com/LucJosin/lucasjosino.com/commits/main/src/content/blog/${slug}.md`;
+const { id, updatedAt } = Astro.props;
+const GIT_REF = `https://github.com/LucJosin/lucasjosino.com/commits/main/src/content/blog/${id}`;
 ---
 
 <div class="post-updated-at">
