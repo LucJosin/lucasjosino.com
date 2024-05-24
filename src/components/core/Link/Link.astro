@@ -10,6 +10,7 @@ interface Props {
   icon?: string;
   iconSide?: 'left' | 'right';
   iconSize?: string;
+  display?: string;
   hasBorderBottom?: boolean;
   animatedIcon?: boolean;
   reverseAnimation?: boolean;
@@ -25,6 +26,7 @@ const {
   icon,
   iconSide = 'left',
   iconSize = '1.2em',
+  display = 'flex',
   hasBorderBottom = true,
   animatedIcon = false,
   reverseAnimation = false,
@@ -53,20 +55,26 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
   {...attr}
 >
   {icon && iconSide === 'left' && <Icon name={icon} />}
-  {title && <span>{title}</span>}
+  {title ? <span>{title}</span> : <slot />}
   {icon && iconSide === 'right' && <Icon name={icon} />}
 </a>
 
 <style
-  define:vars={{ borderBottom, currentGap, animatedGap, iconColor, iconSize }}
+  define:vars={{
+    borderBottom,
+    currentGap,
+    animatedGap,
+    iconColor,
+    iconSize,
+    display,
+  }}
 >
   .link-data {
     border-bottom: var(--border-size) solid transparent;
     transition: all var(--transition-duration);
     cursor: pointer;
-    display: flex;
-    align-items: center;
     gap: var(--currentGap);
+    display: var(--display);
   }
 
   .link-data:hover {

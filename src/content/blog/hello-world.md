@@ -1,18 +1,23 @@
 ---
-title: 'Markdown showcase'
-description: 'A markdown showcase to show all features from blog posts.'
+title: 'Hello World'
+description: 'A markdown showcase of all features.'
 image:
-  src: 'https://lucasjosino.com/static/banner.png'
+  src: 'https://lucasjosino.com/static/default-og.png'
+  position: 'center'
+  showInPost: true
 tags:
-  - 'example'
+  - 'hello-world'
   - 'markdown'
-category: 'Example'
+category: 'Hello World'
 language: 'en'
 shortlink: '/blog'
+color: '#111111'
 isVisible: false
+isIndexable: false
 enableComments: false
-publishedAt: '2023-09-22 12:10 UTC-3'
-updatedAt: '2023-10-23 12:25 UTC-3'
+easyShare: false
+publishedAt: '2023-10-19 09:08 UTC-3'
+updatedAt: '2023-10-19 09:08 UTC-3'
 ---
 
 ## Table of contents
@@ -1044,17 +1049,17 @@ Title is optional.
 
 Code:
 
-    ![Alt text](/static/banner.png)
+    ![Alt text](/static/default-og.png)
 
-    ![Alt text](/static/banner.png "Optional title")
+    ![Alt text](/static/default-og.png "Optional title")
 
 Preview:
 
 ---
 
-![Alt text](/static/banner.png)
+![Alt text](/static/default-og.png)
 
-![Alt text](/static/banner.png 'Optional title')
+![Alt text](/static/default-og.png 'Optional title')
 
 ---
 
@@ -1070,14 +1075,14 @@ Reference-style image syntax looks like this: `![Alt text][id]`
 
 Code:
 
-    [img id]: /static/banner.png  "Optional title attribute"
+    [img id]: /static/default-og.png  "Optional title attribute"
     ![Alt text][img id]
 
 Preview:
 
 ---
 
-[img id]: /static/banner.png 'Optional title attribute'
+[img id]: /static/default-og.png 'Optional title attribute'
 
 ![Alt text][img id]
 

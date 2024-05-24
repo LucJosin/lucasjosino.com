@@ -1,5 +1,4 @@
 ---
-import ThemeIcon from '@components/core/ThemeIcon.astro';
 import headConfig from '@constants/head';
 import '@styles/global.css';
 
@@ -153,10 +152,6 @@ const { title, description, banner, robots, shortlink, locale, article } =
         />
       )
     }
-    <link
-      rel="alternative"
-      href={headConfig.alternative + Astro.url.pathname}
-    />
     <link rel="canonical" href={headConfig.canonical + Astro.url.pathname} />
 
     <!-- Icons -->
@@ -201,7 +196,6 @@ const { title, description, banner, robots, shortlink, locale, article } =
   </head>
   <body>
     <main>
-      <ThemeIcon />
       <slot />
     </main>
   </body>
@@ -210,7 +204,8 @@ const { title, description, banner, robots, shortlink, locale, article } =
 <style>
   /* Scroll */
   :global(::-webkit-scrollbar) {
-    width: 9px;
+    height: 8px;
+    width: 8px;
     background-color: var(--secondary-color);
   }
 

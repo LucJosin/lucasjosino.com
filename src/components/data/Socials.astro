@@ -1,6 +1,7 @@
 ---
 import LinkBox from '@components/core/Link/LinkBox.astro';
 import SubTitle from '@components/core/SubTitle.astro';
+import { links } from '@constants/links';
 import { socials } from '@constants/socials';
 
 interface Props {
@@ -11,8 +12,23 @@ const { hasTitle = true } = Astro.props;
 ---
 
 <div class="socials">
-  {hasTitle && <SubTitle title="Socials" />}
+  <div class="socials-header">
+    {hasTitle && <SubTitle title="Socials" />}
+  </div>
   <div class="socials-container">
+    {
+      links.map((data) => (
+        <LinkBox
+          href={data.url}
+          icon={data.icon}
+          title={data.name}
+          alt={data.alt}
+          isLocal={false}
+          event={data.event + ` (${Astro.url.pathname})`}
+          gridColumn="auto / span 3"
+        />
+      ))
+    }
     {
       socials.map((data) => (
         <LinkBox
@@ -20,6 +36,8 @@ const { hasTitle = true } = Astro.props;
           icon={data.icon}
           alt={data.alt}
           isLocal={false}
+          event={data.event + ` (${Astro.url.pathname})`}
+          gridColumn="auto / span 2"
         />
       ))
     }
@@ -32,12 +50,18 @@ const { hasTitle = true } = Astro.props;
     width: 80%;
   }
 
+  .socials-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .socials-container {
     width: 100%;
     display: grid;
     align-items: center;
     justify-content: space-between;
-    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    grid-template-columns: repeat(6, minmax(1rem, 1fr));
     gap: 1rem;
   }
 </style>

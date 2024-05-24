@@ -23,6 +23,11 @@
   font-weight: 500;
   transition: opacity 0.2s;
   line-break: anywhere;
+  text-decoration-line: underline;
+  text-decoration-color: var(--primary-text-color);
+  text-decoration-thickness: .125rem;
+  text-decoration-style: dashed;
+  text-underline-offset: .25rem;
 }
 
 .post-content a:hover {
@@ -188,7 +193,11 @@
   content: none;
 }
 
-.post-content .table {
+.post-content .rwd-table-wrapper {
+  overflow: auto;
+}
+
+.post-content table {
   overflow-x: auto;
   margin: 2rem 0;
 }
@@ -203,23 +212,23 @@
   border-collapse: collapse;
 }
 
-.post-content .table::-webkit-scrollbar,
-.post-content .table::-webkit-scrollbar-track {
+.post-content table::-webkit-scrollbar,
+.post-content table::-webkit-scrollbar-track {
   background-color: inherit;
   border-radius: calc(0.3rem + 1.5px);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.post-content .table::-webkit-scrollbar,
-.post-content .table::-webkit-scrollbar-track {
+.post-content table::-webkit-scrollbar,
+.post-content table::-webkit-scrollbar-track {
   background-color: inherit;
   border-radius: calc(0.3rem + 1.5px);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.post-content .table::-webkit-scrollbar-thumb {
+.post-content table::-webkit-scrollbar-thumb {
   background-color: var(--contrast-color);
   border: 4px solid transparent;
   background-clip: content-box;

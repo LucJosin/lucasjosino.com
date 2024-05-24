@@ -5,7 +5,6 @@ import PostCard from '@components/core/Post/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
-import Navigation from '@layouts/Navigation.astro';
 import { getAllPosts, getUniqueTags } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
@@ -39,15 +38,9 @@ const { posts } = Astro.props;
   shortlink="/blog"
 >
   <Container>
-    <Navigation
-      backTitle="Tags"
-      backAlt="Go back to tags page"
-      backHref="/blog/tags/"
-      showIcon
-    />
     <Title title={'Tag: ' + tag} fontSize="2.5em" />
     <Description
-      value={`Explore all posts tagged with: ${tag}`}
+      value={`Explore ${posts.length} post(s) tagged with "${tag}"`}
       margin="0"
       width="80%"
     />

@@ -15,14 +15,14 @@ import PostRelated from '@components/data/Post/PostRelated.astro';
 import PostShare from '@components/data/Post/PostShare.astro';
 import Tags from '@components/data/Tags.astro';
 import headConfig from '@constants/head';
-import { getFormatedDate } from '@lib/date';
 import { getSocialsShare } from '@lib/share';
 import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
 import { getPostImage } from 'open-graph/generator';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
-import Navigation from './Navigation.astro';
+import SubTitle from '@components/core/SubTitle.astro';
+import PostDateTime from '@components/core/Post/PostDateTime.astro';
 
 interface Props {
   title: string;
@@ -36,15 +36,16 @@ const relatedPosts = post.data.relatedPosts
   ? await getEntries(post.data.relatedPosts)
   : [];
 
-const { linkedin, twitter, reddit } = getSocialsShare(
+const { linkedin, twitter, reddit, bluesky } = getSocialsShare(
   headConfig.shortLink + post.data.shortlink,
   post.data.title,
-  headConfig.social
+  headConfig.social,
+  post.data.tags
 );
 
 const image = import.meta.env.PROD
   ? await getPostImage(post)
-  : 'static/banner.png';
+  : 'static/default-og.png';
 
 const article = {
   title: post.data.title,
@@ -59,7 +60,7 @@ const article = {
 <Layout
   title={title}
   description={description}
-  robots={post.data.isVisible ? 'index,follow' : 'noindex,nofollow'}
+  robots={post.data.isIndexable ? 'index,follow' : 'noindex,nofollow'}
   banner={image}
   article={article}
   shortlink={post.data.shortlink}
@@ -69,28 +70,29 @@ const article = {
     <ProgressBar />
     <BackToTop />
 
-    <Navigation
-      backTitle="Posts"
-      backHref="/blog/"
-      backAlt="See all posts"
-      showIcon
-    />
+    <Link
+      href={'/blog/categories/' + post.data.category}
+      alt="See more from this category"
+    >
+      <SubTitle
+        title={post.data.category}
+        margin="0"
+        textTransform="uppercase"
+        fontSize="1em"
+      />
+    </Link>
 
-    <Title title={post.data.title} fontSize="2.5em" />
+    <Title title={post.data.title} fontSize="2.5em" margin="0 0 1rem 0" />
 
-    <PostImage src={post.data.image.src} title={post.data.title} />
+    {
+      post.data.image.showInPost && (
+        <PostImage src={post.data.image.src} title={post.data.title} />
+      )
+    }
 
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">
-        {getFormatedDate(post.data.publishedAt)}
-      </PostInfoItem>
-
-      <PostInfoItem icon="ic:outline-article">
-        <Link
-          href={'/blog/categories/' + post.data.category}
-          title={post.data.category}
-          alt="See more from this category"
-        />
+        <PostDateTime date={post.data.publishedAt} />
       </PostInfoItem>
 
       <PostInfoItem icon="ic:outline-tag">
@@ -110,37 +112,47 @@ const article = {
       }
     </PostInfo>
 
-    <PostShare
-      margin="0 0 1rem 0"
-      items={[
-        {
-          href: linkedin,
-          icon: 'simple-icons:linkedin',
-          alt: 'Share to Linkedin',
-          event: `Post Share (Top) - Linkedin (${post.data.shortlink})`,
-        },
-        {
-          href: twitter,
-          icon: 'simple-icons:twitter',
-          alt: 'Share to Twitter',
-          event: `Post Share (Top) - Twitter (${post.data.shortlink})`,
-        },
-        {
-          href: reddit,
-          icon: 'simple-icons:reddit',
-          alt: 'Share to Reddit',
-          event: `Post Share (Top) - Reddit (${post.data.shortlink})`,
-        },
-        {
-          href: headConfig.shortLink + post.data.shortlink,
-          icon: 'mdi:link',
-          alt: 'Copy link',
-          id: 'share',
-          messageId: 'share-title',
-          event: `Post Share (Top) - Copy link (${post.data.shortlink})`,
-        },
-      ]}
-    />
+    {
+      post.data.easyShare && (
+        <PostShare
+          margin="0 0 1rem 0"
+          items={[
+            {
+              href: linkedin,
+              icon: 'simple-icons:linkedin',
+              alt: 'Share to Linkedin',
+              event: `Post Share (Top) - Linkedin (${post.data.shortlink})`,
+            },
+            {
+              href: twitter,
+              icon: 'simple-icons:x',
+              alt: 'Share to X (Twitter)',
+              event: `Post Share (Top) - X (Twitter) (${post.data.shortlink})`,
+            },
+            {
+              href: reddit,
+              icon: 'simple-icons:reddit',
+              alt: 'Share to Reddit',
+              event: `Post Share (Top) - Reddit (${post.data.shortlink})`,
+            },
+            {
+              href: bluesky,
+              icon: 'simple-icons:bluesky',
+              alt: 'Share to Bluesky',
+              event: `Post Share (Top) - Blueksy (${post.data.shortlink})`,
+            },
+            {
+              href: headConfig.shortLink + post.data.shortlink,
+              icon: 'mdi:link',
+              alt: 'Copy link',
+              id: 'share',
+              messageId: 'share-title',
+              event: `Post Share (Top) - Copy link (${post.data.shortlink})`,
+            },
+          ]}
+        />
+      )
+    }
 
     <Divider margin="0" />
 
@@ -149,15 +161,20 @@ const article = {
     <PostFooter>
       {
         post.data.updatedAt && (
-          <PostUpdatedAt updatedAt={post.data.updatedAt} slug={post.slug} />
+          <PostUpdatedAt updatedAt={post.data.updatedAt} id={post.id} />
         )
       }
-      <PostShareBanner
-        link={post.data.shortlink}
-        twitter={twitter}
-        linkedin={linkedin}
-        reddit={reddit}
-      />
+      {
+        post.data.easyShare && (
+          <PostShareBanner
+            link={post.data.shortlink}
+            twitter={twitter}
+            linkedin={linkedin}
+            reddit={reddit}
+            bluesky={bluesky}
+          />
+        )
+      }
       <Tags
         values={post.data.tags}
         target="tags"
@@ -174,31 +191,3 @@ const article = {
 <style></style>
 
 <script src="../lib/browser/post.ts"></script>
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function () {
-    const giscusAttributes = {
-      src: 'https://giscus.app/client.js',
-      'data-repo': 'LucJosin/lucasjosino.com',
-      'data-repo-id': 'R_kgDOH3GyVA',
-      'data-category': 'Announcements',
-      'data-category-id': 'DIC_kwDOH3GyVM4CZ9W5',
-      'data-mapping': 'pathname',
-      'data-strict': '0',
-      'data-reactions-enabled': '1',
-      'data-emit-metadata': '0',
-      'data-input-position': 'top',
-      'data-theme': getGiscusTheme(theme),
-      'data-lang': 'en',
-      'data-loading': 'lazy',
-      crossorigin: 'anonymous',
-      async: true,
-    };
-
-    // Dynamically create script tag
-    const giscusScript = document.createElement('script');
-    Object.entries(giscusAttributes).forEach(([key, value]) =>
-      giscusScript.setAttribute(key, value)
-    );
-    document.body.appendChild(giscusScript);
-  });
-</script>

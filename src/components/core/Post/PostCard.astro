@@ -1,9 +1,9 @@
 ---
 import Tags from '@components/data/Tags.astro';
-import { getFormatedDate } from '@lib/date';
 import { getReadTime } from '@lib/time';
 import Description from '../Description.astro';
 import Link from '../Link/Link.astro';
+import PostDateTime from './PostDateTime.astro';
 
 interface Props {
   image?: string;
@@ -31,73 +31,110 @@ const {
 ---
 
 <div class="post-card">
-  {
-    image && (
-      <a href={`/blog/${href}`} title={`Read more about: ${title}`}>
-        <img src={image} alt={`Post - ${title}`} class="post-card-img" />
-      </a>
-    )
-  }
-  <div class="post-card-info">
-    <span class="post-card-info-left">
-      <span>{getFormatedDate(publishedAt)}</span> •
+  <div class="post-card-img-container">
+    {
+      image && (
+        <a href={`/blog/${href}`} title={`Read more about: ${title}`}>
+          <img src={image} alt={`Post - ${title}`} class="post-card-img" />
+        </a>
+      )
+    }
+  </div>
+  <div class="post-card-container">
+    <div class="post-card-info">
+      <span class="post-card-info-left">
+        <PostDateTime date={publishedAt} /> •
+        <Link
+          title={category}
+          alt="See all posts with this category"
+          href={`/blog/categories/${category}`}
+        /> •
+        <span>{getReadTime(body)}</span>
+      </span>
+    </div>
+    <div class="post-card-header">
       <Link
-        title={category}
-        alt="See all posts with this category"
-        href={`/blog/categories/${category}`}
-      /> •
-      <span>{getReadTime(body)}</span>
-    </span>
-  </div>
-  <Tags values={tags.slice(0, maxTags)} target="tags" active />
-  <div class="post-card-header">
-    <h3>{title}</h3>
-  </div>
-  <Description
-    value={description}
-    margin="0"
-    align={false}
-    fontSize="0.9em"
-    maxLine="3"
-  />
-  <div class="post-card-read-more">
-    <Link
-      href={`/blog/${href}`}
-      alt="Read more about"
-      title="Read post"
-      icon="mdi:arrow-right-thin"
-      iconSide="right"
-      hasBorderBottom={false}
-      animatedIcon
-      reverseAnimation
+        href={`/blog/${href}`}
+        alt={`Read more about: ${title}`}
+        display="inline"
+      >
+        <h3>{title}</h3>
+      </Link>
+    </div>
+    <Description
+      value={description}
+      margin="0"
+      align={false}
+      fontSize="0.9em"
+      maxLine="3"
     />
+    <Tags values={tags.slice(0, maxTags)} target="tags" active />
+    <div class="post-card-read-more">
+      <Link
+        href={`/blog/${href}`}
+        alt="Read more about"
+        title="Read post"
+        icon="mdi:arrow-right-thin"
+        iconSide="right"
+        hasBorderBottom={false}
+        animatedIcon
+        reverseAnimation
+      />
+    </div>
   </div>
 </div>
 
 <style>
   .post-card {
-    min-height: 22rem;
+    min-height: 15rem;
+    width: 100%;
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--card-padding);
     transition: all var(--transition-duration);
     display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+    gap: 1rem;
+  }
+
+  .post-card:hover {
+    background-color: var(--secondary-color);
   }
 
   h3 {
     margin: 0;
+    display: inherit;
+  }
+
+  .post-card-img-container {
+    width: 50%;
+    max-width: 50%;
+    min-width: 50%;
+    overflow: hidden;
+    border-radius: var(--border-radius);
   }
 
   .post-card-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-radius: var(--border-radius);
+    border-radius: inherit;
+    transition: scale var(--transition-duration);
+  }
+
+  .post-card:hover .post-card-img {
+    scale: 1.03;
+  }
+
+  .post-card-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    position: relative;
   }
 
   .post-card-info {
+    margin-top: 0.5rem;
     font-size: 0.85em;
     display: flex;
     align-items: center;
@@ -112,5 +149,31 @@ const {
   .post-card-read-more {
     display: flex;
     align-items: center;
+    position: absolute;
+    bottom: 0rem;
+  }
+
+  @media (max-width: 768px) {
+    .post-card {
+      flex-direction: column;
+    }
+
+    .post-card-img-container {
+      width: 100%;
+      max-width: initial;
+      min-width: initial;
+    }
+
+    .post-card-container {
+      width: 100%;
+    }
+
+    .post-card-info {
+      margin-top: 0;
+    }
+
+    .post-card-read-more {
+      position: initial;
+    }
   }
 </style>

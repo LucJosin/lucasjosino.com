@@ -6,7 +6,6 @@ import LinkBox from '@components/core/Link/LinkBox.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
-import Navigation from '@layouts/Navigation.astro';
 
 const encodedUrl = encodeURI(`[${Astro.url.pathname}]`);
 const encodedCode = encodeURI('Status: 404');
@@ -14,8 +13,6 @@ const encodedCode = encodeURI('Status: 404');
 
 <Layout title="404" description="Page not found!">
   <Container gap="0.5rem">
-    <Navigation backAlt="Go back to home page" backHref="/" backTitle="Home" />
-
     <Title title="404" fontSize="5em" />
     <Description
       value="Page not found. Maybe something was deleted or moved."
@@ -38,7 +35,7 @@ const encodedCode = encodeURI('Status: 404');
       isLocal={false}
       href={`https://github.com/LucJosin/lucasjosino.com/issues/new?title=${encodedUrl}&labels=${encodedCode}`}
     />
-     or
+    or
     <Link
       title="contact@lucasjosino.com"
       alt="Email for contact"
