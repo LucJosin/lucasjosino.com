@@ -13,6 +13,7 @@ interface Props {
   padding?: string;
   titleId?: string;
   event?: string;
+  gridColumn?: string;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   padding = '0.8rem',
   titleId,
   event,
+  gridColumn,
 } = Astro.props as Props;
 
 const attr = { 'data-umami-event': event };
@@ -46,7 +48,7 @@ const attr = { 'data-umami-event': event };
   {icon && iconSide === 'right' && <Icon name={icon} />}
 </a>
 
-<style define:vars={{ padding, iconSize }}>
+<style define:vars={{ padding, iconSize, gridColumn }}>
   .link-box {
     height: min-content;
     border: var(--border-size) solid var(--border-color);
@@ -57,6 +59,7 @@ const attr = { 'data-umami-event': event };
     transition: all var(--transition-duration);
     gap: 0.5rem;
     padding: var(--padding);
+    grid-column: var(--gridColumn);
   }
 
   .link-box:hover {
