@@ -39,8 +39,7 @@ export const projects: ProjectModel[] = [
     category: 'Collection',
   },
   {
-    image:
-      'https://repository-images.githubusercontent.com/527544916/e59a3b38-f658-4e42-b4a8-fe6d4a3b551c',
+    image: 'https://www.lucasjosino.com/static/default-og.png',
     title: 'lucasjosino.com',
     description:
       'Minimalist portfolio website/blog built with Astro & Typescript.',
