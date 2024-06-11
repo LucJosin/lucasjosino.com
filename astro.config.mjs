@@ -26,6 +26,7 @@ import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
 
 import HashRenamer from './src/lib/hash-renamer';
+import getRedirects from './src/lib/redirects';
 
 const cssPrefix = 'astro-';
 const renamer = new HashRenamer(cssPrefix);
@@ -55,6 +56,8 @@ export default defineConfig({
   //
   // ‘static’ - Building a static site to be deploy to any static host.
   output: 'static',
+  // Specify a mapping of redirects where the key is the route to match and the value is the path to redirect to.
+  redirects: getRedirects(),
   // Astro integrations.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/
