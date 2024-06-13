@@ -6,7 +6,6 @@ import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
 import { getAllPosts } from '@lib/blog';
-import { getFormatedDate } from '@lib/date';
 
 const posts = await getAllPosts();
 const title = 'Blog';
@@ -29,7 +28,7 @@ const description =
               description={post.data.description}
               category={post.data.category}
               href={`${post.slug}/`}
-              publishedAt={getFormatedDate(post.data.publishedAt)}
+              publishedAt={post.data.publishedAt}
               tags={post.data.tags}
               body={post.body}
             />
