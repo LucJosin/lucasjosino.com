@@ -6,6 +6,7 @@ export async function GET() {
   const posts = await getAllPosts();
   const domain = headConfig.canonical;
   return rss({
+    trailingSlash: true,
     title: 'Lucas Josino',
     description:
       'Explore my developer blog with thoughts, ideas and other stuff.',
