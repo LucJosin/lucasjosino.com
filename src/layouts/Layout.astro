@@ -83,6 +83,10 @@ const { title, description, banner, robots, shortlink, locale, article } =
       content={Astro.site + (banner ?? headConfig.banner)}
     />
     <meta
+      property="og:image:alt"
+      content={article?.title || title + ' | ' + headConfig.name}
+    />
+    <meta
       property="og:image:secure_url"
       content={Astro.site + (banner ?? headConfig.banner)}
     />
