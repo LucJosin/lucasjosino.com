@@ -7,7 +7,7 @@ import { getAllPosts } from '@lib/blog';
 const posts = await getAllPosts();
 ---
 
-<div class="posts-data">
+<section class="posts-section">
   <div class="posts-header">
     <SubTitle title="Posts" />
     <Link
@@ -39,10 +39,10 @@ const posts = await getAllPosts();
         ))
     }
   </div>
-</div>
+</section>
 
 <style>
-  .posts-data {
+  .posts-section {
     height: max-content;
     width: 80%;
   }

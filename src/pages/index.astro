@@ -17,12 +17,12 @@ import Layout from '@layouts/Layout.astro';
 >
   <ThemeIcon position="absolute" />
   <Container maxWidth="35rem" hasHeader={false}>
-    <div class="profile">
+    <section class="profile-section">
       <Avatar />
       <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.4em" />
       <span>Backend Developer</span>
       <span>Java · Spring Boot</span>
-    </div>
+    </section>
     <Divider width="80%" margin="1.5rem 0 0 0" />
     <Socials />
     <Projects />
@@ -31,7 +31,7 @@ import Layout from '@layouts/Layout.astro';
 </Layout>
 
 <style>
-  .profile {
+  .profile-section {
     text-align: center;
     display: flex;
     flex-direction: column;

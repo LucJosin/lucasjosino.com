@@ -5,7 +5,7 @@ import SubTitle from '@components/core/SubTitle.astro';
 import { projects } from '@constants/projects';
 ---
 
-<div class="projects-data">
+<section class="projects-section">
   <div class="projects-header">
     <SubTitle title="Projects" />
     <Link
@@ -35,10 +35,10 @@ import { projects } from '@constants/projects';
         ))
     }
   </div>
-</div>
+</section>
 
 <style>
-  .projects-data {
+  .projects-section {
     height: max-content;
     width: 80%;
   }

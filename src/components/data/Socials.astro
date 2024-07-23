@@ -11,7 +11,7 @@ interface Props {
 const { hasTitle = true } = Astro.props;
 ---
 
-<div class="socials">
+<section class="socials-section">
   <div class="socials-header">
     {hasTitle && <SubTitle title="Socials" />}
   </div>
@@ -42,10 +42,10 @@ const { hasTitle = true } = Astro.props;
       ))
     }
   </div>
-</div>
+</section>
 
 <style>
-  .socials {
+  .socials-section {
     height: max-content;
     width: 80%;
   }
