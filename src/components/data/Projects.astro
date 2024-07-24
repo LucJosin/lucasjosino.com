@@ -1,6 +1,6 @@
 ---
 import Link from '@components/core/Link/Link.astro';
-import MiniProjectCard from '@components/core/Project/MiniProjectCard.astro';
+import ProjectCard from '@components/core/Project/ProjectCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import { projects } from '@constants/projects';
 ---
@@ -21,19 +21,7 @@ import { projects } from '@constants/projects';
   </div>
 
   <div class="projects-container">
-    {
-      projects
-        .slice(0, 2)
-        .map((data) => (
-          <MiniProjectCard
-            title={data.title}
-            description={data.description}
-            git={data.git}
-            url={data.url}
-            image={data.image}
-          />
-        ))
-    }
+    {projects.slice(0, 2).map((data) => <ProjectCard project={data} />)}
   </div>
 </section>
 
@@ -51,8 +39,8 @@ import { projects } from '@constants/projects';
 
   .projects-container {
     width: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 </style>

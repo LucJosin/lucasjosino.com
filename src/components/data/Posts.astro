@@ -1,6 +1,6 @@
 ---
 import Link from '@components/core/Link/Link.astro';
-import MiniPostCard from '@components/core/Post/MiniPostCard.astro';
+import PostCard from '@components/core/Post/PostCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import { getAllPosts } from '@lib/blog';
 
@@ -27,14 +27,15 @@ const posts = await getAllPosts();
       posts
         .slice(0, 2)
         .map((e) => (
-          <MiniPostCard
+          <PostCard
             image={e.data.image.src}
-            imageAlign={e.data.image.position}
-            href={`/blog/${e.slug}`}
+            href={e.slug}
             title={e.data.title}
             description={e.data.description}
             publishedAt={e.data.publishedAt}
             body={e.body}
+            category={e.data.category}
+            tags={e.data.tags}
           />
         ))
     }
