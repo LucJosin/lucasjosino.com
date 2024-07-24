@@ -1,6 +1,7 @@
 ---
 import LinkBox from '@components/core/Link/LinkBox.astro';
 import SubTitle from '@components/core/SubTitle.astro';
+import Tooltip from '@components/core/Tooltip.astro';
 import { links } from '@constants/links';
 import { socials } from '@constants/socials';
 
@@ -18,27 +19,32 @@ const { hasTitle = true } = Astro.props;
   <div class="socials-container">
     {
       links.map((data) => (
-        <LinkBox
-          href={data.url}
-          icon={data.icon}
-          title={data.name}
-          alt={data.alt}
-          isLocal={false}
-          event={data.event + ` (${Astro.url.pathname})`}
-          gridColumn="auto / span 3"
-        />
+        <Tooltip message={data.name}>
+          <LinkBox
+            href={data.url}
+            icon={data.icon}
+            iconSize="1em"
+            padding="0.6rem"
+            alt={data.alt}
+            isLocal={false}
+            event={data.event + ` (${Astro.url.pathname})`}
+          />
+        </Tooltip>
       ))
     }
     {
       socials.map((data) => (
-        <LinkBox
-          href={data.url}
-          icon={data.icon}
-          alt={data.alt}
-          isLocal={false}
-          event={data.event + ` (${Astro.url.pathname})`}
-          gridColumn="auto / span 2"
-        />
+        <Tooltip message={data.name}>
+          <LinkBox
+            href={data.url}
+            icon={data.icon}
+            iconSize="1em"
+            padding="0.6rem"
+            alt={data.alt}
+            isLocal={false}
+            event={data.event + ` (${Astro.url.pathname})`}
+          />
+        </Tooltip>
       ))
     }
   </div>
@@ -58,10 +64,9 @@ const { hasTitle = true } = Astro.props;
 
   .socials-container {
     width: 100%;
-    display: grid;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    grid-template-columns: repeat(6, minmax(1rem, 1fr));
+    justify-content: center;
     gap: 1rem;
   }
 </style>
