@@ -4,9 +4,12 @@ interface Props {
   href?: string;
   id?: string;
   messageId?: string;
+  position?: 'bottom' | 'top';
 }
 
-const { message, href, id, messageId } = Astro.props;
+const { message, href, id, messageId, position = 'top' } = Astro.props;
+const bottom = position === 'top' ? '100%' : '-100%';
+const margin = position === 'top' ? '0 0 5px -60px' : '5px 0 0 -60px';
 ---
 
 <div class="post-share-item" data-href={href} id={id}>
@@ -14,7 +17,7 @@ const { message, href, id, messageId } = Astro.props;
   <slot />
 </div>
 
-<style>
+<style define:vars={{ bottom, margin }}>
   .post-share-item {
     position: relative;
     display: inline-block;
@@ -33,10 +36,9 @@ const { message, href, id, messageId } = Astro.props;
     font-size: 0.85em;
 
     /* Location */
-    bottom: 100%;
     left: 50%;
-    margin-bottom: 10px;
-    margin-left: -60px;
+    bottom: var(--bottom);
+    margin: var(--margin);
   }
 
   .post-share-item:hover .post-share-item-tooltip {
