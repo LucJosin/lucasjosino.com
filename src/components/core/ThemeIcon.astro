@@ -8,8 +8,9 @@ interface Props {
 const { position = 'initial' } = Astro.props;
 ---
 
-<button id="theme">
-  <Icon name="mdi:white-balance-sunny" />
+<button id="theme" accesskey="t" title="(Alt + T)">
+  <Icon name="mdi:white-balance-sunny" class="dark" />
+  <Icon name="mdi:moon-and-stars" class="light" />
 </button>
 
 <style define:vars={{ position }}>
@@ -32,6 +33,14 @@ const { position = 'initial' } = Astro.props;
 
   #theme:hover {
     background-color: var(--contrast-color);
+  }
+
+  :root[data-theme='dark'] .light {
+    display: none;
+  }
+
+  :root[data-theme='light'] .dark {
+    display: none;
   }
 
   #theme:hover > [data-icon] {
