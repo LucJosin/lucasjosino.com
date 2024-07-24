@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Tooltip from './Tooltip.astro';
 
 interface Props {
   position?: string;
@@ -8,10 +9,12 @@ interface Props {
 const { position = 'initial' } = Astro.props;
 ---
 
-<button id="theme" accesskey="t" title="(Alt + T)">
-  <Icon name="mdi:white-balance-sunny" class="dark" />
-  <Icon name="mdi:moon-and-stars" class="light" />
-</button>
+<Tooltip message="Toggle theme" position="bottom">
+  <button id="theme" accesskey="t" title="(Alt + T)">
+    <Icon name="mdi:white-balance-sunny" class="dark" />
+    <Icon name="mdi:moon-and-stars" class="light" />
+  </button>
+</Tooltip>
 
 <style define:vars={{ position }}>
   #theme {
