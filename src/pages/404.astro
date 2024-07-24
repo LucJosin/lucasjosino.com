@@ -14,12 +14,13 @@ const encodedCode = encodeURI('Status: 404');
 <Layout title="404" description="Page not found!">
   <Container gap="0.5rem">
     <Title title="404" fontSize="5em" />
+    <Divider width="80%" />
+
     <Description
       value="Page not found. Maybe something was deleted or moved."
-      margin="0"
+      margin="0 0 1rem 0"
     />
 
-    <Divider width="80%" />
     <LinkBox
       title="Go Back"
       href="/"
@@ -56,6 +57,7 @@ const encodedCode = encodeURI('Status: 404');
     justify-content: center;
     gap: 0.25rem;
     flex-wrap: wrap;
+    padding: 0 2em;
   }
 
   @media (max-width: 425px) {
