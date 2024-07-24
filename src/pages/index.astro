@@ -1,7 +1,6 @@
 ---
 import Avatar from '@components/core/Avatar.astro';
 import Divider from '@components/core/Divider.astro';
-import ThemeIcon from '@components/core/ThemeIcon.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Posts from '@components/data/Posts.astro';
@@ -15,18 +14,18 @@ import Layout from '@layouts/Layout.astro';
   description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development."
   shortlink="/"
 >
-  <ThemeIcon position="absolute" />
-  <Container hasHeader={false}>
+  <Container gap="1.5rem">
     <section class="profile-section">
       <Avatar />
       <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.4em" />
       <span>Backend Developer</span>
       <span>Java · Spring Boot</span>
+      <p class="profile-description">Hi 👋, Welcome to my world!</p>
+      <Socials hasTitle={false} />
     </section>
-    <Divider margin="1.5rem 0 0 0" />
-    <Socials />
-    <Projects />
+    <Divider width="80%" margin="0" />
     <Posts />
+    <Projects />
   </Container>
 </Layout>
 
@@ -36,7 +35,16 @@ import Layout from '@layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2rem;
-    margin-top: 4rem;
+    gap: 0.5rem;
+  }
+
+  .profile-description {
+    color: var(--description-text-color);
+    margin: 0.5rem;
+    line-height: 1.5em;
+    align-items: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
   }
 </style>
