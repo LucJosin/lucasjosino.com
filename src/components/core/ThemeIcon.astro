@@ -9,8 +9,8 @@ interface Props {
 const { position = 'initial' } = Astro.props;
 ---
 
-<Tooltip message="Toggle theme" position="bottom">
-  <button id="theme" accesskey="t" title="(Alt + T)">
+<Tooltip message="Toggle theme (Alt + T)" position="bottom">
+  <button id="theme" accesskey="t" title="Toggle theme (Alt + T)">
     <Icon name="mdi:white-balance-sunny" class="dark" />
     <Icon name="mdi:moon-and-stars" class="light" />
   </button>
