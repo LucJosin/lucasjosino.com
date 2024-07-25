@@ -13,14 +13,19 @@ const margin = position === 'top' ? '0 0 5px -60px' : '5px 0 0 -60px';
 ---
 
 <div class="post-share-item" data-href={href} id={id}>
-  <span class="post-share-item-tooltip" id={messageId}>{message}</span>
+  {
+    message && (
+      <span class="post-share-item-tooltip" id={messageId}>
+        {message}
+      </span>
+    )
+  }
   <slot />
 </div>
 
 <style define:vars={{ bottom, margin }}>
   .post-share-item {
     position: relative;
-    display: inline-block;
   }
 
   .post-share-item-tooltip {
