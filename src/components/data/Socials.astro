@@ -7,9 +7,11 @@ import { socials } from '@constants/socials';
 
 interface Props {
   hasTitle?: boolean;
+  showName?: boolean;
+  showTooltip?: boolean;
 }
 
-const { hasTitle = true } = Astro.props;
+const { hasTitle = false, showName = false, showTooltip = true } = Astro.props;
 ---
 
 <section class="socials-section">
@@ -19,9 +21,10 @@ const { hasTitle = true } = Astro.props;
   <div class="socials-container">
     {
       links.map((data) => (
-        <Tooltip message={data.name}>
+        <Tooltip message={showTooltip ? data.name : ''}>
           <LinkBox
             href={data.url}
+            title={showName ? data.name : undefined}
             icon={data.icon}
             iconSize="1em"
             padding="0.6rem"
@@ -34,9 +37,10 @@ const { hasTitle = true } = Astro.props;
     }
     {
       socials.map((data) => (
-        <Tooltip message={data.name}>
+        <Tooltip message={showTooltip ? data.name : ''}>
           <LinkBox
             href={data.url}
+            title={showName ? data.name : undefined}
             icon={data.icon}
             iconSize="1em"
             padding="0.6rem"
@@ -67,6 +71,7 @@ const { hasTitle = true } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
   }
 </style>
