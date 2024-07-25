@@ -2652,6 +2652,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify-json/tabler@npm:^1.1.118":
+  version: 1.1.118
+  resolution: "@iconify-json/tabler@npm:1.1.118"
+  dependencies:
+    "@iconify/types": "*"
+  checksum: 66763f337e96db5344afbd3db4209d84adba448fc77adf4717934167bc7a94c5725a44a7b73f49c8b824a4e215ac7aa7cb136971ca9ca084d314ffe6fd26e07f
+  languageName: node
+  linkType: hard
+
 "@iconify/tools@npm:^3.0.1":
   version: 3.0.7
   resolution: "@iconify/tools@npm:3.0.7"
@@ -3008,6 +3017,7 @@ __metadata:
     "@iconify-json/ic": ^1.1.17
     "@iconify-json/mdi": ^1.1.64
     "@iconify-json/simple-icons": ^1.1.93
+    "@iconify-json/tabler": ^1.1.118
     "@lucjosin/remark-alert-blocks": ./plugins/remark-alert-blocks
     "@lucjosin/remark-code-highlight": ./plugins/remark-code-highlight
     "@lucjosin/remark-code-set": ./plugins/remark-code-set

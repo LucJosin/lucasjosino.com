@@ -51,6 +51,7 @@
     "@iconify-json/ic": "^1.1.17",
     "@iconify-json/mdi": "^1.1.64",
     "@iconify-json/simple-icons": "^1.1.93",
+    "@iconify-json/tabler": "^1.1.118",
     "@resvg/resvg-js": "^2.5.0",
     "@swup/astro": "^1.3.2",
     "@types/react": "^18.2.29",
