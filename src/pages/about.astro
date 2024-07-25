@@ -1,0 +1,97 @@
+---
+import Divider from '@components/core/Divider.astro';
+import Title from '@components/core/Title.astro';
+import Tooltip from '@components/core/Tooltip.astro';
+import Container from '@components/data/Container.astro';
+import Socials from '@components/data/Socials.astro';
+import { languages } from '@constants/languages';
+import Layout from '@layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout
+  title="About Me"
+  description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development."
+  shortlink="/about"
+>
+  <Container>
+    <Title title="About Me" fontSize="2.5em" />
+    <Divider height="1px" width="80%" />
+    <article class="about-article">
+      <p>Hi, 👋!</p>
+      <p>
+        I'm <strong>Lucas Josino</strong>, an enthusiastic <strong
+          >Backend Developer</strong
+        > currently in the early stages of my career.
+      </p>
+    </article>
+    <div class="about-skills">
+      <h2>Skills and Technologies</h2>
+      <div class="about-languages">
+        {
+          languages.map((lang) => {
+            return (
+              <Tooltip message={lang.name}>
+                <Icon
+                  name={lang.icon}
+                  font-size="3em"
+                  class="about-languages-language"
+                />
+              </Tooltip>
+            );
+          })
+        }
+      </div>
+    </div>
+    <div class="about-contact">
+      <h2>Contact</h2>
+      <Socials showName={true} showTooltip={false} />
+    </div>
+  </Container>
+</Layout>
+
+<style>
+  .about-article {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    color: var(--description-text-color);
+  }
+
+  .about-skills,
+  .about-contact {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-languages {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .about-languages-language {
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+  }
+
+  .about-languages-language:hover {
+    border: var(--border-size) solid var(--primary-color);
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  .about-languages-language:hover > [data-icon] {
+    fill: var(--secondary-text-color);
+    color: var(--secondary-text-color);
+  }
+</style>
