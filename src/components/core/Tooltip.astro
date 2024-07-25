@@ -4,18 +4,16 @@ interface Props {
   href?: string;
   id?: string;
   messageId?: string;
-  position?: 'bottom' | 'top';
+  position?: 'bottom' | 'top' | 'left' | 'right';
 }
 
 const { message, href, id, messageId, position = 'top' } = Astro.props;
-const bottom = position === 'top' ? '100%' : '-100%';
-const margin = position === 'top' ? '0 0 5px -60px' : '5px 0 0 -60px';
 ---
 
-<div class="post-share-item" data-href={href} id={id}>
+<div class="tooltip" data-href={href} id={id}>
   {
     message && (
-      <span class="post-share-item-tooltip" id={messageId}>
+      <span class={`tooltip-message ${position}`} id={messageId}>
         {message}
       </span>
     )
@@ -23,30 +21,49 @@ const margin = position === 'top' ? '0 0 5px -60px' : '5px 0 0 -60px';
   <slot />
 </div>
 
-<style define:vars={{ bottom, margin }}>
-  .post-share-item {
+<style>
+  .tooltip {
     position: relative;
+    display: inline;
   }
 
-  .post-share-item-tooltip {
-    min-width: 120px;
-    position: absolute;
+  .tooltip-message {
+    visibility: hidden;
+    width: 120px;
     background-color: var(--contrast-color);
     color: var(--secondary-text-color);
     text-align: center;
-    padding: 5px 5px;
     border-radius: var(--border-radius);
-    visibility: hidden;
-    z-index: 3;
+    padding: 0.4rem;
+    position: absolute;
     font-size: 0.85em;
-
-    /* Location */
-    left: 50%;
-    bottom: var(--bottom);
-    margin: var(--margin);
   }
 
-  .post-share-item:hover .post-share-item-tooltip {
+  .tooltip:hover .tooltip-message {
     visibility: visible;
+  }
+
+  .tooltip-message.top {
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tooltip-message.bottom {
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tooltip-message.left {
+    top: 50%;
+    right: 110%;
+    transform: translateY(-50%);
+  }
+
+  .tooltip-message.right {
+    top: 50%;
+    left: 110%;
+    transform: translateY(-50%);
   }
 </style>
