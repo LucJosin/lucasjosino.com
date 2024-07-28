@@ -9,9 +9,15 @@ interface Props {
   hasTitle?: boolean;
   showName?: boolean;
   showTooltip?: boolean;
+  justifyContent?: string;
 }
 
-const { hasTitle = false, showName = false, showTooltip = true } = Astro.props;
+const {
+  hasTitle = false,
+  showName = false,
+  showTooltip = true,
+  justifyContent = 'center',
+} = Astro.props;
 ---
 
 <section class="socials-section">
@@ -54,7 +60,7 @@ const { hasTitle = false, showName = false, showTooltip = true } = Astro.props;
   </div>
 </section>
 
-<style>
+<style define:vars={{ justifyContent }}>
   .socials-section {
     height: max-content;
     width: 100%;
@@ -70,7 +76,7 @@ const { hasTitle = false, showName = false, showTooltip = true } = Astro.props;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: var(--justifyContent);
     flex-wrap: wrap;
     gap: 1rem;
   }
