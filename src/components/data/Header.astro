@@ -20,7 +20,8 @@ import { Icon } from 'astro-icon/components';
   </div>
   <div class="header-menu-mobile">
     <button class="header-menu-btn">
-      <Icon name="mdi:menu" />
+      <Icon name="mdi:menu" class="header-menu-btn-menu" />
+      <Icon name="mdi:close" class="header-menu-btn-close" />
     </button>
   </div>
 </header>
@@ -66,6 +67,12 @@ import { Icon } from 'astro-icon/components';
     display: none;
   }
 
+  .header-menu-btn-close {
+    visibility: hidden;
+    pointer-events: none;
+    display: none;
+  }
+
   .header-menu-btn {
     height: 2rem;
     width: 2rem;
@@ -104,6 +111,19 @@ import { Icon } from 'astro-icon/components';
       pointer-events: all;
     }
 
+    .header-menu-btn-close.show {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+      display: initial;
+    }
+
+    .header-menu-btn-menu.show {
+      visibility: hidden;
+      pointer-events: none;
+      display: none;
+    }
+
     .header-menu-mobile {
       display: initial;
       flex-direction: initial;
@@ -124,9 +144,17 @@ import { Icon } from 'astro-icon/components';
 
 <script>
   const headerNav = document.querySelector('.header-nav') as HTMLElement;
+  const headerMenuBtn = document.querySelector(
+    '.header-menu-btn-menu'
+  ) as HTMLElement;
+  const headerCloseBtn = document.querySelector(
+    '.header-menu-btn-close'
+  ) as HTMLElement;
   const headerMenu = document.querySelector('.header-menu-mobile');
 
   headerMenu?.addEventListener('click', () => {
     headerNav.classList.toggle('show');
+    headerMenuBtn.classList.toggle('show');
+    headerCloseBtn.classList.toggle('show');
   });
 </script>
