@@ -1,3 +1,32 @@
+type ProjectStatusModel = {
+  name: string;
+  description: string;
+};
+
+const projectStatuses: { [key: string]: ProjectStatusModel } = {
+  InProgress: {
+    name: 'In Progress',
+    description: 'Work on the project is currently ongoing.',
+  },
+  OnHold: {
+    name: 'On Hold',
+    description: 'The project has been temporarily paused.',
+  },
+  Completed: {
+    name: 'Completed',
+    description: 'The project has been finished.',
+  },
+  Inactive: {
+    name: 'Inactive',
+    description:
+      'The project is not currently active but may be resumed in the future.',
+  },
+  Active: {
+    name: 'Active',
+    description: 'The project is currently active and work is ongoing.',
+  },
+};
+
 export interface ProjectModel {
   image?: string;
   title: string;
@@ -9,6 +38,7 @@ export interface ProjectModel {
   language: string;
   icon: string;
   category: 'Project' | 'Collection';
+  status: ProjectStatusModel;
 }
 
 export const projects: ProjectModel[] = [
@@ -24,6 +54,7 @@ export const projects: ProjectModel[] = [
     language: 'Typescript',
     icon: 'simple-icons:typescript',
     category: 'Project',
+    status: projectStatuses['Active'],
   },
   {
     image:
@@ -37,6 +68,7 @@ export const projects: ProjectModel[] = [
     language: 'Java',
     icon: 'mdi:language-java',
     category: 'Collection',
+    status: projectStatuses['Active'],
   },
   {
     image: 'https://www.lucasjosino.com/static/default-og.png',
@@ -48,6 +80,7 @@ export const projects: ProjectModel[] = [
     language: 'Astro',
     icon: 'simple-icons:astro',
     category: 'Project',
+    status: projectStatuses['Active'],
   },
   {
     image:
@@ -61,5 +94,6 @@ export const projects: ProjectModel[] = [
     language: 'Dart',
     icon: 'simple-icons:dart',
     category: 'Project',
+    status: projectStatuses['Inactive'],
   },
 ];

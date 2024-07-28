@@ -31,7 +31,12 @@ const { project, titleSize, descSize } = Astro.props as Props;
 
   <div class="project-card-container">
     <div class="project-card-header">
-      <Title title={project.title} fontSize={titleSize} margin="0" />
+      <div class="project-card-title">
+        <Title title={project.title} fontSize={titleSize} margin="0" />
+        <span class="project-card-status" title={project.status.description}
+          >{project.status.name}</span
+        >
+      </div>
       <div class="project-card-language">
         {project.language}
         <Icon name={project.icon} />
@@ -142,6 +147,20 @@ const { project, titleSize, descSize } = Astro.props as Props;
     gap: inherit;
     position: absolute;
     bottom: 0;
+  }
+
+  .project-card-title {
+    display: flex;
+    align-items: center;
+  }
+
+  .project-card-status {
+    margin: 0 0.5rem;
+    font-size: 0.8em;
+    border: var(--border-size) solid var(--border-color);
+    padding: 0.4rem;
+    border-radius: var(--border-radius);
+    transition: all 0.2s;
   }
 
   .project-card-language {
