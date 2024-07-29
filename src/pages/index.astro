@@ -7,6 +7,7 @@ import Posts from '@components/data/Posts.astro';
 import Projects from '@components/data/Projects.astro';
 import Socials from '@components/data/Socials.astro';
 import Layout from '@layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <Layout
@@ -20,7 +21,12 @@ import Layout from '@layouts/Layout.astro';
       <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.4em" />
       <span>Backend Developer</span>
       <span>Java · Spring Boot</span>
-      <p class="profile-description">Hi 👋, Welcome to my world!</p>
+      <p class="profile-description">
+        <a href="/about/">
+          Hi 👋, Welcome to my world!
+          <Icon name="mdi:arrow-top-right" />
+        </a>
+      </p>
       <Socials hasTitle={false} />
     </section>
     <Divider width="80%" margin="0" />
@@ -38,13 +44,13 @@ import Layout from '@layouts/Layout.astro';
     gap: 0.5rem;
   }
 
-  .profile-description {
+  .profile-description a {
     color: var(--description-text-color);
     margin: 0.5rem;
     line-height: 1.5em;
     align-items: inherit;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 0.2em;
   }
 </style>
