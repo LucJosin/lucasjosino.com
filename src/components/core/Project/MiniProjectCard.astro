@@ -1,0 +1,101 @@
+---
+import { Icon } from 'astro-icon/components';
+import Description from '../Description.astro';
+import Divider from '../Divider.astro';
+import Link from '../Link/Link.astro';
+import Title from '../Title.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  language: string;
+  url?: string;
+  git?: string;
+}
+
+const { title, description, language, url, git, icon } = Astro.props as Props;
+---
+
+<div class="mini-project-item">
+  <div class="mini-item-header">
+    <div class="mini-item-wrapper">
+      <Title title={title} margin="0" />
+      <div class="mini-item-links">
+        {
+          git && (
+            <Link
+              href={git}
+              icon="simple-icons:github"
+              alt={title + ' - Github'}
+              isLocal={false}
+              hasBorderBottom={false}
+            />
+          )
+        }
+        {
+          url && (
+            <Link
+              href={url}
+              icon="mdi:external-link"
+              alt={title + ' - Demo'}
+              isLocal={false}
+              hasBorderBottom={false}
+            />
+          )
+        }
+      </div>
+    </div>
+    <div class="mini-item-language">
+      {language}
+      <Icon name={icon} />
+    </div>
+  </div>
+  <Divider width="100%" margin="0 0" />
+  <Description
+    value={description}
+    margin="0"
+    fontSize=".8em"
+    maxLine="3"
+    align={false}
+  />
+</div>
+
+<style>
+  .mini-project-item {
+    width: 100%;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    padding: var(--card-padding);
+    transition: all var(--transition-duration);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mini-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .mini-item-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .mini-item-language {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8em;
+  }
+
+  .mini-item-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+</style>

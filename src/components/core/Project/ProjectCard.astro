@@ -6,6 +6,7 @@ import Description from '../Description.astro';
 import Divider from '../Divider.astro';
 import LinkBox from '../Link/LinkBox.astro';
 import Title from '../Title.astro';
+import MiniProjectCard from './MiniProjectCard.astro';
 
 interface Props {
   project: ProjectModel;
@@ -17,93 +18,151 @@ const { project, titleSize, descSize } = Astro.props as Props;
 ---
 
 <div class="project-card">
-  <div class="project-card-img-container">
-    {
-      project.image && (
-        <img
-          src={project.image}
-          class="project-card-img"
-          title={`${project.title}`}
-        />
-      )
-    }
+  <div class="project-card-wrapper">
+    <div class="project-card-img-container">
+      {
+        project.image && (
+          <img
+            src={project.image}
+            class="project-card-img"
+            title={`${project.title}`}
+          />
+        )
+      }
+    </div>
+
+    <div class="project-card-container">
+      <div class="project-card-header">
+        <div class="project-card-title">
+          <Title title={project.title} fontSize={titleSize} margin="0" />
+          <span class="project-card-status" title={project.status.description}
+            >{project.status.name}</span
+          >
+          {
+            project.category === 'Org' && (
+              <a
+                href={project.org}
+                class="project-card-org"
+                title="The project is a collection of related projects"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Org
+              </a>
+            )
+          }
+        </div>
+        <div class="project-card-language">
+          {project.language}
+          <Icon name={project.icon} />
+        </div>
+      </div>
+      <Divider width="100%" margin="0 0" />
+      <Description
+        value={project.description}
+        title={project.description}
+        fontSize={descSize}
+        margin="0"
+        align={false}
+        maxLine="3"
+      />
+      <div class="project-card-bottom">
+        <Tags values={project.tags} target="tags" />
+        <div class="project-card-links">
+          {
+            project.git && (
+              <LinkBox
+                href={project.git}
+                icon="simple-icons:github"
+                title="Github"
+                alt={`${project.title} - Github`}
+                isLocal={false}
+                padding="0.5rem"
+              />
+            )
+          }
+          {
+            project.url && (
+              <LinkBox
+                href={project.url}
+                icon="mdi:open-in-new"
+                title="Demo"
+                alt={`${project.title} - Demo`}
+                isLocal={false}
+                padding="0.5rem"
+              />
+            )
+          }
+          {
+            project.article && (
+              <LinkBox
+                href={project.article}
+                icon="ic:outline-article"
+                title="Read"
+                alt={`${project.title} - Blog post`}
+                isLocal={true}
+                padding="0.5rem"
+              />
+            )
+          }
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="project-card-container">
-    <div class="project-card-header">
-      <div class="project-card-title">
-        <Title title={project.title} fontSize={titleSize} margin="0" />
-        <span class="project-card-status" title={project.status.description}
-          >{project.status.name}</span
-        >
+  {
+    project.subProjects && (
+      <div class="project-card-sub-projects-wrapper">
+        <h3>Repositories</h3>
+        <div class="project-card-sub-projects">
+          {project.subProjects.map((sub) => {
+            return (
+              <MiniProjectCard
+                title={sub.title}
+                description={sub.description}
+                url={sub.url}
+                git={sub.git}
+                language={sub.language}
+                icon={sub.icon}
+              />
+            );
+          })}
+        </div>
       </div>
-      <div class="project-card-language">
-        {project.language}
-        <Icon name={project.icon} />
-      </div>
-    </div>
-    <Divider width="100%" margin="0 0" />
-    <Description
-      value={project.description}
-      fontSize={descSize}
-      margin="0"
-      align={false}
-      maxLine="3"
-    />
-    <div class="project-card-bottom">
-      <Tags values={project.tags} target="tags" />
-      <div class="project-card-links">
-        {
-          project.git && (
-            <LinkBox
-              href={project.git}
-              icon="simple-icons:github"
-              title="Github"
-              alt={`${project.title} - Github`}
-              isLocal={false}
-              padding="0.5rem"
-            />
-          )
-        }
-        {
-          project.url && (
-            <LinkBox
-              href={project.url}
-              icon="mdi:open-in-new"
-              title="Demo"
-              alt={`${project.title} - Demo`}
-              isLocal={false}
-              padding="0.5rem"
-            />
-          )
-        }
-        {
-          project.article && (
-            <LinkBox
-              href={project.article}
-              icon="ic:outline-article"
-              title="Read"
-              alt={`${project.title} - Blog post`}
-              isLocal={true}
-              padding="0.5rem"
-            />
-          )
-        }
-      </div>
-    </div>
-  </div>
+    )
+  }
 </div>
 
 <style>
   .project-card {
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+  }
+
+  .project-card-wrapper {
     height: 100%;
     width: 100%;
     min-height: 15rem;
-    border: var(--border-size) solid var(--border-color);
-    border-radius: var(--border-radius);
     box-sizing: border-box;
     padding: var(--card-padding);
     transition: all var(--transition-duration);
+    display: flex;
+    gap: 1rem;
+  }
+
+  .project-card-sub-projects-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--card-padding) var(--card-padding) var(--card-padding);
+    gap: 1rem;
+  }
+
+  .project-card-sub-projects-wrapper h3 {
+    margin: 0;
+  }
+
+  .project-card-sub-projects {
+    width: 100%;
     display: flex;
     gap: 1rem;
   }
@@ -116,6 +175,9 @@ const { project, titleSize, descSize } = Astro.props as Props;
     width: 50%;
     max-width: 50%;
     min-width: 50%;
+    display: flex;
+    wrap: nowrap;
+    overflow: hidden;
   }
 
   .project-card-img {
@@ -123,6 +185,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
     width: 100%;
     object-fit: cover;
     border-radius: var(--border-radius);
+    transition: all 2.5s ease;
   }
 
   .project-card-container {
@@ -154,13 +217,21 @@ const { project, titleSize, descSize } = Astro.props as Props;
     align-items: center;
   }
 
-  .project-card-status {
-    margin: 0 0.5rem;
+  .project-card-status,
+  .project-card-org {
+    margin: 0 0 0 0.5rem;
     font-size: 0.8em;
     border: var(--border-size) solid var(--border-color);
     padding: 0.4rem;
     border-radius: var(--border-radius);
     transition: all 0.2s;
+  }
+
+  .project-card-org:hover {
+    border: var(--border-size) solid var(--primary-color);
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    cursor: pointer;
   }
 
   .project-card-language {
@@ -203,12 +274,16 @@ const { project, titleSize, descSize } = Astro.props as Props;
       width: 100%;
     }
 
-    .project-card {
+    .project-card-wrapper {
       flex-direction: column;
     }
 
     .project-card-bottom {
       position: initial;
+    }
+
+    .project-card-sub-projects {
+      flex-direction: column;
     }
   }
 </style>

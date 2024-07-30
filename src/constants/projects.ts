@@ -27,8 +27,18 @@ const projectStatuses: { [key: string]: ProjectStatusModel } = {
   },
 };
 
+export interface MiniProjectModel {
+  title: string;
+  description: string;
+  git?: string;
+  url?: string;
+  language: string;
+  icon: string;
+}
+
 export interface ProjectModel {
   image?: string;
+  images?: string[];
   title: string;
   description: string;
   git?: string;
@@ -37,8 +47,10 @@ export interface ProjectModel {
   tags: string[];
   language: string;
   icon: string;
-  category: 'Project' | 'Collection';
+  category: 'Project' | 'Org';
+  org?: string;
   status: ProjectStatusModel;
+  subProjects?: ProjectModel[];
 }
 
 export const projects: ProjectModel[] = [
@@ -67,8 +79,37 @@ export const projects: ProjectModel[] = [
     tags: ['Java', 'Spring Boot', 'JUnit', 'PostgreSQL', 'SQL'],
     language: 'Java',
     icon: 'mdi:language-java',
-    category: 'Collection',
+    category: 'Org',
+    org: 'https://github.com/HawAPI/',
     status: projectStatuses['Active'],
+    subProjects: [
+      {
+        image: '/static/js.png',
+        title: '@hawapi/js-sdk',
+        description:
+          'HawAPI SDK for JavaScript/TypeScript designed to simplify the integration with the API',
+        git: 'https://github.com/HawAPI/js-sdk',
+        url: 'https://npmjs.com/package/@hawapi/js-sdk',
+        tags: ['Typescript', 'API', 'SDK', 'HawAPI'],
+        language: 'Typescript',
+        icon: 'simple-icons:typescript',
+        category: 'Project',
+        status: projectStatuses['Active'],
+      },
+      {
+        image: '/static/go.png',
+        title: '@hawapi/go-sdk',
+        description:
+          'HawAPI SDK for Golang designed to simplify the integration with the API',
+        git: 'https://github.com/HawAPI/go-sdk',
+        url: 'https://pkg.go.dev/github.com/HawAPI/go-sdk',
+        tags: ['Golang', 'API', 'SDK', 'HawAPI'],
+        language: 'Golang',
+        icon: 'simple-icons:go',
+        category: 'Project',
+        status: projectStatuses['Active'],
+      },
+    ],
   },
   {
     image: 'https://www.lucasjosino.com/static/default-og.png',
