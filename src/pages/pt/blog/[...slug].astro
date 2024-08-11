@@ -1,0 +1,12 @@
+---
+import { getStaticBlogPaths } from '@lib/blog';
+import Page from '../../blog/[...slug].astro';
+
+export const getStaticPaths = getStaticBlogPaths({
+  meta: import.meta.url,
+});
+
+const { props } = Astro;
+---
+
+<Page {...props} />

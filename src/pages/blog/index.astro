@@ -6,11 +6,13 @@ import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
 import { getAllPosts } from '@lib/blog';
+import { createLocale } from 'i18n';
 
-const posts = await getAllPosts();
-const title = 'Blog';
-const description =
-  'Explore my developer blog with thoughts, ideas and other stuff.';
+const { t, h, locale } = createLocale(Astro.url.pathname);
+const posts = await getAllPosts(true, true, locale);
+
+const title = t.blog.title;
+const description = t.blog.description;
 ---
 
 <Layout title={title} description={description} shortlink="/blog">
@@ -20,20 +22,24 @@ const description =
     <Divider height="1px" width="80%" />
     <div class="blog-posts">
       {
-        posts.map((post) => {
-          return (
-            <PostCard
-              image={post.data.image.src}
-              title={post.data.title}
-              description={post.data.description}
-              category={post.data.category}
-              href={`${post.slug}/`}
-              publishedAt={post.data.publishedAt}
-              tags={post.data.tags}
-              body={post.body}
-            />
-          );
-        })
+        posts.length > 0 ? (
+          posts.map((post) => {
+            return (
+              <PostCard
+                image={post.data.image.src}
+                title={post.data.title}
+                description={post.data.description}
+                category={post.data.category}
+                href={h(`/blog/${post.data.permSlug}`)}
+                publishedAt={post.data.publishedAt}
+                tags={post.data.tags}
+                body={post.body}
+              />
+            );
+          })
+        ) : (
+          <p set:html={t.blog.no_post_found} class="blog-posts-empty" />
+        )
       }
     </div>
   </Container>
@@ -45,5 +51,13 @@ const description =
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .blog-posts-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--description-text-color);
   }
 </style>

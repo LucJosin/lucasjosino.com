@@ -2,11 +2,13 @@
 import BackToTop from '@components/core/BackToTop.astro';
 import Divider from '@components/core/Divider.astro';
 import Link from '@components/core/Link/Link.astro';
+import PostDateTime from '@components/core/Post/PostDateTime.astro';
 import PostImage from '@components/core/Post/PostImage.astro';
 import PostInfoItem from '@components/core/Post/PostInfoItem.astro';
 import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
 import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
 import ProgressBar from '@components/core/ProgressBar.astro';
+import SubTitle from '@components/core/SubTitle.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import PostComments from '@components/data/Post/PostComments.astro';
@@ -21,8 +23,6 @@ import { getEntries, type CollectionEntry } from 'astro:content';
 import { getPostImage } from 'open-graph/generator';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
-import SubTitle from '@components/core/SubTitle.astro';
-import PostDateTime from '@components/core/Post/PostDateTime.astro';
 
 interface Props {
   title: string;

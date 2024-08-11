@@ -6,10 +6,12 @@ import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import { projects } from '@constants/projects';
 import Layout from '@layouts/Layout.astro';
+import { createLocale } from 'i18n';
 
-const title = 'Projects';
-const description =
-  "Discover the projects I've been a part of and those I'm actively involved in.";
+const { t } = createLocale(Astro.url.pathname);
+
+const title = t.projects.title;
+const description = t.projects.description;
 ---
 
 <Layout title={title} description={description} shortlink="/projects">
