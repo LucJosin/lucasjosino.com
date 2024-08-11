@@ -2,6 +2,7 @@
 import Tags from '@components/data/Tags.astro';
 import type { ProjectModel } from '@constants/projects';
 import { Icon } from 'astro-icon/components';
+import { createLocale } from 'i18n';
 import Description from '../Description.astro';
 import Divider from '../Divider.astro';
 import LinkBox from '../Link/LinkBox.astro';
@@ -14,6 +15,8 @@ interface Props {
   descSize?: string;
 }
 
+const { locale, t } = createLocale(Astro.url.pathname);
+
 const { project, titleSize, descSize } = Astro.props as Props;
 ---
 
@@ -21,9 +24,9 @@ const { project, titleSize, descSize } = Astro.props as Props;
   <div class="project-card-wrapper">
     <div class="project-card-img-container">
       {
-        project.image && (
+        project.thumbnail && (
           <img
-            src={project.image}
+            src={project.thumbnail}
             class="project-card-img"
             title={`${project.title}`}
           />
@@ -35,19 +38,22 @@ const { project, titleSize, descSize } = Astro.props as Props;
       <div class="project-card-header">
         <div class="project-card-title">
           <Title title={project.title} fontSize={titleSize} margin="0" />
-          <span class="project-card-status" title={project.status.description}
-            >{project.status.name}</span
+          <span
+            class="project-card-status"
+            title={project.status.description[locale]}
+            >{project.status.name[locale]}</span
           >
           {
             project.category === 'Org' && (
               <a
                 href={project.org}
                 class="project-card-org"
-                title="The project is a collection of related projects"
+                title={t.projects.org_alt}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Org
+                {t.projects.org}
+                <Icon name="mdi:external-link" />
               </a>
             )
           }
@@ -59,8 +65,8 @@ const { project, titleSize, descSize } = Astro.props as Props;
       </div>
       <Divider width="100%" margin="0 0" />
       <Description
-        value={project.description}
-        title={project.description}
+        value={project.description[locale]}
+        title={project.description[locale]}
         fontSize={descSize}
         margin="0"
         align={false}
@@ -96,7 +102,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
           {
             project.article && (
               <LinkBox
-                href={project.article}
+                href={project.article[locale]}
                 icon="ic:outline-article"
                 title="Read"
                 alt={`${project.title} - Blog post`}
@@ -113,13 +119,13 @@ const { project, titleSize, descSize } = Astro.props as Props;
   {
     project.subProjects && (
       <div class="project-card-sub-projects-wrapper">
-        <h3>Repositories</h3>
+        <h3>{t.projects.repositories}</h3>
         <div class="project-card-sub-projects">
           {project.subProjects.map((sub) => {
             return (
               <MiniProjectCard
                 title={sub.title}
-                description={sub.description}
+                description={sub.description[locale]}
                 url={sub.url}
                 git={sub.git}
                 language={sub.language}
@@ -225,6 +231,9 @@ const { project, titleSize, descSize } = Astro.props as Props;
     padding: 0.4rem;
     border-radius: var(--border-radius);
     transition: all 0.2s;
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
   }
 
   .project-card-org:hover {
@@ -261,6 +270,18 @@ const { project, titleSize, descSize } = Astro.props as Props;
 
   [data-icon] {
     font-size: 1.3em;
+  }
+
+  .project-card-org > [data-icon] {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-card-org:hover > [data-icon] {
+    color: var(--primary-color);
+    fill: var(--primary-color);
   }
 
   @media (max-width: 768px) {
