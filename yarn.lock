@@ -3031,7 +3031,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^6.8.0
     "@typescript-eslint/parser": ^6.8.0
     astro: ^4.10.1
-    astro-compress: ^2.2.27
+    astro-compress: ^2.3.1
     astro-expressive-code: ^0.35.3
     astro-icon: ^1.1.0
     astro-meta-tags: ^0.3.0
@@ -3178,22 +3178,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playform/pipe@npm:0.0.5":
-  version: 0.0.5
-  resolution: "@playform/pipe@npm:0.0.5"
+"@playform/pipe@npm:0.1.0":
+  version: 0.1.0
+  resolution: "@playform/pipe@npm:0.1.0"
   dependencies:
-    "@types/node": 20.12.12
-    deepmerge-ts: 7.0.1
+    "@types/node": 20.14.12
+    deepmerge-ts: 7.1.0
     fast-glob: 3.3.2
-  peerDependencies:
-    "@playform/build": 0.0.9
-    "@playform/document": 0.0.7
-  peerDependenciesMeta:
-    "@playform/build":
-      optional: true
-    "@playform/document":
-      optional: true
-  checksum: 4c371ef6ad38d6686904ce2014f182f5c3a6222b18453a26f3fcc212e65b49a5d9b703404e452928a2be9288889e0bb543490da2c6585173620eb24b27ca54dd
+  checksum: 8ebfc38b50570741e35a683b406f1feca271136ecd021cd1b308e7240d44117b856d1b58b889be892f9e69a760298d45e41df5d9201cd18756bc2ab8f40937e9
   languageName: node
   linkType: hard
 
@@ -3987,12 +3979,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.12.12":
-  version: 20.12.12
-  resolution: "@types/node@npm:20.12.12"
+"@types/node@npm:20.14.12":
+  version: 20.14.12
+  resolution: "@types/node@npm:20.14.12"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 5373983874b9af7c216e7ca5d26b32a8d9829c703a69f1e66f2113598b5be8582c0e009ca97369f1ec9a6282b3f92812208d06eb1e9fc3bd9b939b022303d042
+  checksum: 1dd493d9e27da43fc374b17cf4b956dbd1dfe20ecf4749408a1db046c79b5a39261a2aa7a3f59b79fd1b5632b861ba72837779d812e0d3b6cf5b22f1650fe722
   languageName: node
   linkType: hard
 
@@ -4547,22 +4539,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-compress@npm:^2.2.27":
-  version: 2.2.27
-  resolution: "astro-compress@npm:2.2.27"
+"astro-compress@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "astro-compress@npm:2.3.1"
   dependencies:
-    "@playform/pipe": 0.0.5
+    "@playform/pipe": 0.1.0
     "@types/csso": 5.0.4
     "@types/html-minifier-terser": 7.0.2
     astro: "*"
     csso: 5.0.5
+    deepmerge-ts: 7.1.0
     html-minifier-terser: 7.2.0
     kleur: 4.1.5
     lightningcss: 1.25.1
     sharp: 0.33.4
-    svgo: 3.3.2
-    terser: 5.31.1
-  checksum: bdf75ab9fda5712bb40d996fcef9915e2c627eb5275916b8c953cada853affe8c3f25e27b3291c50751824f018268a81532fb7faa97f154055673fb381648d93
+    svgo: 4.0.0-rc.0
+    terser: 5.31.3
+  checksum: 3b14d8e09037c71f8b1c9801d13df86ae56fce44a422f3257bda0e683032c68ce5dd769eeb147b431ba88be7e637fe69ec6eb7c31d40bcb7e25ba4e546b67de1
   languageName: node
   linkType: hard
 
@@ -5368,6 +5361,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "commander@npm:11.1.0"
+  checksum: fd1a8557c6b5b622c89ecdfde703242ab7db3b628ea5d1755784c79b8e7cb0d74d65b4a262289b533359cd58e1bfc0bf50245dfbcd2954682a6f367c828b79ef
+  languageName: node
+  linkType: hard
+
 "commander@npm:^2.20.0":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
@@ -5725,10 +5725,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deepmerge-ts@npm:7.0.1":
-  version: 7.0.1
-  resolution: "deepmerge-ts@npm:7.0.1"
-  checksum: c770ce45a56960c8d2a4138208e64a87ce7a5921c9725e5f19169c09942dabdd4e8fca4f491dbf3d1adff00c748ab2bf8889e50b525ba2e44a4a1d9b925addbe
+"deepmerge-ts@npm:7.1.0":
+  version: 7.1.0
+  resolution: "deepmerge-ts@npm:7.1.0"
+  checksum: 8c36d7e88b12248e138ba0f959c03e5b6d008842acbc7bb3c43a0513b4b942f936352b8910ac75bcbe1fc61d3975b4e0ab5b13b2492f0ede06f95553c637479e
   languageName: node
   linkType: hard
 
@@ -11734,6 +11734,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sax@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "sax@npm:1.4.1"
+  checksum: 3ad64df16b743f0f2eb7c38ced9692a6d924f1cd07bbe45c39576c2cf50de8290d9d04e7b2228f924c7d05fecc4ec5cf651423278e0c7b63d260c387ef3af84a
+  languageName: node
+  linkType: hard
+
 "scheduler@npm:^0.23.2":
   version: 0.23.2
   resolution: "scheduler@npm:0.23.2"
@@ -12415,20 +12422,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svgo@npm:3.3.2":
-  version: 3.3.2
-  resolution: "svgo@npm:3.3.2"
+"svgo@npm:4.0.0-rc.0":
+  version: 4.0.0-rc.0
+  resolution: "svgo@npm:4.0.0-rc.0"
   dependencies:
-    "@trysound/sax": 0.2.0
-    commander: ^7.2.0
+    commander: ^11.1.0
     css-select: ^5.1.0
     css-tree: ^2.3.1
     css-what: ^6.1.0
     csso: ^5.0.5
     picocolors: ^1.0.0
+    sax: ^1.4.1
   bin:
-    svgo: ./bin/svgo
-  checksum: a3f8aad597dec13ab24e679c4c218147048dc1414fe04e99447c5f42a6e077b33d712d306df84674b5253b98c9b84dfbfb41fdd08552443b04946e43d03e054e
+    svgo: ./bin/svgo.js
+  checksum: ca0b4ce4cc35e6e5d63761d5694596e2afea24d663eaa097e6b9c79fb6aa7ee22b6894d4edbfdfa96919e5ad5399063286d60bd476d946e4fa3c1f326b5650fe
   languageName: node
   linkType: hard
 
@@ -12479,9 +12486,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser@npm:5.31.1":
-  version: 5.31.1
-  resolution: "terser@npm:5.31.1"
+"terser@npm:5.31.3":
+  version: 5.31.3
+  resolution: "terser@npm:5.31.3"
   dependencies:
     "@jridgewell/source-map": ^0.3.3
     acorn: ^8.8.2
@@ -12489,7 +12496,7 @@ __metadata:
     source-map-support: ~0.5.20
   bin:
     terser: bin/terser
-  checksum: 6ab57e62e9cd690dc99b3d0ee2e07289cd3408109a950c7118bf39e32851a5bf08b67fe19e0ac43a5a98813792ac78101bf25e5aa524f05ae8bb4e0131d0feef
+  checksum: cb4ccd5cb42c719272959dcae63d41e4696fb304123392943282caa6dfcdc49f94e7c48353af8bcd4fbc34457b240b7f843db7fec21bb2bdc18e01d4f45b035e
   languageName: node
   linkType: hard
 

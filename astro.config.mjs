@@ -58,6 +58,18 @@ export default defineConfig({
   output: 'static',
   // Specify a mapping of redirects where the key is the route to match and the value is the path to redirect to.
   redirects: getRedirects(),
+  // Configures i18n routing
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'pt'],
+  },
+  // Set the route matching behavior
+  trailingSlash: 'always',
+  // Build Options
+  build: {
+    // Control the output file format of each page.
+    format: 'directory',
+  },
   // Astro integrations.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/
@@ -174,7 +186,10 @@ export default defineConfig({
       external: ['svgo', '@resvg/resvg-js'],
     },
     // Fix 'resvg' on dev mode
-    optimizeDeps: { exclude: ['@resvg/resvg-js'] },
+    optimizeDeps: {
+      exclude: ['@resvg/resvg-js'],
+      esbuildOptions: { target: 'esnext' },
+    },
     build: { rollupOptions: { external: ['@resvg/resvg-js'] } },
   },
   // Listen on all addresses, including LAN and public addresses.
