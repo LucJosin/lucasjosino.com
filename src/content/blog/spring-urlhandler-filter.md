@@ -1,5 +1,5 @@
 ---
-slug: 'spring-boot-using-the-new-filter-for-trailing-slash-handling'
+permSlug: 'spring-boot-using-the-new-filter-for-trailing-slash-handling'
 title: 'Spring Boot: Using the new filter for trailing slash handling'
 description: 'In this tutorial, we’ll explore how to use the new UrlHandlerFilter to handle trailing slash in Spring Boot 3, including how to forward or redirect requests.'
 image:
