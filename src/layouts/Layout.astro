@@ -1,6 +1,7 @@
 ---
 import headConfig from '@constants/head';
 import '@styles/global.css';
+import { defaultLocale } from 'i18n';
 
 export interface Props {
   title: string;
@@ -25,11 +26,11 @@ const { title, description, banner, robots, shortlink, locale, article } =
 ---
 
 <!doctype html>
-<html lang={locale || 'en'}>
+<html lang={locale || defaultLocale}>
   <head>
     <!-- Metadata -->
     <meta charset="UTF-8" />
-    <meta http-equiv="content-language" content="en-US" />
+    <meta http-equiv="content-language" content={locale || defaultLocale} />
     <meta http-equiv="content-type" content="text/html" />
     <meta name="copyright" content={headConfig.copyright} />
     <meta
