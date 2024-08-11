@@ -1,0 +1,71 @@
+---
+import { createLocale } from 'i18n';
+import Tooltip from './Tooltip.astro';
+
+const { locale, t, s } = createLocale(Astro.url.pathname);
+
+const nextLocale = locale === 'en' ? 'pt' : 'en';
+const enabled = false;
+---
+
+<Tooltip
+  message={enabled
+    ? t.common.header.change_language_alt
+    : t.common.header.change_language_alt_disabled}
+  position="bottom"
+>
+  <a
+    href={s(nextLocale)}
+    class:list={['header-language-btn', !enabled && 'disabled']}
+    accesskey={enabled ? 'l' : null}
+  >
+    <span
+      class:list={[
+        'header-language-option',
+        locale === 'en' && 'header-language-selected',
+      ]}>🇺🇸</span
+    >
+    <span
+      class:list={[
+        'header-language-option',
+        locale === 'pt' && 'header-language-selected',
+      ]}>🇧🇷</span
+    >
+  </a>
+</Tooltip>
+
+<style>
+  .header-language-btn {
+    height: 2rem;
+    width: 2rem;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-duration);
+    gap: 0.5rem;
+    font-size: 0.8em;
+  }
+
+  .header-language-btn:hover {
+    border: var(--border-size) solid var(--primary-color);
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  .header-language-selected {
+    display: none;
+  }
+
+  .disabled {
+    border: var(--border-size) solid gray;
+    border-radius: var(--border-radius);
+    pointer-events: none;
+  }
+
+  .disabled:hover {
+    background-color: gray;
+  }
+</style>

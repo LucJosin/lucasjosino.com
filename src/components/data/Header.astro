@@ -1,20 +1,45 @@
 ---
+import LanguageIcon from '@components/core/LanguageIcon.astro';
 import Link from '@components/core/Link/Link.astro';
 import ThemeIcon from '@components/core/ThemeIcon.astro';
+import Tooltip from '@components/core/Tooltip.astro';
 import { Icon } from 'astro-icon/components';
+import { createLocale } from 'i18n';
+
+const { t, h } = createLocale(Astro.url.pathname);
 ---
 
 <header>
   <div class="header-container">
     <div class="header-left">
-      <Link href="/" alt="Homepage" hasBorderBottom={false}>
-        <h3 class="header-title">LUCAS JOSINO</h3>
-      </Link>
+      <Tooltip message={t.common.header.homepage} position="bottom">
+        <Link
+          href={h('/')}
+          alt={t.common.header.homepage}
+          hasBorderBottom={false}
+          accesskey="h"
+        >
+          <h3 class="header-title">LUCAS JOSINO</h3>
+        </Link>
+      </Tooltip>
     </div>
     <nav class="header-nav">
-      <Link title="Blog" href="/blog/" alt="Go to blog page" />
-      <Link title="Projects" href="/projects/" alt="Go to projects page" />
-      <Link title="About" href="/about/" alt="Go to about page" />
+      <Link
+        title={t.common.header.blog}
+        href={h('/blog/')}
+        alt={t.common.header.blog_link_alt}
+      />
+      <Link
+        title={t.common.header.projects}
+        href={h('/projects/')}
+        alt={t.common.header.projects_link_alt}
+      />
+      <Link
+        title={t.common.header.about}
+        href={h('/about/')}
+        alt={t.common.header.about_link_alt}
+      />
+      <LanguageIcon />
       <ThemeIcon />
     </nav>
   </div>
