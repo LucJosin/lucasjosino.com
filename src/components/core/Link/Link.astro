@@ -15,6 +15,7 @@ interface Props {
   animatedIcon?: boolean;
   reverseAnimation?: boolean;
   event?: string;
+  accesskey?: string;
 }
 
 const {
@@ -31,6 +32,7 @@ const {
   animatedIcon = false,
   reverseAnimation = false,
   event,
+  accesskey,
 } = Astro.props as Props;
 
 const attr = { 'data-umami-event': event };
@@ -52,6 +54,7 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
   rel={isLocal ? undefined : 'noopener noreferrer'}
   target={isLocal ? undefined : '_blank'}
   class="link-data"
+  accesskey={accesskey}
   {...attr}
 >
   {icon && iconSide === 'left' && <Icon name={icon} />}
