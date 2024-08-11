@@ -34,7 +34,7 @@ const {
   <div class="post-card-img-container">
     {
       image && (
-        <a href={`/blog/${href}`} title={`Read more about: ${title}`}>
+        <a href={href} title={`Read more about: ${title}`}>
           <img src={image} alt={`Post - ${title}`} class="post-card-img" />
         </a>
       )
@@ -53,11 +53,7 @@ const {
       </span>
     </div>
     <div class="post-card-header">
-      <Link
-        href={`/blog/${href}`}
-        alt={`Read more about: ${title}`}
-        display="inline"
-      >
+      <Link href={href} alt={`Read more about: ${title}`} display="inline">
         <h3>{title}</h3>
       </Link>
     </div>
@@ -71,7 +67,7 @@ const {
     <Tags values={tags.slice(0, maxTags)} target="tags" active />
     <div class="post-card-read-more">
       <Link
-        href={`/blog/${href}`}
+        href={href}
         alt="Read more about"
         title="Read post"
         icon="mdi:arrow-right-thin"
