@@ -9,6 +9,12 @@ type LocaleSlug = {
   slug: string;
 };
 
+type Pluralization = {
+  singular: string;
+  plural: string;
+  count: number;
+};
+
 /**
  * Default locale of the site, defined in the Astro config
  */
@@ -58,7 +64,8 @@ export function useLocale(pathname: string) {
      * // Output: 'See my projects <a href="/projects">here</a>'
      * ```
      */
-    interpolate: (t: string, options: Record<string, string>) => r(t, options),
+    interpolate: (t: string, options: Record<string, string>) =>
+      interpolate(t, options),
     /**
      * Get the relative URL for the current locale
      * @param path path to be appended to the current locale
@@ -83,13 +90,54 @@ export function useLocale(pathname: string) {
      * ```
      */
     switchLocale: (locale: string) => getRelativeLocaleUrl(locale, slug),
+    /**
+     * Pluralize and interpolate a translated string
+     * @param t translated string key
+     * @param pl pluralization object containing the singular, plural and count values
+     * @param it map containing the values to interpolate in the translated string
+     * @returns translated string with replaced values
+     * @example
+     * ```ts
+     * const text = "Explore all posts marked with '{{tag}}'" // Fallback
+     * const singular = 'Explore {{count}} post marked with "{{tag}}"'
+     * const plural = 'Explore {{count}} posts marked with "{{tag}}"'
+     *
+     * console.log(pluralize(text, { singular, plural, count: 0 }, { tag: 'Astro' }));
+     * // Output: 'Explore all posts marked with "Astro"'
+     *
+     * console.log(pluralize(text, { singular, plural, count: 1 }, { tag: 'Astro' }));
+     * // Output: 'Explore 1 post marked with "Astro"'
+     *
+     * console.log(pluralize(text, { singular, plural, count: 2 }, { tag: 'Astro' }));
+     * // Output: 'Explore 2 posts marked with "Astro"'
+     * ```
+     */
+    pluralize: (t: string, pl: Pluralization, it?: Record<string, string>) =>
+      pluralize(t, pl, it),
   };
 }
 
-function r(template: string, replacements: Record<string, string>): string {
-  return template.replace(/{{\s*(\w+)\s*}}/g, (match, key) => {
-    return key in replacements ? replacements[key] : match;
+function interpolate(t: string, opts: Record<string, string>): string {
+  return t.replace(/{{\s*(\w+)\s*}}/g, (match, key) => {
+    return key in opts ? opts[key] : match;
   });
+}
+
+function pluralize(
+  t: string,
+  pl: Pluralization,
+  it?: Record<string, string>
+): string {
+  const { singular, plural, count } = pl;
+  if (count === 0) {
+    return interpolate(t, { count: count.toString(), ...it });
+  }
+
+  if (count === 1) {
+    return interpolate(singular, { count: count.toString(), ...it });
+  } else {
+    return interpolate(plural, { count: count.toString(), ...it });
+  }
 }
 
 /**
