@@ -9,7 +9,7 @@ import Layout from '@layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import { useLocale } from 'i18n';
 
-const { t, r, h } = useLocale(Astro.url.pathname);
+const { t, interpolate, localizePath } = useLocale(Astro.url.pathname);
 
 const title = t.about.title;
 const description = t.common.description;
@@ -30,8 +30,8 @@ const description = t.common.description;
         </p>
         <p>
           <Fragment
-            set:html={r(t.about.article.topic_1.paragraph_4, {
-              link: h('/projects/'),
+            set:html={interpolate(t.about.article.topic_1.paragraph_4, {
+              link: localizePath('/projects/'),
             })}
           />
         </p>

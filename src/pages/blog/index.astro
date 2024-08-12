@@ -8,7 +8,7 @@ import Layout from '@layouts/Layout.astro';
 import { getAllPosts } from '@lib/blog';
 import { useLocale } from 'i18n';
 
-const { t, h, locale } = useLocale(Astro.url.pathname);
+const { t, localizePath, locale } = useLocale(Astro.url.pathname);
 const posts = await getAllPosts(true, true, locale);
 
 const title = t.blog.title;
@@ -30,7 +30,7 @@ const description = t.blog.description;
                 title={post.data.title}
                 description={post.data.description}
                 category={post.data.category}
-                href={h(`/blog/${post.data.permSlug}`)}
+                href={localizePath(`/blog/${post.data.permSlug}`)}
                 publishedAt={post.data.publishedAt}
                 tags={post.data.tags}
                 body={post.body}

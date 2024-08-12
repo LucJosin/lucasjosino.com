@@ -54,11 +54,11 @@ export function useLocale(pathname: string) {
      * @example
      * ```ts
      * // projects.see_my_projects = 'See my projects <a href="{{link}}">here</a>'
-     * r('projects.see_my_projects', { link: '/projects' });
+     * interpolate('projects.see_my_projects', { link: '/projects' });
      * // Output: 'See my projects <a href="/projects">here</a>'
      * ```
      */
-    r: (t: string, options: Record<string, string>) => r(t, options),
+    interpolate: (t: string, options: Record<string, string>) => r(t, options),
     /**
      * Get the relative URL for the current locale
      * @param path path to be appended to the current locale
@@ -66,11 +66,11 @@ export function useLocale(pathname: string) {
      * @example
      * ```ts
      * // currentLocale = pt
-     * console.log(h('/about'))
+     * console.log(localizePath('/about'))
      * // Output: '/pt/about'
      * ```
      */
-    h: (path: string) => getRelativeLocaleUrl(locale, path),
+    localizePath: (path: string) => getRelativeLocaleUrl(locale, path),
     /**
      * Get the relative URL for a specific locale
      * @param locale locale to be appended to the path
@@ -78,11 +78,11 @@ export function useLocale(pathname: string) {
      * @example
      * ```ts
      * // current Path: '/about'
-     * console.log(s('pt'))
+     * console.log(switchLocale('pt'))
      * // Output: '/pt/about'
      * ```
      */
-    s: (locale: string) => getRelativeLocaleUrl(locale, slug),
+    switchLocale: (locale: string) => getRelativeLocaleUrl(locale, slug),
   };
 }
 

@@ -9,7 +9,7 @@ import Socials from '@components/data/Socials.astro';
 import Layout from '@layouts/Layout.astro';
 import { useLocale } from 'i18n';
 
-const { t, h } = useLocale(Astro.url.pathname);
+const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const title = t.common.title;
 const description = t.common.description;
@@ -23,7 +23,7 @@ const description = t.common.description;
       <span>{t.common.title}</span>
       <span>Java · Spring Boot</span>
       <p class="profile-description">
-        <a href={h('/about/')} set:html={t.home.welcome} />
+        <a href={localizePath('/about/')} set:html={t.home.welcome} />
       </p>
       <Socials hasTitle={false} />
     </section>

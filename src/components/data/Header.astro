@@ -6,7 +6,7 @@ import Tooltip from '@components/core/Tooltip.astro';
 import { Icon } from 'astro-icon/components';
 import { useLocale } from 'i18n';
 
-const { t, h } = useLocale(Astro.url.pathname);
+const { t, localizePath } = useLocale(Astro.url.pathname);
 ---
 
 <header>
@@ -14,7 +14,7 @@ const { t, h } = useLocale(Astro.url.pathname);
     <div class="header-left">
       <Tooltip message={t.common.header.homepage} position="bottom">
         <Link
-          href={h('/')}
+          href={localizePath('/')}
           alt={t.common.header.homepage}
           hasBorderBottom={false}
           accesskey="h"
@@ -26,17 +26,17 @@ const { t, h } = useLocale(Astro.url.pathname);
     <nav class="header-nav">
       <Link
         title={t.common.header.blog}
-        href={h('/blog/')}
+        href={localizePath('/blog/')}
         alt={t.common.header.blog_link_alt}
       />
       <Link
         title={t.common.header.projects}
-        href={h('/projects/')}
+        href={localizePath('/projects/')}
         alt={t.common.header.projects_link_alt}
       />
       <Link
         title={t.common.header.about}
-        href={h('/about/')}
+        href={localizePath('/about/')}
         alt={t.common.header.about_link_alt}
       />
       <LanguageIcon />

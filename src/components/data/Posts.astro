@@ -5,7 +5,7 @@ import SubTitle from '@components/core/SubTitle.astro';
 import { getAllPosts } from '@lib/blog';
 import { useLocale } from 'i18n';
 
-const { locale, h } = useLocale(Astro.url.pathname);
+const { locale, localizePath } = useLocale(Astro.url.pathname);
 const posts = await getAllPosts(true, true, locale);
 ---
 
@@ -30,7 +30,7 @@ const posts = await getAllPosts(true, true, locale);
         {posts.slice(0, 2).map((post) => (
           <PostCard
             image={post.data.image.src}
-            href={h(`/blog/${post.data.permSlug}`)}
+            href={localizePath(`/blog/${post.data.permSlug}`)}
             title={post.data.title}
             description={post.data.description}
             publishedAt={post.data.publishedAt}

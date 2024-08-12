@@ -8,7 +8,7 @@ import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
 import { useLocale } from 'i18n';
 
-const { t, h } = useLocale(Astro.url.pathname);
+const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const title = '404';
 const description = t[404].description;
@@ -23,7 +23,7 @@ const description = t[404].description;
 
     <LinkBox
       title={t[404].go_back}
-      href={h('/')}
+      href={localizePath('/')}
       alt={t[404].go_back_alt}
       icon="mdi:arrow-left"
     />
