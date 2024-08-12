@@ -1,4 +1,4 @@
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { defaultLocale, locales } from 'i18n';
 
 export async function getAllPosts(
@@ -44,12 +44,12 @@ export async function getPostLength(tag: string, target: string) {
   return posts.filter((post) => post.data.category === tag).length;
 }
 
-export async function getUniqueTags() {
-  const posts = await getAllPosts();
+export async function getUniqueTags(posts: CollectionEntry<'blog'>[]) {
   return [...new Set(posts.map((post) => post.data.tags).flat())];
 }
-export async function getUniqueCategories() {
-  const posts = await getAllPosts();
+
+export async function getUniqueCategories(locale: string = '') {
+  const posts = await getAllPosts(true, true, locale);
   return [...new Set(posts.map((post) => post.data.category).flat())];
 }
 
@@ -96,6 +96,30 @@ export function getStaticBlogPaths(options: StaticBlogPathsOptions) {
         return {
           params: { slug: post.data.permSlug },
           props: { post, locales: locales },
+        };
+      })
+    );
+  };
+}
+
+/**
+ * Get the static paths for the blog tags
+ * @param options options for the function
+ * @returns a proxy function to be used in getStaticPaths that returns the paths for the blog tags
+ */
+export function getStaticTagPaths(options: StaticBlogPathsOptions) {
+  return async () => {
+    const locale = extractLocaleFromUrl(options.meta);
+    const allPosts = await getAllPosts(true, false, locale);
+    const tags = await getUniqueTags(allPosts);
+    return Promise.all(
+      tags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) =>
+          post.data.tags.includes(tag)
+        );
+        return {
+          params: { tag },
+          props: { posts: filteredPosts },
         };
       })
     );

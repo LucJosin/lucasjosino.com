@@ -1,6 +1,7 @@
 ---
 import Tag from '@components/core/Tag.astro';
 import { getPostLength } from '@lib/blog';
+import { createLocale } from 'i18n';
 
 interface Props {
   values: string[];
@@ -11,6 +12,8 @@ interface Props {
   center?: boolean;
   active?: boolean;
 }
+
+const { h } = createLocale(Astro.url.pathname);
 
 const {
   title,
@@ -35,7 +38,7 @@ const justifyContent = center ? 'center' : 'initial';
         return (
           <Tag
             value={tag + (filteredPosts ? ` (${filteredPosts})` : '')}
-            href={`/blog/${target}/${tag}`}
+            href={h(`/blog/${target}/${tag}`)}
             active={active}
           />
         );

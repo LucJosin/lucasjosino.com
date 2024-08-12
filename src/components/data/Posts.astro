@@ -5,7 +5,7 @@ import SubTitle from '@components/core/SubTitle.astro';
 import { getAllPosts } from '@lib/blog';
 import { createLocale } from 'i18n';
 
-const { locale } = createLocale(Astro.url.pathname);
+const { locale, h } = createLocale(Astro.url.pathname);
 const posts = await getAllPosts(true, true, locale);
 ---
 
@@ -27,16 +27,16 @@ const posts = await getAllPosts(true, true, locale);
       </div>
 
       <div class="posts-container">
-        {posts.slice(0, 2).map((e) => (
+        {posts.slice(0, 2).map((post) => (
           <PostCard
-            image={e.data.image.src}
-            href={e.slug}
-            title={e.data.title}
-            description={e.data.description}
-            publishedAt={e.data.publishedAt}
-            body={e.body}
-            category={e.data.category}
-            tags={e.data.tags}
+            image={post.data.image.src}
+            href={h(`/blog/${post.data.permSlug}`)}
+            title={post.data.title}
+            description={post.data.description}
+            publishedAt={post.data.publishedAt}
+            body={post.body}
+            category={post.data.category}
+            tags={post.data.tags}
           />
         ))}
       </div>

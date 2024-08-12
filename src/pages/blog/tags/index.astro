@@ -5,9 +5,13 @@ import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Tags from '@components/data/Tags.astro';
 import Layout from '@layouts/Layout.astro';
-import { getUniqueTags } from '@lib/blog';
+import { getAllPosts, getUniqueTags } from '@lib/blog';
+import { createLocale } from 'i18n';
 
-const tags = await getUniqueTags();
+const { locale } = createLocale(Astro.url.pathname);
+
+const allPosts = await getAllPosts(true, true, locale);
+const tags = await getUniqueTags(allPosts);
 ---
 
 <Layout title="Tags" description="Explore all tags of my personal blog">
@@ -19,7 +23,7 @@ const tags = await getUniqueTags();
       width="80%"
     />
     <Divider height="1px" width="80%" />
-    <Tags values={tags} target="tags" center showLength active />
+    <Tags values={tags} target="tags" center showLength={false} active />
   </Container>
 </Layout>
 

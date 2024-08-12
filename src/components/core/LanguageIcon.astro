@@ -5,7 +5,7 @@ import Tooltip from './Tooltip.astro';
 const { locale, t, s } = createLocale(Astro.url.pathname);
 
 const nextLocale = locale === 'en' ? 'pt' : 'en';
-const enabled = false;
+const enabled = true;
 ---
 
 <Tooltip
