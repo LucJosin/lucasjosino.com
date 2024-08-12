@@ -156,8 +156,8 @@ export const projects: ProjectModel[] = [
     thumbnail: 'https://www.lucasjosino.com/static/default-og.png',
     title: 'lucasjosino.com',
     description: {
-      en: 'Minimalist portfolio website/blog built with Astro & Typescript.',
-      pt: 'Website/Blog minimalista construído com Astro & Typescript.',
+      en: 'Minimalist portfolio website/blog built with Astro, TypeScript, and i18n for multilingual support.',
+      pt: 'Portfólio/blog minimalista construído com Astro, TypeScript e i18n para suporte de múltiplos idiomas.',
     },
     git: 'https://github.com/LucJosin/lucasjosino.com',
     tags: ['Astro', 'TypeScript', 'JavaScript', 'CSS'],
