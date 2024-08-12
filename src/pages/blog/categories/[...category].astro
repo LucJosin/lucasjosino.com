@@ -10,7 +10,7 @@ import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
 
 export const getStaticPaths = getStaticCategoryPaths({
-  meta: import.meta.url,
+  locale: import.meta.url,
 });
 
 interface Props {
