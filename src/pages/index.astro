@@ -7,9 +7,9 @@ import Posts from '@components/data/Posts.astro';
 import Projects from '@components/data/Projects.astro';
 import Socials from '@components/data/Socials.astro';
 import Layout from '@layouts/Layout.astro';
-import { createLocale } from 'i18n';
+import { useLocale } from 'i18n';
 
-const { t, h } = createLocale(Astro.url.pathname);
+const { t, h } = useLocale(Astro.url.pathname);
 
 const title = t.common.title;
 const description = t.common.description;

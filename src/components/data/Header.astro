@@ -4,9 +4,9 @@ import Link from '@components/core/Link/Link.astro';
 import ThemeIcon from '@components/core/ThemeIcon.astro';
 import Tooltip from '@components/core/Tooltip.astro';
 import { Icon } from 'astro-icon/components';
-import { createLocale } from 'i18n';
+import { useLocale } from 'i18n';
 
-const { t, h } = createLocale(Astro.url.pathname);
+const { t, h } = useLocale(Astro.url.pathname);
 ---
 
 <header>

@@ -24,7 +24,7 @@ const translations: { [key: string]: i18nSchema } = {
   pt: ptLocale,
 };
 
-export function createLocale(pathname: string) {
+export function useLocale(pathname: string) {
   const { locale, slug } = extractLocaleAndSlug(pathname);
   const t = translations[locale];
   return {

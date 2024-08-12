@@ -6,9 +6,9 @@ import LinkBox from '@components/core/Link/LinkBox.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
-import { createLocale } from 'i18n';
+import { useLocale } from 'i18n';
 
-const { t, h } = createLocale(Astro.url.pathname);
+const { t, h } = useLocale(Astro.url.pathname);
 
 const title = '404';
 const description = t[404].description;

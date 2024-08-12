@@ -7,9 +7,9 @@ import Socials from '@components/data/Socials.astro';
 import { languages } from '@constants/languages';
 import Layout from '@layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
-import { createLocale } from 'i18n';
+import { useLocale } from 'i18n';
 
-const { t, r, h } = createLocale(Astro.url.pathname);
+const { t, r, h } = useLocale(Astro.url.pathname);
 
 const title = t.about.title;
 const description = t.common.description;

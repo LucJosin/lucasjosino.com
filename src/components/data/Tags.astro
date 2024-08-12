@@ -1,7 +1,7 @@
 ---
 import Tag from '@components/core/Tag.astro';
 import { getPostLength } from '@lib/blog';
-import { createLocale } from 'i18n';
+import { useLocale } from 'i18n';
 
 interface Props {
   values: string[];
@@ -13,7 +13,7 @@ interface Props {
   active?: boolean;
 }
 
-const { h } = createLocale(Astro.url.pathname);
+const { h } = useLocale(Astro.url.pathname);
 
 const {
   title,

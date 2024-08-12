@@ -3,9 +3,9 @@ import Link from '@components/core/Link/Link.astro';
 import PostCard from '@components/core/Post/PostCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import { getAllPosts } from '@lib/blog';
-import { createLocale } from 'i18n';
+import { useLocale } from 'i18n';
 
-const { locale, h } = createLocale(Astro.url.pathname);
+const { locale, h } = useLocale(Astro.url.pathname);
 const posts = await getAllPosts(true, true, locale);
 ---
 

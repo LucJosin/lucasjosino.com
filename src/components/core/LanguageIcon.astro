@@ -1,8 +1,8 @@
 ---
-import { createLocale } from 'i18n';
+import { useLocale } from 'i18n';
 import Tooltip from './Tooltip.astro';
 
-const { locale, t, s } = createLocale(Astro.url.pathname);
+const { locale, t, s } = useLocale(Astro.url.pathname);
 
 const nextLocale = locale === 'en' ? 'pt' : 'en';
 const enabled = true;
