@@ -13,7 +13,7 @@ interface Props {
   active?: boolean;
 }
 
-const { localizePath } = useLocale(Astro.url.pathname);
+const { localizePath, t, interpolate } = useLocale(Astro.url.pathname);
 
 const {
   title,
@@ -40,6 +40,7 @@ const justifyContent = center ? 'center' : 'initial';
             value={tag + (filteredPosts ? ` (${filteredPosts})` : '')}
             href={localizePath(`/blog/${target}/${tag}`)}
             active={active}
+            title={interpolate(t.post.tags_see_more_alt, { tag })}
           />
         );
       })

@@ -20,6 +20,7 @@ import headConfig from '@constants/head';
 import { getSocialsShare } from '@lib/share';
 import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
+import { useLocale } from 'i18n';
 import { getPostImage } from 'open-graph/generator';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
@@ -29,6 +30,8 @@ interface Props {
   description: string;
   post: CollectionEntry<'blog'>;
 }
+
+const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const { title, description, post } = Astro.props;
 
@@ -71,8 +74,8 @@ const article = {
     <BackToTop />
 
     <Link
-      href={'/blog/categories/' + post.data.category}
-      alt="See more from this category"
+      href={localizePath(`/blog/category/${post.data.category}`)}
+      alt={t.post.card.read_all_post_with_this_category}
     >
       <SubTitle
         title={post.data.category}
@@ -96,7 +99,7 @@ const article = {
       </PostInfoItem>
 
       <PostInfoItem icon="ic:outline-tag">
-        <Link href="#tags" title="Tags" alt="See all tags" />
+        <Link href="#tags" title={t.post.tags} alt={t.post.tags_alt} />
       </PostInfoItem>
 
       <PostInfoItem icon="mdi:clock-outline">
@@ -106,7 +109,11 @@ const article = {
       {
         post.data.enableComments && (
           <PostInfoItem icon="mdi:comment-multiple-outline">
-            <Link href="#comments" title="Comments" alt="Go to comments" />
+            <Link
+              href="#comments"
+              title={t.post.comments}
+              alt={t.post.comments_go_alt}
+            />
           </PostInfoItem>
         )
       }
@@ -120,31 +127,31 @@ const article = {
             {
               href: linkedin,
               icon: 'simple-icons:linkedin',
-              alt: 'Share to Linkedin',
+              alt: t.post.share.linkedin_alt,
               event: `Post Share (Top) - Linkedin (${post.data.shortlink})`,
             },
             {
               href: twitter,
               icon: 'simple-icons:x',
-              alt: 'Share to X (Twitter)',
+              alt: t.post.share.twitter_alt,
               event: `Post Share (Top) - X (Twitter) (${post.data.shortlink})`,
             },
             {
               href: reddit,
               icon: 'simple-icons:reddit',
-              alt: 'Share to Reddit',
+              alt: t.post.share.reddit_alt,
               event: `Post Share (Top) - Reddit (${post.data.shortlink})`,
             },
             {
               href: bluesky,
               icon: 'simple-icons:bluesky',
-              alt: 'Share to Bluesky',
+              alt: t.post.share.bluesky_alt,
               event: `Post Share (Top) - Blueksy (${post.data.shortlink})`,
             },
             {
               href: headConfig.shortLink + post.data.shortlink,
               icon: 'mdi:link',
-              alt: 'Copy link',
+              alt: t.post.share.copy_link_alt,
               id: 'share',
               messageId: 'share-title',
               event: `Post Share (Top) - Copy link (${post.data.shortlink})`,

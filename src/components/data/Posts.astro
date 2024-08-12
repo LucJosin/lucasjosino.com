@@ -5,7 +5,7 @@ import SubTitle from '@components/core/SubTitle.astro';
 import { getAllPosts } from '@lib/blog';
 import { useLocale } from 'i18n';
 
-const { locale, localizePath } = useLocale(Astro.url.pathname);
+const { t, locale, localizePath } = useLocale(Astro.url.pathname);
 const posts = await getAllPosts(true, true, locale);
 ---
 
@@ -15,9 +15,9 @@ const posts = await getAllPosts(true, true, locale);
       <div class="posts-header">
         <SubTitle title="Posts" />
         <Link
-          href="/blog/"
-          alt="See more posts"
-          title="See more"
+          href={localizePath('/blog/')}
+          alt={t.home.posts.see_more_alt}
+          title={t.home.see_more}
           icon="mdi:arrow-right"
           iconSide="right"
           hasBorderBottom={false}

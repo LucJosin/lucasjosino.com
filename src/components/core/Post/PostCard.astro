@@ -1,6 +1,7 @@
 ---
 import Tags from '@components/data/Tags.astro';
 import { getReadTime } from '@lib/time';
+import { useLocale } from 'i18n';
 import Description from '../Description.astro';
 import Link from '../Link/Link.astro';
 import PostDateTime from './PostDateTime.astro';
@@ -16,6 +17,8 @@ interface Props {
   href: string;
   maxTags?: number;
 }
+
+const { t, interpolate, localizePath } = useLocale(Astro.url.pathname);
 
 const {
   image,
@@ -34,7 +37,7 @@ const {
   <div class="post-card-img-container">
     {
       image && (
-        <a href={href} title={`Read more about: ${title}`}>
+        <a href={href} title={t.blog.post_card.read_post}>
           <img src={image} alt={`Post - ${title}`} class="post-card-img" />
         </a>
       )
@@ -46,14 +49,16 @@ const {
         <PostDateTime date={publishedAt} /> •
         <Link
           title={category}
-          alt="See all posts with this category"
-          href={`/blog/categories/${category}`}
+          alt={interpolate(t.blog.post_card.read_all_post_with_this_category, {
+            name: 'category',
+          })}
+          href={localizePath(`/blog/categories/${category}`)}
         /> •
         <span>{getReadTime(body)}</span>
       </span>
     </div>
     <div class="post-card-header">
-      <Link href={href} alt={`Read more about: ${title}`} display="inline">
+      <Link href={href} alt={t.blog.post_card.read_post} display="inline">
         <h3>{title}</h3>
       </Link>
     </div>
@@ -68,8 +73,8 @@ const {
     <div class="post-card-read-more">
       <Link
         href={href}
-        alt="Read more about"
-        title="Read post"
+        alt={t.blog.post_card.read_post}
+        title={t.blog.post_card.read_post}
         icon="mdi:arrow-right-thin"
         iconSide="right"
         hasBorderBottom={false}

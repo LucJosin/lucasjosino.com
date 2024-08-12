@@ -1,16 +1,19 @@
 ---
 import PostCard from '@components/core/Post/PostCard.astro';
 import type { CollectionEntry } from 'astro:content';
+import { useLocale } from 'i18n';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
 }
 
+const { t } = useLocale(Astro.url.pathname);
+
 const { posts } = Astro.props;
 ---
 
 <div class="post-releated">
-  <h2>Related Posts</h2>
+  <h2>{t.post.related_posts}</h2>
   <span class="post-related-items">
     {
       posts.map((item) => {

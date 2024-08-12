@@ -22,7 +22,31 @@ export interface i18nSchema {
       topic_5: { title: string; paragraph_1: string };
     };
   };
-  blog: { title: string; description: string; no_post_found: string };
+  blog: {
+    title: string;
+    description: string;
+  };
+  post: {
+    no_post_found: string;
+    card: {
+      read_post: string;
+      read_all_post_with_this_category: string;
+    };
+    tags: string;
+    tags_alt: string;
+    tags_see_more_alt: string;
+    comments: string;
+    comments_go_alt: string;
+    related_posts: string;
+    share: {
+      title: string;
+      linkedin_alt: string;
+      twitter_alt: string;
+      reddit_alt: string;
+      bluesky_alt: string;
+      copy_link_alt: string;
+    };
+  };
   categories: {
     title: string;
     description: string;

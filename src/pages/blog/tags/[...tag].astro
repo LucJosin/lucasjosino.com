@@ -8,6 +8,7 @@ import Layout from '@layouts/Layout.astro';
 import { getStaticTagPaths } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
+import { useLocale } from 'i18n';
 
 export const getStaticPaths = getStaticTagPaths();
 
@@ -15,19 +16,31 @@ interface Props {
   posts: CollectionEntry<'blog'>[];
 }
 
+const { t, pluralize, interpolate, localizePath } = useLocale(
+  Astro.url.pathname
+);
+
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
 <Layout
-  title={'Tag: ' + tag}
-  description={`Explore all posts tagged with: ${tag}`}
+  title={interpolate(t.tags.tag.title, { tag })}
+  description={interpolate(t.tags.description, { tag })}
   shortlink="/blog"
 >
   <Container>
-    <Title title={'Tag: ' + tag} fontSize="2.5em" />
+    <Title title={interpolate(t.tags.tag.title, { tag })} fontSize="2.5em" />
     <Description
-      value={`Explore ${posts.length} post(s) tagged with "${tag}"`}
+      value={pluralize(
+        t.tags.tag.description,
+        {
+          singular: t.tags.tag.description_one,
+          plural: t.tags.tag.description_other,
+          count: posts.length,
+        },
+        { tag }
+      )}
       margin="0"
       width="80%"
     />
@@ -41,7 +54,7 @@ const { posts } = Astro.props;
               title={post.data.title}
               description={post.data.description}
               category={post.data.category}
-              href={`${post.slug}/`}
+              href={localizePath(`/blog/${post.data.permSlug}`)}
               publishedAt={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
               body={post.body}
