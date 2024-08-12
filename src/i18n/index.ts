@@ -119,18 +119,3 @@ export function extractLocaleAndSlug(path: string): LocaleSlug {
     slug: slug || '/',
   };
 }
-
-// export function getStaticPathsLocalizated(
-//   fn: (
-//     props: GetStaticPaths & { locale: string }
-//   ) => Promise<{ paths: string[]; fallback: boolean }>,
-//   metaUrl: string
-// ) {
-//   return async function () {
-//     // Extract the locale from the file path
-//     const { locale: l } = extractLocaleAndSlug(metaUrl);
-
-//     // Call the original getStaticPaths with the extracted locale
-//     return fn({ locale: l } as GetStaticPaths & { locale: string });
-//   };
-// }
