@@ -93,9 +93,9 @@ export interface StaticBlogPathsOptions {
  * @param options options for the function
  * @returns a proxy function to be used in getStaticPaths that returns the paths for the blog posts
  */
-export function getStaticBlogPaths(options: StaticBlogPathsOptions) {
+export function getStaticBlogPaths(options?: StaticBlogPathsOptions) {
   return async () => {
-    const locale = options.locale || defaultLocale;
+    const locale = options?.locale || defaultLocale;
     const posts = await getAllPosts(true, false, locale);
     return Promise.all(
       posts.map(async (post) => {
@@ -120,9 +120,9 @@ export function getStaticBlogPaths(options: StaticBlogPathsOptions) {
  * @param options options for the function
  * @returns a proxy function to be used in getStaticPaths that returns the paths for the blog tags
  */
-export function getStaticTagPaths(options: StaticBlogPathsOptions) {
+export function getStaticTagPaths(options?: StaticBlogPathsOptions) {
   return async () => {
-    const locale = options.locale || defaultLocale;
+    const locale = options?.locale || defaultLocale;
     const allPosts = await getAllPosts(true, false, locale);
     const tags = await getUniqueTags(allPosts);
     return Promise.all(
@@ -144,9 +144,9 @@ export function getStaticTagPaths(options: StaticBlogPathsOptions) {
  * @param options options for the function
  * @returns a proxy function to be used in getStaticPaths that returns the paths for the blog categories
  */
-export function getStaticCategoryPaths(options: StaticBlogPathsOptions) {
+export function getStaticCategoryPaths(options?: StaticBlogPathsOptions) {
   return async () => {
-    const locale = options.locale || defaultLocale;
+    const locale = options?.locale || defaultLocale;
     const allPosts = await getAllPosts(true, false, locale);
     const categories = await getUniqueCategories(allPosts);
     return Promise.all(

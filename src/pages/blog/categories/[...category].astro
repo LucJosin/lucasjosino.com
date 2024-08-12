@@ -9,9 +9,7 @@ import { getStaticCategoryPaths } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
 
-export const getStaticPaths = getStaticCategoryPaths({
-  locale: import.meta.url,
-});
+export const getStaticPaths = getStaticCategoryPaths();
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
