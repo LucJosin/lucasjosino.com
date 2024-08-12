@@ -100,7 +100,7 @@ function extractLocaleFromUrl(metaUrl: string): string {
  * Static paths options for the blog posts
  */
 export interface StaticBlogPathsOptions {
-  meta: string;
+  locale?: string;
 }
 
 /**
@@ -110,7 +110,7 @@ export interface StaticBlogPathsOptions {
  */
 export function getStaticBlogPaths(options: StaticBlogPathsOptions) {
   return async () => {
-    const locale = extractLocaleFromUrl(options.meta);
+    const locale = options.locale || defaultLocale;
     const posts = await getAllPosts(true, false, locale);
     return Promise.all(
       posts.map(async (post) => {
@@ -137,7 +137,7 @@ export function getStaticBlogPaths(options: StaticBlogPathsOptions) {
  */
 export function getStaticTagPaths(options: StaticBlogPathsOptions) {
   return async () => {
-    const locale = extractLocaleFromUrl(options.meta);
+    const locale = options.locale || defaultLocale;
     const allPosts = await getAllPosts(true, false, locale);
     const tags = await getUniqueTags(allPosts);
     return Promise.all(
@@ -161,7 +161,7 @@ export function getStaticTagPaths(options: StaticBlogPathsOptions) {
  */
 export function getStaticCategoryPaths(options: StaticBlogPathsOptions) {
   return async () => {
-    const locale = extractLocaleFromUrl(options.meta);
+    const locale = options.locale || defaultLocale;
     const allPosts = await getAllPosts(true, false, locale);
     const categories = await getUniqueCategories(allPosts);
     return Promise.all(
