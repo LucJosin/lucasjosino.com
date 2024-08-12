@@ -1,5 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { defaultLocale, locales } from 'i18n';
+import { defaultLocale } from 'i18n';
 
 /**
  * Get all posts
@@ -79,21 +79,6 @@ export async function getUniqueTags(posts: CollectionEntry<'blog'>[]) {
  */
 export async function getUniqueCategories(posts: CollectionEntry<'blog'>[]) {
   return [...new Set(posts.map((post) => post.data.category).flat())];
-}
-
-/**
- * Extract the locale from a path
- * @param metaUrl path to extract locale from
- * @returns locale extracted from the path or default locale
- */
-function extractLocaleFromUrl(metaUrl: string): string {
-  const segments = metaUrl.split('/');
-
-  // Get the segment right after 'pages'
-  const possibleLocale = segments[segments.indexOf('pages') + 1];
-
-  // Return the locale if it's a valid locale, otherwise return the default locale
-  return locales.includes(possibleLocale) ? possibleLocale : defaultLocale;
 }
 
 /*
