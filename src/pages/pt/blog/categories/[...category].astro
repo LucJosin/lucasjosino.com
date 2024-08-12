@@ -1,0 +1,12 @@
+---
+import { getStaticCategoryPaths } from '@lib/blog';
+import Page from '../../../blog/categories/[...category].astro';
+
+export const getStaticPaths = getStaticCategoryPaths({
+  meta: import.meta.url,
+});
+
+const { props } = Astro;
+---
+
+<Page {...props} />

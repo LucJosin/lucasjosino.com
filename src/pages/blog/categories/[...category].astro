@@ -5,24 +5,13 @@ import PostCard from '@components/core/Post/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
-import { getAllPosts, getUniqueCategories } from '@lib/blog';
+import { getStaticCategoryPaths } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
 
-export async function getStaticPaths() {
-  const allPosts = await getAllPosts();
-  const uniqueCategories = await getUniqueCategories();
-
-  return uniqueCategories.map((category) => {
-    const filteredPosts = allPosts.filter(
-      (post) => post.data.category === category
-    );
-    return {
-      params: { category },
-      props: { posts: filteredPosts },
-    };
-  });
-}
+export const getStaticPaths = getStaticCategoryPaths({
+  meta: import.meta.url,
+});
 
 interface Props {
   posts: CollectionEntry<'blog'>[];

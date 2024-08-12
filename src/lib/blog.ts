@@ -1,6 +1,13 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { defaultLocale, locales } from 'i18n';
 
+/**
+ * Get all posts
+ * @param sortByDate sort the posts by date
+ * @param ignoreNonVisiblePosts ignore non-visible posts
+ * @param locale locale of the posts to get
+ * @returns all posts
+ */
 export async function getAllPosts(
   sortByDate: boolean = true,
   ignoreNonVisiblePosts: boolean = true,
@@ -28,6 +35,12 @@ export async function getAllPosts(
   return posts;
 }
 
+/**
+ * Get all translations for a post
+ * @param slug slug of the post to get the translations for
+ * @param locale locale of the post to IGNORE in the translations filter
+ * @returns all translations for the post
+ */
 export async function getAllTranslations(slug: string, locale: string) {
   return await getCollection('blog', (p) => {
     return (
@@ -36,20 +49,35 @@ export async function getAllTranslations(slug: string, locale: string) {
   });
 }
 
-export async function getPostLength(tag: string, target: string) {
+/**
+ * Get post length by tag or category
+ * @param filter tag or category to get the post length for
+ * @param target target to get the post length for (tags or category)
+ * @returns post length by tag or category
+ */
+export async function getPostLength(filter: string, target: string) {
   const posts = await getAllPosts();
   if (target === 'tags') {
-    return posts.filter((post) => post.data.tags.includes(tag)).length;
+    return posts.filter((post) => post.data.tags.includes(filter)).length;
   }
-  return posts.filter((post) => post.data.category === tag).length;
+  return posts.filter((post) => post.data.category === filter).length;
 }
 
+/**
+ * Get the unique tags from the posts
+ * @param posts posts to get the tags from
+ * @returns unique tags from the posts
+ */
 export async function getUniqueTags(posts: CollectionEntry<'blog'>[]) {
   return [...new Set(posts.map((post) => post.data.tags).flat())];
 }
 
-export async function getUniqueCategories(locale: string = '') {
-  const posts = await getAllPosts(true, true, locale);
+/**
+ * Get the unique categories from the posts
+ * @param posts posts to get the categories from
+ * @returns unique categories from the posts
+ */
+export async function getUniqueCategories(posts: CollectionEntry<'blog'>[]) {
   return [...new Set(posts.map((post) => post.data.category).flat())];
 }
 
@@ -119,6 +147,30 @@ export function getStaticTagPaths(options: StaticBlogPathsOptions) {
         );
         return {
           params: { tag },
+          props: { posts: filteredPosts },
+        };
+      })
+    );
+  };
+}
+
+/**
+ * Get the static paths for the blog categories
+ * @param options options for the function
+ * @returns a proxy function to be used in getStaticPaths that returns the paths for the blog categories
+ */
+export function getStaticCategoryPaths(options: StaticBlogPathsOptions) {
+  return async () => {
+    const locale = extractLocaleFromUrl(options.meta);
+    const allPosts = await getAllPosts(true, false, locale);
+    const categories = await getUniqueCategories(allPosts);
+    return Promise.all(
+      categories.map((category) => {
+        const filteredPosts = allPosts.filter(
+          (post) => post.data.category === category
+        );
+        return {
+          params: { category },
           props: { posts: filteredPosts },
         };
       })

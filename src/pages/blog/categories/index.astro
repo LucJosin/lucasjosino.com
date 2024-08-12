@@ -5,9 +5,13 @@ import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Tags from '@components/data/Tags.astro';
 import Layout from '@layouts/Layout.astro';
-import { getUniqueCategories } from '@lib/blog';
+import { getAllPosts, getUniqueCategories } from '@lib/blog';
+import { createLocale } from 'i18n';
 
-const categories = await getUniqueCategories();
+const { locale } = createLocale(Astro.url.pathname);
+
+const allPosts = await getAllPosts(true, true, locale);
+const categories = await getUniqueCategories(allPosts);
 ---
 
 <Layout
