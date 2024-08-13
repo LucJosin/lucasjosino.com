@@ -13,7 +13,7 @@ interface Props {
   active?: boolean;
 }
 
-const { localizePath, t, interpolate } = useLocale(Astro.url.pathname);
+const { localizePath, t, interpolate, locale } = useLocale(Astro.url.pathname);
 
 const {
   title,
@@ -33,7 +33,7 @@ const justifyContent = center ? 'center' : 'initial';
     {
       values.map(async (tag) => {
         const filteredPosts = showLength
-          ? await getPostLength(tag, target)
+          ? await getPostLength(locale, tag, target)
           : null;
         return (
           <Tag

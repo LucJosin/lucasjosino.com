@@ -55,8 +55,12 @@ export async function getAllTranslations(slug: string, locale: string) {
  * @param target target to get the post length for (tags or category)
  * @returns post length by tag or category
  */
-export async function getPostLength(filter: string, target: string) {
-  const posts = await getAllPosts();
+export async function getPostLength(
+  locale: string,
+  filter: string,
+  target: string
+) {
+  const posts = await getAllPosts(true, true, locale);
   if (target === 'tags') {
     return posts.filter((post) => post.data.tags.includes(filter)).length;
   }
