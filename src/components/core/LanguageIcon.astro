@@ -1,43 +1,23 @@
 ---
-import { getAllTranslations } from '@lib/blog';
-import { extractLocaleAndSlug, useLocale } from 'i18n';
+import { useLocale } from 'i18n';
 import Tooltip from './Tooltip.astro';
 
-const { locale, slug, t, switchLocale } = useLocale(Astro.url.pathname);
+const { locale, t, switchLocale } = useLocale(Astro.url.pathname);
 
 const nextLocale = locale === 'en' ? 'pt' : 'en';
-
-const pages = await Astro.glob('pages/**/*.astro');
-
-// Verify if the page exists in the next locale
-const normalPaths = pages
-  .map((page) => extractLocaleAndSlug(page!.url!))
-  .filter(
-    (item) =>
-      (slug === item.slug ||
-        `${item.slug}/` === slug ||
-        `${slug}/` === item.slug) &&
-      item.locale === nextLocale
-  );
-
-// Verify if the dynamic page exists in the next locale
-const dynamicPaths = (
-  await getAllTranslations(slug.split('/').filter(Boolean).pop() ?? '', locale)
-).map((t) => t.data.language);
-
-const enabled = normalPaths.length > 0 || dynamicPaths.length > 0;
 ---
 
 <Tooltip
-  message={enabled
-    ? t.common.header.change_language_alt
-    : t.common.header.change_language_alt_disabled}
+  message={t.common.header.change_language_alt}
   position="bottom"
+  id="language-tooltip"
 >
   <a
     href={switchLocale(nextLocale)}
-    class:list={['header-language-btn', !enabled && 'disabled']}
-    accesskey={enabled ? 'l' : null}
+    class="header-language-btn"
+    accesskey="l"
+    data-disabled-message={t.common.header.change_language_alt_disabled}
+    data-enabled-message={t.common.header.change_language_alt}
   >
     <span
       class:list={[
@@ -53,6 +33,23 @@ const enabled = normalPaths.length > 0 || dynamicPaths.length > 0;
     >
   </a>
 </Tooltip>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const langBtn = document.querySelector(
+      '.header-language-btn'
+    ) as HTMLAnchorElement;
+    const tooltip = document.querySelector(
+      '#language-tooltip .tooltip-message'
+    ) as HTMLElement;
+    const alternateLinks = document.querySelectorAll('link[rel="alternate"]');
+
+    if (alternateLinks.length <= 1) {
+      langBtn.classList.add('disabled');
+      tooltip.innerText = langBtn.dataset.disabledMessage || '';
+    }
+  });
+</script>
 
 <style>
   .header-language-btn {

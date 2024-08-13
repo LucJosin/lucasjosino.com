@@ -13,13 +13,22 @@ import '@styles/remark/remark-readme-stats.css';
 export const getStaticPaths = getStaticBlogPaths();
 
 const { post } = Astro.props;
+let { locales } = Astro.props;
 const { Content } = await post.render();
+
+locales = locales.map((post) => {
+  return {
+    locale: post.locale,
+    slug: `blog/${post.slug}`,
+  };
+});
 ---
 
 <PostLayout
   title={post.data.title}
   description={post.data.description}
   post={post}
+  locales={locales}
 >
   <article class="post-content post-content-lg">
     <Content />

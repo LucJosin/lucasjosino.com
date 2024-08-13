@@ -1,7 +1,13 @@
 ---
+import I18NHead from '@components/core/I18nHead.astro';
 import headConfig from '@constants/head';
 import '@styles/global.css';
-import { defaultLocale } from 'i18n';
+import {
+  defaultLocale,
+  extractLocaleAndSlug,
+  useLocale,
+  type LocaleSlug,
+} from 'i18n';
 
 export interface Props {
   title: string;
@@ -11,6 +17,7 @@ export interface Props {
   shortlink?: string;
   type?: string;
   locale?: string;
+  locales?: LocaleSlug[];
   article?: {
     title: string;
     description: string;
@@ -21,8 +28,20 @@ export interface Props {
   };
 }
 
+const { slug } = useLocale(Astro.url.pathname);
+
 const { title, description, banner, robots, shortlink, locale, article } =
   Astro.props as Props;
+
+let locales = Astro.props.locales;
+
+// Verify if (normal) page has the same slug in another locale
+if (locales === undefined || locales.length === 0) {
+  const pages = await Astro.glob('pages/**/*.astro');
+  locales = pages
+    .map((page) => extractLocaleAndSlug(page!.url!))
+    .filter((item) => slug === item.slug);
+}
 ---
 
 <!doctype html>
@@ -42,6 +61,9 @@ const { title, description, banner, robots, shortlink, locale, article } =
     <meta name="keywords" content={headConfig.tags} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content={robots ?? headConfig.robots} />
+
+    <!-- I18N -->
+    <I18NHead locales={locales} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -203,44 +225,43 @@ const { title, description, banner, robots, shortlink, locale, article } =
     <main>
       <slot />
     </main>
+    <style>
+      /* Scroll */
+      :global(::-webkit-scrollbar) {
+        height: 8px;
+        width: 8px;
+        background-color: var(--secondary-color);
+      }
+
+      :global(::-webkit-scrollbar-thumb) {
+        background-color: var(--contrast-color);
+        border-radius: var(--border-radius);
+      }
+
+      :global([data-icon]) {
+        fill: var(--primary-text-color);
+        color: var(--primary-text-color);
+        transition: all var(--transition-duration);
+      }
+
+      :global(a) {
+        color: var(--primary-text-color);
+        text-decoration: none;
+      }
+
+      :global(p) {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+      }
+
+      :global(h1) {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  /* Scroll */
-  :global(::-webkit-scrollbar) {
-    height: 8px;
-    width: 8px;
-    background-color: var(--secondary-color);
-  }
-
-  :global(::-webkit-scrollbar-thumb) {
-    background-color: var(--contrast-color);
-    border-radius: var(--border-radius);
-  }
-
-  :global([data-icon]) {
-    fill: var(--primary-text-color);
-    color: var(--primary-text-color);
-    transition: all var(--transition-duration);
-  }
-
-  :global(a) {
-    color: var(--primary-text-color);
-    text-decoration: none;
-  }
-
-  :global(p) {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-  }
-
-  :global(h1) {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-  }
-</style>

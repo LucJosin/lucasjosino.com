@@ -5,6 +5,7 @@ import Link from '@components/core/Link/Link.astro';
 import PostDateTime from '@components/core/Post/PostDateTime.astro';
 import PostImage from '@components/core/Post/PostImage.astro';
 import PostInfoItem from '@components/core/Post/PostInfoItem.astro';
+import PostLanguageDialog from '@components/core/Post/PostLanguageDialog.astro';
 import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
 import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
 import ProgressBar from '@components/core/ProgressBar.astro';
@@ -20,7 +21,7 @@ import headConfig from '@constants/head';
 import { getSocialsShare } from '@lib/share';
 import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
-import { useLocale } from 'i18n';
+import { useLocale, type LocaleSlug } from 'i18n';
 import { getPostImage } from 'open-graph/generator';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
@@ -29,11 +30,12 @@ interface Props {
   title: string;
   description: string;
   post: CollectionEntry<'blog'>;
+  locales?: LocaleSlug[];
 }
 
 const { t, localizePath } = useLocale(Astro.url.pathname);
 
-const { title, description, post } = Astro.props;
+const { title, description, post, locales } = Astro.props;
 
 const relatedPosts = post.data.relatedPosts
   ? await getEntries(post.data.relatedPosts)
@@ -68,6 +70,7 @@ const article = {
   article={article}
   shortlink={post.data.shortlink}
   locale={post.data.language}
+  locales={locales}
 >
   <Container maxWidth="50rem" gap="1rem">
     <ProgressBar />
@@ -75,7 +78,7 @@ const article = {
 
     <Link
       href={localizePath(`/blog/category/${post.data.category}`)}
-      alt={t.post.card.read_all_post_with_this_category}
+      alt={t.post.card.see_more_posts_from_this_category}
     >
       <SubTitle
         title={post.data.category}
@@ -192,6 +195,7 @@ const article = {
       {post.data.relatedPosts && <PostRelated posts={relatedPosts} />}
       {post.data.enableComments && <PostComments />}
     </PostFooter>
+    <PostLanguageDialog />
   </Container>
 </Layout>
 
