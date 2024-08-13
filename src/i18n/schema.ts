@@ -25,9 +25,9 @@ export interface i18nSchema {
   blog: {
     title: string;
     description: string;
+    no_post_found: string;
   };
   post: {
-    no_post_found: string;
     card: {
       read_post: string;
       see_more_posts_from_this_category: string;

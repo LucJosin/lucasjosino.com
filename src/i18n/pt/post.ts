@@ -1,6 +1,4 @@
 export const post = {
-  no_post_found:
-    'Nenhuma postagem encontrada! 🕵️‍♂️ Parece que eles estão se escondendo... <br> Que tal tentar um idioma diferente?',
   card: {
     read_post: 'Ler post',
     see_more_posts_from_this_category: 'Ver todos os posts com esta categoria',

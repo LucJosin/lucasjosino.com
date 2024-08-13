@@ -1,6 +1,4 @@
 export const post = {
-  no_post_found:
-    "No posts found! 🕵️‍♂️ Looks like they're hiding... <br> How about trying a different language?",
   card: {
     read_post: 'Read post',
     see_more_posts_from_this_category: 'See all posts with this category',
