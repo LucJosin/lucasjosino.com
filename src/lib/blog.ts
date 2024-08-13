@@ -99,16 +99,9 @@ export function getStaticBlogPaths(options?: StaticBlogPathsOptions) {
     const posts = await getAllPosts(true, false, locale);
     return Promise.all(
       posts.map(async (post) => {
-        const translations = await getAllTranslations(
-          post.data.permSlug,
-          locale
-        );
-
-        const locales = translations.map((t) => t.data.language);
-
         return {
           params: { slug: post.data.permSlug },
-          props: { post, locales: locales },
+          props: { post },
         };
       })
     );
