@@ -5,7 +5,6 @@ import Link from '@components/core/Link/Link.astro';
 import PostDateTime from '@components/core/Post/PostDateTime.astro';
 import PostImage from '@components/core/Post/PostImage.astro';
 import PostInfoItem from '@components/core/Post/PostInfoItem.astro';
-import PostLanguageDialog from '@components/core/Post/PostLanguageDialog.astro';
 import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
 import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
 import ProgressBar from '@components/core/ProgressBar.astro';
@@ -195,7 +194,6 @@ const article = {
       {post.data.relatedPosts && <PostRelated posts={relatedPosts} />}
       {post.data.enableComments && <PostComments />}
     </PostFooter>
-    <PostLanguageDialog />
   </Container>
 </Layout>
 
