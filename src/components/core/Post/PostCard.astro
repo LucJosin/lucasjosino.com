@@ -37,7 +37,7 @@ const {
   <div class="post-card-img-container">
     {
       image && (
-        <a href={href} title={t.blog.post_card.read_post}>
+        <a href={href} title={t.post.card.read_post}>
           <img src={image} alt={`Post - ${title}`} class="post-card-img" />
         </a>
       )
@@ -49,7 +49,7 @@ const {
         <PostDateTime date={publishedAt} /> •
         <Link
           title={category}
-          alt={interpolate(t.blog.post_card.read_all_post_with_this_category, {
+          alt={interpolate(t.post.card.read_post, {
             name: 'category',
           })}
           href={localizePath(`/blog/categories/${category}`)}
@@ -58,7 +58,7 @@ const {
       </span>
     </div>
     <div class="post-card-header">
-      <Link href={href} alt={t.blog.post_card.read_post} display="inline">
+      <Link href={href} alt={t.post.card.read_post} display="inline">
         <h3>{title}</h3>
       </Link>
     </div>
@@ -73,8 +73,8 @@ const {
     <div class="post-card-read-more">
       <Link
         href={href}
-        alt={t.blog.post_card.read_post}
-        title={t.blog.post_card.read_post}
+        alt={t.post.card.read_post}
+        title={t.post.card.read_post}
         icon="mdi:arrow-right-thin"
         iconSide="right"
         hasBorderBottom={false}
