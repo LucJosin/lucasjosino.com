@@ -64,7 +64,7 @@ const description = t.common.description;
 
         <h2 id="github-stats">{t.about.article.topic_4.title}</h2>
         <p><Fragment set:html={t.about.article.topic_4.paragraph_1} /></p>
-        <p>
+        <p class="about-stats">
           <img
             src="https://raw.githubusercontent.com/LucJosin/github-stats-transparent/output/generated/overview.svg"
             alt="Github Overview"
@@ -111,11 +111,16 @@ const description = t.common.description;
     display: inline;
   }
 
-  .about-languages {
+  .about-languages,
+  .about-stats {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .about-stats img {
+    width: min-content;
   }
 
   .about-languages-language {
@@ -135,7 +140,7 @@ const description = t.common.description;
     color: var(--primary-text-color);
   }
 
-  :global(.about-section a) {
+  :global(.about-link) {
     color: var(--primary-text-color);
     text-decoration: underline;
     font-weight: 500;
@@ -148,7 +153,7 @@ const description = t.common.description;
     text-underline-offset: 0.25rem;
   }
 
-  :global(.about-section a:hover) {
+  :global(.about-link:hover) {
     opacity: 0.7;
   }
 
