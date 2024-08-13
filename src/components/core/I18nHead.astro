@@ -1,0 +1,22 @@
+---
+import type { LocaleSlug } from 'i18n';
+
+interface Props {
+  locales?: LocaleSlug[];
+}
+
+let { locales } = Astro.props as Props;
+
+locales =
+  locales?.map((item) => ({
+    locale: item.locale,
+    slug:
+      item.locale === 'en' ? `/${item.slug}/` : `/${item.locale}/${item.slug}/`,
+  })) ?? [];
+---
+
+{
+  locales.map(({ locale, slug }) => (
+    <link rel="alternate" hreflang={locale} href={Astro.url.origin + slug} />
+  ))
+}
