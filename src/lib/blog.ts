@@ -36,16 +36,14 @@ export async function getAllPosts(
 }
 
 /**
- * Get all translations for a post
- * @param slug slug of the post to get the translations for
- * @param locale locale of the post to IGNORE in the translations filter
- * @returns all translations for the post
+ * Get all posts by slug
+ * @param slug slug of the post to get
+ * @returns all posts by slug
+ * @example
  */
-export async function getAllTranslations(slug: string, locale: string) {
+export async function getAllPostsBySlug(slug: string) {
   return await getCollection('blog', (p) => {
-    return (
-      !p.data.isDraft && p.data.permSlug === slug && p.data.language !== locale
-    );
+    return !p.data.isDraft && p.data.permSlug === slug;
   });
 }
 
@@ -103,9 +101,16 @@ export function getStaticBlogPaths(options?: StaticBlogPathsOptions) {
     const posts = await getAllPosts(true, false, locale);
     return Promise.all(
       posts.map(async (post) => {
+        const equals = await getAllPostsBySlug(post.data.permSlug);
+
+        const locales = equals.map((t) => ({
+          locale: t.data.language,
+          slug: t.data.permSlug,
+        }));
+
         return {
           params: { slug: post.data.permSlug },
-          props: { post },
+          props: { post, locales: locales },
         };
       })
     );
