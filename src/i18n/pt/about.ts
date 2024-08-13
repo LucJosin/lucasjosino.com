@@ -9,7 +9,7 @@ export const about = {
       paragraph_3:
         'Eu sempre gostei de <strong>tecnologia</strong> e <strong>inovações</strong>, e é por isso que eu estou imerso neste mundo desde que era jovem. Eventualmente, decidi me dedicar completamente e buscar um diploma neste campo.',
       paragraph_4:
-        'Eu venho estudando desenvolvimento de <strong>Backend & APIs</strong> usando <strong>Java</strong>, <strong>Golang</strong> e <strong>Spring Boot</strong> através de cursos/bootcamps e trabalhando em alguns <a href={{link}}> projetos pessoais </a>. Tenho como objetivo contribuir o máximo possível, desenvolvendo continuamente mais conhecimento em áreas e tecnologias que eu aprecio.',
+        'Eu venho estudando desenvolvimento de <strong>Backend & APIs</strong> usando <strong>Java</strong>, <strong>Golang</strong> e <strong>Spring Boot</strong> através de cursos/bootcamps e trabalhando em alguns <a href={{link}} class="about-link"> projetos pessoais </a>. Tenho como objetivo contribuir o máximo possível, desenvolvendo continuamente mais conhecimento em áreas e tecnologias que eu aprecio.',
     },
     topic_2: {
       title: 'Além do código',

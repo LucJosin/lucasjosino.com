@@ -1,16 +1,19 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Tooltip from './Tooltip.astro';
+import { useLocale } from 'i18n';
 
 interface Props {
   position?: string;
 }
 
+const { t } = useLocale(Astro.url.pathname);
+
 const { position = 'initial' } = Astro.props;
 ---
 
-<Tooltip message="Toggle theme (Alt + T)" position="bottom">
-  <button id="theme" accesskey="t" title="Toggle theme (Alt + T)">
+<Tooltip message={t.common.header.change_theme_alt} position="bottom">
+  <button id="theme" accesskey="t" title={t.common.header.change_theme_alt}>
     <Icon name="mdi:white-balance-sunny" class="dark" />
     <Icon name="mdi:moon-and-stars" class="light" />
   </button>

@@ -30,7 +30,7 @@ export interface i18nSchema {
     no_post_found: string;
     card: {
       read_post: string;
-      read_all_post_with_this_category: string;
+      see_more_posts_from_this_category: string;
     };
     tags: string;
     tags_alt: string;
@@ -38,6 +38,7 @@ export interface i18nSchema {
     comments: string;
     comments_go_alt: string;
     related_posts: string;
+    see_post_history: string;
     share: {
       title: string;
       linkedin_alt: string;

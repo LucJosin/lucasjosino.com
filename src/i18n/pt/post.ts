@@ -3,14 +3,15 @@ export const post = {
     'Nenhuma postagem encontrada! 🕵️‍♂️ Parece que eles estão se escondendo... <br> Que tal tentar um idioma diferente?',
   card: {
     read_post: 'Ler post',
-    read_all_post_with_this_category: 'Leia todos os posts com essa categoria',
+    see_more_posts_from_this_category: 'Ver todos os posts com esta categoria',
   },
   tags: 'Tags',
-  tags_alt: 'See all tags',
+  tags_alt: 'Ver todas as tags',
   tags_see_more_alt: 'Veja mais posts com a tag "{{tag}}"',
   comments: 'Comentários',
   comments_go_alt: 'Ir para os comentários',
   related_posts: 'Posts relacionados',
+  see_post_history: 'Ver histórico de postagens',
   share: {
     title: 'Gostou deste post? Sinta-se à vontade para compartilhar!',
     linkedin_alt: 'Compartilhar no LinkedIn',
