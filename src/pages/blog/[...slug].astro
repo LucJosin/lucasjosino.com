@@ -19,7 +19,7 @@ const { Content } = await post.render();
 locales = locales.map((post) => {
   return {
     locale: post.locale,
-    slug: `blog/${post.slug}`,
+    slug: `/blog/${post.slug}`,
   };
 });
 ---

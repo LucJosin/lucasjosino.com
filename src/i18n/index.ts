@@ -169,17 +169,21 @@ export function extractLocaleAndSlug(path: string): LocaleSlug {
 }
 
 /**
- * Normalize a URL by adding a trailing slash
+ * Normalize a URL by adding a trailing slash at start and end
  * @param url URL to normalize
  * @returns normalized URL
  * @example
  * ```ts
- * // url = '/about'
+ * // url = 'about'
  * console.log(normalizeUrl(url))
  * // Output: '/about/'
  */
-function normalizeUrl(url: string): string {
+export function normalizeUrl(url: string): string {
   url = url.trim();
+
+  if (!url.startsWith('/')) {
+    url = '/' + url;
+  }
 
   if (!url.endsWith('/')) {
     url += '/';
