@@ -4,7 +4,7 @@ import { enLocale } from './en';
 import { ptLocale } from './pt';
 import type { i18nSchema } from './schema';
 
-type LocaleSlug = {
+export type LocaleSlug = {
   locale: string;
   slug: string;
 };
@@ -164,6 +164,26 @@ export function extractLocaleAndSlug(path: string): LocaleSlug {
 
   return {
     locale,
-    slug: slug || '/',
+    slug: normalizeUrl(slug) || '/',
   };
+}
+
+/**
+ * Normalize a URL by adding a trailing slash
+ * @param url URL to normalize
+ * @returns normalized URL
+ * @example
+ * ```ts
+ * // url = '/about'
+ * console.log(normalizeUrl(url))
+ * // Output: '/about/'
+ */
+function normalizeUrl(url: string): string {
+  url = url.trim();
+
+  if (!url.endsWith('/')) {
+    url += '/';
+  }
+
+  return url;
 }
