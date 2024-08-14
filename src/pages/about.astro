@@ -35,6 +35,13 @@ const description = t.common.description;
             })}
           />
         </p>
+        <p>
+          <Fragment
+            set:html={interpolate(t.about.article.topic_1.paragraph_5, {
+              link: localizePath('/blog/'),
+            })}
+          />
+        </p>
 
         <h2 id="beyond-the-code">{t.about.article.topic_2.title}</h2>
         <p>

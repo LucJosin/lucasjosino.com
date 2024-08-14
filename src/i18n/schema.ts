@@ -15,6 +15,7 @@ export interface i18nSchema {
         paragraph_2: string;
         paragraph_3: string;
         paragraph_4: string;
+        paragraph_5: string;
       };
       topic_2: { title: string; paragraph_1: string; paragraph_2: string };
       topic_3: { title: string; paragraph_1: string };
