@@ -1,6 +1,6 @@
 export const home = {
   welcome:
-    "Hi 👋, I'm <strong>Lucas Josino</strong>, a 21 y/o from <strong>Brazil</strong> 🇧🇷...",
+    "Hi 👋, I'm <strong>Lucas Josino</strong>, a 21 y/o from <strong>Brazil</strong> 🇧🇷... ↗",
   see_more: 'See more',
   posts: {
     title: 'Posts',
