@@ -14,8 +14,8 @@ const { position = 'initial' } = Astro.props;
 
 <Tooltip message={t.common.header.change_theme_tooltip} position="bottom">
   <button id="theme" accesskey="t" title={t.common.header.change_theme}>
-    <Icon name="mdi:white-balance-sunny" class="dark" />
-    <Icon name="mdi:moon-and-stars" class="light" />
+    <Icon name="mdi:white-balance-sunny" class="dark-icon" />
+    <Icon name="mdi:moon-and-stars" class="light-icon" />
   </button>
 </Tooltip>
 
@@ -41,11 +41,11 @@ const { position = 'initial' } = Astro.props;
     background-color: var(--contrast-color);
   }
 
-  :root[data-theme='dark'] .light {
+  :root[data-theme='dark'] .light-icon {
     display: none;
   }
 
-  :root[data-theme='light'] .dark {
+  :root[data-theme='light'] .dark-icon {
     display: none;
   }
 
