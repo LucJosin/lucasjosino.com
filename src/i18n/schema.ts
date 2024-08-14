@@ -63,15 +63,18 @@ export interface i18nSchema {
     description: string;
     header: {
       homepage: string;
+      homepage_tooltip: string;
       blog: string;
       projects: string;
       about: string;
       blog_link_alt: string;
       projects_link_alt: string;
       about_link_alt: string;
-      change_language_alt: string;
-      change_language_alt_disabled: string;
-      change_theme_alt: string;
+      change_language: string;
+      change_language_tooltip: string;
+      change_language_tooltip_disabled: string;
+      change_theme: string;
+      change_theme_tooltip: string;
     };
     footer: {
       powered: string;

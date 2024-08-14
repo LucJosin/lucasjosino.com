@@ -8,7 +8,7 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
 ---
 
 <Tooltip
-  message={t.common.header.change_language_alt}
+  message={t.common.header.change_language_tooltip}
   position="bottom"
   id="language-tooltip"
 >
@@ -16,8 +16,8 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
     href={switchLocale(nextLocale)}
     class="header-language-btn"
     accesskey="l"
-    data-disabled-message={t.common.header.change_language_alt_disabled}
-    data-enabled-message={t.common.header.change_language_alt}
+    data-disabled-message={t.common.header.change_language_tooltip_disabled}
+    data-enabled-message={t.common.header.change_language_tooltip}
   >
     <span
       class:list={[
@@ -46,7 +46,7 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
 
     if (alternateLinks.length <= 1) {
       langBtn.classList.add('disabled');
-      tooltip.innerText = langBtn.dataset.disabledMessage || '';
+      tooltip.innerHTML = langBtn.dataset.disabledMessage || '';
     }
   });
 </script>

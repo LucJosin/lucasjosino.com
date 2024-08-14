@@ -12,8 +12,8 @@ const { t } = useLocale(Astro.url.pathname);
 const { position = 'initial' } = Astro.props;
 ---
 
-<Tooltip message={t.common.header.change_theme_alt} position="bottom">
-  <button id="theme" accesskey="t" title={t.common.header.change_theme_alt}>
+<Tooltip message={t.common.header.change_theme_tooltip} position="bottom">
+  <button id="theme" accesskey="t" title={t.common.header.change_theme}>
     <Icon name="mdi:white-balance-sunny" class="dark" />
     <Icon name="mdi:moon-and-stars" class="light" />
   </button>

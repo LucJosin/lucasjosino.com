@@ -12,7 +12,7 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
 <header>
   <div class="header-container">
     <div class="header-left">
-      <Tooltip message={t.common.header.homepage} position="bottom">
+      <Tooltip message={t.common.header.homepage_tooltip} position="bottom">
         <Link
           href={localizePath('/')}
           alt={t.common.header.homepage}

@@ -14,7 +14,7 @@ const { message, href, id, messageId, position = 'top' } = Astro.props;
   {
     message && (
       <span class={`tooltip-message ${position}`} id={messageId}>
-        {message}
+        <Fragment set:html={message} />
       </span>
     )
   }
