@@ -20,9 +20,14 @@ export async function GET() {
       return {
         title: post.title,
         description: post.description,
-        link: `${domain}/blog/${item.slug}`,
+        link: createUrl(domain, post.language, item.data.permSlug),
         pubDate: new Date(post.publishedAt),
-        commentsUrl: `${domain}/blog/${item.slug}/#comments`,
+        commentsUrl: createUrl(
+          domain,
+          post.language,
+          item.data.permSlug,
+          'comments'
+        ),
         author: `Lucas Josino (contact@lucasjosino.com)`,
         categories: [post.category],
         enclosure: {
@@ -45,4 +50,15 @@ export async function GET() {
       `<copyright>${headConfig.copyright}</copyright>` +
       `<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`,
   });
+}
+
+function createUrl(
+  domain: string,
+  locale: string,
+  slug: string,
+  anchor?: string
+) {
+  return locale === 'en'
+    ? `${domain}/blog/${slug}/${anchor ? `#${anchor}` : ''}`
+    : `${domain}/${locale}/blog/${slug}/${anchor ? `#${anchor}` : ''}`;
 }
