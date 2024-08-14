@@ -45,6 +45,16 @@ const exceptions = [
   'is-terminal',
 ];
 
+// Astro i18n options
+const i18nOptions = {
+  defaultLocale: 'en',
+  locales: ['en', 'pt'],
+  explicitLocales: {
+    en: 'en-US',
+    pt: 'pt-BR',
+  },
+};
+
 // https://astro.build/config
 export default defineConfig({
   // Your final, deployed URL.
@@ -60,8 +70,8 @@ export default defineConfig({
   redirects: getRedirects(),
   // Configures i18n routing
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'pt'],
+    defaultLocale: i18nOptions.defaultLocale,
+    locales: i18nOptions.locales,
   },
   // Set the route matching behavior
   trailingSlash: 'always',
@@ -90,7 +100,12 @@ export default defineConfig({
         except: exceptions,
       },
     }),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: i18nOptions.defaultLocale,
+        locales: i18nOptions.explicitLocales,
+      },
+    }),
     robotsTxt({
       sitemap: true,
     }),
