@@ -7,25 +7,23 @@ import Posts from '@components/data/Posts.astro';
 import Projects from '@components/data/Projects.astro';
 import Socials from '@components/data/Socials.astro';
 import Layout from '@layouts/Layout.astro';
-import { Icon } from 'astro-icon/components';
+import { useLocale } from 'i18n';
+
+const { t, localizePath } = useLocale(Astro.url.pathname);
+
+const title = t.common.title;
+const description = t.common.description;
 ---
 
-<Layout
-  title="Backend Developer"
-  description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development."
-  shortlink="/"
->
+<Layout title={title} description={description} shortlink="/">
   <Container gap="1.5rem">
     <section class="profile-section">
       <Avatar />
       <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.4em" />
-      <span>Backend Developer</span>
+      <span>{t.common.title}</span>
       <span>Java · Spring Boot</span>
       <p class="profile-description">
-        <a href="/about/">
-          Hi 👋, Welcome to my world!
-          <Icon name="mdi:arrow-top-right" />
-        </a>
+        <a href={localizePath('/about/')} set:html={t.home.welcome} />
       </p>
       <Socials hasTitle={false} />
     </section>
@@ -44,13 +42,13 @@ import { Icon } from 'astro-icon/components';
     gap: 0.5rem;
   }
 
+  .profile-description {
+    margin: 0.6rem 0;
+  }
+
   .profile-description a {
     color: var(--description-text-color);
-    margin: 0.5rem;
     line-height: 1.5em;
-    align-items: inherit;
-    display: flex;
-    align-items: center;
     gap: 0.2em;
   }
 </style>

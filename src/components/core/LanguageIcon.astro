@@ -1,0 +1,88 @@
+---
+import { useLocale } from 'i18n';
+import Tooltip from './Tooltip.astro';
+
+const { locale, t, switchLocale } = useLocale(Astro.url.pathname);
+
+const nextLocale = locale === 'en' ? 'pt' : 'en';
+---
+
+<Tooltip
+  message={t.common.header.change_language_tooltip}
+  position="bottom"
+  id="language-tooltip"
+>
+  <a
+    href={switchLocale(nextLocale)}
+    class="header-language-btn"
+    accesskey="l"
+    data-disabled-message={t.common.header.change_language_tooltip_disabled}
+    data-enabled-message={t.common.header.change_language_tooltip}
+  >
+    <span
+      class:list={[
+        'header-language-option',
+        locale === 'en' && 'header-language-selected',
+      ]}>🇺🇸</span
+    >
+    <span
+      class:list={[
+        'header-language-option',
+        locale === 'pt' && 'header-language-selected',
+      ]}>🇧🇷</span
+    >
+  </a>
+</Tooltip>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const langBtn = document.querySelector(
+      '.header-language-btn'
+    ) as HTMLAnchorElement;
+    const tooltip = document.querySelector(
+      '#language-tooltip .tooltip-message'
+    ) as HTMLElement;
+    const alternateLinks = document.querySelectorAll('link[rel="alternate"]');
+
+    if (alternateLinks.length <= 1) {
+      langBtn.classList.add('disabled');
+      tooltip.innerHTML = langBtn.dataset.disabledMessage || '';
+    }
+  });
+</script>
+
+<style>
+  .header-language-btn {
+    height: 2rem;
+    width: 2rem;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-duration);
+    gap: 0.5rem;
+    font-size: 0.8em;
+  }
+
+  .header-language-btn:hover {
+    border: var(--border-size) solid var(--primary-color);
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  .header-language-selected {
+    display: none;
+  }
+
+  .disabled {
+    border: var(--border-size) solid gray;
+    border-radius: var(--border-radius);
+    pointer-events: none;
+  }
+
+  .disabled:hover {
+    background-color: gray;
+  }
+</style>

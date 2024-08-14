@@ -2,44 +2,55 @@
 import Link from '@components/core/Link/Link.astro';
 import LinkBox from '@components/core/Link/LinkBox.astro';
 import Tooltip from '@components/core/Tooltip.astro';
+import { useLocale } from 'i18n';
+
+const { t, localizePath } = useLocale(Astro.url.pathname);
 ---
 
 <div class="footer">
   <div class="footer-left">
     <div class="footer-links">
-      <Tooltip message="RSS">
+      <Tooltip message={t.common.footer.links.rss}>
         <LinkBox
           href="/rss.xml"
           isLocal={false}
-          alt="RSS"
+          alt={t.common.footer.links.rss}
           icon="mdi:rss"
           padding="0.5rem"
           event=`RSS (Footer) - (${Astro.url.pathname})`
         />
       </Tooltip>
-      <Tooltip message="Tags">
+      <Tooltip message={t.common.footer.links.tags}>
         <LinkBox
-          href="/blog/tags/"
-          alt="Tags"
+          href={localizePath('/blog/tags/')}
+          alt={t.common.footer.links.tags}
           icon="mdi:tags"
           padding="0.5rem"
         />
       </Tooltip>
-      <Tooltip message="Source code">
+      <Tooltip message={t.common.footer.links.source_code}>
         <LinkBox
           href="https://github.com/LucJosin/lucasjosino.com"
           isLocal={false}
-          alt="Source code"
+          alt={t.common.footer.links.source_code}
           icon="simple-icons:github"
           padding="0.5rem"
         />
       </Tooltip>
     </div>
-    © 2024
+    © {new Date().getUTCFullYear()}
     <span class="footer-home">
-      <Link href="/" alt="Lucas Josino" title="Lucas Josino" />
+      <Link href={localizePath('/')} alt="Lucas Josino" title="Lucas Josino" />
     </span>
-    All Rights Reserved.
+    <div class="footer-powered">
+      {t.common.footer.powered}
+      <Link
+        href="https://astro.build/"
+        isLocal={false}
+        alt="Astro"
+        title="Astro"
+      />
+    </div>
   </div>
 </div>
 
@@ -74,5 +85,10 @@ import Tooltip from '@components/core/Tooltip.astro';
     display: flex;
     gap: 1rem;
     margin: 0 0 1rem 0;
+  }
+
+  .footer-powered {
+    display: flex;
+    gap: 0.2rem;
   }
 </style>

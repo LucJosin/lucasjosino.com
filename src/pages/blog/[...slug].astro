@@ -1,35 +1,34 @@
 ---
+import PostLayout from '@layouts/PostLayout.astro';
+import { getStaticBlogPaths } from '@lib/blog';
 import '@styles/markdown.css';
 import '@styles/post.css';
 import '@styles/remark/remark-alert-blocks.css';
 import '@styles/remark/remark-code-highlight.css';
+import '@styles/remark/remark-codeset.css';
 import '@styles/remark/remark-image-caption.css';
 import '@styles/remark/remark-post-reference.css';
 import '@styles/remark/remark-readme-stats.css';
-import '@styles/remark/remark-codeset.css';
-import { type CollectionEntry } from 'astro:content';
-import PostLayout from '@layouts/PostLayout.astro';
-import { getAllPosts } from '@lib/blog';
 
-export async function getStaticPaths() {
-  const posts = await getAllPosts(true, false);
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
-}
+export const getStaticPaths = getStaticBlogPaths();
 
-interface Props {
-  post: CollectionEntry<'blog'>;
-}
 const { post } = Astro.props;
+let { locales } = Astro.props;
 const { Content } = await post.render();
+
+locales = locales.map((post) => {
+  return {
+    locale: post.locale,
+    slug: `/blog/${post.slug}`,
+  };
+});
 ---
 
 <PostLayout
   title={post.data.title}
   description={post.data.description}
   post={post}
+  locales={locales}
 >
   <article class="post-content post-content-lg">
     <Content />
@@ -38,9 +37,9 @@ const { Content } = await post.render();
 
 <style></style>
 
-<script>
+<!-- <script>
   import mediumZoom from 'medium-zoom';
   mediumZoom(document.querySelectorAll('img') as NodeListOf<HTMLImageElement>, {
     background: '#000000e0',
   });
-</script>
+</script> -->

@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync": "astro sync"
   },
   "devDependencies": {
     "@adapttive/remark-responsive-tables": "^1.0.1",
@@ -22,7 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "astro": "^4.10.1",
-    "astro-compress": "^2.2.27",
+    "astro-compress": "^2.3.1",
     "astro-expressive-code": "^0.35.3",
     "astro-icon": "^1.1.0",
     "astro-rename": "^1.1.2",

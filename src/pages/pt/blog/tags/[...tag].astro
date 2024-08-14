@@ -1,0 +1,13 @@
+---
+import { getStaticTagPaths } from '@lib/blog';
+import Page from '../../../blog/tags/[...tag].astro';
+import { contextLocale } from '../../_context';
+
+export const getStaticPaths = getStaticTagPaths({
+  locale: contextLocale,
+});
+
+const { props } = Astro;
+---
+
+<Page {...props} />

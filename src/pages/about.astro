@@ -7,54 +7,52 @@ import Socials from '@components/data/Socials.astro';
 import { languages } from '@constants/languages';
 import Layout from '@layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+import { useLocale } from 'i18n';
+
+const { t, interpolate, localizePath } = useLocale(Astro.url.pathname);
+
+const title = t.about.title;
+const description = t.common.description;
 ---
 
-<Layout
-  title="About Me"
-  description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development."
-  shortlink="/about"
->
+<Layout title={title} description={description} shortlink="/about">
   <Container>
-    <Title title="About Me" fontSize="2.5em" />
+    <Title title={t.about.article.topic_1.title} fontSize="2.5em" />
     <Divider height="1px" width="80%" />
     <article class="about-article">
       <section class="about-section section-text">
-        <p>Hi, 👋!</p>
+        <p><Fragment set:html={t.about.article.topic_1.paragraph_1} /></p>
         <p>
-          I'm <strong>Lucas Josino</strong>, a 21 y/o from <b>Brazil 🇧🇷</b> and an
-          enthusiastic
-          <strong>Backend Developer</strong>. I'm currently pursuing a
-          <b>Bachelor's degree in Information Systems</b>.
+          <Fragment set:html={t.about.article.topic_1.paragraph_2} />
         </p>
         <p>
-          I have always enjoyed <b>technology</b> and <b>innovations</b>, which
-          is why I have been immersed in this world since I was young.
-          Eventually, I decided to fully dedicate myself and pursue a degree in
-          this field.
+          <Fragment set:html={t.about.article.topic_1.paragraph_3} />
         </p>
         <p>
-          I have been studying <b>Backend & APIs</b> developement using
-          <b>Java</b>, <b>Golang</b> and <b>Spring Boot</b> through courses/bootcamps
-          and working on some
-          <a href="/projects/" class="about-article-link">personal projects</a>.
-          I aim to contribute as much as possible, continually developing more
-          knowledge in areas and technologies that I enjoy.
-        </p>
-
-        <h2 id="beyond-the-code">Beyond the Code</h2>
-        <p>
-          Alongside my passion for technology, in my free time I enjoy <b
-            >listening to music</b
-          >, <b>reading</b>, <b>playing video games</b>, and <b
-            >chilling with my cats</b
-          >.
+          <Fragment
+            set:html={interpolate(t.about.article.topic_1.paragraph_4, {
+              link: localizePath('/projects/'),
+            })}
+          />
         </p>
         <p>
-          I'm also keen on <b>photography</b> and <b>cooking</b>.
+          <Fragment
+            set:html={interpolate(t.about.article.topic_1.paragraph_5, {
+              link: localizePath('/blog/'),
+            })}
+          />
         </p>
 
-        <h2 id="toolbox">Toolbox</h2>
-        <p>Programming languages, frameworks, and tools that i use:</p>
+        <h2 id="beyond-the-code">{t.about.article.topic_2.title}</h2>
+        <p>
+          <Fragment set:html={t.about.article.topic_2.paragraph_1} />
+        </p>
+        <p>
+          <Fragment set:html={t.about.article.topic_2.paragraph_2} />
+        </p>
+
+        <h2 id="toolbox">{t.about.article.topic_3.title}</h2>
+        <p><Fragment set:html={t.about.article.topic_3.paragraph_1} /></p>
         <div class="about-languages">
           {
             languages.map((lang) => {
@@ -71,8 +69,9 @@ import { Icon } from 'astro-icon/components';
           }
         </div>
 
-        <h2 id="github-stats">Github Stats</h2>
-        <p>
+        <h2 id="github-stats">{t.about.article.topic_4.title}</h2>
+        <p><Fragment set:html={t.about.article.topic_4.paragraph_1} /></p>
+        <p class="about-stats">
           <img
             src="https://raw.githubusercontent.com/LucJosin/github-stats-transparent/output/generated/overview.svg"
             alt="Github Overview"
@@ -83,8 +82,8 @@ import { Icon } from 'astro-icon/components';
           />
         </p>
 
-        <h2 id="contact">Contact</h2>
-        <p>Feel free to connect with me through:</p>
+        <h2 id="github-stats">{t.about.article.topic_5.title}</h2>
+        <p>{t.about.article.topic_5.paragraph_1}</p>
         <div class="about-contact">
           <Socials showName={true} showTooltip={false} justifyContent="left" />
         </div>
@@ -102,6 +101,7 @@ import { Icon } from 'astro-icon/components';
 
   .section-text h2 {
     margin: 1rem 0 0 0;
+    color: var(--primary-text-color);
   }
 
   .section-text ul {
@@ -118,28 +118,16 @@ import { Icon } from 'astro-icon/components';
     display: inline;
   }
 
-  .about-languages {
+  .about-languages,
+  .about-stats {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
   }
 
-  .about-article-link {
-    color: var(--description-text-color);
-    text-decoration: underline;
-    font-weight: bold;
-    transition: opacity 0.2s;
-    line-break: normal;
-    text-decoration-line: underline;
-    text-decoration-color: var(--description-text-color);
-    text-decoration-thickness: 0.125rem;
-    text-decoration-style: dashed;
-    text-underline-offset: 0.25rem;
-  }
-
-  .about-article-link:hover {
-    opacity: 0.7;
+  .about-stats img {
+    width: min-content;
   }
 
   .about-languages-language {
@@ -153,6 +141,27 @@ import { Icon } from 'astro-icon/components';
     background-color: var(--border-color);
     color: var(--primary-color);
     cursor: pointer;
+  }
+
+  :global(strong) {
+    color: var(--primary-text-color);
+  }
+
+  :global(.about-link) {
+    color: var(--primary-text-color);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    line-break: normal;
+    text-decoration-line: underline;
+    text-decoration-color: var(--primary-text-color);
+    text-decoration-thickness: 0.125rem;
+    text-decoration-style: dashed;
+    text-underline-offset: 0.25rem;
+  }
+
+  :global(.about-link:hover) {
+    opacity: 0.7;
   }
 
   .about-languages-language:hover > [data-icon] {

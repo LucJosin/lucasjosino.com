@@ -1,13 +1,13 @@
 import { reference, z } from 'astro:content';
 
 export const blogSchema = z.object({
-  refFile: z.string().optional(),
+  permSlug: z.string(),
   image: z.object({
     src: z.string().default('/static/default-og.png'),
     position: z.string().default('center'),
     showInPost: z.boolean().default(true),
   }),
-  color: z.string().default("#111"),
+  color: z.string().default('#111'),
   publishedAt: z.string(),
   updatedAt: z.string().optional(),
   title: z.string().max(65),

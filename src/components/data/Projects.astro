@@ -3,15 +3,18 @@ import Link from '@components/core/Link/Link.astro';
 import ProjectCard from '@components/core/Project/ProjectCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import { projects } from '@constants/projects';
+import { useLocale } from 'i18n';
+
+const { t, localizePath } = useLocale(Astro.url.pathname);
 ---
 
 <section class="projects-section">
   <div class="projects-header">
-    <SubTitle title="Projects" />
+    <SubTitle title={t.home.projects.title} />
     <Link
-      href="/projects/"
-      alt="See more projects"
-      title="See more"
+      href={localizePath('/projects/')}
+      alt={t.home.projects.see_more_alt}
+      title={t.home.see_more}
       icon="mdi:arrow-right"
       iconSide="right"
       hasBorderBottom={false}

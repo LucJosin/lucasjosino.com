@@ -3,44 +3,46 @@ import Link from '@components/core/Link/Link.astro';
 import PostCard from '@components/core/Post/PostCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
 import { getAllPosts } from '@lib/blog';
+import { useLocale } from 'i18n';
 
-const posts = await getAllPosts();
+const { t, locale, localizePath } = useLocale(Astro.url.pathname);
+const posts = await getAllPosts(true, true, locale);
 ---
 
-<section class="posts-section">
-  <div class="posts-header">
-    <SubTitle title="Posts" />
-    <Link
-      href="/blog/"
-      alt="See more posts"
-      title="See more"
-      icon="mdi:arrow-right"
-      iconSide="right"
-      hasBorderBottom={false}
-      animatedIcon
-      event=`Posts (${Astro.url.pathname})`
-    />
-  </div>
+{
+  posts.length > 0 && (
+    <section class="posts-section">
+      <div class="posts-header">
+        <SubTitle title="Posts" />
+        <Link
+          href={localizePath('/blog/')}
+          alt={t.home.posts.see_more_alt}
+          title={t.home.see_more}
+          icon="mdi:arrow-right"
+          iconSide="right"
+          hasBorderBottom={false}
+          animatedIcon
+          event={`Posts (${Astro.url.pathname})`}
+        />
+      </div>
 
-  <div class="posts-container">
-    {
-      posts
-        .slice(0, 2)
-        .map((e) => (
+      <div class="posts-container">
+        {posts.slice(0, 2).map((post) => (
           <PostCard
-            image={e.data.image.src}
-            href={e.slug}
-            title={e.data.title}
-            description={e.data.description}
-            publishedAt={e.data.publishedAt}
-            body={e.body}
-            category={e.data.category}
-            tags={e.data.tags}
+            image={post.data.image.src}
+            href={localizePath(`/blog/${post.data.permSlug}`)}
+            title={post.data.title}
+            description={post.data.description}
+            publishedAt={post.data.publishedAt}
+            body={post.body}
+            category={post.data.category}
+            tags={post.data.tags}
           />
-        ))
-    }
-  </div>
-</section>
+        ))}
+      </div>
+    </section>
+  )
+}
 
 <style>
   .posts-section {

@@ -15,19 +15,6 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
         style={{
           height: '100%',
           width: '100%',
-          backgroundImage: 'url("https://www.lucasjosino.com/static/background-og.png")',
-          backgroundSize: '1200px 630px',
-          backgroundRepeat: 'no-repeat',
-          position: 'absolute',
-          opacity: '0.08',
-          filter: 'invert(100%)'
-        }}
-      >
-      </div>
-      <div
-        style={{
-          height: '100%',
-          width: '100%',
           flexDirection: 'column',
           flexWrap: 'nowrap',
           backgroundImage: `radial-gradient(circle at 25px 25px, ${post.data.color} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${post.data.color} 2%, transparent 0%)`,
@@ -74,7 +61,7 @@ export default async function getPostTemplate(post: CollectionEntry<'blog'>) {
           padding: '2rem'
         }}
       >
-        ~/lucasjosino.com/blog
+        {post.data.language === 'en' ? '~/lucasjosino.com/blog' : `~/lucasjosino.com/${post.data.language}/blog`}
       </span>
       <span
         style={{

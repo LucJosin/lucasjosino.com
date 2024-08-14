@@ -1,4 +1,5 @@
 ---
+permSlug: 'hello-world'
 title: 'Hello World'
 description: 'A markdown showcase of all features.'
 image:

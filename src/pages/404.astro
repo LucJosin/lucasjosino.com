@@ -6,43 +6,41 @@ import LinkBox from '@components/core/Link/LinkBox.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
+import { useLocale } from 'i18n';
 
-const encodedUrl = encodeURI(`[${Astro.url.pathname}]`);
-const encodedCode = encodeURI('Status: 404');
+const { t, localizePath } = useLocale(Astro.url.pathname);
+
+const title = '404';
+const description = t[404].description;
 ---
 
-<Layout title="404" description="Page not found!">
+<Layout title={title} description={description}>
   <Container gap="0.5rem">
-    <Title title="404" fontSize="5em" />
+    <Title title={title} fontSize="5em" />
     <Divider width="80%" />
 
-    <Description
-      value="Page not found. Maybe something was deleted or moved."
-      margin="0 0 1rem 0"
-    />
+    <Description value={t[404].description} margin="0 0 2rem 0" />
 
     <LinkBox
-      title="Go Back"
-      href="/"
-      alt="Go back to home page"
+      title={t[404].go_back}
+      href={localizePath('/')}
+      alt={t[404].go_back_alt}
       icon="mdi:arrow-left"
     />
   </Container>
   <div class="help-container">
-    Need help? Contact using:
+    {t[404].help_message}
     <Link
       title="Github"
-      alt="Repository of lucasjosino.com project"
+      alt={t[404].links.github_alt}
       isLocal={false}
-      href={`https://github.com/LucJosin/lucasjosino.com/issues/new?title=${encodedUrl}&labels=${encodedCode}`}
+      href={`https://github.com/LucJosin/lucasjosino.com/issues/new`}
     />
-    or
+    /
     <Link
       title="contact@lucasjosino.com"
-      alt="Email for contact"
-      href={`mailto:contact@lucasjosino.com?subject=${encodeURI(
-        `[404] Page: ${Astro.url.pathname}`
-      )}`}
+      alt={t[404].links.email_alt}
+      href="mailto:contact@lucasjosino.com"
     />
   </div>
 </Layout>
@@ -58,6 +56,7 @@ const encodedCode = encodeURI('Status: 404');
     gap: 0.25rem;
     flex-wrap: wrap;
     padding: 0 2em;
+    z-index: 1;
   }
 
   @media (max-width: 425px) {

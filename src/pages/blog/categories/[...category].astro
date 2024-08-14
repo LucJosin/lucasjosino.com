@@ -5,42 +5,45 @@ import PostCard from '@components/core/Post/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
-import { getAllPosts, getUniqueCategories } from '@lib/blog';
+import { getStaticCategoryPaths } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
+import { useLocale } from 'i18n';
 
-export async function getStaticPaths() {
-  const allPosts = await getAllPosts();
-  const uniqueCategories = await getUniqueCategories();
-
-  return uniqueCategories.map((category) => {
-    const filteredPosts = allPosts.filter(
-      (post) => post.data.category === category
-    );
-    return {
-      params: { category },
-      props: { posts: filteredPosts },
-    };
-  });
-}
+export const getStaticPaths = getStaticCategoryPaths();
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
 }
+
+const { t, pluralize, localizePath, interpolate } = useLocale(
+  Astro.url.pathname
+);
 
 const { category } = Astro.params;
 const { posts } = Astro.props;
 ---
 
 <Layout
-  title={'Category: ' + category}
-  description={`Explore all posts categorized with: ${category}`}
+  title={interpolate(t.categories.category.title, { category })}
+  description={interpolate(t.categories.description, { category })}
   shortlink="/blog"
 >
   <Container>
-    <Title title={'Category: ' + category} fontSize="2.5em" />
+    <Title
+      title={interpolate(t.categories.category.title, { category })}
+      fontSize="2.5em"
+    />
     <Description
-      value={`Explore ${posts.length} post(s) categorized with "${category}"`}
+      value={pluralize(
+        t.categories.category.description,
+        {
+          singular: t.categories.category.description_one,
+          plural: t.categories.category.description_other,
+          count: posts.length,
+        },
+        { category }
+      )}
       margin="0"
       width="80%"
     />
@@ -54,7 +57,7 @@ const { posts } = Astro.props;
               title={post.data.title}
               description={post.data.description}
               category={post.data.category}
-              href={`${post.slug}/`}
+              href={localizePath(`/blog/${post.data.permSlug}`)}
               publishedAt={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
               body={post.body}

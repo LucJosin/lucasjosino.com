@@ -44,7 +44,7 @@ export async function getPostImage(post: CollectionEntry<'blog'>) {
     mkdirSync(dist + basePath);
   }
 
-  const imageUrl = basePath + post.slug + '.png';
+  const imageUrl = `${basePath}${post.slug}.png`;
   await writeFile(dist + imageUrl, png);
 
   return imageUrl;
