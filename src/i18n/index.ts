@@ -4,15 +4,29 @@ import { enLocale } from './en';
 import { ptLocale } from './pt';
 import type { i18nSchema } from './schema';
 
-export type LocaleSlug = {
-  locale: string;
-  slug: string;
-};
+interface NestedTranslations {
+  [key: string]: string | NestedTranslations;
+}
+
+type NestedKeys<T> = T extends object
+  ? {
+      [K in keyof T]: T[K] extends object
+        ? `${string & K}` | `${string & K}.${NestedKeys<T[K]>}`
+        : `${string & K}`;
+    }[keyof T]
+  : never;
+
+type TranslationKeys = NestedKeys<i18nSchema>;
 
 type Pluralization = {
   singular: string;
   plural: string;
   count: number;
+};
+
+export type LocaleSlug = {
+  locale: string;
+  slug: string;
 };
 
 /**
@@ -24,6 +38,11 @@ export const defaultLocale = config.i18n!.defaultLocale;
  * List of available locales, defined in the Astro config
  */
 export const locales = config.i18n!.locales as string[];
+
+const translationsA: { [key: string]: string | NestedTranslations } = {
+  ['' || defaultLocale]: enLocale,
+  pt: ptLocale,
+};
 
 const translations: { [key: string]: i18nSchema } = {
   ['' || defaultLocale]: enLocale,
@@ -52,6 +71,10 @@ export function useLocale(pathname: string) {
      * ```
      */
     t,
+    ta: (
+      key: TranslationKeys,
+      replacements?: Record<string, string | number>
+    ) => ta(locale, key, replacements),
     /**
      * Replace values in a translated string
      * @param t translared string key
@@ -115,6 +138,40 @@ export function useLocale(pathname: string) {
     pluralize: (t: string, pl: Pluralization, it?: Record<string, string>) =>
       pluralize(t, pl, it),
   };
+}
+
+function ta(
+  locale: string,
+  key: TranslationKeys,
+  replacements?: Record<string, string | number>
+): string {
+  const keys = key.split('.');
+  let result: NestedTranslations | string = translationsA[locale];
+
+  for (const k of keys) {
+    if (result && typeof result === 'object' && k in result) {
+      result = result[k];
+    } else {
+      return `Missing translation for key: ${key}`;
+    }
+  }
+
+  // If result is a string and replacements are provided, replace placeholders
+  if (typeof result === 'string' && replacements) {
+    let translated = result;
+    for (const [replaceKey, replaceValue] of Object.entries(replacements)) {
+      translated = translated.replace(
+        `{{${replaceKey}}}`,
+        String(replaceValue)
+      );
+    }
+    return translated;
+  }
+
+  // Return the result directly if it’s not a string
+  return typeof result === 'string'
+    ? result
+    : `Translation result is not a string for key: ${key}`;
 }
 
 function interpolate(t: string, opts: Record<string, string>): string {
