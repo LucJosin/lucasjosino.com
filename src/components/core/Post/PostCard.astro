@@ -18,7 +18,7 @@ interface Props {
   maxTags?: number;
 }
 
-const { t, interpolate, localizePath } = useLocale(Astro.url.pathname);
+const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const {
   image,
@@ -37,7 +37,7 @@ const {
   <div class="post-card-img-container">
     {
       image && (
-        <a href={href} title={t.post.card.read_post}>
+        <a href={href} title={t('post.card.read_post')}>
           <img src={image} alt={`Post - ${title}`} class="post-card-img" />
         </a>
       )
@@ -49,16 +49,14 @@ const {
         <PostDateTime date={publishedAt} /> •
         <Link
           title={category}
-          alt={interpolate(t.post.card.see_more_posts_from_this_category, {
-            name: 'category',
-          })}
+          alt={t('post.card.see_more_posts_from_this_category', { category })}
           href={localizePath(`/blog/categories/${category}`)}
         /> •
         <span>{getReadTime(body)}</span>
       </span>
     </div>
     <div class="post-card-header">
-      <Link href={href} alt={t.post.card.read_post} display="inline">
+      <Link href={href} alt={t('post.card.read_post')} display="inline">
         <h3>{title}</h3>
       </Link>
     </div>
@@ -73,8 +71,8 @@ const {
     <div class="post-card-read-more">
       <Link
         href={href}
-        alt={t.post.card.read_post}
-        title={t.post.card.read_post}
+        alt={t('post.card.read_post')}
+        title={t('post.card.read_post')}
         icon="mdi:arrow-right-thin"
         iconSide="right"
         hasBorderBottom={false}

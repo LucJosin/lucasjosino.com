@@ -12,10 +12,10 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
 <header>
   <div class="header-container">
     <div class="header-left">
-      <Tooltip message={t.common.header.homepage_tooltip} position="bottom">
+      <Tooltip message={t('common.header.homepage_tooltip')} position="bottom">
         <Link
           href={localizePath('/')}
-          alt={t.common.header.homepage}
+          alt={t('common.header.homepage')}
           hasBorderBottom={false}
           accesskey="h"
         >
@@ -25,19 +25,19 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
     </div>
     <nav class="header-nav">
       <Link
-        title={t.common.header.blog}
+        title={t('common.header.blog')}
         href={localizePath('/blog/')}
-        alt={t.common.header.blog_link_alt}
+        alt={t('common.header.blog_link_alt')}
       />
       <Link
-        title={t.common.header.projects}
+        title={t('common.header.projects')}
         href={localizePath('/projects/')}
-        alt={t.common.header.projects_link_alt}
+        alt={t('common.header.projects_link_alt')}
       />
       <Link
-        title={t.common.header.about}
+        title={t('common.header.about')}
         href={localizePath('/about/')}
-        alt={t.common.header.about_link_alt}
+        alt={t('common.header.about_link_alt')}
       />
       <LanguageIcon />
       <ThemeIcon />

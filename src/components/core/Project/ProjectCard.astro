@@ -48,11 +48,11 @@ const { project, titleSize, descSize } = Astro.props as Props;
               <a
                 href={project.org}
                 class="project-card-org"
-                title={t.projects.org_alt}
+                title={t('projects.org_alt')}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                {t.projects.org}
+                {t('projects.org')}
                 <Icon name="mdi:external-link" />
               </a>
             )
@@ -119,7 +119,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
   {
     project.subProjects && (
       <div class="project-card-sub-projects-wrapper">
-        <h3>{t.projects.repositories}</h3>
+        <h3>{t('projects.repositories')}</h3>
         <div class="project-card-sub-projects">
           {project.subProjects.map((sub) => {
             return (

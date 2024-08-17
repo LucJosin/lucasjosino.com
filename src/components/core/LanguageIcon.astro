@@ -8,7 +8,7 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
 ---
 
 <Tooltip
-  message={t.common.header.change_language_tooltip}
+  message={t('common.header.change_language_tooltip')}
   position="bottom"
   id="language-tooltip"
 >
@@ -16,8 +16,8 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
     href={switchLocale(nextLocale)}
     class="header-language-btn"
     accesskey="l"
-    data-disabled-message={t.common.header.change_language_tooltip_disabled}
-    data-enabled-message={t.common.header.change_language_tooltip}
+    data-disabled-message={t('common.header.change_language_tooltip_disabled')}
+    data-enabled-message={t('common.header.change_language_tooltip')}
   >
     <span
       class:list={[

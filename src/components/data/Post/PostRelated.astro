@@ -13,7 +13,7 @@ const { posts } = Astro.props;
 ---
 
 <div class="post-releated">
-  <h2>{t.post.related_posts}</h2>
+  <h2>{t('post.related_posts')}</h2>
   <span class="post-related-items">
     {
       posts.map((item) => {

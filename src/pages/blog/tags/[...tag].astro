@@ -16,34 +16,23 @@ interface Props {
   posts: CollectionEntry<'blog'>[];
 }
 
-const { t, pluralize, interpolate, localizePath } = useLocale(
-  Astro.url.pathname
-);
+const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+const title = t('tags.tag.title', { tag });
+const description = t('tags.tag.description', { tag, count: posts.length });
 ---
 
 <Layout
-  title={interpolate(t.tags.tag.title, { tag })}
-  description={interpolate(t.tags.description, { tag })}
+  title={title}
+  description={t('tags.tag.description', { tag })}
   shortlink="/blog"
 >
   <Container>
-    <Title title={interpolate(t.tags.tag.title, { tag })} fontSize="2.5em" />
-    <Description
-      value={pluralize(
-        t.tags.tag.description,
-        {
-          singular: t.tags.tag.description_one,
-          plural: t.tags.tag.description_other,
-          count: posts.length,
-        },
-        { tag }
-      )}
-      margin="0"
-      width="80%"
-    />
+    <Title title={title} fontSize="2.5em" />
+    <Description value={description} margin="0" width="80%" />
     <Divider height="1px" width="80%" />
     <div class="tag-posts">
       {
