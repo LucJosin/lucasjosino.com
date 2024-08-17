@@ -13,8 +13,6 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const title = t('common.title');
 const description = t('common.description');
-
-console.log('title:', title);
 ---
 
 <Layout title={title} description={description} shortlink="/">
