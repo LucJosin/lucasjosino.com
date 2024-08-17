@@ -11,8 +11,8 @@ import { useLocale } from 'i18n';
 
 const { t, localizePath } = useLocale(Astro.url.pathname);
 
-const title = t.common.title;
-const description = t.common.description;
+const title = t('common.title');
+const description = t('common.description');
 ---
 
 <Layout title={title} description={description} shortlink="/">
@@ -20,10 +20,10 @@ const description = t.common.description;
     <section class="profile-section">
       <Avatar />
       <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.4em" />
-      <span>{t.common.title}</span>
-      <span>Java · Spring Boot</span>
+      <span>{title}</span>
+      <span>Java · Golang · Spring Boot</span>
       <p class="profile-description">
-        <a href={localizePath('/about/')} set:html={t.home.welcome} />
+        <a href={localizePath('/about/')} set:html={t('home.welcome')} />
       </p>
       <Socials hasTitle={false} />
     </section>
@@ -43,7 +43,7 @@ const description = t.common.description;
   }
 
   .profile-description {
-    margin: 0.6rem 0;
+    margin: 0.6rem 2rem;
   }
 
   .profile-description a {

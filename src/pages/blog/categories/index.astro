@@ -13,8 +13,8 @@ const { t, locale } = useLocale(Astro.url.pathname);
 const allPosts = await getAllPosts(true, true, locale);
 const categories = await getUniqueCategories(allPosts);
 
-const title = t.tags.title;
-const description = t.tags.description;
+const title = t('tags.title');
+const description = t('tags.description');
 ---
 
 <Layout title={title} description={description}>

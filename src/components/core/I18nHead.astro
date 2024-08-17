@@ -1,17 +1,12 @@
 ---
-import { normalizeUrl, type LocaleSlug } from 'i18n';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { type LocaleSlug } from 'i18n';
 
 interface Props {
   locales?: LocaleSlug[];
 }
 
-let { locales } = Astro.props as Props;
-
-locales =
-  locales?.map((item) => ({
-    locale: item.locale,
-    slug: item.locale === 'en' ? `${item.slug}` : `${item.locale}${item.slug}`,
-  })) ?? [];
+const { locales = [] } = Astro.props as Props;
 ---
 
 {
@@ -19,7 +14,7 @@ locales =
     <link
       rel="alternate"
       hreflang={locale}
-      href={Astro.url.origin + normalizeUrl(slug)}
+      href={getAbsoluteLocaleUrl(locale, slug)}
     />
   ))
 }

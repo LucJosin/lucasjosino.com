@@ -9,50 +9,50 @@ import Layout from '@layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import { useLocale } from 'i18n';
 
-const { t, interpolate, localizePath } = useLocale(Astro.url.pathname);
+const { t, localizePath } = useLocale(Astro.url.pathname);
 
-const title = t.about.title;
-const description = t.common.description;
+const title = t('about.title');
+const description = t('common.description');
 ---
 
 <Layout title={title} description={description} shortlink="/about">
   <Container>
-    <Title title={t.about.article.topic_1.title} fontSize="2.5em" />
+    <Title title={t('about.article.topic_1.title')} fontSize="2.5em" />
     <Divider height="1px" width="80%" />
     <article class="about-article">
       <section class="about-section section-text">
-        <p><Fragment set:html={t.about.article.topic_1.paragraph_1} /></p>
+        <p><Fragment set:html={t('about.article.topic_1.paragraph_1')} /></p>
         <p>
-          <Fragment set:html={t.about.article.topic_1.paragraph_2} />
+          <Fragment set:html={t('about.article.topic_1.paragraph_2')} />
         </p>
         <p>
-          <Fragment set:html={t.about.article.topic_1.paragraph_3} />
+          <Fragment set:html={t('about.article.topic_1.paragraph_3')} />
         </p>
         <p>
           <Fragment
-            set:html={interpolate(t.about.article.topic_1.paragraph_4, {
+            set:html={t('about.article.topic_1.paragraph_4', {
               link: localizePath('/projects/'),
             })}
           />
         </p>
         <p>
           <Fragment
-            set:html={interpolate(t.about.article.topic_1.paragraph_5, {
+            set:html={t('about.article.topic_1.paragraph_5', {
               link: localizePath('/blog/'),
             })}
           />
         </p>
 
-        <h2 id="beyond-the-code">{t.about.article.topic_2.title}</h2>
+        <h2 id="beyond-the-code">{t('about.article.topic_2.title')}</h2>
         <p>
-          <Fragment set:html={t.about.article.topic_2.paragraph_1} />
+          <Fragment set:html={t('about.article.topic_2.paragraph_1')} />
         </p>
         <p>
-          <Fragment set:html={t.about.article.topic_2.paragraph_2} />
+          <Fragment set:html={t('about.article.topic_2.paragraph_2')} />
         </p>
 
-        <h2 id="toolbox">{t.about.article.topic_3.title}</h2>
-        <p><Fragment set:html={t.about.article.topic_3.paragraph_1} /></p>
+        <h2 id="toolbox">{t('about.article.topic_3.title')}</h2>
+        <p><Fragment set:html={t('about.article.topic_3.paragraph_1')} /></p>
         <div class="about-languages">
           {
             languages.map((lang) => {
@@ -69,8 +69,8 @@ const description = t.common.description;
           }
         </div>
 
-        <h2 id="github-stats">{t.about.article.topic_4.title}</h2>
-        <p><Fragment set:html={t.about.article.topic_4.paragraph_1} /></p>
+        <h2 id="github-stats">{t('about.article.topic_4.title')}</h2>
+        <p><Fragment set:html={t('about.article.topic_4.paragraph_1')} /></p>
         <p class="about-stats">
           <img
             src="https://raw.githubusercontent.com/LucJosin/github-stats-transparent/output/generated/overview.svg"
@@ -82,8 +82,8 @@ const description = t.common.description;
           />
         </p>
 
-        <h2 id="github-stats">{t.about.article.topic_5.title}</h2>
-        <p>{t.about.article.topic_5.paragraph_1}</p>
+        <h2 id="github-stats">{t('about.article.topic_5.title')}</h2>
+        <p>{t('about.article.topic_5.paragraph_1')}</p>
         <div class="about-contact">
           <Socials showName={true} showTooltip={false} justifyContent="left" />
         </div>

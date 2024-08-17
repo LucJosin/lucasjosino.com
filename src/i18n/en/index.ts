@@ -1,4 +1,3 @@
-import type { i18nSchema } from 'i18n/schema';
 import { s404 } from './404';
 import { about } from './about';
 import { blog } from './blog';
@@ -9,7 +8,7 @@ import { post } from './post';
 import { projects } from './projects';
 import { tags } from './tags';
 
-export const enLocale: i18nSchema = {
+export const enLocale = {
   '404': s404,
   about,
   blog,

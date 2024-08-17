@@ -5,7 +5,7 @@ const { t } = useLocale(Astro.url.pathname);
 ---
 
 <div class="post-comments">
-  <h2 id="comments">{t.post.comments}</h2>
+  <h2 id="comments">{t('post.comments')}</h2>
   <div class="giscus"></div>
 </div>
 

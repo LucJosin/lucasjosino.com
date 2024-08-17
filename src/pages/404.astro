@@ -11,7 +11,7 @@ import { useLocale } from 'i18n';
 const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const title = '404';
-const description = t[404].description;
+const description = t('404.description');
 ---
 
 <Layout title={title} description={description}>
@@ -19,27 +19,27 @@ const description = t[404].description;
     <Title title={title} fontSize="5em" />
     <Divider width="80%" />
 
-    <Description value={t[404].description} margin="0 0 2rem 0" />
+    <Description value={description} margin="0 0 2rem 0" />
 
     <LinkBox
-      title={t[404].go_back}
+      title={t('404.go_back')}
       href={localizePath('/')}
-      alt={t[404].go_back_alt}
+      alt={t('404.go_back_alt')}
       icon="mdi:arrow-left"
     />
   </Container>
   <div class="help-container">
-    {t[404].help_message}
+    {t('404.help_message')}
     <Link
       title="Github"
-      alt={t[404].links.github_alt}
+      alt={t('404.links.github_alt')}
       isLocal={false}
       href={`https://github.com/LucJosin/lucasjosino.com/issues/new`}
     />
     /
     <Link
       title="contact@lucasjosino.com"
-      alt={t[404].links.email_alt}
+      alt={t('404.links.email_alt')}
       href="mailto:contact@lucasjosino.com"
     />
   </div>

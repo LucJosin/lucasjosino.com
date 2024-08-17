@@ -10,11 +10,11 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
 
 <section class="projects-section">
   <div class="projects-header">
-    <SubTitle title={t.home.projects.title} />
+    <SubTitle title={t('home.projects.title')} />
     <Link
       href={localizePath('/projects/')}
-      alt={t.home.projects.see_more_alt}
-      title={t.home.see_more}
+      alt={t('home.projects.see_more_alt')}
+      title={t('home.see_more')}
       icon="mdi:arrow-right"
       iconSide="right"
       hasBorderBottom={false}

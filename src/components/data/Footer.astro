@@ -10,29 +10,29 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
 <div class="footer">
   <div class="footer-left">
     <div class="footer-links">
-      <Tooltip message={t.common.footer.links.rss}>
+      <Tooltip message={t('common.footer.links.rss')}>
         <LinkBox
           href="/rss.xml"
           isLocal={false}
-          alt={t.common.footer.links.rss}
+          alt={t('common.footer.links.rss')}
           icon="mdi:rss"
           padding="0.5rem"
           event=`RSS (Footer) - (${Astro.url.pathname})`
         />
       </Tooltip>
-      <Tooltip message={t.common.footer.links.tags}>
+      <Tooltip message={t('common.footer.links.tags')}>
         <LinkBox
           href={localizePath('/blog/tags/')}
-          alt={t.common.footer.links.tags}
+          alt={t('common.footer.links.tags')}
           icon="mdi:tags"
           padding="0.5rem"
         />
       </Tooltip>
-      <Tooltip message={t.common.footer.links.source_code}>
+      <Tooltip message={t('common.footer.links.source_code')}>
         <LinkBox
           href="https://github.com/LucJosin/lucasjosino.com"
           isLocal={false}
-          alt={t.common.footer.links.source_code}
+          alt={t('common.footer.links.source_code')}
           icon="simple-icons:github"
           padding="0.5rem"
         />
@@ -43,7 +43,7 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
       <Link href={localizePath('/')} alt="Lucas Josino" title="Lucas Josino" />
     </span>
     <div class="footer-powered">
-      {t.common.footer.powered}
+      {t('common.footer.powered')}
       <Link
         href="https://astro.build/"
         isLocal={false}

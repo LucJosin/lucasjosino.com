@@ -10,8 +10,8 @@ import { useLocale } from 'i18n';
 
 const { t } = useLocale(Astro.url.pathname);
 
-const title = t.projects.title;
-const description = t.projects.description;
+const title = t('projects.title');
+const description = t('projects.description');
 ---
 
 <Layout title={title} description={description} shortlink="/projects">

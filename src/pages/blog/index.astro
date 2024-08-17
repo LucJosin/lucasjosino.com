@@ -11,8 +11,8 @@ import { useLocale } from 'i18n';
 const { t, localizePath, locale } = useLocale(Astro.url.pathname);
 const posts = await getAllPosts(true, true, locale);
 
-const title = t.blog.title;
-const description = t.blog.description;
+const title = t('blog.title');
+const description = t('blog.description');
 ---
 
 <Layout title={title} description={description} shortlink="/blog">
@@ -38,7 +38,7 @@ const description = t.blog.description;
             );
           })
         ) : (
-          <p set:html={t.blog.no_post_found} class="blog-posts-empty" />
+          <p set:html={t('blog.no_post_found')} class="blog-posts-empty" />
         )
       }
     </div>
