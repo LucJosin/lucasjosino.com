@@ -204,4 +204,13 @@ export default defineConfig({
   server: {
     host: true,
   },
+  // Astro offers experimental flags to give users early access to new features.
+  // These flags are not guaranteed to be stable.
+  experimental: {
+    // Enables a more reliable strategy to prevent scripts from being
+    // executed in pages where they are not used.
+    //
+    // https://docs.astro.build/en/reference/configuration-reference/#experimentaldirectrenderscript
+    directRenderScript: true,
+  },
 });
