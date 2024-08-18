@@ -13,7 +13,7 @@ const { message, href, id, messageId, position = 'top' } = Astro.props;
 <div class="tooltip" data-href={href} id={id}>
   {
     message && (
-      <span class={`tooltip-message ${position}`} id={messageId}>
+      <span class={`tooltip-message tooltip-position-${position}`} id={messageId}>
         <Fragment set:html={message} />
       </span>
     )
@@ -43,25 +43,25 @@ const { message, href, id, messageId, position = 'top' } = Astro.props;
     visibility: visible;
   }
 
-  .tooltip-message.top {
+  .tooltip-message.tooltip-position-top {
     bottom: 110%;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  .tooltip-message.bottom {
+  .tooltip-message.tooltip-position-bottom {
     top: 110%;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  .tooltip-message.left {
+  .tooltip-message.tooltip-position-left {
     top: 50%;
     right: 110%;
     transform: translateY(-50%);
   }
 
-  .tooltip-message.right {
+  .tooltip-message.tooltip-position-right {
     top: 50%;
     left: 110%;
     transform: translateY(-50%);
