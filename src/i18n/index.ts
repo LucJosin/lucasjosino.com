@@ -1,26 +1,14 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import config from '../../astro.config.mjs';
+import { defaultLocale, locales } from './config';
 import { enLocale } from './en';
 import { ptLocale } from './pt';
 import type { i18nSchema } from './schema';
-
-/**
- * Locale and slug extracted from a path
- */
-export type LocaleSlug = {
-  locale: string;
-  slug: string;
-};
-
-/**
- * Default locale of the site, defined in the Astro config
- */
-export const defaultLocale = config.i18n!.defaultLocale;
-
-/**
- * List of available locales, defined in the Astro config
- */
-export const locales = config.i18n!.locales as string[];
+import {
+  type Locale,
+  type LocaleSlug,
+  type NestedKeys,
+  type TranslationKeys,
+} from './types';
 
 /**
  * Get the locale and slug from a path
@@ -36,11 +24,11 @@ export const locales = config.i18n!.locales as string[];
 export function extractLocaleAndSlug(path: string): LocaleSlug {
   const parts = path.split('/').filter(Boolean);
 
-  let locale = defaultLocale;
+  let locale = defaultLocale as Locale;
   let slug = path;
 
-  if (parts.length > 0 && locales.includes(parts[0])) {
-    locale = parts[0];
+  if (parts.length > 0 && locales.includes(parts[0] as Locale)) {
+    locale = parts[0] as Locale;
     slug = '/' + parts.slice(1).join('/');
   }
 
@@ -77,16 +65,6 @@ export function normalizeUrl(url: string): string {
 interface NestedTranslations {
   [key: string]: string | NestedTranslations;
 }
-
-type NestedKeys<T> = T extends object
-  ? {
-      [K in keyof T]: T[K] extends object
-        ? `${string & K}` | `${string & K}.${NestedKeys<T[K]>}`
-        : `${string & K}`;
-    }[keyof T]
-  : never;
-
-type TranslationKeys = NestedKeys<i18nSchema>;
 
 const translations: { [key: string]: string | NestedTranslations } = {
   ['' || defaultLocale]: enLocale,
