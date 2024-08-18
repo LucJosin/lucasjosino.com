@@ -4,7 +4,12 @@ export interface i18nSchema {
     help_message: string;
     go_back: string;
     go_back_alt: string;
-    links: { github_alt: string; email_alt: string };
+    links: {
+      github_alt: string;
+      email_alt: string;
+      copy_email_tooltip: string;
+      copy_email_success_tooltip: string;
+    };
   };
   about: {
     title: string;

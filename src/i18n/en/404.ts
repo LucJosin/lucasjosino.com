@@ -6,5 +6,7 @@ export const s404 = {
   links: {
     github_alt: 'Repository of lucasjosino.com project',
     email_alt: 'Email for contact',
+    copy_email_tooltip: 'Copy email',
+    copy_email_success_tooltip: 'Copied!',
   },
 };

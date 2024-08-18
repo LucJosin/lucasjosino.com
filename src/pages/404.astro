@@ -4,8 +4,10 @@ import Divider from '@components/core/Divider.astro';
 import Link from '@components/core/Link/Link.astro';
 import LinkBox from '@components/core/Link/LinkBox.astro';
 import Title from '@components/core/Title.astro';
+import Tooltip from '@components/core/Tooltip.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 import { useLocale } from 'i18n';
 
 const { t, localizePath } = useLocale(Astro.url.pathname);
@@ -19,7 +21,7 @@ const description = t('404.description');
     <Title title={title} fontSize="5em" />
     <Divider width="80%" />
 
-    <Description value={description} margin="0 0 2rem 0" />
+    <Description value={description} margin="0 0 1rem 0" />
 
     <LinkBox
       title={t('404.go_back')}
@@ -42,6 +44,14 @@ const description = t('404.description');
       alt={t('404.links.email_alt')}
       href="mailto:contact@lucasjosino.com"
     />
+    <Tooltip
+      message={t('404.links.copy_email_tooltip')}
+      messageId="copy-email-tooltip-message"
+      id="copy-email-tooltip"
+      href={t('404.links.copy_email_success_tooltip')}
+    >
+      <Icon name="mdi:content-copy" id="email-copy" class="email-copy-icon" />
+    </Tooltip>
   </div>
 </Layout>
 
@@ -59,9 +69,40 @@ const description = t('404.description');
     z-index: 1;
   }
 
+  [data-icon] {
+    font-size: 1.05em;
+    display: flex;
+    height: 100%;
+  }
+
+  [data-icon]:hover {
+    cursor: pointer;
+  }
+
   @media (max-width: 425px) {
     .help-container {
       bottom: 1rem;
     }
   }
 </style>
+
+<script>
+  const emailCopyIcon = document.getElementById('email-copy') as HTMLElement;
+  const emailCopyTooltipMessage = document.getElementById(
+    'copy-email-tooltip-message'
+  ) as HTMLElement;
+  const emailCopyTooltip = document.getElementById(
+    'copy-email-tooltip'
+  ) as HTMLElement;
+
+  emailCopyIcon.addEventListener('click', () => {
+    navigator.clipboard.writeText('contact@lucasjosino.com');
+    const oldText = emailCopyTooltipMessage.innerText;
+    const copiedText = emailCopyTooltip.dataset.href as string;
+    emailCopyTooltipMessage.innerText = copiedText;
+
+    setTimeout(() => {
+      emailCopyTooltipMessage.innerText = oldText;
+    }, 1500);
+  });
+</script>
