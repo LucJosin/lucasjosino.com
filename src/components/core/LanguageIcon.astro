@@ -35,20 +35,18 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
 </Tooltip>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const langBtn = document.querySelector(
-      '.header-language-btn'
-    ) as HTMLAnchorElement;
-    const tooltip = document.querySelector(
-      '#language-tooltip .tooltip-message'
-    ) as HTMLElement;
-    const alternateLinks = document.querySelectorAll('link[rel="alternate"]');
+  const langBtn = document.querySelector(
+    '.header-language-btn'
+  ) as HTMLAnchorElement;
+  const tooltipElm = document.querySelector(
+    '#language-tooltip .tooltip-message'
+  ) as HTMLElement;
+  const alternateLinks = document.querySelectorAll('link[rel="alternate"]');
 
-    if (alternateLinks.length <= 1) {
-      langBtn.classList.add('disabled');
-      tooltip.innerHTML = langBtn.dataset.disabledMessage || '';
-    }
-  });
+  if (alternateLinks.length <= 1) {
+    langBtn.classList.add('header-language-btn-disabled');
+    tooltipElm.innerHTML = langBtn.dataset.disabledMessage || '';
+  }
 </script>
 
 <style>
@@ -76,13 +74,13 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
     display: none;
   }
 
-  .disabled {
+  .header-language-btn-disabled {
     border: var(--border-size) solid gray;
     border-radius: var(--border-radius);
     pointer-events: none;
   }
 
-  .disabled:hover {
+  .header-language-btn-disabled:hover {
     background-color: gray;
   }
 </style>
