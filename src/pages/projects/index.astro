@@ -38,3 +38,10 @@ const description = t('projects.description');
     gap: 1rem;
   }
 </style>
+
+<script>
+  import mediumZoom from 'medium-zoom';
+  mediumZoom(document.querySelectorAll('img') as NodeListOf<HTMLImageElement>, {
+    background: '#000000e0',
+  });
+</script>

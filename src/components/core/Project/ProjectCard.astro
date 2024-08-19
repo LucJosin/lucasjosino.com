@@ -8,6 +8,7 @@ import Divider from '../Divider.astro';
 import LinkBox from '../Link/LinkBox.astro';
 import Title from '../Title.astro';
 import MiniProjectCard from './MiniProjectCard.astro';
+import ProjectCardSlider from './ProjectCardSlider.astro';
 
 interface Props {
   project: ProjectModel;
@@ -24,9 +25,12 @@ const { project, titleSize, descSize } = Astro.props as Props;
   <div class="project-card-wrapper">
     <div class="project-card-img-container">
       {
-        project.thumbnail && (
+        project.images ? (
+          <ProjectCardSlider images={[project.thumbnail!, ...project.images]} />
+        ) : (
           <img
             src={project.thumbnail}
+            loading="lazy"
             class="project-card-img"
             title={`${project.title}`}
           />

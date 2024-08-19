@@ -88,8 +88,12 @@ export interface ProjectModel {
 
 export const projects: ProjectModel[] = [
   {
-    thumbnail:
-      'https://repository-images.githubusercontent.com/680511363/f5989e03-eb8b-43bb-988a-fe80abe00210',
+    thumbnail: '/static/projects/hawbrary/hawbrary.png',
+    images: [
+      '/static/projects/hawbrary/hawbrary-1.png',
+      '/static/projects/hawbrary/hawbrary-2.png',
+      '/static/projects/hawbrary/hawbrary-3.png',
+    ],
     title: 'Hawbrary',
     description: {
       en: 'The Hawbrary is a showcase of the HawAPI - A Free and Open Source API for Stranger Things - built with React (NextJs) + Typescript.',
@@ -106,6 +110,12 @@ export const projects: ProjectModel[] = [
   {
     thumbnail:
       'https://repository-images.githubusercontent.com/566830817/1ee86716-d27f-4703-a003-977eca9aee8b',
+    images: [
+      '/static/projects/hawapi/hawapi-1.png',
+      '/static/projects/hawapi/hawapi-2.png',
+      '/static/projects/hawapi/hawapi-3.png',
+      '/static/projects/hawapi/hawapi-4.png',
+    ],
     title: 'HawAPI',
     description: {
       en: 'A Free and Open Source API for Stranger Things built with Java (Spring Boot) and PostgreSQL with support for multiple languages (English and Portuguese).',

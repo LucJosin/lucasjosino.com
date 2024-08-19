@@ -1,0 +1,160 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  images: string[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="project-card-slider-container">
+  <div class="project-card-slides" id="project-card-slides">
+    {
+      images.map((image, index) => (
+        <div class="project-card-slide" data-key={index}>
+          <img src={image} loading="lazy" alt={`Slide ${index + 1}`} />
+        </div>
+      ))
+    }
+  </div>
+  <div class="project-card-slide-index">
+    <span class="project-card-slide-index-value">1</span>/{images.length}
+  </div>
+  <button class="project-card-prev" id="project-card-prev">
+    <Icon name="mdi:navigate-before" />
+  </button>
+  <button class="project-card-next" id="project-card-next">
+    <Icon name="mdi:navigate-next" />
+  </button>
+</div>
+
+<style>
+  .project-card-slider-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+  }
+
+  .project-card-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .project-card-slide {
+    position: relative;
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .project-card-slide img {
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .project-card-slide-index {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: var(--border-size) solid var(--border-color);
+  }
+
+  .project-card-prev,
+  .project-card-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--primary-text-color);
+    padding: 0.4rem;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--border-size) solid var(--border-color);
+  }
+
+  .project-card-prev {
+    left: 0.5rem;
+  }
+
+  .project-card-next {
+    right: 0.5rem;
+  }
+</style>
+
+<script>
+  const sliderContainers = document.querySelectorAll(
+    '.project-card-slider-container'
+  ) as NodeListOf<HTMLDivElement>;
+
+  sliderContainers.forEach((container) => {
+    const slides = container.querySelector(
+      '.project-card-slides'
+    ) as HTMLDivElement;
+    const prevButton = container.querySelector(
+      '.project-card-prev'
+    ) as HTMLButtonElement;
+    const nextButton = container.querySelector(
+      '.project-card-next'
+    ) as HTMLButtonElement;
+    const images = container.querySelectorAll(
+      '.project-card-slide'
+    ) as NodeListOf<HTMLDivElement>;
+    const slideIndex = container.querySelector(
+      '.project-card-slide-index-value'
+    ) as HTMLSpanElement;
+
+    let currentIndex: number = 0;
+    let sliderInterval: number | undefined;
+
+    function updateSlide(position: number): void {
+      if (slides) {
+        slides.style.transform = `translateX(-${position * 100}%)`;
+        slideIndex.textContent = `${position + 1}`;
+      }
+    }
+
+    prevButton?.addEventListener('click', () => {
+      currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+      updateSlide(currentIndex);
+    });
+
+    nextButton?.addEventListener('click', () => {
+      currentIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+      updateSlide(currentIndex);
+    });
+
+    images.forEach((image) => {
+      image.addEventListener('mouseenter', () => {
+        sliderInterval = window.setInterval(() => {
+          currentIndex =
+            currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+          updateSlide(currentIndex);
+        }, 1800);
+      });
+
+      image.addEventListener('mouseleave', () => {
+        if (sliderInterval) {
+          clearInterval(sliderInterval);
+          sliderInterval = undefined;
+        }
+      });
+    });
+
+    // Initialize the first slide for this slider
+    updateSlide(currentIndex);
+  });
+</script>
