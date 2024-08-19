@@ -88,11 +88,12 @@ export interface ProjectModel {
 
 export const projects: ProjectModel[] = [
   {
-    thumbnail: '/static/projects/hawbrary/hawbrary.png',
+    thumbnail:
+      'https://raw.githubusercontent.com/LucJosin/lucasjosino.com/main/public/static/projects/hawbrary/hawbrary.png',
     images: [
-      '/static/projects/hawbrary/hawbrary-1.png',
-      '/static/projects/hawbrary/hawbrary-2.png',
-      '/static/projects/hawbrary/hawbrary-3.png',
+      'https://raw.githubusercontent.com/LucJosin/lucasjosino.com/main/public/static/projects/hawbrary/hawbrary-1.png',
+      'https://raw.githubusercontent.com/LucJosin/lucasjosino.com/main/public/static/projects/hawbrary/hawbrary-2.png',
+      'https://raw.githubusercontent.com/LucJosin/lucasjosino.com/main/public/static/projects/hawbrary/hawbrary-3.png',
     ],
     title: 'Hawbrary',
     description: {
@@ -111,10 +112,10 @@ export const projects: ProjectModel[] = [
     thumbnail:
       'https://repository-images.githubusercontent.com/566830817/1ee86716-d27f-4703-a003-977eca9aee8b',
     images: [
-      '/static/projects/hawapi/hawapi-1.png',
-      '/static/projects/hawapi/hawapi-2.png',
-      '/static/projects/hawapi/hawapi-3.png',
-      '/static/projects/hawapi/hawapi-4.png',
+      'https://raw.githubusercontent.com/LucJosin/lucasjosino.com/main/public/static/projects/hawapi/hawapi-1.png',
+      'https://raw.githubusercontent.com/LucJosin/lucasjosino.com/main/public/static/projects/hawapi/hawapi-2.png',
+      'https://raw.githubusercontent.com/LucJosin/lucasjosino.com/main/public/static/projects/hawapi/hawapi-3.png',
+      'https://raw.githubusercontent.com/LucJosin/lucasjosino.com/main/public/static/projects/hawapi/hawapi-4.png',
     ],
     title: 'HawAPI',
     description: {
