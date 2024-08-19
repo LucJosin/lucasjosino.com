@@ -1,5 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { defaultLocale } from 'i18n';
+import { defaultLocale } from 'i18n/config';
 
 /**
  * Get all posts
