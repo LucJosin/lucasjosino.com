@@ -24,7 +24,11 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
   </div>
 
   <div class="projects-container">
-    {projects.slice(0, 2).map((data) => <ProjectCard project={data} />)}
+    {
+      projects
+        .slice(0, 2)
+        .map((data) => <ProjectCard project={data} titleSize="1.2em" />)
+    }
   </div>
 </section>
 

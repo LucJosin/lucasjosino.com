@@ -60,12 +60,12 @@ const { images } = Astro.props;
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 14px;
-    border: var(--border-size) solid var(--border-color);
+    border: var(--border-size) solid rgba(var(--contrast-color-rgb), 0.5);
   }
 
   .project-card-prev,
@@ -73,17 +73,16 @@ const { images } = Astro.props;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--primary-color);
     color: var(--primary-text-color);
     padding: 0.4rem;
     cursor: pointer;
-    border: none;
     font-size: 18px;
     border-radius: var(--border-radius);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: var(--border-size) solid var(--border-color);
+    border: var(--border-size) solid rgba(var(--contrast-color-rgb), 0.5);
   }
 
   .project-card-prev {
