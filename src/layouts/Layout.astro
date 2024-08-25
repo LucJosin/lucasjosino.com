@@ -5,11 +5,17 @@ import '@styles/global.css';
 import { extractLocaleAndSlug, useLocale } from 'i18n';
 import { defaultLocale } from 'i18n/config';
 import type { LocaleSlug } from 'i18n/types';
+import {
+  getOpenGraphImage,
+  formatOpenGraphFileName,
+  cleanOpenGraphUrl,
+} from 'open-graph';
 
 export interface Props {
+  enableOpenGraph?: boolean;
   title: string;
   description: string;
-  banner?: string;
+  image?: string;
   robots?: string;
   shortlink?: string;
   type?: string;
@@ -25,20 +31,36 @@ export interface Props {
   };
 }
 
-const { slug } = useLocale(Astro.url.pathname);
+const { t } = useLocale(Astro.url.pathname);
 
-const { title, description, banner, robots, shortlink, locale, article } =
-  Astro.props as Props;
+const {
+  robots,
+  shortlink,
+  locale,
+  article,
+  enableOpenGraph = true,
+  locales,
+} = Astro.props as Props;
 
-let locales = Astro.props.locales;
+let { title, description, image } = Astro.props as Props;
 
-// Verify if (normal) page has the same slug in another locale
-if (locales === undefined || locales.length === 0) {
-  const pages = await Astro.glob('pages/**/*.astro');
-  locales = pages
-    .map((page) => extractLocaleAndSlug(page!.url!))
-    .filter((item) => slug === item.slug);
+if (enableOpenGraph && !image) {
+  const path = Astro.url.pathname;
+  const fileName = formatOpenGraphFileName(path);
+
+  const options = {
+    top: t('common.title'),
+    title,
+    color: '#555555',
+    slug: path === '/' ? '' : cleanOpenGraphUrl(path),
+  };
+  image = await getOpenGraphImage('default', options, fileName);
 }
+
+image = Astro.url.origin + image || headConfig.image;
+title = article?.title || title + ' | ' + headConfig.name;
+description = article?.description || description + headConfig.endDescription;
+const canonical = new URL(Astro.url.pathname, Astro.url.origin);
 ---
 
 <!doctype html>
@@ -49,10 +71,7 @@ if (locales === undefined || locales.length === 0) {
     <meta http-equiv="content-language" content={locale || defaultLocale} />
     <meta http-equiv="content-type" content="text/html" />
     <meta name="copyright" content={headConfig.copyright} />
-    <meta
-      name="description"
-      content={article?.description || description + headConfig.endDescription}
-    />
+    <meta name="description" content={description} />
     <meta name="author" content={headConfig.name} />
     <meta name="tags" content={headConfig.tags} />
     <meta name="keywords" content={headConfig.tags} />
@@ -67,65 +86,32 @@ if (locales === undefined || locales.length === 0) {
     <meta name="twitter:creator" content={headConfig.social} />
     <meta name="twitter:site" content={headConfig.social} />
     <meta name="twitter:domain" content={Astro.site} />
-    <meta
-      name="twitter:title"
-      content={article?.title || title + ' | ' + headConfig.name}
-    />
+    <meta name="twitter:title" content={title} />
     <meta
       name="twitter:description"
       property="og:description"
       itemprop="description"
-      content={article?.description || description + headConfig.endDescription}
+      content={description}
     />
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={Astro.site + (banner ?? headConfig.banner)}
+      content={image}
     />
 
     <!-- Open Graph -->
-    <meta
-      property="og:url"
-      content={headConfig.canonical + Astro.url.pathname}
-    />
-    <meta
-      property="og:title"
-      content={article?.title || title + ' | ' + headConfig.name}
-    />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
     <meta property="og:site_name" content={headConfig.name} />
-    <meta
-      property="og:description"
-      content={article?.description || description + headConfig.endDescription}
-    />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content={article ? 'article' : 'portfolio'} />
-    <meta
-      property="og:image"
-      content={Astro.site + (banner ?? headConfig.banner)}
-    />
-    <meta
-      property="og:image:alt"
-      content={article?.title || title + ' | ' + headConfig.name}
-    />
-    <meta
-      property="og:image:secure_url"
-      content={Astro.site + (banner ?? headConfig.banner)}
-    />
-    <meta
-      property="og:image:type"
-      content=`image/${(banner ?? headConfig.banner).split('.').pop()}`
-    />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:secure_url" content={image} />
+    <meta property="og:image:type" content=`image/${image.split('.').pop()}` />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    {
-      import.meta.env.PROD && (
-        <script
-          defer
-          src="https://analytics.us.umami.is/script.js"
-          data-website-id="986fb135-7659-4137-9c30-d74a3af505ca"
-        />
-      )
-    }
     <script is:inline>
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       function getGiscusTheme(theme) {
@@ -152,6 +138,17 @@ if (locales === undefined || locales.length === 0) {
     </script>
 
     {
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          defer
+          src="https://analytics.us.umami.is/script.js"
+          data-website-id="986fb135-7659-4137-9c30-d74a3af505ca"
+        />
+      )
+    }
+
+    {
       article && (
         <>
           <meta
@@ -176,7 +173,7 @@ if (locales === undefined || locales.length === 0) {
         />
       )
     }
-    <link rel="canonical" href={headConfig.canonical + Astro.url.pathname} />
+    <link rel="canonical" href={canonical} />
 
     <!-- Icons -->
     <link
@@ -216,7 +213,7 @@ if (locales === undefined || locales.length === 0) {
     <meta name="generator" content={Astro.generator} />
 
     <!-- Title -->
-    <title>{article?.title || title + ' | ' + headConfig.name}</title>
+    <title>{title}</title>
   </head>
   <body>
     <main>
