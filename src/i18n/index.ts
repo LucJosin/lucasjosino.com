@@ -47,6 +47,7 @@ export function extractLocaleAndSlug(path: string): LocaleSlug {
  * // url = 'about'
  * console.log(normalizeUrl(url))
  * // Output: '/about/'
+ * ```
  */
 export function normalizeUrl(url: string): string {
   url = url.trim();
