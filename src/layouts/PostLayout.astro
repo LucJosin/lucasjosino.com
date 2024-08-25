@@ -22,7 +22,7 @@ import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
 import { useLocale } from 'i18n';
 import type { LocaleSlug } from 'i18n/types';
-import { getPostImage } from 'open-graph/generator';
+import { getOpenGraphImage } from 'open-graph';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
 
@@ -48,9 +48,16 @@ const { linkedin, twitter, reddit, bluesky } = getSocialsShare(
   post.data.tags
 );
 
-const image = import.meta.env.PROD
-  ? await getPostImage(post)
-  : 'static/default-og.png';
+const imagePath = await getOpenGraphImage(
+  'blog',
+  {
+    title: post.data.title,
+    language: post.data.language,
+    category: post.data.category,
+    color: post.data.color,
+  },
+  post.slug
+);
 
 const article = {
   title: post.data.title,
@@ -66,7 +73,7 @@ const article = {
   title={title}
   description={description}
   robots={post.data.isIndexable ? 'index,follow' : 'noindex,nofollow'}
-  banner={image}
+  image={imagePath}
   article={article}
   shortlink={post.data.shortlink}
   locale={post.data.language}

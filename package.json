@@ -9,7 +9,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sync": "astro sync"
+    "sync": "astro sync",
+    "clean": "rm -rf ./dist",
+    "og:clean": "rm -rf ./public/static/open-graph/*.png"
   },
   "devDependencies": {
     "@adapttive/remark-responsive-tables": "^1.0.1",
@@ -40,7 +42,7 @@
     "remark-numbered-footnote-labels": "^1.1.0",
     "remark-toc": "^9.0.0",
     "satori": "^0.10.14",
-    "satori-html": "^0.3.2",
+    "satori-og": "^1.0.0",
     "svgo": "2.8.0",
     "typescript": "^5.5.4"
   },
