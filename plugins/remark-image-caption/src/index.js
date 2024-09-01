@@ -5,6 +5,7 @@ export default function remarkImageCaption() {
     visit(tree, 'image', (imageNode) => {
       const src = imageNode.url;
       const alt = imageNode.alt;
+      const title = imageNode.title || alt || '';
 
       if (!src.match('\\.(jpeg|jpg|gif|png|webp|svg)$')) return;
 
@@ -13,7 +14,7 @@ export default function remarkImageCaption() {
         newNode = {
           type: 'html',
           value: `<figure class="remark-image-caption">
-                    <img src=${src} alt="${alt}" loading="lazy" decoding="async" />
+                    <img src=${src} alt="${alt}" title="${title}" loading="lazy" decoding="async" />
                     <figcaption>
                       ${alt} - 
                       <a 
