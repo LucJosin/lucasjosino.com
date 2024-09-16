@@ -37,6 +37,13 @@ const { images } = Astro.props;
     border-radius: var(--border-radius);
   }
 
+  .project-card-slider-container:hover .project-card-slide-index,
+  .project-card-slider-container:hover .project-card-prev,
+  .project-card-slider-container:hover .project-card-next {
+    pointer-events: all;
+    opacity: 1;
+  }
+
   .project-card-slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -66,6 +73,9 @@ const { images } = Astro.props;
     border-radius: 5px;
     font-size: 14px;
     border: var(--border-size) solid rgba(var(--contrast-color-rgb), 0.5);
+    pointer-events: none;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
   }
 
   .project-card-prev,
@@ -83,6 +93,9 @@ const { images } = Astro.props;
     align-items: center;
     justify-content: center;
     border: var(--border-size) solid rgba(var(--contrast-color-rgb), 0.5);
+    pointer-events: none;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
   }
 
   .project-card-prev {
@@ -91,6 +104,19 @@ const { images } = Astro.props;
 
   .project-card-next {
     right: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .project-card-slide-index {
+      pointer-events: all;
+      opacity: 1;
+    }
+
+    .project-card-prev,
+    .project-card-next {
+      pointer-events: all;
+      opacity: 1;
+    }
   }
 </style>
 
