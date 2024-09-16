@@ -2,7 +2,7 @@
 import I18NHead from '@components/core/I18nHead.astro';
 import headConfig from '@constants/head';
 import '@styles/global.css';
-import { extractLocaleAndSlug, useLocale } from 'i18n';
+import { useLocale } from 'i18n';
 import { defaultLocale } from 'i18n/config';
 import type { LocaleSlug } from 'i18n/types';
 import {
@@ -222,8 +222,8 @@ const canonical = new URL(Astro.url.pathname, Astro.url.origin);
     <style>
       /* Scroll */
       :global(::-webkit-scrollbar) {
-        height: 8px;
-        width: 8px;
+        height: 4px;
+        width: 4px;
         background-color: var(--secondary-color);
       }
 
