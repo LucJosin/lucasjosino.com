@@ -1,7 +1,8 @@
 ---
 import Tags from '@components/data/Tags.astro';
-import type { ProjectModel } from '@constants/projects';
 import { Icon } from 'astro-icon/components';
+import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 import { useLocale } from 'i18n';
 import Description from '../Description.astro';
 import Divider from '../Divider.astro';
@@ -11,12 +12,12 @@ import MiniProjectCard from './MiniProjectCard.astro';
 import ProjectCardSlider from './ProjectCardSlider.astro';
 
 interface Props {
-  project: ProjectModel;
+  project: CollectionEntry<'projects'>;
   titleSize?: string;
   descSize?: string;
 }
 
-const { locale, t } = useLocale(Astro.url.pathname);
+const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const { project, titleSize, descSize } = Astro.props as Props;
 ---
@@ -25,14 +26,16 @@ const { project, titleSize, descSize } = Astro.props as Props;
   <div class="project-card-wrapper">
     <div class="project-card-img-container">
       {
-        project.images ? (
-          <ProjectCardSlider images={[project.thumbnail!, ...project.images]} />
+        project.data.images && project.data.showImagesInSlider? (
+          <ProjectCardSlider
+            images={[project.data.thumbnail!, ...project.data.images]}
+          />
         ) : (
           <img
-            src={project.thumbnail}
+            src={project.data.thumbnail}
             loading="lazy"
             class="project-card-img"
-            title={`${project.title}`}
+            title={`${project.data.title}`}
           />
         )
       }
@@ -41,16 +44,17 @@ const { project, titleSize, descSize } = Astro.props as Props;
     <div class="project-card-container">
       <div class="project-card-header">
         <div class="project-card-title">
-          <Title title={project.title} fontSize={titleSize} margin="0" />
+          <Title title={project.data.title} fontSize={titleSize} margin="0" />
           <span
             class="project-card-status"
-            title={project.status.description[locale]}
-            >{project.status.name[locale]}</span
+            title={t(
+              `project.project_status.${project.data.status}.description`
+            )}>{t(`project.project_status.${project.data.status}.title`)}</span
           >
           {
-            project.category === 'Org' && (
+            project.data.category === 'Org' && (
               <a
-                href={project.org}
+                href={project.data.org}
                 class="project-card-org"
                 title={t('projects.org_alt')}
                 rel="noopener noreferrer"
@@ -63,77 +67,87 @@ const { project, titleSize, descSize } = Astro.props as Props;
           }
         </div>
         <div class="project-card-language">
-          {project.language}
-          <Icon name={project.icon} />
+          {project.data.codeLanguage}
+          <Icon name={project.data.icon} />
         </div>
       </div>
       <Divider width="100%" margin="0 0" />
       <Description
-        value={project.description[locale]}
-        title={project.description[locale]}
+        value={project.data.description}
+        title={project.data.description}
         fontSize={descSize}
         margin="0"
         align={false}
         maxLine="3"
       />
       <div class="project-card-bottom">
-        <Tags values={project.tags} target="tags" />
+        <Tags values={project.data.tags} target="tags" />
         <div class="project-card-links">
           {
-            project.git && (
+            project.data.git && (
               <LinkBox
-                href={project.git}
+                href={project.data.git}
                 icon="simple-icons:github"
                 title="Github"
-                alt={`${project.title} - Github`}
+                alt={`${project.data.title} - Github`}
                 isLocal={false}
                 padding="0.5rem"
               />
             )
           }
           {
-            project.url && (
+            project.data.url && (
               <LinkBox
-                href={project.url}
+                href={project.data.url}
                 icon="mdi:open-in-new"
-                title="Demo"
-                alt={`${project.title} - Demo`}
+                title="Preview"
+                alt={`${project.data.title} - Preview`}
                 isLocal={false}
                 padding="0.5rem"
               />
             )
           }
           {
-            project.article && (
+            project.data.article && (
               <LinkBox
-                href={project.article[locale]}
+                href={project.data.article}
                 icon="ic:outline-article"
                 title="Read"
-                alt={`${project.title} - Blog post`}
+                alt={`${project.data.title} - Blog post`}
                 isLocal={true}
                 padding="0.5rem"
               />
             )
           }
+          <LinkBox
+            href={localizePath(`/projects/${project.data.permSlug}/`)}
+            icon="mdi:plus"
+            title="More"
+            alt={`${project.data.title} - See more`}
+            isLocal={true}
+            padding="0.5rem"
+          />
         </div>
       </div>
     </div>
   </div>
 
   {
-    project.subProjects && (
+    project.data.subProjects && (
       <div class="project-card-sub-projects-wrapper">
         <h3>{t('projects.repositories')}</h3>
         <div class="project-card-sub-projects">
-          {project.subProjects.map((sub) => {
+          {project.data.subProjects.map(async (sub) => {
+            const subProject = await getEntry(sub);
             return (
               <MiniProjectCard
-                title={sub.title}
-                description={sub.description[locale]}
-                url={sub.url}
-                git={sub.git}
-                language={sub.language}
-                icon={sub.icon}
+                slug={subProject.data.permSlug}
+                title={subProject.data.title}
+                description={subProject.data.description}
+                url={subProject.data.url}
+                git={subProject.data.git}
+                codeLanguage={subProject.data.codeLanguage}
+                icon={subProject.data.icon}
               />
             );
           })}

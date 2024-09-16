@@ -2,10 +2,11 @@
 import Link from '@components/core/Link/Link.astro';
 import ProjectCard from '@components/core/Project/ProjectCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
-import { projects } from '@constants/projects';
+import { getAllProjects } from '@lib/projects';
 import { useLocale } from 'i18n';
 
-const { t, localizePath } = useLocale(Astro.url.pathname);
+const { locale, t, localizePath } = useLocale(Astro.url.pathname);
+const projects = await getAllProjects(true, locale);
 ---
 
 <section class="projects-section">

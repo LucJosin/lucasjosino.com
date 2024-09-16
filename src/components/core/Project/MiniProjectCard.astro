@@ -6,15 +6,17 @@ import Link from '../Link/Link.astro';
 import Title from '../Title.astro';
 
 interface Props {
+  slug: string;
   title: string;
   description: string;
   icon: string;
-  language: string;
+  codeLanguage: string;
   url?: string;
   git?: string;
 }
 
-const { title, description, language, url, git, icon } = Astro.props as Props;
+const { slug, title, description, codeLanguage, url, git, icon } =
+  Astro.props as Props;
 ---
 
 <div class="mini-project-item">
@@ -38,16 +40,22 @@ const { title, description, language, url, git, icon } = Astro.props as Props;
             <Link
               href={url}
               icon="mdi:external-link"
-              alt={title + ' - Demo'}
+              alt={title + ' - Preview'}
               isLocal={false}
               hasBorderBottom={false}
             />
           )
         }
+        <Link
+          href={`/projects/${slug}/`}
+          icon="mdi:plus"
+          alt={title + ' - See more'}
+          hasBorderBottom={false}
+        />
       </div>
     </div>
     <div class="mini-item-language">
-      {language}
+      {codeLanguage}
       <Icon name={icon} />
     </div>
   </div>
