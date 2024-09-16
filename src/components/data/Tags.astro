@@ -11,6 +11,7 @@ interface Props {
   id?: string;
   center?: boolean;
   active?: boolean;
+  wrapContent?: boolean;
 }
 
 const { localizePath, t, locale } = useLocale(Astro.url.pathname);
@@ -23,8 +24,10 @@ const {
   center = false,
   showLength = false,
   active = false,
+  wrapContent = true,
 } = Astro.props;
 const justifyContent = center ? 'center' : 'initial';
+const flexWrap = wrapContent ? 'wrap' : 'nowrap';
 ---
 
 <div id={id}>
@@ -48,11 +51,12 @@ const justifyContent = center ? 'center' : 'initial';
   </div>
 </div>
 
-<style define:vars={{ justifyContent }}>
+<style define:vars={{ justifyContent, flexWrap }}>
   .tags-list {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
+    flex-wrap: var(--flexWrap);
+    overflow: hidden;
     justify-content: var(--justifyContent);
     gap: 0.5rem;
     font-size: 0.9em;
