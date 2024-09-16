@@ -1,6 +1,7 @@
 import { createSatoriOgInstance, type SatoriOptions } from 'satori-og';
 import blogRender from './renders/blog';
 import defaultRender from './renders/default';
+import projectRender from './renders/project';
 
 const SATORI_OPTIONS: SatoriOptions = {
   width: 1200,
@@ -24,6 +25,7 @@ const SATORI_OPTIONS: SatoriOptions = {
 const renders = {
   default: defaultRender,
   blog: blogRender,
+  project: projectRender,
 } as const;
 
 type Render = keyof typeof renders;
