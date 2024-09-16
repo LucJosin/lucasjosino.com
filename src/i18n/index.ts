@@ -73,7 +73,7 @@ const translations: { [key: string]: string | NestedTranslations } = {
 };
 
 interface useLocaleReturn {
-  locale: string;
+  locale: Locale;
   slug: string;
   t: (
     key: TranslationKeys,

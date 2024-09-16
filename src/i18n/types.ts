@@ -10,7 +10,7 @@ export type Locale = (typeof locales)[number];
  * Locale and slug extracted from a path
  */
 export type LocaleSlug = {
-  locale: string;
+  locale: Locale;
   slug: string;
 };
 
