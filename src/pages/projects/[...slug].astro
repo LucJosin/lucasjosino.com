@@ -1,0 +1,198 @@
+---
+import Divider from '@components/core/Divider.astro';
+import Container from '@components/data/Container.astro';
+import Tags from '@components/data/Tags.astro';
+import Layout from '@layouts/Layout.astro';
+import '@styles/markdown.css';
+import LinkBox from '@components/core/Link/LinkBox.astro';
+import { getStaticProjectPaths } from '@lib/projects';
+import { useLocale } from 'i18n';
+import { getOpenGraphImage } from 'open-graph';
+
+export const getStaticPaths = getStaticProjectPaths();
+
+const { t } = useLocale(Astro.url.pathname);
+
+const { project } = Astro.props;
+let { locales } = Astro.props;
+const { Content } = await project.render();
+
+locales = locales.map((post) => {
+  return {
+    locale: post.locale,
+    slug: `/projects/${post.slug}`,
+  };
+});
+
+const imagePath = await getOpenGraphImage(
+  'project',
+  {
+    title: project.data.title,
+    description: project.data.description,
+    language: project.data.language,
+    target: project.data.target?.join(', ') || project.data.codeLanguage,
+    color: project.data.color,
+  },
+  project.slug
+);
+---
+
+<Layout
+  title={`${project.data.title} - Project`}
+  description={project.data.description}
+  locales={locales}
+  image={imagePath}
+>
+  <Container gap="1.5rem">
+    {
+      project.data.thumbnail && (
+        <div class="project-image">
+          <img src={project.data.thumbnail} alt="Project 1" />
+        </div>
+      )
+    }
+    <div class="project-initial">
+      <h1 class="project-title">{project.data.title}</h1>
+      <div class="project-links">
+        {
+          project.data.images && (
+            <LinkBox
+              href="#images"
+              title={t('project.images')}
+              alt={t('project.images_alt')}
+              icon="mdi:images"
+              padding="0.6rem"
+            />
+          )
+        }
+        {
+          project.data.url && (
+            <LinkBox
+              href={project.data.url}
+              title="Preview"
+              alt={t('project.preview_alt')}
+              icon="mdi:external-link"
+              isLocal={false}
+              padding="0.6rem"
+            />
+          )
+        }
+        {
+          project.data.git && (
+            <LinkBox
+              href={project.data.git}
+              title="GitHub"
+              alt={t('project.code_alt')}
+              icon="simple-icons:github"
+              isLocal={false}
+              padding="0.6rem"
+            />
+          )
+        }
+        {
+          project.data.article && (
+            <LinkBox
+              href={project.data.article}
+              title={t('project.article')}
+              alt={t('project.article_alt')}
+              icon="mdi:file-document-outline"
+              padding="0.6rem"
+            />
+          )
+        }
+      </div>
+    </div>
+    <Divider />
+    <article class="post-content post-content-lg">
+      <Content />
+    </article>
+    <Divider margin="0 1rem" />
+    <div class="project-info">
+      <div class="project-info-item project-category">
+        <h3>{t('project.target')}</h3>
+        <p>{project.data.target?.join(', ')}</p>
+      </div>
+      <div class="project-info-item project-category">
+        <h3>{t('project.type')}</h3>
+        <p>{project.data.category}</p>
+      </div>
+      <div class="project-info-item project-stauts">
+        <h3>{t('project.status')}</h3>
+        <p>{t(`project.project_status.${project.data.status}.title`)}</p>
+      </div>
+      <div class="project-info-item project-language">
+        <h3>{t('project.language')}</h3>
+        <p>{project.data.codeLanguage}</p>
+      </div>
+    </div>
+    <div class="project-tags">
+      <h3>Tags</h3>
+      <Tags values={project.data.tags} target="tags" />
+    </div>
+    {
+      project.data.images && (
+        <div class="project-images-container">
+          <h2 id="images">{t('project.images')}</h2>
+          <div class="project-images">
+            {project.data.images.map((image, index) => (
+              <img src={image} alt={`Image ${index}`} class="project-image" />
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </Container>
+</Layout>
+
+<style>
+  .project-initial {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .project-info-item {
+    flex: 1;
+  }
+
+  .project-tags {
+    width: 100%;
+  }
+
+  .project-title {
+    font-size: 2.5em;
+  }
+
+  .project-info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 3rem;
+  }
+
+  .project-images-container {
+    width: 100%;
+  }
+
+  .project-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+</style>
+
+<script>
+  import mediumZoom from 'medium-zoom';
+  mediumZoom(document.querySelectorAll('img') as NodeListOf<HTMLImageElement>, {
+    background: '#000000e0',
+  });
+</script>

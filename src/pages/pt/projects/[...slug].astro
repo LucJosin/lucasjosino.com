@@ -1,0 +1,13 @@
+---
+import { getStaticProjectPaths } from '@lib/projects';
+import Page from '../../projects/[...slug].astro';
+import { contextLocale } from '../_context';
+
+export const getStaticPaths = getStaticProjectPaths({
+  locale: contextLocale,
+});
+
+const { props } = Astro;
+---
+
+<Page {...props} />
