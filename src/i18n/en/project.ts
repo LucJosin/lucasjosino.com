@@ -1,4 +1,5 @@
 export const project = {
+  title: 'Project',
   target: 'Target',
   type: 'Type',
   status: 'Status',

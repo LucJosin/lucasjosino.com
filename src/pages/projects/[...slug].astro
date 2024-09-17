@@ -38,7 +38,7 @@ const imagePath = await getOpenGraphImage(
 ---
 
 <Layout
-  title={`${project.data.title} - Project`}
+  title={`${project.data.title} - ${t('project.title')}`}
   description={project.data.description}
   locales={locales}
   image={imagePath}

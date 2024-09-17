@@ -104,6 +104,7 @@ export interface i18nSchema {
     org_alt: string;
   };
   project: {
+    title: string;
     target: string;
     type: string;
     status: string;
