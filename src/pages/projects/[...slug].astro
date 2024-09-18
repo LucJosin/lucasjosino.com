@@ -44,13 +44,6 @@ const imagePath = await getOpenGraphImage(
   image={imagePath}
 >
   <Container gap="1.5rem">
-    {
-      project.data.thumbnail && (
-        <div class="project-image">
-          <img src={project.data.thumbnail} alt="Project 1" />
-        </div>
-      )
-    }
     <div class="project-initial">
       <h1 class="project-title">{project.data.title}</h1>
       <div class="project-links">
@@ -102,6 +95,13 @@ const imagePath = await getOpenGraphImage(
         }
       </div>
     </div>
+    {
+      project.data.thumbnail && (
+        <div class="project-image">
+          <img src={project.data.thumbnail} alt="Project 1" />
+        </div>
+      )
+    }
     <Divider />
     <article class="post-content post-content-lg">
       <Content />
@@ -188,6 +188,18 @@ const imagePath = await getOpenGraphImage(
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
   }
+
+  /* @media (max-width: 520px) {
+    .project-title {
+      width: 100%;
+      text-align: center;
+    }
+
+    .project-links {
+      width: 100%;
+      justify-content: center;
+    }
+  } */
 </style>
 
 <script>
