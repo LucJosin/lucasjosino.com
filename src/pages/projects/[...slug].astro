@@ -8,6 +8,9 @@ import LinkBox from '@components/core/Link/LinkBox.astro';
 import { getStaticProjectPaths } from '@lib/projects';
 import { useLocale } from 'i18n';
 import { getOpenGraphImage } from 'open-graph';
+import MiniProjectCard from '@components/core/Project/MiniProjectCard.astro';
+import { getEntry } from 'astro:content';
+import BackToTop from '@components/core/BackToTop.astro';
 
 export const getStaticPaths = getStaticProjectPaths();
 
@@ -44,6 +47,8 @@ const imagePath = await getOpenGraphImage(
   image={imagePath}
 >
   <Container gap="1.5rem">
+    <BackToTop />
+
     <div class="project-initial">
       <h1 class="project-title">{project.data.title}</h1>
       <div class="project-links">
@@ -141,6 +146,29 @@ const imagePath = await getOpenGraphImage(
         </div>
       )
     }
+    {
+      project.data.subProjects && (
+        <div class="project-subprojects-container">
+          <h2>{t('projects.repositories')}</h2>
+          <div class="project-subprojects">
+            {project.data.subProjects.map(async (sub) => {
+              const subProject = await getEntry(sub);
+              return (
+                <MiniProjectCard
+                  slug={subProject.data.permSlug}
+                  title={subProject.data.title}
+                  description={subProject.data.description}
+                  url={subProject.data.url}
+                  git={subProject.data.git}
+                  codeLanguage={subProject.data.codeLanguage}
+                  icon={subProject.data.icon}
+                />
+              );
+            })}
+          </div>
+        </div>
+      )
+    }
   </Container>
 </Layout>
 
@@ -189,6 +217,20 @@ const imagePath = await getOpenGraphImage(
     gap: 1rem;
   }
 
+  .project-subprojects-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .project-subprojects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
   /* @media (max-width: 520px) {
     .project-title {
       width: 100%;
@@ -203,7 +245,17 @@ const imagePath = await getOpenGraphImage(
 </style>
 
 <script>
+  import {
+    listenToBackToTop,
+    showHideBackToTopButton,
+  } from '@lib/browser/back-to-top';
   import mediumZoom from 'medium-zoom';
+
+  window.onscroll = () => {
+    listenToBackToTop();
+    showHideBackToTopButton();
+  };
+
   mediumZoom(document.querySelectorAll('img') as NodeListOf<HTMLImageElement>, {
     background: '#000000e0',
   });
