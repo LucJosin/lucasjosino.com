@@ -5,6 +5,7 @@ import { categories } from './categories';
 import { common } from './common';
 import { home } from './home';
 import { post } from './post';
+import { project } from './project';
 import { projects } from './projects';
 import { tags } from './tags';
 
@@ -17,5 +18,6 @@ export const enLocale = {
   home,
   post,
   projects,
+  project,
   tags,
 };

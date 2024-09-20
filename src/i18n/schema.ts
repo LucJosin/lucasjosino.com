@@ -103,6 +103,41 @@ export interface i18nSchema {
     org: string;
     org_alt: string;
   };
+  project: {
+    title: string;
+    target: string;
+    type: string;
+    status: string;
+    language: string;
+    article: string;
+    article_alt: string;
+    images: string;
+    images_alt: string;
+    code_alt: string;
+    preview_alt: string;
+    project_status: {
+      in_progress: {
+        title: string;
+        description: string;
+      };
+      on_hold: {
+        title: string;
+        description: string;
+      };
+      completed: {
+        title: string;
+        description: string;
+      };
+      inactive: {
+        title: string;
+        description: string;
+      };
+      active: {
+        title: string;
+        description: string;
+      };
+    };
+  };
   tags: {
     title: string;
     description: string;
