@@ -12,7 +12,6 @@ export default function defaultRender(
         display: 'flex',
         background: `linear-gradient(to bottom right, ${color} 5%, #111 30%)`,
         position: 'relative',
-        color: '#fff',
       }}
     >
       <div
@@ -34,8 +33,8 @@ export default function defaultRender(
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          textAlign: 'center',
           padding: '2.5rem',
+          color: '#fff',
           position: 'relative',
         }}
       >
@@ -45,68 +44,55 @@ export default function defaultRender(
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            justifyContent: 'center',
+            alignItems: 'flex-start',
+            justifyContent: 'space-around',
             border: '2px solid #fff',
-            padding: '2.5rem',
+            padding: '0 6rem',
             borderRadius: '10px',
             position: 'relative',
           }}
         >
-          <span
-            style={{
-              width: '100%',
-              fontWeight: 'bold',
-              fontSize: '1.6em',
-              position: 'absolute',
-              top: '0',
-              padding: '2rem',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            {top}
-          </span>
-          <span
-            style={{
-              fontWeight: 'bold',
-              fontSize: '1.3em',
-              position: 'absolute',
-              bottom: '0',
-              padding: '2rem',
-            }}
-          >
-            {`~/lucasjosino.com/${slug}`}
-          </span>
           <div
             style={{
+              width: '100%',
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
+              gap: '1rem',
             }}
           >
-            <h1
+            <h3
               style={{
-                width: '90%',
-                fontSize: '5em',
-                fontWeight: 'bold',
-                margin: '0',
+                border: '1.5px solid #fff',
+                padding: '0.5rem 1rem',
+                borderRadius: '10px',
               }}
             >
-              Lucas Josino
-            </h1>
-            <h1
+              {top}
+            </h3>
+            <div
               style={{
-                width: '90%',
-                fontSize: '3em',
-                fontWeight: 'bold',
-                margin: '0',
-                textTransform: 'capitalize',
+                height: '2px',
+                flex: '1',
+                backgroundColor: 'white',
               }}
-            >
-              {title}
-            </h1>
+            ></div>
+          </div>
+          <h1
+            style={{
+              fontSize: '3.5em',
+            }}
+          >
+            {title}
+          </h1>
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontSize: '1.2em',
+            }}
+          >
+            <h3>{`~/lucasjosino.com/${slug}`}</h3>
           </div>
         </div>
       </div>

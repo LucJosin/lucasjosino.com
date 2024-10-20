@@ -17,6 +17,7 @@ import PostRelated from '@components/data/Post/PostRelated.astro';
 import PostShare from '@components/data/Post/PostShare.astro';
 import Tags from '@components/data/Tags.astro';
 import headConfig from '@constants/head';
+import { getFormatedDate } from '@lib/date';
 import { getSocialsShare } from '@lib/share';
 import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
@@ -48,6 +49,8 @@ const { linkedin, twitter, reddit, bluesky } = getSocialsShare(
   post.data.tags
 );
 
+const readTime = getReadTime(post.body);
+
 const imagePath = await getOpenGraphImage(
   'blog',
   {
@@ -55,6 +58,8 @@ const imagePath = await getOpenGraphImage(
     language: post.data.language,
     category: post.data.category,
     color: post.data.color,
+    readTime: readTime,
+    publishedAt: getFormatedDate(post.data.publishedAt),
   },
   post.slug
 );
@@ -113,7 +118,7 @@ const article = {
       </PostInfoItem>
 
       <PostInfoItem icon="mdi:clock-outline">
-        {getReadTime(post.body)}
+        {readTime}
       </PostInfoItem>
 
       {

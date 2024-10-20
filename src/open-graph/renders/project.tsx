@@ -26,15 +26,6 @@ export default function projectRender(
           position: 'absolute',
         }}
       ></div>
-      <img
-        style={{
-          height: '100%',
-          width: '100%',
-          opacity: '0.2',
-          position: 'absolute',
-        }}
-        src="https://www.lucasjosino.com/static/background-og.png"
-      />
       <div
         style={{
           height: '100%',
@@ -42,7 +33,6 @@ export default function projectRender(
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          textAlign: 'center',
           padding: '2.5rem',
           color: '#fff',
           position: 'relative',
@@ -54,65 +44,78 @@ export default function projectRender(
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            justifyContent: 'center',
+            alignItems: 'flex-start',
+            justifyContent: 'space-around',
             border: '2px solid #fff',
-            padding: '2.5rem',
+            padding: '0 6rem',
             borderRadius: '10px',
             position: 'relative',
           }}
         >
-          <span
-            style={{
-              fontWeight: 'bold',
-              fontSize: '1.2em',
-              position: 'absolute',
-              bottom: '0',
-              padding: '2rem',
-            }}
-          >
-            {language === 'en'
-              ? '~/lucasjosino.com/projects'
-              : `~/lucasjosino.com/${language}/projects`}
-          </span>
-          <span
-            style={{
-              fontWeight: 'bold',
-              fontSize: '1.6em',
-              position: 'absolute',
-              top: '0',
-              padding: '2rem',
-            }}
-          >
-            {target.toUpperCase()}
-          </span>
           <div
             style={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+            }}
+          >
+            <h3
+              style={{
+                border: '1.5px solid #fff',
+                padding: '0.5rem 1rem',
+                borderRadius: '10px',
+              }}
+            >
+              {target.toUpperCase()}
+            </h3>
+            <div
+              style={{
+                height: '2px',
+                flex: '1',
+                backgroundColor: 'white',
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              width: '100%',
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
+              gap: '1rem',
             }}
           >
             <h1
               style={{
-                width: '90%',
                 fontSize: '3.5em',
-                fontWeight: 'bold',
-                margin: '0',
+                margin: 0,
               }}
             >
               {title}
             </h1>
             <p
               style={{
-                width: '90%',
-                fontSize: '2em',
-                margin: '0.5rem 0',
+                margin: 0,
+                fontSize: '1.6em',
+                fontWeight: 300,
               }}
             >
               {description}
             </p>
+          </div>
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontSize: '1.2em',
+            }}
+          >
+            <h3>
+              {language === 'en'
+                ? '~/lucasjosino.com/projects'
+                : `~/lucasjosino.com/${language}/projects`}
+            </h3>
           </div>
         </div>
       </div>

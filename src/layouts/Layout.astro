@@ -44,12 +44,16 @@ const {
 
 let { title, description, image } = Astro.props as Props;
 
+title = article?.title || title + ' | ' + headConfig.name;
+description = article?.description || description + headConfig.endDescription;
+const canonical = new URL(Astro.url.pathname, Astro.url.origin);
+
 if (enableOpenGraph && !image) {
   const path = Astro.url.pathname;
   const fileName = formatOpenGraphFileName(path);
 
   const options = {
-    top: t('common.title'),
+    top: t('common.title').toLocaleUpperCase(),
     title,
     color: '#555555',
     slug: path === '/' ? '' : cleanOpenGraphUrl(path),
@@ -58,9 +62,6 @@ if (enableOpenGraph && !image) {
 }
 
 image = Astro.url.origin + image || headConfig.image;
-title = article?.title || title + ' | ' + headConfig.name;
-description = article?.description || description + headConfig.endDescription;
-const canonical = new URL(Astro.url.pathname, Astro.url.origin);
 ---
 
 <!doctype html>

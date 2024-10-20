@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 export default function blogRender(options: Record<string, string>): ReactNode {
-  const { title, color, language, category } = options;
+  const { title, color, language, category, readTime, publishedAt } = options;
   return (
     <div
       style={{
@@ -24,15 +24,6 @@ export default function blogRender(options: Record<string, string>): ReactNode {
           position: 'absolute',
         }}
       ></div>
-      <img
-        style={{
-          height: '100%',
-          width: '100%',
-          opacity: '0.2',
-          position: 'absolute',
-        }}
-        src="https://www.lucasjosino.com/static/background-og.png"
-      />
       <div
         style={{
           height: '100%',
@@ -40,7 +31,6 @@ export default function blogRender(options: Record<string, string>): ReactNode {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          textAlign: 'center',
           padding: '2.5rem',
           color: '#fff',
           position: 'relative',
@@ -52,56 +42,62 @@ export default function blogRender(options: Record<string, string>): ReactNode {
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            justifyContent: 'center',
+            alignItems: 'flex-start',
+            justifyContent: 'space-around',
             border: '2px solid #fff',
-            padding: '2.5rem',
+            padding: '0 6rem',
             borderRadius: '10px',
             position: 'relative',
           }}
         >
-          <span
-            style={{
-              fontWeight: 'bold',
-              fontSize: '1.2em',
-              position: 'absolute',
-              bottom: '0',
-              padding: '2rem',
-            }}
-          >
-            {language === 'en'
-              ? '~/lucasjosino.com/blog'
-              : `~/lucasjosino.com/${language}/blog`}
-          </span>
-          <span
-            style={{
-              fontWeight: 'bold',
-              fontSize: '1.6em',
-              position: 'absolute',
-              top: '0',
-              padding: '2rem',
-            }}
-          >
-            {category.toUpperCase()}
-          </span>
           <div
             style={{
+              width: '100%',
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
+              gap: '1rem',
             }}
           >
-            <h1
+            <h3
               style={{
-                width: '90%',
-                fontSize: '3.5em',
-                fontWeight: 'bold',
-                margin: '0',
+                border: '1.5px solid #fff',
+                padding: '0.5rem 1rem',
+                borderRadius: '10px',
               }}
             >
-              {title}
-            </h1>
+              {category.toLocaleUpperCase()}
+            </h3>
+            <div
+              style={{
+                height: '2px',
+                flex: '1',
+                backgroundColor: 'white',
+              }}
+            ></div>
+          </div>
+          <h1
+            style={{
+              fontSize: '3.5em',
+            }}
+          >
+            {title}
+          </h1>
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontSize: '1.2em',
+            }}
+          >
+            <h3>
+              {language === 'en'
+                ? '~/lucasjosino.com/blog'
+                : `~/lucasjosino.com/${language}/blog`}
+            </h3>
+            <h3>
+              {readTime} • {publishedAt}
+            </h3>
           </div>
         </div>
       </div>
