@@ -174,11 +174,19 @@ export default defineConfig({
       remarkImageCaption,
       responsiveTables,
       remarkCodeSet,
-      remarkToc,
+      [
+        remarkToc,
+        {
+          heading: 'Summary|Sumário',
+        },
+      ],
       [
         remarkCollapse,
         {
-          test: 'Table of contents',
+          test: 'Summary|Sumário',
+          summary: (str) => {
+            return str === 'Summary' ? 'Show contents' : 'Mostrar conteúdos';
+          },
         },
       ],
     ],

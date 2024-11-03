@@ -3256,7 +3256,6 @@ __metadata:
     remark-numbered-footnote-labels: ^1.1.0
     remark-toc: ^9.0.0
     satori: ^0.10.14
-    satori-html: ^0.3.2
     satori-og: ^1.0.0
     svgo: 2.8.0
     typescript: ^5.5.4
@@ -3297,10 +3296,10 @@ __metadata:
 
 "@lucjosin/remark-image-caption@file:./plugins/remark-image-caption::locator=%40lucjosin%2Flucasjosino.com%40workspace%3A.":
   version: 1.0.0
-  resolution: "@lucjosin/remark-image-caption@file:./plugins/remark-image-caption#./plugins/remark-image-caption::hash=bc7280&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
+  resolution: "@lucjosin/remark-image-caption@file:./plugins/remark-image-caption#./plugins/remark-image-caption::hash=1bc00f&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
   dependencies:
     unist-util-visit: ^5.0.0
-  checksum: 5871ce8a80324142401b61b404795e27bf109451ee0425f2d99f486608f9411f03bdd6fc9991575945c6b46cfb917e6854060ea4d95d62ee7ab9a15d366df64a
+  checksum: 7302f8b5fab380f781f66751bc9269bddea42d31f201a10a0b1d60a32aba6de3e3af6fbc54b607a9de3d7e3ff20c0b1d279911272af5eb18eae9e5c907423396
   languageName: node
   linkType: hard
 
@@ -12351,15 +12350,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"satori-html@npm:^0.3.2":
-  version: 0.3.2
-  resolution: "satori-html@npm:0.3.2"
-  dependencies:
-    ultrahtml: ^1.2.0
-  checksum: ca39ceb7618325a2edc709582e0e764c821502720760a524843c09bdf518b87c8414d87933d4e6517404524a9836040751b423aaf5e6a355aa6a33469dcebc91
-  languageName: node
-  linkType: hard
-
 "satori-og@npm:^1.0.0":
   version: 1.0.0
   resolution: "satori-og@npm:1.0.0"
@@ -13441,7 +13431,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ultrahtml@npm:^1.2.0, ultrahtml@npm:^1.3.0":
+"ultrahtml@npm:^1.3.0":
   version: 1.5.2
   resolution: "ultrahtml@npm:1.5.2"
   checksum: f3df055d684a9ef4b62765faa1973b93fa0d45cc0cb3b642bf3c60d5bda1ad34b6fedfb686dad4c21c9109d799e1da9f50f31170b9b92330409530c3162e31f3
