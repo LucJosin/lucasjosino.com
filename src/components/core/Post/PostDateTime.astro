@@ -1,13 +1,15 @@
 ---
 import { getFormatedDate } from '@lib/date';
+import type { Locale } from 'i18n/types';
 
 interface Props {
   date: string;
+  locale?: Locale;
 }
 
-const { date } = Astro.props;
+const { date, locale } = Astro.props;
 ---
 
 <span class="post-date">
-  {getFormatedDate(date)}
+  {getFormatedDate(date, false, locale)}
 </span>

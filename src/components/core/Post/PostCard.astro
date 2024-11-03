@@ -18,7 +18,7 @@ interface Props {
   maxTags?: number;
 }
 
-const { t, localizePath } = useLocale(Astro.url.pathname);
+const { locale, t, localizePath } = useLocale(Astro.url.pathname);
 
 const {
   image,
@@ -52,7 +52,7 @@ const {
           alt={t('post.card.see_more_posts_from_this_category', { category })}
           href={localizePath(`/blog/categories/${category}`)}
         /> •
-        <span>{getReadTime(body)}</span>
+        <span>{getReadTime(body, locale)}</span>
       </span>
     </div>
     <div class="post-card-header">

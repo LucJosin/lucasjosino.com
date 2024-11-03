@@ -34,7 +34,7 @@ interface Props {
   locales?: LocaleSlug[];
 }
 
-const { t, localizePath } = useLocale(Astro.url.pathname);
+const { locale, t, localizePath } = useLocale(Astro.url.pathname);
 
 const { title, description, post, locales } = Astro.props;
 
@@ -49,7 +49,7 @@ const { linkedin, twitter, reddit, bluesky } = getSocialsShare(
   post.data.tags
 );
 
-const readTime = getReadTime(post.body);
+const readTime = getReadTime(post.body, locale);
 
 const imagePath = await getOpenGraphImage(
   'blog',
@@ -110,7 +110,7 @@ const article = {
 
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">
-        <PostDateTime date={post.data.publishedAt} />
+        <PostDateTime date={post.data.publishedAt} locale={locale} />
       </PostInfoItem>
 
       <PostInfoItem icon="ic:outline-tag">
