@@ -18,6 +18,7 @@ import remarkCodeSet from '@lucjosin/remark-code-set';
 import remarkImageCaption from '@lucjosin/remark-image-caption';
 import remarkPostReference from '@lucjosin/remark-post-reference';
 import remarkReadmeStats from '@lucjosin/remark-readme-stats';
+import remarkSlider from '@lucjosin/remark-slider';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
@@ -171,6 +172,7 @@ export default defineConfig({
       numberedFootnoteLabels,
       remarkAlertBlocks,
       remarkCodeHighlight,
+      remarkSlider,
       remarkImageCaption,
       responsiveTables,
       remarkCodeSet,

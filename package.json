@@ -22,6 +22,7 @@
     "@lucjosin/remark-image-caption": "./plugins/remark-image-caption",
     "@lucjosin/remark-post-reference": "./plugins/remark-post-reference",
     "@lucjosin/remark-readme-stats": "./plugins/remark-readme-stats",
+    "@lucjosin/remark-slider": "./plugins/remark-slider",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "astro": "^4.13.4",
