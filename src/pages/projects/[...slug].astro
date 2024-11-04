@@ -14,7 +14,7 @@ import BackToTop from '@components/core/BackToTop.astro';
 
 export const getStaticPaths = getStaticProjectPaths();
 
-const { t } = useLocale(Astro.url.pathname);
+const { locale, t } = useLocale(Astro.url.pathname);
 
 const { project } = Astro.props;
 let { locales } = Astro.props;
@@ -44,6 +44,7 @@ const imagePath = await getOpenGraphImage(
   title={`${project.data.title} - ${t('project.title')}`}
   description={project.data.description}
   locales={locales}
+  locale={locale}
   image={imagePath}
 >
   <Container gap="1.5rem">
