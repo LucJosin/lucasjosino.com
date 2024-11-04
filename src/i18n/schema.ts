@@ -115,6 +115,8 @@ export interface i18nSchema {
     images_alt: string;
     code_alt: string;
     preview_alt: string;
+    details: string;
+    see_more_alt: string;
     project_status: {
       in_progress: {
         title: string;

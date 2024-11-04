@@ -10,6 +10,8 @@ export const project = {
   images_alt: 'View images',
   code_alt: 'View code',
   preview_alt: 'View preview',
+  details: 'Details',
+  see_more_alt: 'See more',
   project_status: {
     in_progress: {
       title: 'In Progress',

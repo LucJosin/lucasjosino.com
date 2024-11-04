@@ -122,8 +122,8 @@ const { project, titleSize, descSize } = Astro.props as Props;
           <LinkBox
             href={localizePath(`/projects/${project.data.permSlug}/`)}
             icon="mdi:plus"
-            title="More"
-            alt={`${project.data.title} - See more`}
+            title={t('project.details')}
+            alt={`${project.data.title} - ${t('project.see_more_alt')}`}
             isLocal={true}
             padding="0.5rem"
           />
