@@ -59,7 +59,7 @@ The problem is: this solution will only work effectively if the application has 
 ### Using a custom OncePerRequestFilter
 
 To avoid adding a second route mapping to all routes, we can create a custom `OncePerRequestFilter` to redirect
-all request urls that contain trailing slash **(/)** to the url without it and using the `301 (Moved Permanently){301-status-code##f0ad4e-white}` status code.
+all request urls that contain trailing slash **(/)** to the url without it and using the `301 (Moved Permanently)[class="301-status-code" background-color="#f0ad4e" color="white"]` status code.
 
 ```java title="TrailingSlashHandlerFilter.java" ins={10-19}
 @Component
@@ -137,7 +137,7 @@ It's a good option but we'll need to redirect all requests the url without trail
 
 In this version we can use the new **UrlHandlerFilter** with a few possible options:
 
-1. Redirect **all** or **only specific** urls with `301 (Moved Permanently){301-status-code##f0ad4e-white}`
+1. Redirect **all** or **only specific** urls with `301 (Moved Permanently)[class="301-status-code" background-color="#f0ad4e" color="white"]`
 2. Handle **all** or **only specific** urls (Same as before Spring Boot **3.X** (Spring Framework **6.X**))
 
 ```java title="TrailingSlashHandlerFilter.java" ins={10-15}

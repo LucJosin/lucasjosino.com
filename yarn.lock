@@ -3276,10 +3276,10 @@ __metadata:
 
 "@lucjosin/remark-code-highlight@file:./plugins/remark-code-highlight::locator=%40lucjosin%2Flucasjosino.com%40workspace%3A.":
   version: 1.0.0
-  resolution: "@lucjosin/remark-code-highlight@file:./plugins/remark-code-highlight#./plugins/remark-code-highlight::hash=7d2582&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
+  resolution: "@lucjosin/remark-code-highlight@file:./plugins/remark-code-highlight#./plugins/remark-code-highlight::hash=0ea171&locator=%40lucjosin%2Flucasjosino.com%40workspace%3A."
   dependencies:
     unist-util-visit: ^5.0.0
-  checksum: f1b2fa9304b1890d451d6a6083e9a98ecd20049cb5c407360243d50b0d495b9007270f657c4e9ce6f4156493317ac3840b0bcdb43c16b40d9ce5d735e30ff1b5
+  checksum: 35049c1ef1ba69c3530766dfa8c71ab1965d11b5592e316ad751c7e3909cc612bc8d8b3fd9ec85c9e0c2f2a111ad928ed748ce1186a2f6ec9b5734c67268eaf3
   languageName: node
   linkType: hard
 
