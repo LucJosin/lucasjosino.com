@@ -1,7 +1,7 @@
 export const common = {
-  title: 'Desenvolvedor Backend',
+  title: 'Desenvolvedor de Software',
   description:
-    'Olá! Sou John Doe, um Desenvolvedor Backend apaixonado por Java e Golang, e que mora no Brazil.',
+    'Olá! Sou John Doe, um Desenvolvedor de Software apaixonado por Java e Golang, e que mora no Brazil.',
   header: {
     homepage: 'Início',
     homepage_tooltip:

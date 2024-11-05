@@ -1,7 +1,7 @@
 export const common = {
-  title: 'Backend Developer',
+  title: 'Software Developer',
   description:
-    "Hi! I'm Lucas Josino, an enthusiastic Backend Developer specializing in Java and Golang, based in Brazil.",
+    "Hi! I'm Lucas Josino, an enthusiastic Software Developer specializing in Java and Golang, based in Brazil.",
   header: {
     homepage: 'Home',
     homepage_tooltip:
