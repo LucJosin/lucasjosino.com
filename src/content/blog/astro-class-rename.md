@@ -23,7 +23,7 @@ publishedAt: '2023-10-14 18:00 UTC-3'
 updatedAt: '2023-10-24 21:08 UTC-3'
 ---
 
-## Table of Contents
+## Summary
 
 ## Introduction
 

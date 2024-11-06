@@ -24,7 +24,7 @@ publishedAt: '2024-02-01 20:00 UTC-3'
 updatedAt: '2024-05-01 12:00 UTC-3'
 ---
 
-## Table of Contents
+## Summary
 
 ## Introduction
 

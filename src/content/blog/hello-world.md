@@ -21,7 +21,7 @@ publishedAt: '2023-10-19 09:08 UTC-3'
 updatedAt: '2024-09-01 18:15 UTC-3'
 ---
 
-## Table of contents
+## Summary
 
 ## Tabs
 

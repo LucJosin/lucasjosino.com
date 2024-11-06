@@ -22,7 +22,7 @@ easyShare: true
 publishedAt: '2024-06-13 18:20 UTC-3'
 ---
 
-## Table of contents
+## Summary
 
 ## Introduction
 
