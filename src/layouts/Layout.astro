@@ -31,18 +31,21 @@ export interface Props {
   };
 }
 
-const { t } = useLocale(Astro.url.pathname);
+const { locale: pathLocale, t } = useLocale(Astro.url.pathname);
 
 const {
   robots,
   shortlink,
-  locale,
   article,
   enableOpenGraph = true,
   locales,
 } = Astro.props as Props;
 
-let { title, description, image } = Astro.props as Props;
+let { locale, title, description, image } = Astro.props as Props;
+
+if (!locale) {
+  locale = pathLocale;
+}
 
 title = article?.title || title + ' | ' + headConfig.name;
 description = article?.description || description + headConfig.endDescription;
