@@ -10,6 +10,7 @@ export const post = {
   comments_go_alt: 'Ir para os comentários',
   related_posts: 'Posts relacionados',
   see_post_history: 'Ver histórico de postagens',
+  last_updated: 'Última atualização: ',
   share: {
     title: 'Gostou deste post? Sinta-se à vontade para compartilhar!',
     linkedin_alt: 'Compartilhar no LinkedIn',

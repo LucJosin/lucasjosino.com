@@ -45,6 +45,7 @@ export interface i18nSchema {
     comments_go_alt: string;
     related_posts: string;
     see_post_history: string;
+    last_updated: string;
     share: {
       title: string;
       linkedin_alt: string;

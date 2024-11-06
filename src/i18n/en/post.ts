@@ -10,6 +10,7 @@ export const post = {
   comments_go_alt: 'Go to comments',
   related_posts: 'Related posts',
   see_post_history: 'See post history',
+  last_updated: 'Last updated: ',
   share: {
     title: 'Enjoy this post? Feel free to share!',
     linkedin_alt: 'Share to LinkedIn',
