@@ -176,16 +176,17 @@ const article = {
       )
     }
 
+    {
+      post.data.updatedAt && (
+        <PostUpdatedAt updatedAt={post.data.updatedAt} id={post.id} />
+      )
+    }
+
     <Divider margin="0" />
 
     <slot />
 
     <PostFooter>
-      {
-        post.data.updatedAt && (
-          <PostUpdatedAt updatedAt={post.data.updatedAt} id={post.id} />
-        )
-      }
       {
         post.data.easyShare && (
           <PostShareBanner
