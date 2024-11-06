@@ -1,0 +1,1 @@
+import{l as o,s as m}from"./back-to-top.BOw8QGJm.js";import{m as e}from"./medium-zoom.esm.bWEtUbjf.js";window.onscroll=()=>{o(),m()},e(document.querySelectorAll("img"),{background:"#000000e0"});

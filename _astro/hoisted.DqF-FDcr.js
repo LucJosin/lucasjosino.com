@@ -1,1 +1,0 @@
-const e=document.querySelectorAll(".astro-RBBpOtbg"),s=document.querySelectorAll(".astro-bnILmFTu");for(let t=0;t<e.length;t++)s[t]?.addEventListener("click",()=>{e[t].classList.toggle("show"),s[t].classList.toggle("astro-tDfHKSGh")});for(let t=0;t<e.length;t++)e[t]?.addEventListener("click",()=>{e[t].classList.toggle("show"),s[t].classList.toggle("astro-tDfHKSGh")});
