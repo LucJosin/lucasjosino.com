@@ -1,0 +1,13 @@
+---
+import { getStaticCategoryPaths } from '@lib/blog';
+import Page from '../../../blog/categories/[...category].astro';
+import { contextLocale } from '../../_context';
+
+export const getStaticPaths = getStaticCategoryPaths({
+  locale: contextLocale,
+});
+
+const { props } = Astro;
+---
+
+<Page {...props} />

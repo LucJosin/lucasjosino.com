@@ -1,4 +1,5 @@
 ---
+permSlug: 'hello-world'
 title: 'Hello World'
 description: 'A markdown showcase of all features.'
 image:
@@ -17,12 +18,12 @@ isIndexable: false
 enableComments: false
 easyShare: false
 publishedAt: '2023-10-19 09:08 UTC-3'
-updatedAt: '2023-10-19 09:08 UTC-3'
+updatedAt: '2024-09-01 18:15 UTC-3'
 ---
 
-## Table of contents
+## Summary
 
-## Tab list
+## Tabs
 
 Code:
 
@@ -88,7 +89,9 @@ public class Application {
 
 ---
 
-## Repository reference
+## References
+
+### Repository
 
 Source: [github.com/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
 
@@ -106,7 +109,7 @@ Preview:
 
 ---
 
-## Post reference
+### Post
 
 Code:
 
@@ -330,77 +333,6 @@ Preview:
 
 This will be not  
 inline.
-
----
-
-### Headers
-
-Markdown supports two styles of headers, Setext and atx.
-
-#### Setext
-
-HTML Tags: `<h1>`, `<h2>`
-
-“Underlined” using **equal signs (=)** as `<h1>` and **dashes (-)** as `<h2>` in any number.
-
-Code:
-
-    This is an H1
-    =============
-    This is an H2
-    -------------
-
-Preview:
-
----
-
-# This is an H1
-
-## This is an H2
-
----
-
-#### atx
-
-HTML Tags: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`
-
-Uses 1-6 **hash characters (#)** at the start of the line, corresponding to `<h1>` - `<h6>`.
-
-Code:
-
-    # This is an H1
-    ## This is an H2
-    ###### This is an H6
-
-Preview:
-
----
-
-# This is an H1
-
-## This is an H2
-
-###### This is an H6
-
----
-
-Optionally, you may “close” atx-style headers. The closing hashes **don’t need to match** the number of hashes used to open the header.
-
-Code:
-
-    # This is an H1 #
-    ## This is an H2 ##
-    ### This is an H3 ######
-
-Preview:
-
----
-
-# This is an H1
-
-## This is an H2
-
-### This is an H3
 
 ---
 
@@ -806,18 +738,17 @@ Code:
 
 ```
 | Left | Center | Right |
-|:-----|:------:|------:|
-|aaa   |bbb     |ccc    |
-|ddd   |eee     |fff    |
+| :--- | :----: | ----: |
+| aaa  |  bbb   |   ccc |
+| ddd  |  eee   |   fff |
 
- A | B
----|---
-123|456
+| A   | B   |
+| --- | --- |
+| 123 | 456 |
 
-
-A |B
---|--
-12|45
+| A   | B   |
+| --- | --- |
+| 12  | 45  |
 ```
 
 Preview:
@@ -1181,6 +1112,34 @@ Code:
     .   dot
     !   exclamation mark
 
+Preview:
+
+---
+
+\\ backslash
+
+\` backtick \* asterisk
+
+\_ underscore
+
+\{\} curly braces
+
+\[\] square brackets
+
+\(\) parentheses
+
+\# hash mark
+
+\+ plus sign
+
+\- minus sign (hyphen)
+
+\. dot
+
+\! exclamation mark
+
+---
+
 ## Inline HTML
 
 For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to preface it or delimit it to indicate that you’re switching from Markdown to HTML; you just use the tags.
@@ -1234,4 +1193,5 @@ Preview:
 <div>
   **No Work**
 </div>
-***
+
+---

@@ -6,6 +6,7 @@ interface Props {
   fontSize?: string;
   maxLine?: string;
   align?: boolean;
+  title?: string;
 }
 
 const {
@@ -15,12 +16,13 @@ const {
   fontSize = '1em',
   maxLine,
   align = true,
+  title,
 } = Astro.props as Props;
 
 const textAlign = align ? 'center' : 'initial';
 ---
 
-<p class="description-container">
+<p class="description-container" title={title}>
   {value}
 </p>
 
@@ -29,6 +31,7 @@ const textAlign = align ? 'center' : 'initial';
     overflow: hidden;
     width: var(--width);
     display: -webkit-box;
+    line-clamp: var(--maxLine);
     -webkit-line-clamp: var(--maxLine);
     -webkit-box-orient: vertical;
     margin: var(--margin);

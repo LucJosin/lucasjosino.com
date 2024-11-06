@@ -1,13 +1,19 @@
 ---
+import { useLocale } from 'i18n';
 
+const { t } = useLocale(Astro.url.pathname);
 ---
 
 <div class="post-comments">
-  <h2 id="comments">Comments</h2>
+  <h2 id="comments">{t('post.comments')}</h2>
   <div class="giscus"></div>
 </div>
 
 <style>
+  .post-comments {
+    width: 100%;
+  }
+
   .giscus {
     margin: 1rem 0 0 0;
   }
@@ -27,7 +33,7 @@
       'data-emit-metadata': '0',
       'data-input-position': 'top',
       'data-theme': getGiscusTheme(theme),
-      'data-lang': 'en',
+      'data-lang': document.documentElement.lang,
       'data-loading': 'lazy',
       crossorigin: 'anonymous',
       async: true,

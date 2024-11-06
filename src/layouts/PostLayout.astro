@@ -2,11 +2,13 @@
 import BackToTop from '@components/core/BackToTop.astro';
 import Divider from '@components/core/Divider.astro';
 import Link from '@components/core/Link/Link.astro';
+import PostDateTime from '@components/core/Post/PostDateTime.astro';
 import PostImage from '@components/core/Post/PostImage.astro';
 import PostInfoItem from '@components/core/Post/PostInfoItem.astro';
 import PostShareBanner from '@components/core/Post/PostShareBanner.astro';
 import PostUpdatedAt from '@components/core/Post/PostUpdatedAt.astro';
 import ProgressBar from '@components/core/ProgressBar.astro';
+import SubTitle from '@components/core/SubTitle.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import PostComments from '@components/data/Post/PostComments.astro';
@@ -15,22 +17,26 @@ import PostRelated from '@components/data/Post/PostRelated.astro';
 import PostShare from '@components/data/Post/PostShare.astro';
 import Tags from '@components/data/Tags.astro';
 import headConfig from '@constants/head';
+import { getFormatedDate } from '@lib/date';
 import { getSocialsShare } from '@lib/share';
 import { getReadTime } from '@lib/time';
 import { getEntries, type CollectionEntry } from 'astro:content';
-import { getPostImage } from 'open-graph/generator';
+import { useLocale } from 'i18n';
+import type { LocaleSlug } from 'i18n/types';
+import { getOpenGraphImage } from 'open-graph';
 import PostFooter from '../components/core/Post/PostFooter.astro';
 import Layout from './Layout.astro';
-import SubTitle from '@components/core/SubTitle.astro';
-import PostDateTime from '@components/core/Post/PostDateTime.astro';
 
 interface Props {
   title: string;
   description: string;
   post: CollectionEntry<'blog'>;
+  locales?: LocaleSlug[];
 }
 
-const { title, description, post } = Astro.props;
+const { locale, t, localizePath } = useLocale(Astro.url.pathname);
+
+const { title, description, post, locales } = Astro.props;
 
 const relatedPosts = post.data.relatedPosts
   ? await getEntries(post.data.relatedPosts)
@@ -43,9 +49,20 @@ const { linkedin, twitter, reddit, bluesky } = getSocialsShare(
   post.data.tags
 );
 
-const image = import.meta.env.PROD
-  ? await getPostImage(post)
-  : 'static/default-og.png';
+const readTime = getReadTime(post.body, locale);
+
+const imagePath = await getOpenGraphImage(
+  'blog',
+  {
+    title: post.data.title,
+    language: post.data.language,
+    category: post.data.category,
+    color: post.data.color,
+    readTime: readTime,
+    publishedAt: getFormatedDate(post.data.publishedAt),
+  },
+  post.slug
+);
 
 const article = {
   title: post.data.title,
@@ -61,18 +78,19 @@ const article = {
   title={title}
   description={description}
   robots={post.data.isIndexable ? 'index,follow' : 'noindex,nofollow'}
-  banner={image}
+  image={imagePath}
   article={article}
   shortlink={post.data.shortlink}
   locale={post.data.language}
+  locales={locales}
 >
   <Container maxWidth="50rem" gap="1rem">
     <ProgressBar />
     <BackToTop />
 
     <Link
-      href={'/blog/categories/' + post.data.category}
-      alt="See more from this category"
+      href={localizePath(`/blog/category/${post.data.category}`)}
+      alt={t('post.card.see_more_posts_from_this_category')}
     >
       <SubTitle
         title={post.data.category}
@@ -92,21 +110,25 @@ const article = {
 
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">
-        <PostDateTime date={post.data.publishedAt} />
+        <PostDateTime date={post.data.publishedAt} locale={locale} />
       </PostInfoItem>
 
       <PostInfoItem icon="ic:outline-tag">
-        <Link href="#tags" title="Tags" alt="See all tags" />
+        <Link href="#tags" title={t('post.tags')} alt={t('post.tags_alt')} />
       </PostInfoItem>
 
       <PostInfoItem icon="mdi:clock-outline">
-        {getReadTime(post.body)}
+        {readTime}
       </PostInfoItem>
 
       {
         post.data.enableComments && (
           <PostInfoItem icon="mdi:comment-multiple-outline">
-            <Link href="#comments" title="Comments" alt="Go to comments" />
+            <Link
+              href="#comments"
+              title={t('post.comments')}
+              alt={t('post.comments_go_alt')}
+            />
           </PostInfoItem>
         )
       }
@@ -120,31 +142,31 @@ const article = {
             {
               href: linkedin,
               icon: 'simple-icons:linkedin',
-              alt: 'Share to Linkedin',
+              alt: t('post.share.linkedin_alt'),
               event: `Post Share (Top) - Linkedin (${post.data.shortlink})`,
             },
             {
               href: twitter,
               icon: 'simple-icons:x',
-              alt: 'Share to X (Twitter)',
+              alt: t('post.share.twitter_alt'),
               event: `Post Share (Top) - X (Twitter) (${post.data.shortlink})`,
             },
             {
               href: reddit,
               icon: 'simple-icons:reddit',
-              alt: 'Share to Reddit',
+              alt: t('post.share.reddit_alt'),
               event: `Post Share (Top) - Reddit (${post.data.shortlink})`,
             },
             {
               href: bluesky,
               icon: 'simple-icons:bluesky',
-              alt: 'Share to Bluesky',
+              alt: t('post.share.bluesky_alt'),
               event: `Post Share (Top) - Blueksy (${post.data.shortlink})`,
             },
             {
               href: headConfig.shortLink + post.data.shortlink,
               icon: 'mdi:link',
-              alt: 'Copy link',
+              alt: t('post.share.copy_link_alt'),
               id: 'share',
               messageId: 'share-title',
               event: `Post Share (Top) - Copy link (${post.data.shortlink})`,
@@ -154,16 +176,17 @@ const article = {
       )
     }
 
+    {
+      post.data.updatedAt && (
+        <PostUpdatedAt updatedAt={post.data.updatedAt} id={post.id} />
+      )
+    }
+
     <Divider margin="0" />
 
     <slot />
 
     <PostFooter>
-      {
-        post.data.updatedAt && (
-          <PostUpdatedAt updatedAt={post.data.updatedAt} id={post.id} />
-        )
-      }
       {
         post.data.easyShare && (
           <PostShareBanner

@@ -1,6 +1,7 @@
 ---
 import Tag from '@components/core/Tag.astro';
 import { getPostLength } from '@lib/blog';
+import { useLocale } from 'i18n';
 
 interface Props {
   values: string[];
@@ -10,7 +11,10 @@ interface Props {
   id?: string;
   center?: boolean;
   active?: boolean;
+  wrapContent?: boolean;
 }
+
+const { localizePath, t, locale } = useLocale(Astro.url.pathname);
 
 const {
   title,
@@ -20,8 +24,10 @@ const {
   center = false,
   showLength = false,
   active = false,
+  wrapContent = true,
 } = Astro.props;
 const justifyContent = center ? 'center' : 'initial';
+const flexWrap = wrapContent ? 'wrap' : 'nowrap';
 ---
 
 <div id={id}>
@@ -30,13 +36,14 @@ const justifyContent = center ? 'center' : 'initial';
     {
       values.map(async (tag) => {
         const filteredPosts = showLength
-          ? await getPostLength(tag, target)
+          ? await getPostLength(locale, tag, target)
           : null;
         return (
           <Tag
             value={tag + (filteredPosts ? ` (${filteredPosts})` : '')}
-            href={`/blog/${target}/${tag}`}
+            href={localizePath(`/blog/${target}/${tag}`)}
             active={active}
+            title={t('post.tags_see_more_alt', { tag })}
           />
         );
       })
@@ -44,11 +51,12 @@ const justifyContent = center ? 'center' : 'initial';
   </div>
 </div>
 
-<style define:vars={{ justifyContent }}>
+<style define:vars={{ justifyContent, flexWrap }}>
   .tags-list {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
+    flex-wrap: var(--flexWrap);
+    overflow: hidden;
     justify-content: var(--justifyContent);
     gap: 0.5rem;
     font-size: 0.9em;

@@ -1,15 +1,26 @@
 ---
+import I18NHead from '@components/core/I18nHead.astro';
 import headConfig from '@constants/head';
 import '@styles/global.css';
+import { useLocale } from 'i18n';
+import { defaultLocale } from 'i18n/config';
+import type { LocaleSlug } from 'i18n/types';
+import {
+  getOpenGraphImage,
+  formatOpenGraphFileName,
+  cleanOpenGraphUrl,
+} from 'open-graph';
 
 export interface Props {
+  enableOpenGraph?: boolean;
   title: string;
   description: string;
-  banner?: string;
+  image?: string;
   robots?: string;
   shortlink?: string;
   type?: string;
   locale?: string;
+  locales?: LocaleSlug[];
   article?: {
     title: string;
     description: string;
@@ -20,88 +31,91 @@ export interface Props {
   };
 }
 
-const { title, description, banner, robots, shortlink, locale, article } =
-  Astro.props as Props;
+const { locale: pathLocale, t } = useLocale(Astro.url.pathname);
+
+const {
+  robots,
+  shortlink,
+  article,
+  enableOpenGraph = true,
+  locales,
+} = Astro.props as Props;
+
+let { locale, title, description, image } = Astro.props as Props;
+
+if (!locale) {
+  locale = pathLocale;
+}
+
+title = article?.title || title + ' | ' + headConfig.name;
+description = article?.description || description + headConfig.endDescription;
+const canonical = new URL(Astro.url.pathname, Astro.url.origin);
+
+if (enableOpenGraph && !image) {
+  const path = Astro.url.pathname;
+  const fileName = formatOpenGraphFileName(path);
+
+  const options = {
+    top: t('common.title').toLocaleUpperCase(),
+    title,
+    color: '#555555',
+    slug: path === '/' ? '' : cleanOpenGraphUrl(path),
+  };
+  image = await getOpenGraphImage('default', options, fileName);
+}
+
+image = Astro.url.origin + image || headConfig.image;
 ---
 
 <!doctype html>
-<html lang={locale || 'en'}>
+<html lang={locale || defaultLocale}>
   <head>
     <!-- Metadata -->
     <meta charset="UTF-8" />
-    <meta http-equiv="content-language" content="en-US" />
+    <meta http-equiv="content-language" content={locale || defaultLocale} />
     <meta http-equiv="content-type" content="text/html" />
     <meta name="copyright" content={headConfig.copyright} />
-    <meta
-      name="description"
-      content={article?.description || description + headConfig.endDescription}
-    />
+    <meta name="description" content={description} />
     <meta name="author" content={headConfig.name} />
     <meta name="tags" content={headConfig.tags} />
     <meta name="keywords" content={headConfig.tags} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content={robots ?? headConfig.robots} />
 
+    <!-- I18N -->
+    <I18NHead locales={locales} />
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content={headConfig.social} />
     <meta name="twitter:site" content={headConfig.social} />
     <meta name="twitter:domain" content={Astro.site} />
-    <meta
-      name="twitter:title"
-      content={article?.title || title + ' | ' + headConfig.name}
-    />
+    <meta name="twitter:title" content={title} />
     <meta
       name="twitter:description"
       property="og:description"
       itemprop="description"
-      content={article?.description || description + headConfig.endDescription}
+      content={description}
     />
     <meta
       property="twitter:image"
       itemprop="image primaryImageOfPage"
-      content={Astro.site + (banner ?? headConfig.banner)}
+      content={image}
     />
 
     <!-- Open Graph -->
-    <meta
-      property="og:url"
-      content={headConfig.canonical + Astro.url.pathname}
-    />
-    <meta
-      property="og:title"
-      content={article?.title || title + ' | ' + headConfig.name}
-    />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
     <meta property="og:site_name" content={headConfig.name} />
-    <meta
-      property="og:description"
-      content={article?.description || description + headConfig.endDescription}
-    />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content={article ? 'article' : 'portfolio'} />
-    <meta
-      property="og:image"
-      content={Astro.site + (banner ?? headConfig.banner)}
-    />
-    <meta
-      property="og:image:secure_url"
-      content={Astro.site + (banner ?? headConfig.banner)}
-    />
-    <meta
-      property="og:image:type"
-      content=`image/${(banner ?? headConfig.banner).split('.').pop()}`
-    />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:secure_url" content={image} />
+    <meta property="og:image:type" content=`image/${image.split('.').pop()}` />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    {
-      import.meta.env.PROD && (
-        <script
-          defer
-          src="https://analytics.us.umami.is/script.js"
-          data-website-id="986fb135-7659-4137-9c30-d74a3af505ca"
-        />
-      )
-    }
     <script is:inline>
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       function getGiscusTheme(theme) {
@@ -128,6 +142,17 @@ const { title, description, banner, robots, shortlink, locale, article } =
     </script>
 
     {
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          defer
+          src="https://analytics.us.umami.is/script.js"
+          data-website-id="986fb135-7659-4137-9c30-d74a3af505ca"
+        />
+      )
+    }
+
+    {
       article && (
         <>
           <meta
@@ -152,7 +177,7 @@ const { title, description, banner, robots, shortlink, locale, article } =
         />
       )
     }
-    <link rel="canonical" href={headConfig.canonical + Astro.url.pathname} />
+    <link rel="canonical" href={canonical} />
 
     <!-- Icons -->
     <link
@@ -192,50 +217,64 @@ const { title, description, banner, robots, shortlink, locale, article } =
     <meta name="generator" content={Astro.generator} />
 
     <!-- Title -->
-    <title>{article?.title || title + ' | ' + headConfig.name}</title>
+    <title>{title}</title>
   </head>
   <body>
     <main>
       <slot />
     </main>
+    <style>
+      /* Scroll */
+      :global(::-webkit-scrollbar) {
+        height: 4px;
+        width: 4px;
+        background-color: var(--secondary-color);
+      }
+
+      :global(::-webkit-scrollbar-thumb) {
+        background-color: var(--contrast-color);
+        border-radius: var(--border-radius);
+      }
+
+      :global([data-icon]) {
+        fill: var(--primary-text-color);
+        color: var(--primary-text-color);
+        transition: all var(--transition-duration);
+      }
+
+      :global(a) {
+        color: var(--primary-text-color);
+        text-decoration: none;
+      }
+
+      :global(p) {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+      }
+
+      :global(h1) {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+      }
+
+      :global(kbd) {
+        border-radius: 6px;
+        font-family:
+          Google Sans Mono,
+          Inter,
+          monospace;
+        font-size: 0.9em;
+        color: inherit;
+        border: 1px solid currentColor;
+        text-align: center;
+        box-sizing: border-box;
+        line-height: 24px;
+        padding-inline: 4px;
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  /* Scroll */
-  :global(::-webkit-scrollbar) {
-    height: 8px;
-    width: 8px;
-    background-color: var(--secondary-color);
-  }
-
-  :global(::-webkit-scrollbar-thumb) {
-    background-color: var(--contrast-color);
-    border-radius: var(--border-radius);
-  }
-
-  :global([data-icon]) {
-    fill: var(--primary-text-color);
-    color: var(--primary-text-color);
-    transition: all var(--transition-duration);
-  }
-
-  :global(a) {
-    color: var(--primary-text-color);
-    text-decoration: none;
-  }
-
-  :global(p) {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-  }
-
-  :global(h1) {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-  }
-</style>

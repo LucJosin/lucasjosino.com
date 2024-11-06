@@ -1,53 +1,69 @@
 ---
 import LinkBox from '@components/core/Link/LinkBox.astro';
 import SubTitle from '@components/core/SubTitle.astro';
+import Tooltip from '@components/core/Tooltip.astro';
 import { links } from '@constants/links';
 import { socials } from '@constants/socials';
 
 interface Props {
   hasTitle?: boolean;
+  showName?: boolean;
+  showTooltip?: boolean;
+  justifyContent?: string;
 }
 
-const { hasTitle = true } = Astro.props;
+const {
+  hasTitle = false,
+  showName = false,
+  showTooltip = true,
+  justifyContent = 'center',
+} = Astro.props;
 ---
 
-<div class="socials">
+<section class="socials-section">
   <div class="socials-header">
     {hasTitle && <SubTitle title="Socials" />}
   </div>
   <div class="socials-container">
     {
       links.map((data) => (
-        <LinkBox
-          href={data.url}
-          icon={data.icon}
-          title={data.name}
-          alt={data.alt}
-          isLocal={false}
-          event={data.event + ` (${Astro.url.pathname})`}
-          gridColumn="auto / span 3"
-        />
+        <Tooltip message={showTooltip ? data.name : ''}>
+          <LinkBox
+            href={data.url}
+            title={showName ? data.name : undefined}
+            icon={data.icon}
+            iconSize="1em"
+            padding="0.6rem"
+            alt={data.alt}
+            isLocal={false}
+            event={data.event + ` (${Astro.url.pathname})`}
+          />
+        </Tooltip>
       ))
     }
     {
       socials.map((data) => (
-        <LinkBox
-          href={data.url}
-          icon={data.icon}
-          alt={data.alt}
-          isLocal={false}
-          event={data.event + ` (${Astro.url.pathname})`}
-          gridColumn="auto / span 2"
-        />
+        <Tooltip message={showTooltip ? data.name : ''}>
+          <LinkBox
+            href={data.url}
+            title={showName ? data.name : undefined}
+            icon={data.icon}
+            iconSize="1em"
+            padding="0.6rem"
+            alt={data.alt}
+            isLocal={false}
+            event={data.event + ` (${Astro.url.pathname})`}
+          />
+        </Tooltip>
       ))
     }
   </div>
-</div>
+</section>
 
-<style>
-  .socials {
+<style define:vars={{ justifyContent }}>
+  .socials-section {
     height: max-content;
-    width: 80%;
+    width: 100%;
   }
 
   .socials-header {
@@ -58,10 +74,10 @@ const { hasTitle = true } = Astro.props;
 
   .socials-container {
     width: 100%;
-    display: grid;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    grid-template-columns: repeat(6, minmax(1rem, 1fr));
+    justify-content: var(--justifyContent);
+    flex-wrap: wrap;
     gap: 1rem;
   }
 </style>

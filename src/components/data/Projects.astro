@@ -1,17 +1,21 @@
 ---
 import Link from '@components/core/Link/Link.astro';
-import MiniProjectCard from '@components/core/Project/MiniProjectCard.astro';
+import ProjectCard from '@components/core/Project/ProjectCard.astro';
 import SubTitle from '@components/core/SubTitle.astro';
-import { projects } from '@constants/projects';
+import { getAllProjects } from '@lib/projects';
+import { useLocale } from 'i18n';
+
+const { locale, t, localizePath } = useLocale(Astro.url.pathname);
+const projects = await getAllProjects(true, locale);
 ---
 
-<div class="projects-data">
+<section class="projects-section">
   <div class="projects-header">
-    <SubTitle title="Projects" />
+    <SubTitle title={t('home.projects.title')} />
     <Link
-      href="/projects/"
-      alt="See more projects"
-      title="See more"
+      href={localizePath('/projects/')}
+      alt={t('home.projects.see_more_alt')}
+      title={t('home.see_more')}
       icon="mdi:arrow-right"
       iconSide="right"
       hasBorderBottom={false}
@@ -24,23 +28,15 @@ import { projects } from '@constants/projects';
     {
       projects
         .slice(0, 2)
-        .map((data) => (
-          <MiniProjectCard
-            title={data.title}
-            description={data.description}
-            git={data.git}
-            url={data.url}
-            image={data.image}
-          />
-        ))
+        .map((data) => <ProjectCard project={data} titleSize="1.2em" />)
     }
   </div>
-</div>
+</section>
 
 <style>
-  .projects-data {
+  .projects-section {
     height: max-content;
-    width: 80%;
+    width: 100%;
   }
 
   .projects-header {
@@ -51,8 +47,8 @@ import { projects } from '@constants/projects';
 
   .projects-container {
     width: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 </style>

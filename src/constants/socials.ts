@@ -5,7 +5,7 @@ export const socials = [
     icon: 'simple-icons:x',
     user: 'LucJosin',
     url: 'https://x.com/LucJosin',
-    event: 'X (Twitter)'
+    event: 'X (Twitter)',
   },
   {
     name: 'Bluesky',
@@ -13,14 +13,14 @@ export const socials = [
     icon: 'simple-icons:bluesky',
     user: 'lucjos.in',
     url: 'https://bsky.app/profile/lucjos.in/',
-    event: 'Bluesky'
+    event: 'Bluesky',
   },
   {
-    name: 'StackOverFlow',
-    alt: 'StackOverFlow - @lucas-josino',
-    icon: 'simple-icons:stackoverflow',
+    name: 'Email',
+    alt: 'Email - contact@lucasjosino.com',
+    icon: 'mdi:alternate-email',
     user: 'lucas-josino',
-    url: 'https://stackoverflow.com/u/14500144/',
-    event: 'StackOverFlow'
+    url: 'mailto:contact@lucasjosino.com',
+    event: 'Email',
   },
 ];

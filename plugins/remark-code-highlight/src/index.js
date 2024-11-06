@@ -1,25 +1,37 @@
 import { visit } from 'unist-util-visit';
 
-const HIGHLIGHT_REGEX = '\\{(.*?)((?:#(.*))(?:-(.*)))?\\}';
+const INLINECODE_REGEX =
+  /(.+?)\[((?:[a-zA-Z0-9_-]+=["'][^"']*["'](?:\s+[a-zA-Z0-9_-]+=["'][^"']*["'])*)\]$)/;
+
+const ATTR_REGEX = /([a-zA-Z0-9_-]+)=["']([^"']*)["']/g;
 
 export default function remarkCodeHighlight() {
   return function transformer(tree) {
     visit(tree, 'inlineCode', (inlineCodeNode) => {
-      const match = inlineCodeNode.value.match(HIGHLIGHT_REGEX);
+      const match = inlineCodeNode.value.match(INLINECODE_REGEX);
 
       if (match) {
-        // BUG: Regex returns 5 matches, instead of 4
-        const className = match[1];
-        const bgColor = match[3];
-        const textColor = match[4];
+        const modifiers = {};
+        const text = match[1];
+        const attributes = match[2];
 
-        inlineCodeNode.value = inlineCodeNode.value.replace(match[0], '');
+        let attrMatch;
+        while ((attrMatch = ATTR_REGEX.exec(attributes)) !== null) {
+          modifiers[attrMatch[1]] = attrMatch[2];
+        }
 
+        let className = '';
+        if (modifiers.class) {
+          className = modifiers.class;
+          delete modifiers.class;
+        }
+
+        inlineCodeNode.value = text;
         inlineCodeNode.data = {
           hProperties: {
-            style: [
-              bgColor && `background-color: ${bgColor}; color: ${textColor}`,
-            ],
+            style: Object.entries(modifiers).map(
+              ([key, value]) => `${key}:${value};`
+            ),
             className: ['remark-text-highlight', className],
           },
         };

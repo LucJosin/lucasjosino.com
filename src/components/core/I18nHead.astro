@@ -1,0 +1,31 @@
+---
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { extractLocaleAndSlug, useLocale } from 'i18n';
+import type { LocaleSlug } from 'i18n/types';
+
+interface Props {
+  locales?: LocaleSlug[];
+}
+
+let { locales = [] } = Astro.props as Props;
+
+const { slug } = useLocale(Astro.url.pathname);
+
+// Verify if (normal) page has the same slug in another locale
+if (locales === undefined || locales.length === 0) {
+  const pages = await Astro.glob('pages/**/*.astro');
+  locales = pages
+    .map((page) => extractLocaleAndSlug(page!.url!))
+    .filter((item) => slug === item.slug);
+}
+---
+
+{
+  locales.map(({ locale, slug }) => (
+    <link
+      rel="alternate"
+      hreflang={locale}
+      href={getAbsoluteLocaleUrl(locale, slug)}
+    />
+  ))
+}

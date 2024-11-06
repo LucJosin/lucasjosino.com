@@ -5,45 +5,35 @@ import PostCard from '@components/core/Post/PostCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Layout from '@layouts/Layout.astro';
-import { getAllPosts, getUniqueTags } from '@lib/blog';
+import { getStaticTagPaths } from '@lib/blog';
 import { getFormatedDate } from '@lib/date';
 import type { CollectionEntry } from 'astro:content';
+import { useLocale } from 'i18n';
 
-export async function getStaticPaths() {
-  const allPosts = await getAllPosts();
-  const uniqueTags = await getUniqueTags();
-
-  return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) =>
-      post.data.tags.includes(tag)
-    );
-    return {
-      params: { tag },
-      props: { posts: filteredPosts },
-    };
-  });
-}
+export const getStaticPaths = getStaticTagPaths();
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
 }
 
+const { t, localizePath } = useLocale(Astro.url.pathname);
+
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+const title = t('tags.tag.title', { tag });
+const description = t('tags.tag.description', { tag, count: posts.length });
 ---
 
 <Layout
-  title={'Tag: ' + tag}
-  description={`Explore all posts tagged with: ${tag}`}
+  title={title}
+  description={t('tags.tag.description', { tag })}
   shortlink="/blog"
+  enableOpenGraph={false}
 >
   <Container>
-    <Title title={'Tag: ' + tag} fontSize="2.5em" />
-    <Description
-      value={`Explore ${posts.length} post(s) tagged with "${tag}"`}
-      margin="0"
-      width="80%"
-    />
+    <Title title={title} fontSize="2.5em" />
+    <Description value={description} margin="0" width="80%" />
     <Divider height="1px" width="80%" />
     <div class="tag-posts">
       {
@@ -54,7 +44,7 @@ const { posts } = Astro.props;
               title={post.data.title}
               description={post.data.description}
               category={post.data.category}
-              href={`${post.slug}/`}
+              href={localizePath(`/blog/${post.data.permSlug}`)}
               publishedAt={getFormatedDate(post.data.publishedAt)}
               tags={post.data.tags}
               body={post.body}

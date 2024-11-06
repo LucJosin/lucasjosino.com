@@ -1,0 +1,78 @@
+.remark-slider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.remark-slider .remark-slider-caption {
+    min-width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.remark-slider .remark-slider-caption figcaption {
+    text-align: center;
+}
+
+.remark-slider:hover .prev,
+.remark-slider:hover .next,
+.remark-slider:hover .slide-index {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.remark-slider>.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--border-size) solid rgba(var(--contrast-color-rgb), 0.5);
+    pointer-events: none;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+}
+
+.remark-slider .prev {
+    left: 0.5rem;
+}
+
+.remark-slider .next {
+    right: 0.5rem;
+}
+
+.remark-slider .slide-index {
+    position: absolute;
+    bottom: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: var(--border-size) solid rgba(var(--contrast-color-rgb), 0.5);
+    pointer-events: none;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+}
+
+@media (max-width: 768px) {
+    .remark-slider .slide-index {
+        pointer-events: all;
+        opacity: 1;
+    }
+
+    .remark-slider .next,
+    .remark-slider .prev {
+        pointer-events: all;
+        opacity: 1;
+    }
+}

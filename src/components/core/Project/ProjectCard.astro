@@ -1,104 +1,192 @@
 ---
 import Tags from '@components/data/Tags.astro';
-import type { ProjectModel } from '@constants/projects';
 import { Icon } from 'astro-icon/components';
+import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
+import { useLocale } from 'i18n';
 import Description from '../Description.astro';
 import Divider from '../Divider.astro';
 import LinkBox from '../Link/LinkBox.astro';
 import Title from '../Title.astro';
+import MiniProjectCard from './MiniProjectCard.astro';
+import ProjectCardSlider from './ProjectCardSlider.astro';
 
 interface Props {
-  project: ProjectModel;
+  project: CollectionEntry<'projects'>;
   titleSize?: string;
   descSize?: string;
 }
+
+const { t, localizePath } = useLocale(Astro.url.pathname);
 
 const { project, titleSize, descSize } = Astro.props as Props;
 ---
 
 <div class="project-card">
-  <div class="project-card-img-container">
-    {
-      project.image && (
-        <img
-          src={project.image}
-          class="project-card-img"
-          title={`${project.title}`}
-        />
-      )
-    }
+  <div class="project-card-wrapper">
+    <div class="project-card-img-container">
+      {
+        project.data.images && project.data.showImagesInSlider ? (
+          <ProjectCardSlider
+            images={[project.data.thumbnail!, ...project.data.images]}
+          />
+        ) : (
+          <img
+            src={project.data.thumbnail}
+            loading="lazy"
+            class="project-card-img"
+            title={`${project.data.title}`}
+          />
+        )
+      }
+    </div>
+
+    <div class="project-card-container">
+      <div class="project-card-header">
+        <div class="project-card-title">
+          <Title title={project.data.title} fontSize={titleSize} margin="0" />
+          <span
+            class="project-card-status"
+            title={t(
+              `project.project_status.${project.data.status}.description`
+            )}>{t(`project.project_status.${project.data.status}.title`)}</span
+          >
+          {
+            project.data.category === 'Org' && (
+              <a
+                href={project.data.org}
+                class="project-card-org"
+                title={t('projects.org_alt')}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {t('projects.org')}
+                <Icon name="mdi:external-link" />
+              </a>
+            )
+          }
+        </div>
+        <div class="project-card-language">
+          {project.data.codeLanguage}
+          <Icon name={project.data.icon} />
+        </div>
+      </div>
+      <Divider width="100%" margin="0 0" />
+      <Description
+        value={project.data.description}
+        title={project.data.description}
+        fontSize={descSize}
+        margin="0"
+        align={false}
+        maxLine="3"
+      />
+      <div class="project-card-bottom">
+        <Tags values={project.data.tags} target="tags" />
+        <div class="project-card-links">
+          {
+            project.data.git && (
+              <LinkBox
+                href={project.data.git}
+                icon="simple-icons:github"
+                title="Github"
+                alt={`${project.data.title} - Github`}
+                isLocal={false}
+                padding="0.5rem"
+              />
+            )
+          }
+          {
+            project.data.url && (
+              <LinkBox
+                href={project.data.url}
+                icon="mdi:open-in-new"
+                title="Preview"
+                alt={`${project.data.title} - Preview`}
+                isLocal={false}
+                padding="0.5rem"
+              />
+            )
+          }
+          {
+            project.data.article && (
+              <LinkBox
+                href={project.data.article}
+                icon="ic:outline-article"
+                title="Read"
+                alt={`${project.data.title} - Blog post`}
+                isLocal={true}
+                padding="0.5rem"
+              />
+            )
+          }
+          <LinkBox
+            href={localizePath(`/projects/${project.data.permSlug}/`)}
+            icon="mdi:plus"
+            title={t('project.details')}
+            alt={`${project.data.title} - ${t('project.see_more_alt')}`}
+            isLocal={true}
+            padding="0.5rem"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="project-card-container">
-    <div class="project-card-header">
-      <Title title={project.title} fontSize={titleSize} margin="0" />
-      <div class="project-card-language">
-        {project.language}
-        <Icon name={project.icon} />
+  {
+    project.data.subProjects && (
+      <div class="project-card-sub-projects-wrapper">
+        <h3>{t('projects.repositories')}</h3>
+        <div class="project-card-sub-projects">
+          {project.data.subProjects.map(async (sub) => {
+            const subProject = await getEntry(sub);
+            return (
+              <MiniProjectCard
+                slug={subProject.data.permSlug}
+                title={subProject.data.title}
+                description={subProject.data.description}
+                url={subProject.data.url}
+                git={subProject.data.git}
+                codeLanguage={subProject.data.codeLanguage}
+                icon={subProject.data.icon}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
-    <Divider width="100%" margin="0 0" />
-    <Description
-      value={project.description}
-      fontSize={descSize}
-      margin="0"
-      align={false}
-      maxLine="3"
-    />
-    <div class="project-card-bottom">
-      <Tags values={project.tags} target="tags" />
-      <div class="project-card-links">
-        {
-          project.git && (
-            <LinkBox
-              href={project.git}
-              icon="simple-icons:github"
-              title="Github"
-              alt={`${project.title} - Github`}
-              isLocal={false}
-              padding="0.5rem"
-            />
-          )
-        }
-        {
-          project.url && (
-            <LinkBox
-              href={project.url}
-              icon="mdi:open-in-new"
-              title="Demo"
-              alt={`${project.title} - Demo`}
-              isLocal={false}
-              padding="0.5rem"
-            />
-          )
-        }
-        {
-          project.article && (
-            <LinkBox
-              href={project.article}
-              icon="ic:outline-article"
-              title="Read"
-              alt={`${project.title} - Blog post`}
-              isLocal={true}
-              padding="0.5rem"
-            />
-          )
-        }
-      </div>
-    </div>
-  </div>
+    )
+  }
 </div>
 
 <style>
   .project-card {
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+  }
+
+  .project-card-wrapper {
     height: 100%;
     width: 100%;
     min-height: 15rem;
-    border: var(--border-size) solid var(--border-color);
-    border-radius: var(--border-radius);
     box-sizing: border-box;
     padding: var(--card-padding);
     transition: all var(--transition-duration);
+    display: flex;
+    gap: 1rem;
+  }
+
+  .project-card-sub-projects-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--card-padding) var(--card-padding) var(--card-padding);
+    gap: 1rem;
+  }
+
+  .project-card-sub-projects-wrapper h3 {
+    margin: 0;
+  }
+
+  .project-card-sub-projects {
+    width: 100%;
     display: flex;
     gap: 1rem;
   }
@@ -111,6 +199,9 @@ const { project, titleSize, descSize } = Astro.props as Props;
     width: 50%;
     max-width: 50%;
     min-width: 50%;
+    display: flex;
+    wrap: nowrap;
+    overflow: hidden;
   }
 
   .project-card-img {
@@ -118,6 +209,7 @@ const { project, titleSize, descSize } = Astro.props as Props;
     width: 100%;
     object-fit: cover;
     border-radius: var(--border-radius);
+    transition: all 2.5s ease;
   }
 
   .project-card-container {
@@ -142,6 +234,31 @@ const { project, titleSize, descSize } = Astro.props as Props;
     gap: inherit;
     position: absolute;
     bottom: 0;
+  }
+
+  .project-card-title {
+    display: flex;
+    align-items: center;
+  }
+
+  .project-card-status,
+  .project-card-org {
+    margin: 0 0 0 0.5rem;
+    font-size: 0.8em;
+    border: var(--border-size) solid var(--border-color);
+    padding: 0.4rem;
+    border-radius: var(--border-radius);
+    transition: all 0.2s;
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+  }
+
+  .project-card-org:hover {
+    border: var(--border-size) solid var(--primary-color);
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    cursor: pointer;
   }
 
   .project-card-language {
@@ -173,6 +290,18 @@ const { project, titleSize, descSize } = Astro.props as Props;
     font-size: 1.3em;
   }
 
+  .project-card-org > [data-icon] {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-card-org:hover > [data-icon] {
+    color: var(--primary-color);
+    fill: var(--primary-color);
+  }
+
   @media (max-width: 768px) {
     .project-card-img-container {
       width: 100%;
@@ -184,12 +313,16 @@ const { project, titleSize, descSize } = Astro.props as Props;
       width: 100%;
     }
 
-    .project-card {
+    .project-card-wrapper {
       flex-direction: column;
     }
 
     .project-card-bottom {
       position: initial;
+    }
+
+    .project-card-sub-projects {
+      flex-direction: column;
     }
   }
 </style>

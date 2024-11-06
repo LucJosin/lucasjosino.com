@@ -1,51 +1,62 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Description from '../Description.astro';
 import Divider from '../Divider.astro';
 import Link from '../Link/Link.astro';
 import Title from '../Title.astro';
 
 interface Props {
+  slug: string;
   title: string;
-  image?: string;
   description: string;
+  icon: string;
+  codeLanguage: string;
   url?: string;
   git?: string;
 }
 
-const { title, image, description, url, git } = Astro.props as Props;
+const { slug, title, description, codeLanguage, url, git, icon } =
+  Astro.props as Props;
 ---
 
 <div class="mini-project-item">
-  {
-    image && (
-      <img src={image} alt={`Post - ${title}`} class="mini-project-img" />
-    )
-  }
   <div class="mini-item-header">
-    <Title title={title} margin="0" />
-    <div class="mini-item-links">
-      {
-        git && (
-          <Link
-            href={git}
-            icon="simple-icons:github"
-            alt={title + ' - Github'}
-            isLocal={false}
-            hasBorderBottom={false}
-          />
-        )
-      }
-      {
-        url && (
-          <Link
-            href={url}
-            icon="mdi:external-link"
-            alt={title + ' - Demo'}
-            isLocal={false}
-            hasBorderBottom={false}
-          />
-        )
-      }
+    <div class="mini-item-wrapper">
+      <Title title={title} margin="0" />
+      <div class="mini-item-links">
+        {
+          git && (
+            <Link
+              href={git}
+              icon="simple-icons:github"
+              alt={title + ' - Github'}
+              isLocal={false}
+              hasBorderBottom={false}
+            />
+          )
+        }
+        {
+          url && (
+            <Link
+              href={url}
+              icon="mdi:external-link"
+              alt={title + ' - Preview'}
+              isLocal={false}
+              hasBorderBottom={false}
+            />
+          )
+        }
+        <Link
+          href={`/projects/${slug}/`}
+          icon="mdi:plus"
+          alt={title + ' - See more'}
+          hasBorderBottom={false}
+        />
+      </div>
+    </div>
+    <div class="mini-item-language">
+      {codeLanguage}
+      <Icon name={icon} />
     </div>
   </div>
   <Divider width="100%" margin="0 0" />
@@ -60,6 +71,8 @@ const { title, image, description, url, git } = Astro.props as Props;
 
 <style>
   .mini-project-item {
+    height: fit-content;
+    width: 100%;
     border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
     box-sizing: border-box;
@@ -70,17 +83,24 @@ const { title, image, description, url, git } = Astro.props as Props;
     gap: 0.5rem;
   }
 
-  .mini-project-img {
-    height: 50%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-  }
-
   .mini-item-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .mini-item-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .mini-item-language {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8em;
   }
 
   .mini-item-links {

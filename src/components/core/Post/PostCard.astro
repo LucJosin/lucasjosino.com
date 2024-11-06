@@ -1,6 +1,7 @@
 ---
 import Tags from '@components/data/Tags.astro';
 import { getReadTime } from '@lib/time';
+import { useLocale } from 'i18n';
 import Description from '../Description.astro';
 import Link from '../Link/Link.astro';
 import PostDateTime from './PostDateTime.astro';
@@ -16,6 +17,8 @@ interface Props {
   href: string;
   maxTags?: number;
 }
+
+const { locale, t, localizePath } = useLocale(Astro.url.pathname);
 
 const {
   image,
@@ -34,7 +37,7 @@ const {
   <div class="post-card-img-container">
     {
       image && (
-        <a href={`/blog/${href}`} title={`Read more about: ${title}`}>
+        <a href={href} title={t('post.card.read_post')}>
           <img src={image} alt={`Post - ${title}`} class="post-card-img" />
         </a>
       )
@@ -46,18 +49,14 @@ const {
         <PostDateTime date={publishedAt} /> •
         <Link
           title={category}
-          alt="See all posts with this category"
-          href={`/blog/categories/${category}`}
+          alt={t('post.card.see_more_posts_from_this_category', { category })}
+          href={localizePath(`/blog/categories/${category}`)}
         /> •
-        <span>{getReadTime(body)}</span>
+        <span>{getReadTime(body, locale)}</span>
       </span>
     </div>
     <div class="post-card-header">
-      <Link
-        href={`/blog/${href}`}
-        alt={`Read more about: ${title}`}
-        display="inline"
-      >
+      <Link href={href} alt={t('post.card.read_post')} display="inline">
         <h3>{title}</h3>
       </Link>
     </div>
@@ -65,15 +64,15 @@ const {
       value={description}
       margin="0"
       align={false}
-      fontSize="0.9em"
       maxLine="3"
+      title={description}
     />
     <Tags values={tags.slice(0, maxTags)} target="tags" active />
     <div class="post-card-read-more">
       <Link
-        href={`/blog/${href}`}
-        alt="Read more about"
-        title="Read post"
+        href={href}
+        alt={t('post.card.read_post')}
+        title={t('post.card.read_post')}
         icon="mdi:arrow-right-thin"
         iconSide="right"
         hasBorderBottom={false}
@@ -146,13 +145,6 @@ const {
     gap: 0.4rem;
   }
 
-  .post-card-read-more {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 0rem;
-  }
-
   @media (max-width: 768px) {
     .post-card {
       flex-direction: column;
@@ -170,10 +162,6 @@ const {
 
     .post-card-info {
       margin-top: 0;
-    }
-
-    .post-card-read-more {
-      position: initial;
     }
   }
 </style>

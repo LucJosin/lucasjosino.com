@@ -18,6 +18,7 @@ import remarkCodeSet from '@lucjosin/remark-code-set';
 import remarkImageCaption from '@lucjosin/remark-image-caption';
 import remarkPostReference from '@lucjosin/remark-post-reference';
 import remarkReadmeStats from '@lucjosin/remark-readme-stats';
+import remarkSlider from '@lucjosin/remark-slider';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
@@ -25,6 +26,7 @@ import remarkCollapse from 'remark-collapse';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
 
+import { defaultLocale, explicitLocales, locales } from './src/i18n/config';
 import HashRenamer from './src/lib/hash-renamer';
 import getRedirects from './src/lib/redirects';
 
@@ -58,6 +60,18 @@ export default defineConfig({
   output: 'static',
   // Specify a mapping of redirects where the key is the route to match and the value is the path to redirect to.
   redirects: getRedirects(),
+  // Configures i18n routing
+  i18n: {
+    defaultLocale: defaultLocale,
+    locales: locales,
+  },
+  // Set the route matching behavior
+  trailingSlash: 'always',
+  // Build Options
+  build: {
+    // Control the output file format of each page.
+    format: 'directory',
+  },
   // Astro integrations.
   //
   // Ref: https://docs.astro.build/en/guides/integrations-guide/
@@ -78,7 +92,12 @@ export default defineConfig({
         except: exceptions,
       },
     }),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: defaultLocale,
+        locales: explicitLocales,
+      },
+    }),
     robotsTxt({
       sitemap: true,
     }),
@@ -153,14 +172,23 @@ export default defineConfig({
       numberedFootnoteLabels,
       remarkAlertBlocks,
       remarkCodeHighlight,
+      remarkSlider,
       remarkImageCaption,
       responsiveTables,
       remarkCodeSet,
-      remarkToc,
+      [
+        remarkToc,
+        {
+          heading: 'Summary|Sumário',
+        },
+      ],
       [
         remarkCollapse,
         {
-          test: 'Table of contents',
+          test: 'Summary|Sumário',
+          summary: (str) => {
+            return str === 'Summary' ? 'Show contents' : 'Mostrar conteúdos';
+          },
         },
       ],
     ],
@@ -174,7 +202,10 @@ export default defineConfig({
       external: ['svgo', '@resvg/resvg-js'],
     },
     // Fix 'resvg' on dev mode
-    optimizeDeps: { exclude: ['@resvg/resvg-js'] },
+    optimizeDeps: {
+      exclude: ['@resvg/resvg-js'],
+      esbuildOptions: { target: 'esnext' },
+    },
     build: { rollupOptions: { external: ['@resvg/resvg-js'] } },
   },
   // Listen on all addresses, including LAN and public addresses.
@@ -182,5 +213,14 @@ export default defineConfig({
   // Ref: https://docs.astro.build/en/reference/configuration-reference/#serverhost
   server: {
     host: true,
+  },
+  // Astro offers experimental flags to give users early access to new features.
+  // These flags are not guaranteed to be stable.
+  experimental: {
+    // Enables a more reliable strategy to prevent scripts from being
+    // executed in pages where they are not used.
+    //
+    // https://docs.astro.build/en/reference/configuration-reference/#experimentaldirectrenderscript
+    directRenderScript: true,
   },
 });

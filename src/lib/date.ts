@@ -1,10 +1,10 @@
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en';
+import type { Locale } from 'i18n/types';
 
-TimeAgo.addDefaultLocale(en);
-const timeAgo = new TimeAgo('en-US');
-
-export function getFormatedDate(date: string, time: boolean = false) {
+export function getFormatedDate(
+  date: string,
+  time: boolean = false,
+  locale: Locale = 'en'
+) {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'long',
@@ -18,9 +18,5 @@ export function getFormatedDate(date: string, time: boolean = false) {
     options.hour12 = false;
   }
 
-  return new Date(date).toLocaleDateString('en-US', options);
-}
-
-export function getDateAgo(date: string) {
-  return timeAgo.format(new Date(date));
+  return new Date(date).toLocaleDateString(locale, options);
 }

@@ -1,64 +1,15 @@
 ---
-import { getDateAgo, getFormatedDate } from '@lib/date';
+import { getFormatedDate } from '@lib/date';
+import type { Locale } from 'i18n/types';
 
 interface Props {
   date: string;
+  locale?: Locale;
 }
 
-const { date } = Astro.props;
+const { date, locale } = Astro.props;
 ---
 
 <span class="post-date">
-  {getFormatedDate(date)}
+  {getFormatedDate(date, false, locale)}
 </span>
-<span class="post-time-ago">
-  {getDateAgo(date)}
-</span>
-
-<style>
-  .post-date,
-  .post-time-ago {
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .post-date:hover,
-  .post-time-ago:hover {
-    border-bottom: var(--border-size) solid var(--border-color);
-  }
-
-  .post-time-ago {
-    display: none;
-  }
-
-  .show {
-    display: block;
-  }
-
-  .ride {
-    display: none;
-  }
-</style>
-
-<script>
-  const postDateAgo = document.querySelectorAll(
-    '.post-time-ago'
-  ) as NodeListOf<HTMLSpanElement>;
-  const postDate = document.querySelectorAll(
-    '.post-date'
-  ) as NodeListOf<HTMLSpanElement>;
-
-  for (let i = 0; i < postDateAgo.length; i++) {
-    postDate[i]?.addEventListener('click', () => {
-      postDateAgo[i].classList.toggle('show');
-      postDate[i].classList.toggle('ride');
-    });
-  }
-
-  for (let i = 0; i < postDateAgo.length; i++) {
-    postDateAgo[i]?.addEventListener('click', () => {
-      postDateAgo[i].classList.toggle('show');
-      postDate[i].classList.toggle('ride');
-    });
-  }
-</script>

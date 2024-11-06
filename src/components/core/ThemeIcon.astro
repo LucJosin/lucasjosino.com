@@ -1,16 +1,23 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Tooltip from './Tooltip.astro';
+import { useLocale } from 'i18n';
 
 interface Props {
   position?: string;
 }
 
+const { t } = useLocale(Astro.url.pathname);
+
 const { position = 'initial' } = Astro.props;
 ---
 
-<button id="theme">
-  <Icon name="mdi:white-balance-sunny" />
-</button>
+<Tooltip message={t('common.header.change_theme_tooltip')} position="bottom">
+  <button id="theme" accesskey="t" title={t('common.header.change_theme')}>
+    <Icon name="mdi:white-balance-sunny" class="dark-icon" />
+    <Icon name="mdi:moon-and-stars" class="light-icon" />
+  </button>
+</Tooltip>
 
 <style define:vars={{ position }}>
   #theme {
@@ -32,6 +39,14 @@ const { position = 'initial' } = Astro.props;
 
   #theme:hover {
     background-color: var(--contrast-color);
+  }
+
+  :root[data-theme='dark'] .light-icon {
+    display: none;
+  }
+
+  :root[data-theme='light'] .dark-icon {
+    display: none;
   }
 
   #theme:hover > [data-icon] {

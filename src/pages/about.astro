@@ -1,0 +1,177 @@
+---
+import Divider from '@components/core/Divider.astro';
+import Title from '@components/core/Title.astro';
+import Tooltip from '@components/core/Tooltip.astro';
+import Container from '@components/data/Container.astro';
+import Socials from '@components/data/Socials.astro';
+import { languages } from '@constants/languages';
+import Layout from '@layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import { useLocale } from 'i18n';
+
+const { t, localizePath } = useLocale(Astro.url.pathname);
+
+const title = t('about.title');
+const description = t('common.description');
+---
+
+<Layout title={title} description={description} shortlink="/about">
+  <Container>
+    <Title title={t('about.article.topic_1.title')} fontSize="2.5em" />
+    <Divider height="1px" width="80%" />
+    <article class="about-article">
+      <section class="about-section section-text">
+        <p><Fragment set:html={t('about.article.topic_1.paragraph_1')} /></p>
+        <p>
+          <Fragment set:html={t('about.article.topic_1.paragraph_2')} />
+        </p>
+        <p>
+          <Fragment set:html={t('about.article.topic_1.paragraph_3')} />
+        </p>
+        <p>
+          <Fragment
+            set:html={t('about.article.topic_1.paragraph_4', {
+              link: localizePath('/projects/'),
+            })}
+          />
+        </p>
+        <p>
+          <Fragment
+            set:html={t('about.article.topic_1.paragraph_5', {
+              link: localizePath('/blog/'),
+            })}
+          />
+        </p>
+
+        <h2 id="beyond-the-code">{t('about.article.topic_2.title')}</h2>
+        <p>
+          <Fragment set:html={t('about.article.topic_2.paragraph_1')} />
+        </p>
+        <p>
+          <Fragment set:html={t('about.article.topic_2.paragraph_2')} />
+        </p>
+
+        <h2 id="toolbox">{t('about.article.topic_3.title')}</h2>
+        <p><Fragment set:html={t('about.article.topic_3.paragraph_1')} /></p>
+        <div class="about-languages">
+          {
+            languages.map((lang) => {
+              return (
+                <Tooltip message={lang.name}>
+                  <Icon
+                    name={lang.icon}
+                    font-size="3em"
+                    class="about-languages-language"
+                  />
+                </Tooltip>
+              );
+            })
+          }
+        </div>
+
+        <h2 id="github-stats">{t('about.article.topic_4.title')}</h2>
+        <p><Fragment set:html={t('about.article.topic_4.paragraph_1')} /></p>
+        <p class="about-stats">
+          <img
+            src="https://raw.githubusercontent.com/LucJosin/github-stats-transparent/output/generated/overview.svg"
+            alt="Github Overview"
+          />
+          <img
+            src="https://raw.githubusercontent.com/LucJosin/github-stats-transparent/output/generated/languages.svg"
+            alt="Github Languages"
+          />
+        </p>
+
+        <h2 id="github-stats">{t('about.article.topic_5.title')}</h2>
+        <p>{t('about.article.topic_5.paragraph_1')}</p>
+        <div class="about-contact">
+          <Socials showName={true} showTooltip={false} justifyContent="left" />
+        </div>
+      </section>
+    </article>
+  </Container>
+</Layout>
+
+<style>
+  .about-article {
+    width: 100%;
+    line-height: 1.65em;
+    color: var(--description-text-color);
+  }
+
+  .section-text h2 {
+    margin: 1rem 0 0 0;
+    color: var(--primary-text-color);
+  }
+
+  .section-text ul {
+    margin: 0;
+  }
+
+  .section-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section-text ul {
+    display: inline;
+  }
+
+  .about-languages,
+  .about-stats {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .about-stats img {
+    width: min-content;
+  }
+
+  .about-languages-language {
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+  }
+
+  .about-languages-language:hover {
+    border: var(--border-size) solid var(--primary-color);
+    background-color: var(--border-color);
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  :global(strong) {
+    color: var(--primary-text-color);
+  }
+
+  :global(.about-link) {
+    color: var(--primary-text-color);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    line-break: normal;
+    text-decoration-line: underline;
+    text-decoration-color: var(--primary-text-color);
+    text-decoration-thickness: 0.125rem;
+    text-decoration-style: dashed;
+    text-underline-offset: 0.25rem;
+  }
+
+  :global(.about-link:hover) {
+    opacity: 0.7;
+  }
+
+  .about-languages-language:hover > [data-icon] {
+    fill: var(--secondary-text-color);
+    color: var(--secondary-text-color);
+  }
+
+  @media (max-width: 640px) {
+    .about-languages {
+      justify-content: center;
+    }
+  }
+</style>

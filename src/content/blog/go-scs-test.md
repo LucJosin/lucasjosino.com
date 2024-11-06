@@ -1,5 +1,5 @@
 ---
-slug: 'go-how-to-mock-scs-session-authentication-in-tests'
+permSlug: 'go-how-to-mock-scs-session-authentication-in-tests'
 title: 'Go: How to mock SCS session authentication in tests'
 description: "In this article, we'll explore how to mock our session when using SCS and inject data into context for authentication tests."
 image:
@@ -24,7 +24,7 @@ publishedAt: '2024-02-01 20:00 UTC-3'
 updatedAt: '2024-05-01 12:00 UTC-3'
 ---
 
-## Table of Contents
+## Summary
 
 ## Introduction
 
@@ -187,10 +187,10 @@ Now, the testing part.
 
 Our test will have four paths:
 
-- Public endpoint that will return `200 (Ok){endpointOk1#green-white}`
-- Admin endpoint **without role** that will return `401 (Unauthorized){endpointUnauthorized1#goldenrod-white}`
-- Admin endpoint **with wrong role** that will return `401 (Unauthorized){endpointUnauthorized2#goldenrod-white}`
-- Admin endpoint **with correct role** that will return `200 (Ok){endpointOk2#green-white}`
+- Public endpoint that will return `200 (Ok)[class="endpointOk1" background-color="green" color="white"]`
+- Admin endpoint **without role** that will return `401 (Unauthorized)[class="endpointUnauthorized1" background-color="goldenrod" color="white"]`
+- Admin endpoint **with wrong role** that will return `401 (Unauthorized)[class="endpointUnauthorized2" background-color="goldenrod" color="white"]`
+- Admin endpoint **with correct role** that will return `200 (Ok)[class="endpointOk2" background-color="green" color="white"]`
 
 ```go title="main_test.go"
 func Test_main(t *testing.T) {

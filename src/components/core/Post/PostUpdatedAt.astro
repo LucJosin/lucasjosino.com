@@ -1,5 +1,6 @@
 ---
 import { getFormatedDate } from '@lib/date';
+import { useLocale } from 'i18n';
 import Link from '../Link/Link.astro';
 
 interface Props {
@@ -7,17 +8,19 @@ interface Props {
   updatedAt: string;
 }
 
+const { locale, t } = useLocale(Astro.url.pathname);
+
 const { id, updatedAt } = Astro.props;
 const GIT_REF = `https://github.com/LucJosin/lucasjosino.com/commits/main/src/content/blog/${id}`;
 ---
 
 <div class="post-updated-at">
   <i class="post-updated-at-content">
-    Last modified:
+    {t('post.last_updated')}
     <Link
       href={GIT_REF}
-      alt="See post history"
-      title={getFormatedDate(updatedAt, true)}
+      alt={t('post.see_post_history')}
+      title={getFormatedDate(updatedAt, true, locale)}
       isLocal={false}
     />
   </i>

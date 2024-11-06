@@ -1,42 +1,54 @@
 ---
 import Avatar from '@components/core/Avatar.astro';
 import Divider from '@components/core/Divider.astro';
-import ThemeIcon from '@components/core/ThemeIcon.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Posts from '@components/data/Posts.astro';
 import Projects from '@components/data/Projects.astro';
 import Socials from '@components/data/Socials.astro';
 import Layout from '@layouts/Layout.astro';
+import { useLocale } from 'i18n';
+
+const { t, localizePath } = useLocale(Astro.url.pathname);
+
+const title = t('common.title');
+const description = t('common.description');
 ---
 
-<Layout
-  title="Backend Developer"
-  description="Hi!, I'm Lucas Josino. Backend Developer. I'm currently working with Java (Spring Boot) development."
-  shortlink="/"
->
-  <ThemeIcon position="absolute" />
-  <Container maxWidth="35rem" hasHeader={false}>
-    <div class="profile">
+<Layout title={title} description={description} shortlink="/">
+  <Container gap="1.5rem">
+    <section class="profile-section">
       <Avatar />
       <Title title="Lucas Josino" margin="0.2em 0" fontSize="1.4em" />
-      <span>Backend Developer</span>
-      <span>Java · Spring Boot</span>
-    </div>
-    <Divider width="80%" margin="1.5rem 0 0 0" />
-    <Socials />
-    <Projects />
+      <span>{title}</span>
+      <span>Java · Golang · Spring Boot</span>
+      <p class="profile-description">
+        <a href={localizePath('/about/')} set:html={t('home.welcome')} />
+      </p>
+      <Socials hasTitle={false} />
+    </section>
+    <Divider width="80%" margin="0" />
     <Posts />
+    <Projects />
   </Container>
 </Layout>
 
 <style>
-  .profile {
+  .profile-section {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2rem;
-    margin-top: 4rem;
+    gap: 0.5rem;
+  }
+
+  .profile-description {
+    margin: 0.6rem 2rem;
+  }
+
+  .profile-description a {
+    color: var(--description-text-color);
+    line-height: 1.5em;
+    gap: 0.2em;
   }
 </style>

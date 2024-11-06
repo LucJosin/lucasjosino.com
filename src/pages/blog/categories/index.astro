@@ -5,23 +5,23 @@ import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
 import Tags from '@components/data/Tags.astro';
 import Layout from '@layouts/Layout.astro';
-import { getUniqueCategories } from '@lib/blog';
+import { getAllPosts, getUniqueCategories } from '@lib/blog';
+import { useLocale } from 'i18n';
 
-const categories = await getUniqueCategories();
+const { t, locale } = useLocale(Astro.url.pathname);
+
+const allPosts = await getAllPosts(true, true, locale);
+const categories = await getUniqueCategories(allPosts);
+
+const title = t('tags.title');
+const description = t('tags.description');
 ---
 
-<Layout
-  title="Categories"
-  description="Explore all categories of my personal blog"
->
+<Layout title={title} description={description}>
   <Container>
-    <Title title="Categories" fontSize="2.5em" />
-    <Description
-      value="Explore all categories of my personal blog"
-      margin="0"
-      width="80%"
-    />
-    <Divider height="1px" width="80%" />
+    <Title title={title} fontSize="2.5em" />
+    <Description value={description} margin="0" width="80%" />
+    <Divider width="80%" />
     <Tags values={categories} target="categories" center showLength active />
   </Container>
 </Layout>

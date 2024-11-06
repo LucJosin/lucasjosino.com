@@ -1,5 +1,5 @@
 ---
-slug: 'how-to-hash-class-names-in-astro-using-astro-rename-integration'
+permSlug: 'how-to-hash-class-names-in-astro-using-astro-rename-integration'
 title: 'How to hash class names in Astro using astro-rename integration'
 description: 'Learn how to use the astro-rename integration to hash all CSS class names from your Astro project.'
 image:
@@ -23,7 +23,7 @@ publishedAt: '2023-10-14 18:00 UTC-3'
 updatedAt: '2023-10-24 21:08 UTC-3'
 ---
 
-## Table of Contents
+## Summary
 
 ## Introduction
 

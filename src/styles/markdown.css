@@ -7,6 +7,7 @@
   border: 1px var(--contrast-color) solid;
   border-radius: var(--border-radius);
   padding: 1rem;
+  background-color: var(--secondary-color);
 }
 
 .post-content [class~='lead'] {
@@ -195,29 +196,31 @@
 
 .post-content .rwd-table-wrapper {
   overflow: auto;
-}
-
-.post-content table {
-  overflow-x: auto;
   margin: 2rem 0;
 }
 
 .post-content table {
+  overflow-x: auto;
+  margin: 0;
+  position: relative;
   width: 100%;
   table-layout: auto;
   text-align: left;
-  margin: 0 0 0.5em 0;
   font-size: 0.875em;
   line-height: 1.7142857;
   border-collapse: collapse;
 }
 
-.post-content table::-webkit-scrollbar,
-.post-content table::-webkit-scrollbar-track {
-  background-color: inherit;
-  border-radius: calc(0.3rem + 1.5px);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.post-content table::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  border: 1px solid var(--contrast-color);
+  pointer-events: none;
 }
 
 .post-content table::-webkit-scrollbar,
@@ -235,7 +238,9 @@
   border-radius: 10px;
 }
 
+/* Table header styles */
 .post-content thead {
+  background-color: var(--secondary-color);
   color: var(--primary-text-color);
   font-weight: 600;
   border-bottom-width: 1px;
@@ -244,24 +249,18 @@
 
 .post-content thead th {
   vertical-align: bottom;
-  padding-right: 0.5714286em;
-  padding-bottom: 0.5714286em;
-  padding-left: 0.5714286em;
-  border: 1px solid var(--contrast-color);
-}
-
-.post-content tbody tr {
-  border-bottom-width: 1px;
-  border-bottom-color: var(--contrast-color);
+  padding: 0.5714286em;
 }
 
 .post-content tbody td {
   vertical-align: top;
-  padding-top: 0.5714286em;
-  padding-right: 0.5714286em;
-  padding-bottom: 0.5714286em;
-  padding-left: 0.5714286em;
-  border: 1px solid var(--contrast-color);
+  padding: 0.5714286em;
+  border-top: 1px solid var(--contrast-color);
+  border-left: 1px solid var(--contrast-color);
+}
+
+.post-content tbody tr td:first-child {
+  border-left: none;
 }
 
 .post-content {

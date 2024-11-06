@@ -2,6 +2,10 @@
 dist/
 .output/
 
+# satori-og
+.fonts/
+**/open-graph/*.png
+
 # dependencies
 node_modules/
 

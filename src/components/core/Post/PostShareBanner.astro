@@ -2,6 +2,7 @@
 import PostShare from '@components/data/Post/PostShare.astro';
 import headConfig from '@constants/head';
 import { Icon } from 'astro-icon/components';
+import { useLocale } from 'i18n';
 
 interface Props {
   link: string;
@@ -11,44 +12,46 @@ interface Props {
   bluesky: string;
 }
 
+const { t } = useLocale(Astro.url.pathname);
+
 const { link, linkedin, twitter, reddit, bluesky } = Astro.props;
 ---
 
 <div class="post-extra-share">
   <span class="post-extra-share-left">
     <Icon name="mdi:cards-heart" width={18} />
-    Enjoy this post? Feel free to share!
+    {t('post.share.title')}
   </span>
   <PostShare
     items={[
       {
         href: linkedin,
         icon: 'simple-icons:linkedin',
-        alt: 'Share to Linkedin',
+        alt: t('post.share.linkedin_alt'),
         event: `Post Share (Footer) - Linkedin (${link})`,
       },
       {
         href: twitter,
         icon: 'simple-icons:x',
-        alt: 'Share to X (Twitter)',
+        alt: t('post.share.twitter_alt'),
         event: `Post Share (Footer) - X (Twitter) (${link})`,
       },
       {
         href: reddit,
         icon: 'simple-icons:reddit',
-        alt: 'Share to Reddit',
+        alt: t('post.share.reddit_alt'),
         event: `Post Share (Footer) - Reddit (${link})`,
       },
       {
         href: bluesky,
         icon: 'simple-icons:bluesky',
-        alt: 'Share to Bluesky',
+        alt: t('post.share.bluesky_alt'),
         event: `Post Share (Footer) - Blueksy (${link})`,
       },
       {
         href: headConfig.shortLink + link,
         icon: 'mdi:link',
-        alt: 'Copy link',
+        alt: t('post.share.copy_link_alt'),
         id: 'share',
         messageId: 'share-title',
         event: `Post Share (Footer) - Copy link (${link})`,

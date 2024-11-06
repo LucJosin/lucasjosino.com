@@ -4,12 +4,15 @@ import Divider from '@components/core/Divider.astro';
 import ProjectCard from '@components/core/Project/ProjectCard.astro';
 import Title from '@components/core/Title.astro';
 import Container from '@components/data/Container.astro';
-import { projects } from '@constants/projects';
 import Layout from '@layouts/Layout.astro';
+import { getAllProjects } from '@lib/projects';
+import { useLocale } from 'i18n';
 
-const title = 'Projects';
-const description =
-  "Discover the projects I've been a part of and those I'm actively involved in.";
+const { locale, t } = useLocale(Astro.url.pathname);
+const projects = await getAllProjects(true, locale);
+
+const title = t('projects.title');
+const description = t('projects.description');
 ---
 
 <Layout title={title} description={description} shortlink="/projects">
@@ -36,3 +39,10 @@ const description =
     gap: 1rem;
   }
 </style>
+
+<script>
+  import mediumZoom from 'medium-zoom';
+  mediumZoom(document.querySelectorAll('img') as NodeListOf<HTMLImageElement>, {
+    background: '#000000e0',
+  });
+</script>
