@@ -6,12 +6,7 @@ interface Props {
   align?: boolean;
 }
 
-const {
-  title,
-  margin = '1rem 0',
-  fontSize = '0.9em',
-  align = true,
-} = Astro.props as Props;
+const { title, fontSize = '0.9em', align = true } = Astro.props as Props;
 
 const textAlign = align ? 'center' : 'initial';
 ---
@@ -20,9 +15,8 @@ const textAlign = align ? 'center' : 'initial';
   {title}
 </h1>
 
-<style define:vars={{ margin, fontSize, textAlign }}>
+<style define:vars={{ fontSize, textAlign }}>
   .title-data {
-    margin: var(--margin);
     font-size: var(--fontSize);
     font-weight: bold;
     text-align: var(--textAlign);
