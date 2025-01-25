@@ -6,9 +6,9 @@
   --contrast-color: #000;
   --contrast-color-rgb: 0, 0, 0;
 
-  --divider-color: #000;
+  --divider-color: #c9c9c9;
 
-  --border-color: #000;
+  --border-color: #c9c9c9;
   --border-size: 1px;
 
   --primary-text-color: #000;
@@ -34,9 +34,9 @@
   --contrast-color: #fff;
   --contrast-color-rgb: 255, 255, 255;
 
-  --divider-color: #fff;
+  --divider-color: #404040;
 
-  --border-color: #fff;
+  --border-color: #404040;
 
   --primary-text-color: #fff;
   --secondary-text-color: #121212;
