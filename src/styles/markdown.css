@@ -4,10 +4,9 @@
 }
 
 .post-content>details {
-  border: 1px var(--contrast-color) solid;
+  border: 1px var(--border-color) solid;
   border-radius: var(--border-radius);
-  padding: 1rem;
-  background-color: var(--secondary-color);
+  padding: 0.6rem 1rem;
 }
 
 .post-content [class~='lead'] {
