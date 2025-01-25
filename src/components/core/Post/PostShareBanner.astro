@@ -55,6 +55,10 @@ const { link, linkedin, twitter, reddit, bluesky } = Astro.props;
         id: 'share',
         messageId: 'share-title',
         event: `Post Share (Footer) - Copy link (${link})`,
+        attr: {
+          'data-copy': t('post.share.copy_link_alt'),
+          'data-copied': t('post.share.copied_link_alt'),
+        },
       },
     ]}
   />

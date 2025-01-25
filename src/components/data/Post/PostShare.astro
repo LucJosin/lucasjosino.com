@@ -9,6 +9,7 @@ interface PostShareItem {
   id?: string;
   messageId?: string;
   event?: string;
+  attr?: Record<string, string>;
 }
 
 interface Props {
@@ -27,7 +28,8 @@ const { items, margin } = Astro.props;
           message={item.alt}
           id={item.id}
           messageId={item.messageId}
-          href={item.href}
+          attr={{ 'data-href': item.href }}
+          messageAttr={item.attr}
         >
           <LinkBox
             href={item.href}

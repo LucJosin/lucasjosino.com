@@ -43,11 +43,14 @@ function listenToOnShareClick() {
       e.stopImmediatePropagation();
 
       const value = shareButton.getAttribute('data-href')!;
+      const shareMessage = shareButton.children[0];
+      const copyMessage = shareMessage.getAttribute('data-copy')!;
+      const copiedMessage = shareMessage.getAttribute('data-copied')!;
       await navigator.clipboard.writeText(value);
 
-      shareButtonText.innerText = 'Copied!';
+      shareButtonText.innerText = copiedMessage;
       setTimeout(() => {
-        shareButtonText.innerText = 'Copy link';
+        shareButtonText.innerText = copyMessage;
       }, 2000);
     });
   }
