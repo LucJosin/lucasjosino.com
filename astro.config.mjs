@@ -187,7 +187,7 @@ export default defineConfig({
         {
           test: 'Summary|Sumário',
           summary: (str) => {
-            return str === 'Summary' ? 'Show contents' : 'Mostrar conteúdos';
+            return str === 'Summary' ? 'Show content' : 'Mostrar conteúdo';
           },
         },
       ],
