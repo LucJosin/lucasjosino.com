@@ -23,9 +23,18 @@ export interface i18nSchema {
         paragraph_5: string;
       };
       topic_2: { title: string; paragraph_1: string; paragraph_2: string };
-      topic_3: { title: string; paragraph_1: string };
+      topic_3: {
+        title: string;
+        paragraph_1: string;
+        tabs: {
+          education: string;
+          experience: string;
+          responsabilities: string;
+        };
+      };
       topic_4: { title: string; paragraph_1: string };
       topic_5: { title: string; paragraph_1: string };
+      topic_6: { title: string; paragraph_1: string };
     };
   };
   blog: {
@@ -53,6 +62,7 @@ export interface i18nSchema {
       reddit_alt: string;
       bluesky_alt: string;
       copy_link_alt: string;
+      copied_link_alt: string;
     };
   };
   categories: {

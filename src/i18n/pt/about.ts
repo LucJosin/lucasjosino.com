@@ -21,16 +21,25 @@ export const about = {
         'Também tenho interesse por <strong>fotografia</strong> and <strong>culinária</strong>.',
     },
     topic_3: {
+      title: 'História',
+      paragraph_1: 'Minha jornada até aqui:',
+      tabs: {
+        education: 'Educação',
+        experience: 'Experiência',
+        responsabilities: 'Responsabilidades',
+      },
+    },
+    topic_4: {
       title: 'Toolbox',
       paragraph_1:
         'Uma coleção de <strong>linguagens de programação</strong>, <strong>frameworks</strong> e <strong>ferramentas</strong> que eu utilizo:',
     },
-    topic_4: {
+    topic_5: {
       title: 'Status do Github',
       paragraph_1:
         'Confira minhas estatísticas do GitHub para ver minhas <strong>contribuições</strong> e <strong>repositórios</strong>.',
     },
-    topic_5: {
+    topic_6: {
       title: 'Contato',
       paragraph_1: 'Sinta-se à vontade para se conectar comigo através do:',
     },
