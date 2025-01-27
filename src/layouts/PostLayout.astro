@@ -41,11 +41,10 @@ const relatedPosts = post.data.relatedPosts
   ? await getEntries(post.data.relatedPosts)
   : [];
 
-const { linkedin, twitter, reddit, bluesky } = getSocialsShare(
+const { linkedin, twitter, reddit } = getSocialsShare(
   headConfig.shortLink + post.data.shortlink,
   post.data.title,
-  headConfig.social,
-  post.data.tags
+  headConfig.social
 );
 
 const readTime = getReadTime(post.body, locale);
@@ -147,11 +146,11 @@ const article = {
       {
         post.data.easyShare && (
           <PostShareBanner
+            postTitle={post.data.title}
             link={post.data.shortlink}
             twitter={twitter}
             linkedin={linkedin}
             reddit={reddit}
-            bluesky={bluesky}
           />
         )
       }
