@@ -11,7 +11,6 @@
 }
 
 .remark-alerts {
-  background-color: var(--secondary-color);
   position: relative;
   border-radius: var(--border-radius);
   display: flex;
