@@ -1,11 +1,7 @@
 import { listenToBackToTop, showHideBackToTopButton } from './back-to-top';
 
-const shareButtons = document.querySelectorAll(
-  '#share'
-) as NodeListOf<HTMLElement>;
-const shareButtonTexts = document.querySelectorAll(
-  '#share-title'
-) as NodeListOf<HTMLElement>;
+const shareButton = document.querySelector('#share-icon') as HTMLElement;
+const shareButtonText = document.querySelector('#share-title') as HTMLElement;
 
 const progressBar = document.querySelector('.progress-bar') as HTMLElement;
 
@@ -33,25 +29,20 @@ function listenToProgressBar() {
  * Copy post permalink on button click.
  */
 function listenToOnShareClick() {
-  for (let i = 0; i < shareButtons.length; i++) {
-    const shareButton = shareButtons[i];
-    const shareButtonText = shareButtonTexts[i];
+  shareButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
 
-    shareButton.addEventListener('click', async (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
+    const value = shareButton.getAttribute('data-href')!;
+    const shareMessage = shareButton.children[0];
+    const copyMessage = shareMessage.getAttribute('data-copy')!;
+    const copiedMessage = shareMessage.getAttribute('data-copied')!;
+    await navigator.clipboard.writeText(value);
 
-      const value = shareButton.getAttribute('data-href')!;
-      const shareMessage = shareButton.children[0];
-      const copyMessage = shareMessage.getAttribute('data-copy')!;
-      const copiedMessage = shareMessage.getAttribute('data-copied')!;
-      await navigator.clipboard.writeText(value);
-
-      shareButtonText.innerText = copiedMessage;
-      setTimeout(() => {
-        shareButtonText.innerText = copyMessage;
-      }, 2000);
-    });
-  }
+    shareButtonText.innerText = copiedMessage;
+    setTimeout(() => {
+      shareButtonText.innerText = copyMessage;
+    }, 2000);
+  });
 }
