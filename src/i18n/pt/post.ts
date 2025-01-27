@@ -19,5 +19,8 @@ export const post = {
     bluesky_alt: 'Compartilhar no Bluesky',
     copy_link_alt: 'Copiar link',
     copied_link_alt: 'Copiado!',
+    dialog: {
+      close: 'Fechar',
+    },
   },
 };

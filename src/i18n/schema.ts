@@ -63,6 +63,9 @@ export interface i18nSchema {
       bluesky_alt: string;
       copy_link_alt: string;
       copied_link_alt: string;
+      dialog: {
+        close: string;
+      };
     };
   };
   categories: {

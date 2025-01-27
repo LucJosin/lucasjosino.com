@@ -3295,6 +3295,7 @@ __metadata:
     medium-zoom: ^1.1.0
     prettier: ^3.3.3
     prettier-plugin-astro: ^0.14.1
+    qr-code-styling: ^1.9.1
     react: ^18.3.1
     react-dom: ^18.3.1
     reading-time: ^1.5.0
@@ -12109,6 +12110,22 @@ __metadata:
   version: 2.1.1
   resolution: "punycode@npm:2.1.1"
   checksum: 823bf443c6dd14f669984dea25757b37993f67e8d94698996064035edd43bed8a5a17a9f12e439c2b35df1078c6bec05a6c86e336209eb1061e8025c481168e8
+  languageName: node
+  linkType: hard
+
+"qr-code-styling@npm:^1.9.1":
+  version: 1.9.1
+  resolution: "qr-code-styling@npm:1.9.1"
+  dependencies:
+    qrcode-generator: ^1.4.4
+  checksum: f8dbc47fdd575047ccf8ffcf69ee488988d46acea9dfe1720d1d761bc474d0491cd2c2846bcde1f7c4a6f9fea653183e54fbc7823631319b10378c1404712e7e
+  languageName: node
+  linkType: hard
+
+"qrcode-generator@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "qrcode-generator@npm:1.4.4"
+  checksum: 860cfdd2a7a608d34e92cab99774cc08182e1911432f30ed36d16f8a5cdabd7fdf40239caed91fa2691cfe66c8d95c1340a2fc9cc439eed07a9f2eb328c6f527
   languageName: node
   linkType: hard
 

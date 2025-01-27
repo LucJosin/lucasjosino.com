@@ -1,6 +1,9 @@
 ---
 import LinkBox from '@components/core/Link/LinkBox.astro';
 import Tooltip from '@components/core/Tooltip.astro';
+import { useLocale } from 'i18n';
+
+const { t } = useLocale(Astro.url.pathname);
 
 interface PostShareItem {
   href: string;
@@ -14,13 +17,25 @@ interface PostShareItem {
 
 interface Props {
   items: PostShareItem[];
+  postTitle: string;
   margin?: string;
 }
 
-const { items, margin } = Astro.props;
+const { items, margin, postTitle } = Astro.props;
 ---
 
 <div class="post-share">
+  <dialog class="qr-code-dialog">
+    <div class="qr-code-dialog-content">
+      <h4 class="qr-code-title">{postTitle}</h4>
+      <hr class="qr-code-hr" />
+      <div class="qr-code-target"></div>
+      <span class="qr-code-link"></span>
+      <hr class="qr-code-hr" />
+      <button class="qr-code-close">{t('post.share.dialog.close')}</button>
+    </div>
+  </dialog>
+
   {
     items.map((item) => {
       return (
@@ -44,6 +59,19 @@ const { items, margin } = Astro.props;
       );
     })
   }
+  <Tooltip
+    message="QR Code"
+    id="qr-code"
+    attr={{ 'data-href': items.at(-1)!.href }}
+  >
+    <LinkBox
+      href={items.at(-1)!.href}
+      alt="QR Code"
+      icon="mdi:qrcode"
+      iconSize="1em"
+      padding="0.6rem 0.8rem"
+    />
+  </Tooltip>
 </div>
 
 <style define:vars={{ margin }}>
@@ -54,4 +82,123 @@ const { items, margin } = Astro.props;
     gap: 1rem;
     margin: var(--margin);
   }
+
+  .qr-code-dialog {
+    width: 350px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0;
+    margin: auto;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+  }
+
+  .qr-code-dialog::backdrop {
+    background-color: var(--overlay-color);
+    backdrop-filter: blur(2px);
+  }
+
+  .qr-code-dialog-content {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .qr-code-title {
+    margin: 0;
+    text-wrap: wrap;
+    text-align: center;
+  }
+
+  .qr-code-close {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    cursor: pointer;
+    background-color: var(--background-color);
+    transition:
+      background-color var(--transition-duration),
+      color var(--transition-duration);
+    color: var(--primary-text-color);
+  }
+
+  .qr-code-close:hover {
+    background-color: var(--contrast-color);
+    color: var(--secondary-text-color);
+  }
+
+  .qr-code-hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid var(--border-color);
+  }
 </style>
+
+<script>
+  import QRCodeStyling from 'qr-code-styling';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dialogElem = document.querySelector('dialog') as HTMLDialogElement;
+    const qrCodeTargetElem = document.querySelector(
+      '.qr-code-target'
+    ) as HTMLDivElement;
+    const qrCodeElem = document.querySelector('#qr-code') as HTMLDivElement;
+    const qrCodeLinkElem = document.querySelector(
+      '.qr-code-link'
+    ) as HTMLSpanElement;
+    const qrCodeCloseElem = document.querySelector(
+      '.qr-code-close'
+    ) as HTMLButtonElement;
+
+    qrCodeCloseElem.addEventListener('click', () => {
+      document.body.style.overflow = 'auto';
+      dialogElem.close();
+    });
+
+    dialogElem.addEventListener('click', (e) => {
+      if (e.target === dialogElem) {
+        document.body.style.overflow = 'auto';
+        dialogElem.close();
+      }
+    });
+
+    qrCodeLinkElem.addEventListener('click', () => {
+      const range = document.createRange();
+      range.selectNodeContents(qrCodeLinkElem);
+
+      const selection = window.getSelection() as Selection;
+      selection.removeAllRanges();
+      selection.addRange(range);
+    });
+
+    qrCodeElem.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      // Remove the previous QR code, if any
+      if (qrCodeTargetElem.firstChild) {
+        qrCodeTargetElem.removeChild(qrCodeTargetElem.firstChild);
+      }
+
+      const qrCodeLink = qrCodeElem.getAttribute('data-href') as string;
+      new QRCodeStyling({
+        width: 250,
+        height: 250,
+        type: 'svg',
+        data: qrCodeLink + '?is_qr=1',
+        dotsOptions: {
+          type: 'rounded',
+        },
+      }).append(qrCodeTargetElem);
+      qrCodeLinkElem.textContent = qrCodeLink;
+
+      document.body.style.overflow = 'hidden';
+      dialogElem.showModal();
+    });
+  });
+</script>
