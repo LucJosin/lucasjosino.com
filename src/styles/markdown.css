@@ -17,6 +17,31 @@
   margin-bottom: 1.2em;
 }
 
+.post-content kbd {
+  outline: 0;
+  font-size: 0.82em;
+  vertical-align: baseline;
+  display: inline-block;
+  line-height: 1.4;
+  text-shadow: 0 1px 0 var(--primary-color);
+  box-shadow: 0 1px 0 var(--kbd-effect), 0 0 0 1px var(--primary-color) inset;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
+  cursor: pointer;
+  margin: 0 0.1rem;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--kbd-bg);
+  color: var(--primary-text-color);
+  user-select: none;
+}
+
+.post-content kbd:not(kbd kbd):hover {
+  transform: translateY(3px);
+  box-shadow: 0 1px 2px var(--kbd-effect);
+  background-color: var(--kbd-hover-bg);
+}
+
 .post-content a {
   color: var(--primary-text-color);
   text-decoration: underline;
