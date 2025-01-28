@@ -76,12 +76,16 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
   }
 
   .header-language-btn-disabled {
-    border: var(--border-size) solid gray;
+    border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
     pointer-events: none;
   }
 
+  .header-language-btn-disabled .header-language-option {
+    filter: grayscale(100%) brightness(90%);
+  }
+
   .header-language-btn-disabled:hover {
-    background-color: gray;
+    background-color: var(--border-color);
   }
 </style>
