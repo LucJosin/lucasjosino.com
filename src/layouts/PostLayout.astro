@@ -57,7 +57,7 @@ const imagePath = await getOpenGraphImage(
     category: post.data.category,
     color: post.data.color,
     readTime: readTime,
-    publishedAt: getFormatedDate(post.data.publishedAt),
+    publishedAt: getFormatedDate(post.data.publishedAt, false, locale),
   },
   post.slug
 );
