@@ -9,7 +9,7 @@ export async function GET() {
     trailingSlash: true,
     title: 'Lucas Josino',
     description:
-      'Explore my developer blog with thoughts, ideas and other stuff.',
+      'Explore my developer blog with projects, ideas, tutorials and other stuff.',
     site: domain,
     xmlns: {
       webfeeds: 'http://webfeeds.org/rss/1.0',
