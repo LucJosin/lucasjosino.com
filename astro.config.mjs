@@ -12,19 +12,20 @@ import rename from 'astro-rename';
 import robotsTxt from 'astro-robots-txt';
 
 import responsiveTables from '@adapttive/remark-responsive-tables';
-import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
-import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
-import remarkCodeSet from '@lucjosin/remark-code-set';
-import remarkImageCaption from '@lucjosin/remark-image-caption';
-import remarkPostReference from '@lucjosin/remark-post-reference';
-import remarkReadmeStats from '@lucjosin/remark-readme-stats';
-import remarkSlider from '@lucjosin/remark-slider';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import remarkCollapse from 'remark-collapse';
+import remarkDirective from 'remark-directive';
+import remarkLinkCard from 'remark-link-card-plus';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
+import remarkAlertBlocks from './plugins/remark-alert-blocks';
+import remarkCodeHighlight from './plugins/remark-code-highlight';
+import remarkCodeSet from './plugins/remark-code-set';
+import remarkGitHubCard from './plugins/remark-github-card';
+import remarkImageCaption from './plugins/remark-image-caption';
+import remarkSlider from './plugins/remark-slider';
 
 import { defaultLocale, explicitLocales, locales } from './src/i18n/config';
 import HashRenamer from './src/lib/hash-renamer';
@@ -160,15 +161,9 @@ export default defineConfig({
       ],
     ],
     remarkPlugins: [
-      [
-        remarkReadmeStats,
-        {
-          darkBgColor: '111111',
-          lightBgColor: 'ffffff',
-          borderRadius: '10',
-        },
-      ],
-      remarkPostReference,
+      remarkDirective,
+      remarkLinkCard,
+      remarkGitHubCard,
       numberedFootnoteLabels,
       remarkAlertBlocks,
       remarkCodeHighlight,
