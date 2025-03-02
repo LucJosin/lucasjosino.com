@@ -159,12 +159,14 @@ const { items, margin, postTitle } = Astro.props;
       dialogElem.close();
     });
 
-    dialogElem.addEventListener('click', (e) => {
-      if (e.target === dialogElem) {
-        document.body.style.overflow = 'auto';
-        dialogElem.close();
-      }
-    });
+    // Close the dialog when clicking outside of it
+    //
+    // dialogElem.addEventListener('click', (e) => {
+    //   if (e.target === dialogElem) {
+    //     document.body.style.overflow = 'auto';
+    //     dialogElem.close();
+    //   }
+    // });
 
     qrCodeLinkElem.addEventListener('click', () => {
       const range = document.createRange();
