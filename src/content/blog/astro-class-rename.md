@@ -316,7 +316,7 @@ There you have it. A quick and simple integration to hash all CSS class names fr
 
 Here's the final project repository:
 
-!!!ref:repo LucJosin/astro-rename-example
+https://github.com/LucJosin/astro-rename-example
 
 ## Resources and References
 

@@ -236,7 +236,7 @@ Nesta publicação, exploramos o histórico e os recursos do projeto HawAPI, inc
 
 Se você achar a API útil, dê uma estrela ao **repositório GitHub** e aproveite o **#StrangerThingsDay** para criar um projeto novo!
 
-!!!ref:repo HawAPI/HawAPI
+https://github.com/HawAPI/HawAPI
 
 ## Recursos e Referências
 

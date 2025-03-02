@@ -237,7 +237,7 @@ In this post we explore the history and features of the HawAPI project, includin
 
 If you find the API useful, give the **GitHub repository** a star and take advantage of **#StrangerThingsDay** to create a new project!
 
-!!!ref:repo HawAPI/HawAPI
+https://github.com/HawAPI/HawAPI
 
 ## Resources and References
 

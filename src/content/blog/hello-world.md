@@ -93,19 +93,17 @@ public class Application {
 
 ### Repository
 
-Source: [github.com/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
-
 Code:
 
 ```
-!!!ref:repo anuraghazra/github-readme-stats
+::github{repo="LucJosin/lucasjosino.com"}
 ```
 
 Preview:
 
 ---
 
-!!!ref:repo anuraghazra/github-readme-stats
+::github{repo="LucJosin/lucasjosino.com"}
 
 ---
 
@@ -114,14 +112,14 @@ Preview:
 Code:
 
 ```
-!!!ref [](https://www.lucasjosino.com/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/)
+https://www.lucasjosino.com/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/
 ```
 
 Preview:
 
 ---
 
-!!!ref [](https://www.lucasjosino.com/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/)
+https://www.lucasjosino.com/blog/how-to-hash-class-names-in-astro-using-astro-rename-integration/
 
 ---
 
