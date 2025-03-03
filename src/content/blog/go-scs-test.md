@@ -65,7 +65,9 @@ func main() {
 }
 ```
 
-!!!info Note that we are defining the `LoadAndSave` middleware from the SCS session. This middleware will get the value from the cookie and save into our request context.
+:::alert{type="info"}
+Note that we are defining the `LoadAndSave` middleware from the SCS session. This middleware will get the value from the cookie and save into our request context.
+:::
 
 ## Server routes
 
@@ -74,7 +76,9 @@ We can now define two routes:
 - / - Will return 200 (Ok) with the message "Hello, World!" and insert an `user_role` value into our context
 - /admin - Will return 200 (Ok) with the message "Hello, \<role\>!"
 
-!!!warning If we request the `/admin` endpoint before requesting the root endpoint, we should get an 401 (Unauthorized) status code.
+:::alert{type="warning"}
+If we request the `/admin` endpoint before requesting the root endpoint, we should get an 401 (Unauthorized) status code.
+:::
 
 Let's implement all handlers:
 

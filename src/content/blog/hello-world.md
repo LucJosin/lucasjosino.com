@@ -23,6 +23,28 @@ updatedAt: '2025-03-02 18:15 UTC-3'
 
 ## Summary
 
+## KBD
+
+Code:
+
+```
+1. To :highlight[open]{bg="green" color="#ededed"} a new tab, press <kbd>Ctrl</kbd> + <kbd>T</kbd>.
+2. To :highlight[close]{bg="red" color="#ededed"} the current tab, press <kbd>Ctrl</kbd> + <kbd>W</kbd>.
+3. To :highlight[refresh]{bg="orange" color="#ededed"} the page, press <kbd>F5</kbd> or <kbd>Ctrl</kbd> + <kbd>R</kbd>.
+4. To :highlight[open]{bg="green" color="#ededed"} the developer console, press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>.
+```
+
+Preview:
+
+---
+
+1. To :highlight[open]{bg="green" color="#ededed"} a new tab, press <kbd>Ctrl</kbd> + <kbd>T</kbd>.
+2. To :highlight[close]{bg="red" color="#ededed"} the current tab, press <kbd>Ctrl</kbd> + <kbd>W</kbd>.
+3. To :highlight[refresh]{bg="orange" color="#ededed"} the page, press <kbd>F5</kbd> or <kbd>Ctrl</kbd> + <kbd>R</kbd>.
+4. To :highlight[open]{bg="green" color="#ededed"} the developer console, press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>.
+
+---
+
 ## Tabs
 
 Code:
@@ -145,38 +167,6 @@ Lorem ipsum dolor sit amet, :highlight[marker]{classes="marker"} adipiscing elit
 
 ---
 
-### Named color
-
-Code:
-
-```
-`Lorem Ipsum{classname#red-white}`
-```
-
-Preview:
-
----
-
-`Lorem Ipsum{classname#red-white}`
-
----
-
-### Hex color
-
-Code:
-
-```
-`Lorem Ipsum{classname#lightgreen-#000}`
-```
-
-Preview:
-
----
-
-`Lorem Ipsum{classname#lightgreen-#000}`
-
----
-
 ## Footnotes
 
 Code:
@@ -215,14 +205,18 @@ Preview:
 Code:
 
 ```
-!!!info Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="info"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 ```
 
 Preview:
 
 ---
 
-!!!info Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="info"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 
 ---
 
@@ -231,14 +225,18 @@ Preview:
 Code:
 
 ```
-!!!tip Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="tip"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 ```
 
 Preview:
 
 ---
 
-!!!tip Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="tip"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 
 ---
 
@@ -247,14 +245,18 @@ Preview:
 Code:
 
 ```
-!!!success Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="success"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 ```
 
 Preview:
 
 ---
 
-!!!success Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="success"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 
 ---
 
@@ -263,14 +265,18 @@ Preview:
 Code:
 
 ```
-!!!warning Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="warning"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 ```
 
 Preview:
 
 ---
 
-!!!warning Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="warning"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 
 ---
 
@@ -279,14 +285,18 @@ Preview:
 Code:
 
 ```
-!!!danger Lorem ipsum dolor sit amet, `consectetur adipiscing eli`t. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="danger"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 ```
 
 Preview:
 
 ---
 
-!!!danger Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::alert{type="danger"}
+Lorem ipsum dolor sit amet, `consectetur adipiscing elit`. Integer in massa ipsum. Morbi neque sapien, ornare fermentum tincidunt pulvinar, varius eu quam. Praesent consectetur pellentesque venenatis. Aliquam erat volutpat. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents)
+:::
 
 ---
 

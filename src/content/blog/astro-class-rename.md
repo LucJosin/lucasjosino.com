@@ -94,7 +94,9 @@ yarn add astro-rename --dev
 ```
 ````
 
-!!!note The **astro-rename** package require `node >= 18.18`. You don't actually need this version and can use the `--ignore-engines` flag to bypass this error.
+:::alert{type="note"}
+The **astro-rename** package require `node >= 18.18`. You don't actually need this version and can use the `--ignore-engines` flag to bypass this error.
+:::
 
 ### Set up astro integration
 
@@ -124,9 +126,13 @@ export default defineConfig({
 });
 ```
 
-!!!warning The integration will only work when **output** is set to **static**
+:::alert{type="warning"}
+The integration will only work when **output** is set to **static**
+:::
 
-!!!tip If you are using other integration like [astro-compress](https://github.com/astro-community/AstroCompress), include the **astro-rename** before this integration
+:::alert{type="tip"}
+If you are using other integration like [astro-compress](https://github.com/astro-community/AstroCompress), include the **astro-rename** before this integration
+:::
 
 ### Testing with default options
 
@@ -195,9 +201,11 @@ export default class HashRenamer {
 - The `renames` will hold our old and new class names;
 - The `values` will hold **ONLY** the new class names;
 
-!!!note{no-context} The **postcss-rename** plugin will not keep the files context so, if the output has multiple CSS files, it will rename all renamed class names. That's the reason we use the `values` array to validate if some **hashed name is used as key**. \
-\
+:::alert{type="note"}
+The **postcss-rename** plugin will not keep the files context so, if the output has multiple CSS files, it will rename all renamed class names. That's the reason we use the `values` array to validate if some **hashed name is used as key**.
+
 See more: [Support multiple CSS files](https://github.com/google/postcss-rename/issues/63)
+:::
 
 ### Hash method
 
@@ -279,9 +287,11 @@ export default defineConfig({
 });
 ```
 
-!!!warning When using this custom strategy, the **prefix** option from **astro-rename** will not work properly. \
-\
-See [my hash-renamer.ts file](https://github.com/LucJosin/lucasjosino.com/tree/main/src/lib/hash-renamer.ts) to understand how i implemented CSS prefix on this website.
+:::alert{type="warning"}
+When using this custom strategy, the **prefix** option from **astro-rename** will not work properly.
+
+See my [hash-renamer.ts](https://github.com/LucJosin/lucasjosino.com/tree/main/src/lib/hash-renamer.ts) file to understand how i implemented CSS prefix on this website.
+:::
 
 ### Testing with custom strategy option
 
@@ -303,12 +313,14 @@ Run the output file using the [VSCode Live Server extension](https://marketplace
 
 All class names have been replaced with hash names.
 
-!!!note Two notes before using this astro-rename integration: \
-\
-1 - **Avoid** naming your classes with html tags. E.g: body, title, link, img, etc... \
-2 - **Avoid** repeating class names on differents pages/components. \
-\
+:::alert{type="note"}
+Two notes before using this astro-rename integration:
+
+1. **Avoid** naming your classes with html tags. E.g: body, title, link, img, etc...
+2. **Avoid** repeating class names on differents pages/components.
+
 Using any method above will replace and/or confuse the replacement of the names since the plugin don't save the [CSS context](#no-context)
+:::
 
 ## Conclusion
 

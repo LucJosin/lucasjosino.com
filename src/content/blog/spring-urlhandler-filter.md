@@ -59,7 +59,7 @@ The problem is: this solution will only work effectively if the application has 
 ### Using a custom OncePerRequestFilter
 
 To avoid adding a second route mapping to all routes, we can create a custom `OncePerRequestFilter` to redirect
-all request urls that contain trailing slash **(/)** to the url without it and using the `301 (Moved Permanently)[class="301-status-code" background-color="#f0ad4e" color="white"]` status code.
+all request urls that contain trailing slash **(/)** to the url without it and using the :highlight[301 (Moved Permanently)]{bg="#f0ad4e" color="white"} status code.
 
 ```java title="TrailingSlashHandlerFilter.java" ins={10-19}
 @Component
@@ -89,7 +89,8 @@ It's a good option but we'll need to redirect all requests the url without trail
 
 ### Using the new UrlHandlerFilter
 
-!!!warning At the moment of writing this post, the version **6.2.0** wasn't released yet. To be able to use the new `UrlHandlerFilter` i'm using the version [6.2.0-M4](https://github.com/spring-projects/spring-framework/releases/tag/v6.2.0-M4). See how to install:
+:::alert{type="warning"}
+At the moment of writing this post, the version **6.2.0** wasn't released yet. To be able to use the new `UrlHandlerFilter` i'm using the version [6.2.0-M4](https://github.com/spring-projects/spring-framework/releases/tag/v6.2.0-M4). See how to install:
 
 <details>
 <summary>Overriding Spring Framework</summary>
@@ -134,10 +135,11 @@ It's a good option but we'll need to redirect all requests the url without trail
 ```
 
 </details>
+:::
 
 In this version we can use the new **UrlHandlerFilter** with a few possible options:
 
-1. Redirect **all** or **only specific** urls with `301 (Moved Permanently)[class="301-status-code" background-color="#f0ad4e" color="white"]`
+1. Redirect **all** or **only specific** urls with :highlight[301 (Moved Permanently)]{bg="#f0ad4e" color="white"}
 2. Handle **all** or **only specific** urls (Same as before Spring Boot **3.X** (Spring Framework **6.X**))
 
 ```java title="TrailingSlashHandlerFilter.java" ins={10-15}
@@ -160,11 +162,12 @@ public class TrailingSlashHandlerFilter extends OncePerRequestFilter {
 }
 ```
 
-!!!info The **catch-all pattern (/\*\*)** matches any path, including nested paths. \
-\
-\- /api/test will - be handled.
-\
-\- /api/test/subpath - will also be handled.
+:::alert{type="info"}
+The **catch-all pattern (/\*\*)** matches any path, including nested paths.
+
+- /api/test will - be handled.
+- /api/test/subpath - will also be handled.
+  :::
 
 ## Conclusion
 
