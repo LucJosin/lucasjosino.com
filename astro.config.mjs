@@ -21,11 +21,11 @@ import remarkLinkCard from 'remark-link-card-plus';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
 import remarkAlertBlocks from './plugins/remark-alert-blocks';
-import remarkCodeHighlight from './plugins/remark-code-highlight';
 import remarkCodeSet from './plugins/remark-code-set';
 import remarkGitHubCard from './plugins/remark-github-card';
 import remarkImageCaption from './plugins/remark-image-caption';
 import remarkSlider from './plugins/remark-slider';
+import remarkTextHighlight from './plugins/remark-text-highlight';
 
 import { defaultLocale, explicitLocales, locales } from './src/i18n/config';
 import HashRenamer from './src/lib/hash-renamer';
@@ -166,7 +166,7 @@ export default defineConfig({
       remarkGitHubCard,
       numberedFootnoteLabels,
       remarkAlertBlocks,
-      remarkCodeHighlight,
+      remarkTextHighlight,
       remarkSlider,
       remarkImageCaption,
       responsiveTables,
