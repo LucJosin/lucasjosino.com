@@ -5,7 +5,7 @@ export const about = {
       title: 'Sobre Mim',
       paragraph_1: 'Olá, 👋!',
       paragraph_2:
-        'Sou <strong>Lucas Josino</strong>, um <strong>Brasileiro 🇧🇷</strong> de 21 anos e um entusiasta em <strong>Desenvolvimento de Software</strong>. Atualmente, estou cursando um <strong>Bacharelado em Sistemas de Informação</strong>.',
+        'Sou <strong>Lucas Josino</strong>, um <strong>Brasileiro 🇧🇷</strong> de 22 anos e um entusiasta em <strong>Desenvolvimento de Software</strong> com foco em Backend utilizando <strong>Java (Spring Boot)</strong> e <strong>Golang</strong>, com conhecimentos em práticas de <strong>DevSecOps</strong>. Atualmente, estou cursando um <strong>Bacharelado em Sistemas de Informação</strong>.',
       paragraph_3:
         'Eu sempre gostei de <strong>tecnologia</strong> e <strong>inovações</strong>, e é por isso que eu estou imerso neste mundo desde que era jovem. Eventualmente, decidi me dedicar completamente e buscar um diploma neste campo.',
       paragraph_4:

@@ -5,7 +5,7 @@ export const about = {
       title: 'About Me',
       paragraph_1: 'Hi, 👋!',
       paragraph_2:
-        "I'm <strong>Lucas Josino</strong>, a 21 y/o from <strong>Brazil 🇧🇷</strong> and an enthusiastic <strong>Software Developer</strong>. I'm currently pursuing a <strong>Bachelor's degree in Information Systems</strong> (<i>Sistemas da Informação, in Portuguese</i>).",
+        "I'm <strong>Lucas Josino</strong>, a 21 y/o from <strong>Brazil 🇧🇷</strong> and an enthusiastic <strong>Software Developer</strong> focused on Backend using <strong>Java (Spring Boot)</strong> and <strong>Golang</strong>, with knowledge in <strong>DevSecOps</strong> practices. I'm currently pursuing a <strong>Bachelor's degree in Information Systems</strong> (<i>Sistemas de Informação, in Portuguese</i>).",
       paragraph_3:
         'I have always enjoyed <strong>technology</strong> and <strong>innovations</strong>, which is why I have been immersed in this world since I was young. Eventually, I decided to fully dedicate myself and pursue a degree in this field.',
       paragraph_4:
