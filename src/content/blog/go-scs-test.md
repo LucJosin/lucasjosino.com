@@ -187,10 +187,10 @@ Now, the testing part.
 
 Our test will have four paths:
 
-- Public endpoint that will return `200 (Ok)[class="endpointOk1" background-color="green" color="white"]`
-- Admin endpoint **without role** that will return `401 (Unauthorized)[class="endpointUnauthorized1" background-color="goldenrod" color="white"]`
-- Admin endpoint **with wrong role** that will return `401 (Unauthorized)[class="endpointUnauthorized2" background-color="goldenrod" color="white"]`
-- Admin endpoint **with correct role** that will return `200 (Ok)[class="endpointOk2" background-color="green" color="white"]`
+- Public endpoint that will return :highlight[200 (Ok)]{bg="green" color="white"}
+- Admin endpoint **without role** that will return :highlight[401 (Unauthorized)]{bg="goldenrod" color="white"}
+- Admin endpoint **with wrong role** that will return :highlight[401 (Unauthorized)]{bg="goldenrod" color="white"}
+- Admin endpoint **with correct role** that will return :highlight[200 (Ok)]{bg="green" color="white"}
 
 ```go title="main_test.go"
 func Test_main(t *testing.T) {

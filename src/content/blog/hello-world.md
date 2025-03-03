@@ -18,7 +18,7 @@ isIndexable: false
 enableComments: false
 easyShare: false
 publishedAt: '2023-10-19 09:08 UTC-3'
-updatedAt: '2024-09-01 18:15 UTC-3'
+updatedAt: '2025-03-02 18:15 UTC-3'
 ---
 
 ## Summary
@@ -130,14 +130,18 @@ https://www.lucasjosino.com/blog/how-to-hash-class-names-in-astro-using-astro-re
 Code:
 
 ```
-`Lorem ipsum dolor sit amet{lorem#chartreuse-gray}`, consectetur adipiscing elit. Integer in massa ipsum. `Morbi neque sapien, ornare fermentum tincidunt pulvinar{morbi#lightblue-black}`, varius eu quam. `Praesent consectetur{praesent#aqua-blue}` pellentesque venenatis. `Aliquam erat volutpat{aliquam#lightpink-green}`. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents) Donec egestas, tortor in facilisis iaculis, neque ipsum suscipit ipsum, `eget lacinia orci turpis vel enim{eget#lightsalmon-#000}`. Curabitur vel gravida mauris, vitae ultrices arcu. `Etiam in ligula quis dui faucibus consectetur{etiam#lightskyblue-crimson}`. Phasellus venenatis eu mauris ac tempus. Nullam sollicitudin malesuada lacus eget tristique.
+Lorem ipsum dolor sit amet. Ut enim ad minim :highlight[gradient]{classes="gradient"}, quis nisi ut aliquip ex ea :highlight[glow]{classes="glow"} consequat. Duis aute irure dolor in :highlight[custom]{color="white" bg="#f0ad4e"} in voluptate velit esse :highlight[underline-slim]{classes="underline-slim"} dolore eu fugiat nulla pariatur. :highlight[Custom striped animate: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]{classes="striped animate" style="font-weight: bold; color: #e75480;"}
+
+Lorem ipsum dolor sit amet, :highlight[marker]{classes="marker"} adipiscing elit, sed do eiusmod :highlight[underline animate]{classes="underline animate"} et dolore magna aliqua. Ullamco laboris nisi ut aliquip ex ea :highlight[striped animate]{classes="striped animate" style="--bgColor1: #121212; --bgColor2: #505050; color: white;"} consequat. Duis aute irure :highlight[wavy]{classes="wavy"} in reprehenderit in :highlight[sketch]{classes="sketch" style="--color: rgb(66 218 218 / 1);"} velit esse cillum dolore eu fugiat nulla pariatur.
 ```
 
 Preview:
 
 ---
 
-`Lorem ipsum dolor sit amet{lorem#chartreuse-gray}`, consectetur adipiscing elit. Integer in massa ipsum. `Morbi neque sapien, ornare fermentum tincidunt pulvinar{morbi#lightblue-black}`, varius eu quam. `Praesent consectetur{praesent#aqua-blue}` pellentesque venenatis. `Aliquam erat volutpat{aliquam#lightpink-green}`. [Quisque vulputate eros id turpis volutpat bibendum.](#table-of-contents) Donec egestas, tortor in facilisis iaculis, neque ipsum suscipit ipsum, `eget lacinia orci turpis vel enim{eget#lightsalmon-#000}`. Curabitur vel gravida mauris, vitae ultrices arcu. `Etiam in ligula quis dui faucibus consectetur{etiam#lightskyblue-crimson}`. Phasellus venenatis eu mauris ac tempus. Nullam sollicitudin malesuada lacus eget tristique.
+Lorem ipsum dolor sit amet. Ut enim ad minim :highlight[gradient]{classes="gradient"}, quis nisi ut aliquip ex ea :highlight[glow]{classes="glow"} consequat. Duis aute irure dolor in :highlight[custom]{color="white" bg="#f0ad4e"} in voluptate velit esse :highlight[underline-slim]{classes="underline-slim"} dolore eu fugiat nulla pariatur. :highlight[Custom striped animate: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]{classes="striped animate" style="font-weight: bold; color: #e75480;"}
+
+Lorem ipsum dolor sit amet, :highlight[marker]{classes="marker"} adipiscing elit, sed do eiusmod :highlight[underline animate]{classes="underline animate"} et dolore magna aliqua. Ullamco laboris nisi ut aliquip ex ea :highlight[striped animate]{classes="striped animate" style="--bgColor1: #121212; --bgColor2: #505050; color: white;"} consequat. Duis aute irure :highlight[wavy]{classes="wavy"} in reprehenderit in :highlight[sketch]{classes="sketch" style="--color: rgb(66 218 218 / 1);"} velit esse cillum dolore eu fugiat nulla pariatur.
 
 ---
 
