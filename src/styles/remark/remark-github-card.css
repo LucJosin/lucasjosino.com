@@ -25,6 +25,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 8px;
+    color: var(--primary-text-color);
 }
 
 .gc-titlebar-left {
