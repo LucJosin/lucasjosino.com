@@ -2798,12 +2798,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expressive-code/core@npm:^0.40.2":
+  version: 0.40.2
+  resolution: "@expressive-code/core@npm:0.40.2"
+  dependencies:
+    "@ctrl/tinycolor": ^4.0.4
+    hast-util-select: ^6.0.2
+    hast-util-to-html: ^9.0.1
+    hast-util-to-text: ^4.0.1
+    hastscript: ^9.0.0
+    postcss: ^8.4.38
+    postcss-nested: ^6.0.1
+    unist-util-visit: ^5.0.0
+    unist-util-visit-parents: ^6.0.1
+  checksum: 7b464d006edca403a583ba12a107c90d97c56adcf50a2b2c221e23b897fbea63307d3637658a51ab836009d35c058bb1a8f10e25a2b00a301090ee4461d01f6e
+  languageName: node
+  linkType: hard
+
 "@expressive-code/plugin-frames@npm:^0.38.1":
   version: 0.38.1
   resolution: "@expressive-code/plugin-frames@npm:0.38.1"
   dependencies:
     "@expressive-code/core": ^0.38.1
   checksum: ec07b2bda2a83983e750ca24f479ebd78d379594394cda13fcdd2c5fe8578f8a852ff5d2c7ff944cebe5e2e326bb3f8c7d32f6b1599c2a8be302da277609ffeb
+  languageName: node
+  linkType: hard
+
+"@expressive-code/plugin-frames@npm:^0.40.2":
+  version: 0.40.2
+  resolution: "@expressive-code/plugin-frames@npm:0.40.2"
+  dependencies:
+    "@expressive-code/core": ^0.40.2
+  checksum: d3c55fe9cc8993763eebe70964fcc2d4a969440322b7e4d0c405817503460b40650b438b02914838da400b05210ab192a3890991466fe287f85b7541d669780b
   languageName: node
   linkType: hard
 
@@ -3268,6 +3294,7 @@ __metadata:
     "@types/react-dom": ^18.2.14
     "@typescript-eslint/eslint-plugin": ^6.8.0
     "@typescript-eslint/parser": ^6.8.0
+    "@xt0rted/expressive-code-file-icons": ^1.0.0
     astro: ^4.16.8
     astro-compress: ^2.3.5
     astro-expressive-code: ^0.38.1
@@ -4468,6 +4495,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jasmine@npm:^3.6.3":
+  version: 3.10.18
+  resolution: "@types/jasmine@npm:3.10.18"
+  checksum: 7ec8e4a28b5d537badd76df53c227aa6c7af25e71f3e4b59470b4c4398c956f4270b5341ae6dac9f30cfd75c3c2a5357e23410473dfdc1785b1af0d9563dc12d
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.12":
   version: 7.0.12
   resolution: "@types/json-schema@npm:7.0.12"
@@ -4831,6 +4865,19 @@ __metadata:
   peerDependencies:
     vite: ^4.2.0 || ^5.0.0
   checksum: 08d227d27ff2304e395e746bd2d4b5fee40587f69d7e2fcd6beb7d91163c1f1dc26d843bc48e2ffb8f38c6b8a1b9445fb07840e3dcc841f97b56bbb8205346aa
+  languageName: node
+  linkType: hard
+
+"@xt0rted/expressive-code-file-icons@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@xt0rted/expressive-code-file-icons@npm:1.0.0"
+  dependencies:
+    "@expressive-code/core": ^0.40.2
+    "@expressive-code/plugin-frames": ^0.40.2
+    hast-util-from-html: ^2.0.3
+    picocolors: ^1.1.1
+    vscode-icons-js: ^11.6.1
+  checksum: 01a0c51b083c17063e712abf5d13bfc3a257cc254b7eb857cb28e1c6e590a5d07f59037041a8ae060309aefd374009c8a4975b5dfc22a790a1d34d044deb3c2b
   languageName: node
   linkType: hard
 
@@ -14962,6 +15009,15 @@ __metadata:
     vite:
       optional: true
   checksum: 06f871a80c1d25573c197392b15dfeb6aab62cc61fbb2ed84f473df966385e65f6c6238b1dd43cf1b1a04b5edc0c59dc26a03226ca1811f8bd51c08caadf8a07
+  languageName: node
+  linkType: hard
+
+"vscode-icons-js@npm:^11.6.1":
+  version: 11.6.1
+  resolution: "vscode-icons-js@npm:11.6.1"
+  dependencies:
+    "@types/jasmine": ^3.6.3
+  checksum: a88f85520b0a2aa5d38e79628b3e31add1bacf9a266aab72612e7b2ce5b430c18e4728a52da55727d059a5302ddbbad7e66d8d036420ed0abc5c10805506a00b
   languageName: node
   linkType: hard
 

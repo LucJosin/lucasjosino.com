@@ -4,6 +4,7 @@ import { s } from 'hastscript';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
+import { pluginFileIcons } from '@xt0rted/expressive-code-file-icons';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
@@ -83,7 +84,13 @@ export default defineConfig({
       useDarkModeMediaQuery: true,
       themeCssSelector: (theme) =>
         `[data-theme='${theme.name.replace('-plus', '')}']`,
-      plugins: [pluginLineNumbers()],
+      plugins: [
+        pluginLineNumbers(),
+        pluginFileIcons({
+          iconClass: 'expressive-code-icon',
+          titleClass: 'expressive-code-title',
+        }),
+      ],
     }),
     astroMetaTags(),
     icon(),

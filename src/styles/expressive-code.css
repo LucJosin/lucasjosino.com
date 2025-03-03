@@ -1,0 +1,9 @@
+.expressive-code-icon {
+    height: 1.5em !important;
+    width: 1.5em !important;
+}
+
+.expressive-code-title {
+    display: flex !important;
+    gap: 0.3rem !important;
+}
