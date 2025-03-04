@@ -13,9 +13,14 @@ const { slug } = useLocale(Astro.url.pathname);
 
 // Verify if (normal) page has the same slug in another locale
 if (locales === undefined || locales.length === 0) {
-  const pages = await Astro.glob('pages/**/*.astro');
+  interface PageType {
+    url: string;
+  }
+
+  const metaPages = import.meta.glob('/pages/**/*.astro', { eager: true });
+  const pages = Object.values(metaPages).map((page) => (page as PageType).url);
   locales = pages
-    .map((page) => extractLocaleAndSlug(page!.url!))
+    .map((page) => extractLocaleAndSlug(page))
     .filter((item) => slug === item.slug);
 }
 ---
