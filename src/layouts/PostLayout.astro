@@ -14,7 +14,6 @@ import Container from '@components/data/Container.astro';
 import PostComments from '@components/data/Post/PostComments.astro';
 import PostInfo from '@components/data/Post/PostInfo.astro';
 import PostRelated from '@components/data/Post/PostRelated.astro';
-import PostShare from '@components/data/Post/PostShare.astro';
 import Tags from '@components/data/Tags.astro';
 import headConfig from '@constants/head';
 import { getFormatedDate } from '@lib/date';
@@ -42,11 +41,10 @@ const relatedPosts = post.data.relatedPosts
   ? await getEntries(post.data.relatedPosts)
   : [];
 
-const { linkedin, twitter, reddit, bluesky } = getSocialsShare(
+const { linkedin, twitter, reddit } = getSocialsShare(
   headConfig.shortLink + post.data.shortlink,
   post.data.title,
-  headConfig.social,
-  post.data.tags
+  headConfig.social
 );
 
 const readTime = getReadTime(post.body, locale);
@@ -59,7 +57,7 @@ const imagePath = await getOpenGraphImage(
     category: post.data.category,
     color: post.data.color,
     readTime: readTime,
-    publishedAt: getFormatedDate(post.data.publishedAt),
+    publishedAt: getFormatedDate(post.data.publishedAt, false, locale),
   },
   post.slug
 );
@@ -84,7 +82,7 @@ const article = {
   locale={post.data.language}
   locales={locales}
 >
-  <Container maxWidth="50rem" gap="1rem">
+  <Container maxWidth="52rem" gap="1rem">
     <ProgressBar />
     <BackToTop />
 
@@ -101,12 +99,6 @@ const article = {
     </Link>
 
     <Title title={post.data.title} fontSize="2.5em" margin="0 0 1rem 0" />
-
-    {
-      post.data.image.showInPost && (
-        <PostImage src={post.data.image.src} title={post.data.title} />
-      )
-    }
 
     <PostInfo>
       <PostInfoItem icon="mdi:calendar-range">
@@ -135,44 +127,8 @@ const article = {
     </PostInfo>
 
     {
-      post.data.easyShare && (
-        <PostShare
-          margin="0 0 1rem 0"
-          items={[
-            {
-              href: linkedin,
-              icon: 'simple-icons:linkedin',
-              alt: t('post.share.linkedin_alt'),
-              event: `Post Share (Top) - Linkedin (${post.data.shortlink})`,
-            },
-            {
-              href: twitter,
-              icon: 'simple-icons:x',
-              alt: t('post.share.twitter_alt'),
-              event: `Post Share (Top) - X (Twitter) (${post.data.shortlink})`,
-            },
-            {
-              href: reddit,
-              icon: 'simple-icons:reddit',
-              alt: t('post.share.reddit_alt'),
-              event: `Post Share (Top) - Reddit (${post.data.shortlink})`,
-            },
-            {
-              href: bluesky,
-              icon: 'simple-icons:bluesky',
-              alt: t('post.share.bluesky_alt'),
-              event: `Post Share (Top) - Blueksy (${post.data.shortlink})`,
-            },
-            {
-              href: headConfig.shortLink + post.data.shortlink,
-              icon: 'mdi:link',
-              alt: t('post.share.copy_link_alt'),
-              id: 'share',
-              messageId: 'share-title',
-              event: `Post Share (Top) - Copy link (${post.data.shortlink})`,
-            },
-          ]}
-        />
+      post.data.image.showInPost && (
+        <PostImage src={post.data.image.src} title={post.data.title} />
       )
     }
 
@@ -190,11 +146,11 @@ const article = {
       {
         post.data.easyShare && (
           <PostShareBanner
+            postTitle={post.data.title}
             link={post.data.shortlink}
             twitter={twitter}
             linkedin={linkedin}
             reddit={reddit}
-            bluesky={bluesky}
           />
         )
       }

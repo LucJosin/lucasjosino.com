@@ -4,6 +4,7 @@ import { s } from 'hastscript';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
+import { pluginFileIcons } from '@xt0rted/expressive-code-file-icons';
 import compress from 'astro-compress';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
@@ -12,19 +13,21 @@ import rename from 'astro-rename';
 import robotsTxt from 'astro-robots-txt';
 
 import responsiveTables from '@adapttive/remark-responsive-tables';
-import remarkAlertBlocks from '@lucjosin/remark-alert-blocks';
-import remarkCodeHighlight from '@lucjosin/remark-code-highlight';
-import remarkCodeSet from '@lucjosin/remark-code-set';
-import remarkImageCaption from '@lucjosin/remark-image-caption';
-import remarkPostReference from '@lucjosin/remark-post-reference';
-import remarkReadmeStats from '@lucjosin/remark-readme-stats';
-import remarkSlider from '@lucjosin/remark-slider';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import remarkCollapse from 'remark-collapse';
+import remarkDirective from 'remark-directive';
+import remarkLinkCard from 'remark-link-card-plus';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
+import remarkAlertBlocks from './plugins/remark-alert-blocks';
+import remarkCodeSet from './plugins/remark-code-set';
+import remarkGitHubCard from './plugins/remark-github-card';
+import remarkImageCaption from './plugins/remark-image-caption';
+import remarkMention from './plugins/remark-mention';
+import remarkSlider from './plugins/remark-slider';
+import remarkTextHighlight from './plugins/remark-text-highlight';
 
 import { defaultLocale, explicitLocales, locales } from './src/i18n/config';
 import HashRenamer from './src/lib/hash-renamer';
@@ -82,7 +85,13 @@ export default defineConfig({
       useDarkModeMediaQuery: true,
       themeCssSelector: (theme) =>
         `[data-theme='${theme.name.replace('-plus', '')}']`,
-      plugins: [pluginLineNumbers()],
+      plugins: [
+        pluginLineNumbers(),
+        pluginFileIcons({
+          iconClass: 'expressive-code-icon',
+          titleClass: 'expressive-code-title',
+        }),
+      ],
     }),
     astroMetaTags(),
     icon(),
@@ -160,18 +169,13 @@ export default defineConfig({
       ],
     ],
     remarkPlugins: [
-      [
-        remarkReadmeStats,
-        {
-          darkBgColor: '111111',
-          lightBgColor: 'ffffff',
-          borderRadius: '10',
-        },
-      ],
-      remarkPostReference,
+      remarkDirective,
+      remarkMention,
+      remarkLinkCard,
+      remarkGitHubCard,
       numberedFootnoteLabels,
       remarkAlertBlocks,
-      remarkCodeHighlight,
+      remarkTextHighlight,
       remarkSlider,
       remarkImageCaption,
       responsiveTables,
@@ -187,7 +191,7 @@ export default defineConfig({
         {
           test: 'Summary|Sumário',
           summary: (str) => {
-            return str === 'Summary' ? 'Show contents' : 'Mostrar conteúdos';
+            return str === 'Summary' ? 'Show content' : 'Mostrar conteúdo';
           },
         },
       ],
@@ -213,14 +217,5 @@ export default defineConfig({
   // Ref: https://docs.astro.build/en/reference/configuration-reference/#serverhost
   server: {
     host: true,
-  },
-  // Astro offers experimental flags to give users early access to new features.
-  // These flags are not guaranteed to be stable.
-  experimental: {
-    // Enables a more reliable strategy to prevent scripts from being
-    // executed in pages where they are not used.
-    //
-    // https://docs.astro.build/en/reference/configuration-reference/#experimentaldirectrenderscript
-    directRenderScript: true,
   },
 });

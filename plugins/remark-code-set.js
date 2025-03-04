@@ -48,7 +48,7 @@ function createTab(childNode, group, index) {
   ];
 }
 
-export default function remarkCodeTabs() {
+export default function remarkCodeSet() {
   return function transform(tree) {
     visit(tree, 'code', function (node) {
       if (node.lang !== 'codeset') return;

@@ -5,15 +5,28 @@ interface Props {
   id?: string;
   messageId?: string;
   position?: 'bottom' | 'top' | 'left' | 'right';
+  attr?: Record<string, string>;
+  messageAttr?: Record<string, string>;
 }
 
-const { message, href, id, messageId, position = 'top' } = Astro.props;
+const {
+  message,
+  id,
+  messageId,
+  position = 'top',
+  messageAttr,
+  attr,
+} = Astro.props;
 ---
 
-<div class="tooltip" data-href={href} id={id}>
+<div class="tooltip" id={id} {...attr}>
   {
     message && (
-      <span class={`tooltip-message tooltip-position-${position}`} id={messageId}>
+      <span
+        class={`tooltip-message tooltip-position-${position}`}
+        id={messageId}
+        {...messageAttr}
+      >
         <Fragment set:html={message} />
       </span>
     )

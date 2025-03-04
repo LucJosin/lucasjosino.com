@@ -18,5 +18,9 @@ export const post = {
     reddit_alt: 'Share to Reddit',
     bluesky_alt: 'Share to Bluesky',
     copy_link_alt: 'Copy link',
+    copied_link_alt: 'Copied!',
+    dialog: {
+      close: 'Close',
+    },
   },
 };

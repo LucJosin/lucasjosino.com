@@ -3,6 +3,7 @@ import Divider from '@components/core/Divider.astro';
 import Title from '@components/core/Title.astro';
 import Tooltip from '@components/core/Tooltip.astro';
 import Container from '@components/data/Container.astro';
+import History from '@components/data/History.astro';
 import Socials from '@components/data/Socials.astro';
 import { languages } from '@constants/languages';
 import Layout from '@layouts/Layout.astro';
@@ -51,8 +52,14 @@ const description = t('common.description');
           <Fragment set:html={t('about.article.topic_2.paragraph_2')} />
         </p>
 
-        <h2 id="toolbox">{t('about.article.topic_3.title')}</h2>
-        <p><Fragment set:html={t('about.article.topic_3.paragraph_1')} /></p>
+        <h2 id="history">{t('about.article.topic_3.title')}</h2>
+        <p>{t('about.article.topic_3.paragraph_1')}</p>
+        <div class="history">
+          <History />
+        </div>
+
+        <h2 id="toolbox">{t('about.article.topic_4.title')}</h2>
+        <p><Fragment set:html={t('about.article.topic_4.paragraph_1')} /></p>
         <div class="about-languages">
           {
             languages.map((lang) => {
@@ -69,8 +76,8 @@ const description = t('common.description');
           }
         </div>
 
-        <h2 id="github-stats">{t('about.article.topic_4.title')}</h2>
-        <p><Fragment set:html={t('about.article.topic_4.paragraph_1')} /></p>
+        <h2 id="github-stats">{t('about.article.topic_5.title')}</h2>
+        <p><Fragment set:html={t('about.article.topic_5.paragraph_1')} /></p>
         <p class="about-stats">
           <img
             src="https://raw.githubusercontent.com/LucJosin/github-stats-transparent/output/generated/overview.svg"
@@ -82,8 +89,8 @@ const description = t('common.description');
           />
         </p>
 
-        <h2 id="github-stats">{t('about.article.topic_5.title')}</h2>
-        <p>{t('about.article.topic_5.paragraph_1')}</p>
+        <h2 id="github-stats">{t('about.article.topic_6.title')}</h2>
+        <p>{t('about.article.topic_6.paragraph_1')}</p>
         <div class="about-contact">
           <Socials showName={true} showTooltip={false} justifyContent="left" />
         </div>
@@ -138,7 +145,7 @@ const description = t('common.description');
 
   .about-languages-language:hover {
     border: var(--border-size) solid var(--primary-color);
-    background-color: var(--border-color);
+    background-color: var(--contrast-color);
     color: var(--primary-color);
     cursor: pointer;
   }

@@ -1,0 +1,30 @@
+{
+  "startDate": "01/2022",
+  "endDate": "2026",
+  "location": "Juazeiro do Norte - CE",
+  "title": "Bachelor, Information Systems",
+  "institution": "UNINASSAU",
+  "description": "Bachelor’s Degree in Information Systems with a focus on developing skills in programming, system management, security, and technological infrastructure:",
+  "content": [
+    "<strong>Programming Logic</strong>: Creation of algorithms to solve system-related problems",
+    "<strong>Databases:</strong> Modeling, management, and data manipulation in relational and non-relational systems using <strong>SQL</strong> and modern tools",
+    "<strong>IT Governance</strong>: Study of policies and best practices for aligning IT strategies with business objectives",
+    "<strong>DevOps Tools</strong>: Implementation of continuous integration and delivery <strong>(CI/CD)</strong> practices with tools like <strong>Golang</strong> and <strong>Docker</strong>, log capture with Graylog, and analysis using Grafana",
+    "<strong>Software Testing</strong>: Quality validation through manual and automated testing",
+    "<strong>Back-End and Front-End Frameworks</strong>: Development of <strong>APIs</strong> and interfaces using <strong>Spring Boot</strong>, <strong>Vue.js</strong>, and others",
+    "<strong>Information Security</strong>: Application of principles to protect data, systems, and networks from cyber threats"
+  ],
+  "technologies": [
+    "Project Management",
+    "Communication",
+    "Network Engineering",
+    "DevOps",
+    "Go",
+    "Software Development",
+    "Backend Development",
+    "API",
+    "Database",
+    "Information Security"
+  ],
+  "language": "en"
+}

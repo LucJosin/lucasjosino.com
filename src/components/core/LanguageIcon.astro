@@ -61,11 +61,12 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
     transition: all var(--transition-duration);
     gap: 0.5rem;
     font-size: 0.8em;
+    position: relative;
   }
 
   .header-language-btn:hover {
     border: var(--border-size) solid var(--primary-color);
-    background-color: var(--border-color);
+    background-color: var(--contrast-color);
     color: var(--primary-color);
     cursor: pointer;
   }
@@ -75,12 +76,16 @@ const nextLocale = locale === 'en' ? 'pt' : 'en';
   }
 
   .header-language-btn-disabled {
-    border: var(--border-size) solid gray;
+    border: var(--border-size) solid var(--border-color);
     border-radius: var(--border-radius);
     pointer-events: none;
   }
 
+  .header-language-btn-disabled .header-language-option {
+    filter: grayscale(100%) brightness(90%);
+  }
+
   .header-language-btn-disabled:hover {
-    background-color: gray;
+    background-color: var(--border-color);
   }
 </style>

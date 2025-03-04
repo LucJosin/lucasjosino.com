@@ -5,24 +5,25 @@ import { Icon } from 'astro-icon/components';
 import { useLocale } from 'i18n';
 
 interface Props {
+  postTitle: string;
   link: string;
   linkedin: string;
   twitter: string;
   reddit: string;
-  bluesky: string;
 }
 
 const { t } = useLocale(Astro.url.pathname);
 
-const { link, linkedin, twitter, reddit, bluesky } = Astro.props;
+const { postTitle, link, linkedin, twitter, reddit } = Astro.props;
 ---
 
-<div class="post-extra-share">
+<div class="post-extra-share" id="share">
   <span class="post-extra-share-left">
     <Icon name="mdi:cards-heart" width={18} />
     {t('post.share.title')}
   </span>
   <PostShare
+    postTitle={postTitle}
     items={[
       {
         href: linkedin,
@@ -43,18 +44,16 @@ const { link, linkedin, twitter, reddit, bluesky } = Astro.props;
         event: `Post Share (Footer) - Reddit (${link})`,
       },
       {
-        href: bluesky,
-        icon: 'simple-icons:bluesky',
-        alt: t('post.share.bluesky_alt'),
-        event: `Post Share (Footer) - Blueksy (${link})`,
-      },
-      {
         href: headConfig.shortLink + link,
         icon: 'mdi:link',
         alt: t('post.share.copy_link_alt'),
-        id: 'share',
+        id: 'share-icon',
         messageId: 'share-title',
         event: `Post Share (Footer) - Copy link (${link})`,
+        attr: {
+          'data-copy': t('post.share.copy_link_alt'),
+          'data-copied': t('post.share.copied_link_alt'),
+        },
       },
     ]}
   />

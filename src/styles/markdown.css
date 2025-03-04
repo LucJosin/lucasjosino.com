@@ -3,11 +3,16 @@
   color: var(--description-text-color);
 }
 
-.post-content>details {
-  border: 1px var(--contrast-color) solid;
+.post-content details {
+  border: 1px var(--border-color) solid;
+  border-color: var(--border-color);
+  border-color: inherit;
   border-radius: var(--border-radius);
-  padding: 1rem;
-  background-color: var(--secondary-color);
+  padding: 0.6rem 1rem;
+}
+
+.post-content>details:first-of-type {
+  border-color: var(--border-color);
 }
 
 .post-content [class~='lead'] {
@@ -16,6 +21,31 @@
   line-height: 1.6;
   margin-top: 1.2em;
   margin-bottom: 1.2em;
+}
+
+.post-content kbd {
+  outline: 0;
+  font-size: 0.82em;
+  vertical-align: baseline;
+  display: inline-block;
+  line-height: 1.4;
+  text-shadow: 0 1px 0 var(--primary-color);
+  box-shadow: 0 1px 0 var(--kbd-effect), 0 0 0 1px var(--primary-color) inset;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
+  cursor: pointer;
+  margin: 0 0.1rem;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--kbd-bg);
+  color: var(--primary-text-color);
+  user-select: none;
+}
+
+.post-content kbd:not(kbd kbd):hover {
+  transform: translateY(3px);
+  box-shadow: 0 1px 2px var(--kbd-effect);
+  background-color: var(--kbd-hover-bg);
 }
 
 .post-content a {
@@ -209,6 +239,7 @@
   font-size: 0.875em;
   line-height: 1.7142857;
   border-collapse: collapse;
+  border-color: inherit;
 }
 
 .post-content table::before {
@@ -221,6 +252,7 @@
   border-radius: 12px;
   border: 1px solid var(--contrast-color);
   pointer-events: none;
+  border-color: inherit;
 }
 
 .post-content table::-webkit-scrollbar,
@@ -241,10 +273,11 @@
 /* Table header styles */
 .post-content thead {
   background-color: var(--secondary-color);
-  color: var(--primary-text-color);
+  color: inherit;
   font-weight: 600;
   border-bottom-width: 1px;
   border-bottom-color: var(--contrast-color);
+  border-color: inherit;
 }
 
 .post-content thead th {
@@ -257,6 +290,7 @@
   padding: 0.5714286em;
   border-top: 1px solid var(--contrast-color);
   border-left: 1px solid var(--contrast-color);
+  border-color: inherit;
 }
 
 .post-content tbody tr td:first-child {
@@ -448,6 +482,7 @@
   padding: 0.2rem 0.3rem;
   color: var(--secondary-text-color);
   overflow-wrap: anywhere;
+  font-family: inherit;
 }
 
 .post-content-lg h2 code {

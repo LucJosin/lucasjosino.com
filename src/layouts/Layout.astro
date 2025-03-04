@@ -41,14 +41,16 @@ const {
   locales,
 } = Astro.props as Props;
 
-let { locale, title, description, image } = Astro.props as Props;
+let { locale, title, image } = Astro.props as Props;
+const { description: originalDescription } = Astro.props as Props;
 
 if (!locale) {
   locale = pathLocale;
 }
 
 title = article?.title || title + ' | ' + headConfig.name;
-description = article?.description || description + headConfig.endDescription;
+const description =
+  article?.description || originalDescription + headConfig.endDescription;
 const canonical = new URL(Astro.url.pathname, Astro.url.origin);
 
 if (enableOpenGraph && !image) {
@@ -58,6 +60,7 @@ if (enableOpenGraph && !image) {
   const options = {
     top: t('common.title').toLocaleUpperCase(),
     title,
+    description: originalDescription,
     color: '#555555',
     slug: path === '/' ? '' : cleanOpenGraphUrl(path),
   };
@@ -75,6 +78,7 @@ image = Astro.url.origin + image || headConfig.image;
     <meta http-equiv="content-language" content={locale || defaultLocale} />
     <meta http-equiv="content-type" content="text/html" />
     <meta name="copyright" content={headConfig.copyright} />
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content={headConfig.name} />
     <meta name="tags" content={headConfig.tags} />
@@ -146,7 +150,7 @@ image = Astro.url.origin + image || headConfig.image;
         <script
           is:inline
           defer
-          src="https://analytics.us.umami.is/script.js"
+          src="https://cloud.umami.is/script.js"
           data-website-id="986fb135-7659-4137-9c30-d74a3af505ca"
         />
       )
@@ -227,7 +231,7 @@ image = Astro.url.origin + image || headConfig.image;
       /* Scroll */
       :global(::-webkit-scrollbar) {
         height: 4px;
-        width: 4px;
+        width: 8px;
         background-color: var(--secondary-color);
       }
 

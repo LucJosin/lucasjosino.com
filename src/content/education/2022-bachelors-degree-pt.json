@@ -1,0 +1,33 @@
+{
+  "startDate": "01/2022",
+  "endDate": "2026",
+  "location": "Juazeiro do Norte - CE",
+  "title": "Bacharelado, Sistemas de Informação",
+  "institution": "UNINASSAU",
+  "description": "Bacharelado em Sistemas de Informação com foco no desenvolvimento de habilidades em programação, gerenciamento de sistemas, segurança e infraestrutura tecnológica:",
+  "content": [
+    "<strong>Lógica de Programação</strong>: Criação de algoritmos para resolver problemas em sistemas.",
+    "<strong>Banco de Dados</strong>: Modelagem, gerenciamento e manipulação de dados em sistemas relacionais e não relacionais, utilizando <strong>SQL</strong> e ferramentas modernas.",
+    "<strong>Governança em TI</strong>: Estudo de políticas e boas práticas para alinhamento estratégico da TI com os objetivos do negócio.",
+    "<strong>DevOps Tools:</strong> Implementação de práticas de integração e entrega contínuas <strong>(CI/CD)</strong> com ferramentas como <strong>Golang</strong> e <strong>Docker</strong>, captura de logs com Graylog e análise utilizando Grafana.",
+    "<strong>Teste de Software</strong>: Validação de qualidade com testes manuais e automatizados.",
+    "<strong>Frameworks Back-End e Front-End</strong>: Construção de <strong>APIs</strong> e interfaces com <strong>Spring Boot</strong>, <strong>Vue.js</strong>, entre outros.",
+    "<strong>Segurança da Informação</strong>: Aplicação de princípios para proteger dados, sistemas e redes contra ameaças cibernéticas."
+  ],
+  "technologies": [
+    "Project Management",
+    "Communication",
+    "GitHub",
+    "Network Engineering",
+    "DevOps",
+    "Go",
+    "Software Development",
+    "Spring Framework",
+    "Backend Development",
+    "API",
+    "Database",
+    "API Development",
+    "Information Security"
+  ],
+  "language": "pt"
+}

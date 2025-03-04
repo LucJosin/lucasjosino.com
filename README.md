@@ -1,9 +1,6 @@
 <div align=center>
 
-# Lucas Josino - Website
-
-  <img src="./public/favicon-light.ico#gh-dark-mode-only" height=60 />
-  <img src="./public/favicon.ico#gh-light-mode-only" height=60 />
+# Lucas Josino - Portfolio & Blog
 
   <p align="center">
     <br>
@@ -22,11 +19,12 @@
   </a>
 </p>
 
-Minimalist portfolio website/blog built with [Astro](https://astro.build) + [Typescript](https://www.typescriptlang.org/).
+Minimalist **portfolio/blog** built with [Astro](https://astro.build), [Typescript](https://www.typescriptlang.org/), and i18n for multilingual support.
 
 </div>
 
-**Note**: The source for this site was not created to be a template or theme, but for my use. Feel free to take whatever inspiration from it that you want, but this code was not written to be cloned and deployed. As such, I do not provide support or guidance for doing that.
+> [!NOTE]
+> The source for this site was not created to be a template or theme, but for my use. Feel free to take whatever inspiration from it that you want, but this code was not written to be cloned and deployed. As such, I do not provide support or guidance for doing that.
 
 ## Commands
 

@@ -5,7 +5,7 @@ export const about = {
       title: 'Sobre Mim',
       paragraph_1: 'Olá, 👋!',
       paragraph_2:
-        'Sou <strong>Lucas Josino</strong>, um <strong>Brasileiro 🇧🇷</strong> de 21 anos e um entusiasta em <strong>Desenvolvimento de Software</strong>. Atualmente, estou cursando um <strong>Bacharelado em Sistemas de Informação</strong>.',
+        'Sou <strong>Lucas Josino</strong>, um <strong>Brasileiro 🇧🇷</strong> de 22 anos e um entusiasta em <strong>Desenvolvimento de Software</strong> com foco em Backend utilizando <strong>Java (Spring Boot)</strong> e <strong>Golang</strong>, com conhecimentos em práticas de <strong>DevSecOps</strong>. Atualmente, estou cursando um <strong>Bacharelado em Sistemas de Informação</strong>.',
       paragraph_3:
         'Eu sempre gostei de <strong>tecnologia</strong> e <strong>inovações</strong>, e é por isso que eu estou imerso neste mundo desde que era jovem. Eventualmente, decidi me dedicar completamente e buscar um diploma neste campo.',
       paragraph_4:
@@ -21,16 +21,25 @@ export const about = {
         'Também tenho interesse por <strong>fotografia</strong> and <strong>culinária</strong>.',
     },
     topic_3: {
+      title: 'História',
+      paragraph_1: 'Minha jornada até aqui:',
+      tabs: {
+        education: 'Educação',
+        experience: 'Experiência',
+        responsabilities: 'Responsabilidades',
+      },
+    },
+    topic_4: {
       title: 'Toolbox',
       paragraph_1:
         'Uma coleção de <strong>linguagens de programação</strong>, <strong>frameworks</strong> e <strong>ferramentas</strong> que eu utilizo:',
     },
-    topic_4: {
+    topic_5: {
       title: 'Status do Github',
       paragraph_1:
         'Confira minhas estatísticas do GitHub para ver minhas <strong>contribuições</strong> e <strong>repositórios</strong>.',
     },
-    topic_5: {
+    topic_6: {
       title: 'Contato',
       paragraph_1: 'Sinta-se à vontade para se conectar comigo através do:',
     },

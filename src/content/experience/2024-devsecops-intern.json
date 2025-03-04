@@ -1,0 +1,30 @@
+{
+  "startDate": "12/2024",
+  "endDate": "05/2025 (6 Months)",
+  "location": "Remote",
+  "title": "DevSecOps & Cloud Intern",
+  "institution": "Compass.uol",
+  "description": "Internship Scholarship Program at Compass.uol in the Cloud area with a focus on AWS and DevSecOps.",
+  "content": [
+    "Development of skills in <strong>DevSecOps</strong> principles;",
+    "Usage of agile methodologies (Scrum) in project management;",
+    "Exploration of security practices for applications and adoption of best standards;",
+    "Experience with <strong>AWS</strong> using <strong>VPC</strong>, <strong>CloudFront</strong>, <strong>EC2</strong>, <strong>IAM</strong>, <strong>S3</strong>, <strong>Route 53</strong>, and <strong>Load Balancers</strong>;",
+    "Configuration and management of <strong>Linux</strong> servers;",
+    "Automation of workflows with <strong>CI/CD</strong>;",
+    "Creation and maintenance of <strong>Shell</strong> and <strong>Bash</strong> scripts for automated tasks;",
+    "Monitoring and visualization of system metrics with <strong>Prometheus</strong> and <strong>Grafana</strong>;",
+    "Configuration and management of containers with <strong>Docker</strong> and <strong>Kubernetes</strong>."
+  ],
+  "technologies": [
+    "DevSecOps",
+    "Linux",
+    "Docker",
+    "AWS",
+    "Container",
+    "CI/CD",
+    "Prometheus",
+    "Grafana"
+  ],
+  "language": "en"
+}

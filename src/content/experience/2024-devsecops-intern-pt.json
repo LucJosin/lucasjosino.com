@@ -1,0 +1,30 @@
+{
+  "startDate": "12/2024",
+  "endDate": "05/2025 (6 Meses)",
+  "location": "Remoto",
+  "title": "Estagiário de DevSecOps & Cloud",
+  "institution": "Compass.uol",
+  "description": "Programa de bolsa-estágio na Compass.uol na área de Cloud com foco em AWS e DevSecOps.",
+  "content": [
+    "Desenvolvimento de habilidades em princípios de <strong>DevSecOps</strong>;",
+    "Uso de metodologias ágeis (Scrum) no gerenciamento de projetos;",
+    "Exploração de práticas de segurança para aplicativos e adoção de melhores padrões;",
+    "Experiência na <strong>AWS</strong> utilizando <strong>VPC</strong>, <strong>Cloudfront</strong>, <strong>EC2</strong>, <strong>IAM</strong>, <strong>S3</strong>, <strong>Route 53</strong> e <strong>Load Balancers</strong>;",
+    "Configuração e gerenciamento de servidores <strong>Linux</strong>;",
+    "Automação de fluxos de trabalho com <strong>CI/CD</strong>;",
+    "Criação e manutenção de scripts <strong>Shell</strong> e <strong>Bash</strong> para tarefas automatizadas;",
+    "Monitoramento e visualização de métricas do sistema com <strong>Prometheus</strong> e <strong>Grafana</strong>;",
+    "Configuração e gerenciamento de containers com <strong>Docker</strong> e <strong>Kubernetes</strong>."
+  ],
+  "technologies": [
+    "DevSecOps",
+    "Linux",
+    "Docker",
+    "AWS",
+    "Container",
+    "CI/CD",
+    "Prometheus",
+    "Grafana"
+  ],
+  "language": "pt"
+}

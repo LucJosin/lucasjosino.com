@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 export default function defaultRender(
   options: Record<string, string>
 ): ReactNode {
-  const { top, title, color, slug } = options;
+  const { top, title, description, color, slug } = options;
   return (
     <div
       style={{
@@ -77,13 +77,34 @@ export default function defaultRender(
               }}
             ></div>
           </div>
-          <h1
+          <div
             style={{
-              fontSize: '3.5em',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
             }}
           >
-            {title}
-          </h1>
+            <h1
+              style={{
+                fontSize: '3.5em',
+                margin: '0',
+              }}
+            >
+              {title}
+            </h1>
+            {description && (
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: '2em',
+                  fontWeight: 300,
+                }}
+              >
+                {description}
+              </p>
+            )}
+          </div>
           <div
             style={{
               width: '100%',

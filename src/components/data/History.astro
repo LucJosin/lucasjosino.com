@@ -1,0 +1,241 @@
+---
+import { getCollection } from 'astro:content';
+import { useLocale } from 'i18n';
+
+const { t, locale } = useLocale(Astro.url.pathname);
+const workTimeline = await getCollection('experience', (tl) => {
+  return tl.data.language === locale;
+});
+const studyTimeline = await getCollection('education', (tl) => {
+  return tl.data.language === locale;
+});
+---
+
+<div>
+  <div class="tabs" id="tab-menu">
+    <div class="tab active" data-tab="work">
+      {t('about.article.topic_3.tabs.experience')}
+    </div>
+    <div class="tab" data-tab="study">
+      {t('about.article.topic_3.tabs.education')}
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-work">
+    <ul class="timeline">
+      {
+        workTimeline.map(async (item, index) => {
+          return (
+            <li class="timeline-item">
+              <span class="timeline-circle" />
+              <strong class="timeline-year">
+                {item.data.startDate} - {item.data.endDate}
+              </strong>
+              <h3 class="timeline-title">
+                {item.data.title} - {item.data.institution}
+              </h3>
+              <p class="timeline-description">{item.data.description}</p>
+              <p class="timeline-description">
+                <details open={index === 0}>
+                  <summary>
+                    {t('about.article.topic_3.tabs.responsabilities')}
+                  </summary>
+                  <ul>
+                    {item.data.content.map((item) => (
+                      <li set:html={item} />
+                    ))}
+                  </ul>
+                </details>
+              </p>
+              <p class="timeline-description timeline-description-skills">
+                <strong>Skills:</strong>
+                {item.data.technologies.map((item) => (
+                  <span class="timeline-skills" set:html={item} />
+                ))}
+              </p>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+
+  <div class="tab-content" id="tab-study" style="display: none;">
+    <ul class="timeline">
+      {
+        studyTimeline.map(async (item, index) => {
+          return (
+            <li class="timeline-item">
+              <span class="timeline-circle" />
+              <strong class="timeline-year">
+                {item.data.startDate} - {item.data.endDate}
+              </strong>
+              <h3 class="timeline-title">
+                {item.data.title} - {item.data.institution}
+              </h3>
+              <p class="timeline-description">{item.data.description}</p>
+              <p class="timeline-description">
+                <details open={index === 0}>
+                  <summary>
+                    {t('about.article.topic_3.tabs.responsabilities')}
+                  </summary>
+                  <ul>
+                    {item.data.content.map((item) => (
+                      <li set:html={item} />
+                    ))}
+                  </ul>
+                </details>
+              </p>
+              <p class="timeline-description timeline-description-skills">
+                <strong>Skills:</strong>
+                {item.data.technologies.map((item) => (
+                  <span class="timeline-skills" set:html={item} />
+                ))}
+              </p>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  .tab {
+    padding: 0.5rem;
+    text-align: center;
+    flex: 1;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    cursor: pointer;
+  }
+
+  .tab:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-right: none;
+  }
+
+  .tab:last-child {
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .tab:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .tab.active {
+    font-weight: bold;
+    background-color: var(--contrast-color);
+    color: var(--secondary-text-color);
+  }
+
+  .tab-content {
+    border: 1px solid var(--border-color);
+    border-top: none;
+    padding: 0.9rem;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 2px;
+    height: 100%;
+    background: var(--contrast-color);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 2.5rem;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: var(--contrast-color);
+    border-radius: 50%;
+    transform: translate(90%, 0); /* Center circle */
+  }
+
+  .timeline-year {
+    font-size: 0.8em;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-title {
+    margin: 0.25rem 0;
+    font-size: 1.1rem;
+    color: var(--primary-text-color);
+  }
+
+  .timeline-description {
+    margin: 0;
+    color: var(--description-text-color);
+  }
+
+  .timeline-description-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    align-items: center;
+    font-size: 0.88em;
+  }
+
+  .timeline-skills {
+    padding: 0.1rem 0.3rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+  }
+</style>
+
+<script>
+  const tabs: NodeListOf<HTMLDivElement> = document.querySelectorAll('.tab');
+  const contents: Record<string, HTMLElement | null> = {
+    work: document.getElementById('tab-work'),
+    study: document.getElementById('tab-study'),
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      // Ensure all tabs and contents are reset
+      tabs.forEach((t) => t.classList.remove('active'));
+      Object.values(contents).forEach((content) => {
+        if (content) content.style.display = 'none';
+      });
+
+      // Activate the clicked tab and show the corresponding content
+      tab.classList.add('active');
+      const tabKey = tab.dataset.tab;
+
+      if (tabKey && contents[tabKey]) {
+        contents[tabKey]!.style.display = 'block';
+      }
+    });
+  });
+</script>

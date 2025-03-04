@@ -40,10 +40,12 @@ HawAPI is a **Free** and [Open Source](https://github.com/HawAPI/) API designed 
 
 > All this information is available through a RESTful API implemented with Java (Spring Boot) + PostgreSQL and served via JSON and allows developers to create desktop, web and mobile applications using this data very easy - [HawAPI/docs](https://hawapi.theproject.id/docs/)
 
-!!!note The **HawAPI** name comes from: \
-\
-\- **Haw**: Referring to **Hawkins**, the fictional rural town featured in **Stranger Things**. \
-\- **API**: An abbreviation for **Application Programming Interface**.
+:::alert{type="note"}
+The **HawAPI** name comes from:
+
+- **Haw**: Referring to **Hawkins**, the fictional rural town featured in **Stranger Things**.
+- **API**: An abbreviation for **Application Programming Interface**.
+  :::
 
 ### Internationalization (i18n)
 
@@ -110,7 +112,9 @@ Response examples
 ```
 ````
 
-!!!info By default English (en-US) will be used.
+:::alert{type="info"}
+By default English (en-US) will be used.
+:::
 
 ### Filters
 
@@ -216,8 +220,11 @@ async function fetchAndLogCharacters() {
 fetchAndLogCharacters();
 ```
 
-!!!note This SDK can also be used in the browser with the \<script\> tag. \
+:::alert{type="note"}
+This SDK can also be used in the browser with the \<script\> tag.
+
 See more in [HawAPI/js-sdk#examples/web](https://github.com/HawAPI/js-sdk/tree/main/examples/web)
+:::
 
 ## Hawbrary
 
@@ -237,7 +244,7 @@ In this post we explore the history and features of the HawAPI project, includin
 
 If you find the API useful, give the **GitHub repository** a star and take advantage of **#StrangerThingsDay** to create a new project!
 
-!!!ref:repo HawAPI/HawAPI
+https://github.com/HawAPI/HawAPI
 
 ## Resources and References
 

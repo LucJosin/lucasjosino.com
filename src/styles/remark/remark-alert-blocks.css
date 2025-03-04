@@ -10,14 +10,14 @@
   --red-color: #f85149;
 }
 
-.remark-alerts {
-  background-color: var(--secondary-color);
+.remark-alert-blocks {
   position: relative;
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
   margin: 1.3333333em 0;
   border-style: solid;
+  background-color: var(--primary-color);
 }
 
 .remark-alert-info,
@@ -129,11 +129,23 @@
   background-color: var(--red-color);
 }
 
-.remark-alerts>p {
-  padding: 0 1rem;
+.remark-alert-content {
+  padding: 1rem;
 }
 
-.remark-alerts>p::before {
+.remark-alert-content>* {
+  margin: 0.5rem 0;
+}
+
+.remark-alert-content>*:first-child {
+  margin: 0.2rem 0 0.5rem 0;
+}
+
+.remark-alert-content>*:last-child {
+  margin: 0.5rem 0 0.2rem 0;
+}
+
+.remark-alert-content::before {
   content: '';
   margin-bottom: 0.5rem;
   display: block;
@@ -141,47 +153,47 @@
   width: 100px;
 }
 
-.remark-alert-info>p::before {
+.remark-alert-info>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/info.svg) no-repeat;
 }
 
-.remark-alert-note>p::before {
+.remark-alert-note>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/note.svg) no-repeat;
 }
 
-.remark-alert-tip>p::before {
+.remark-alert-tip>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/tip.svg) no-repeat;
 }
 
-.remark-alert-issue>p::before {
+.remark-alert-issue>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/issue.svg) no-repeat;
 }
 
-.remark-alert-success>p::before {
+.remark-alert-success>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/success.svg) no-repeat;
 }
 
-.remark-alert-solution>p::before {
+.remark-alert-solution>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/solution.svg) no-repeat;
 }
 
-.remark-alert-check>p::before {
+.remark-alert-check>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/check.svg) no-repeat;
 }
 
-.remark-alert-complete>p::before {
+.remark-alert-complete>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/complete.svg) no-repeat;
 }
 
-.remark-alert-warning>p::before {
+.remark-alert-warning>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/warning.svg) no-repeat;
 }
 
-.remark-alert-error>p::before {
+.remark-alert-error>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/error.svg) no-repeat;
 }
 
-.remark-alert-danger>p::before {
+.remark-alert-danger>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/danger.svg) no-repeat;
 }
 
@@ -200,6 +212,6 @@
   color: var(--white-color);
 }
 
-:root[data-theme="light"] .remark-alert-tip>p::before {
+:root[data-theme="light"] .remark-alert-tip>.remark-alert-content::before {
   background: url(https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/tip.svg) no-repeat;
 }

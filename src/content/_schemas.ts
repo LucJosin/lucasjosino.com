@@ -62,3 +62,15 @@ export const projectSchema = z.object({
     )
     .optional(),
 });
+
+export const timelineSchema = z.object({
+  startDate: z.string(),
+  endDate: z.string(),
+  location: z.string(),
+  title: z.string(),
+  institution: z.string(),
+  description: z.string(),
+  content: z.array(z.string()),
+  technologies: z.array(z.string()),
+  language: z.enum(locales),
+});
