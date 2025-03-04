@@ -1,7 +1,7 @@
 export const common = {
   title: 'Desenvolvedor de Software',
   description:
-    'Olá! Sou Lucas Josino, um Desenvolvedor de Software apaixonado por Java e Golang, e que mora no Brasil.',
+    'Olá! Sou Lucas Josino, um Desenvolvedor de Software apaixonado por Java e Golang.',
   header: {
     homepage: 'Início',
     homepage_tooltip:
