@@ -101,7 +101,7 @@ export default function remarkGitHubCard(options) {
                 document.getElementById('${cardUuid}-avatar').style.backgroundImage = 'url(' + (data.owner?.avatar_url || '') + ')';
                 document.getElementById('${cardUuid}-license').innerText = data.license?.spdx_id || "--";
                 document.getElementById('${cardUuid}-watchers').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.watchers_count || 0);
-                if (data.archived) document.getElementById('${cardUuid}-archived').classList.add("active");
+                if (data.archived) document.getElementById('${cardUuid}-archived').classList.add("gc-archived-active");
                 document.getElementById('${cardUuid}-card').classList.remove("fetch-waiting");
               }).catch(err => {
                 console.log("Error fetching GitHub card data:", err);

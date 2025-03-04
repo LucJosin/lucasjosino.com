@@ -91,8 +91,8 @@ function generateSliderComponent(images, options) {
       ${
         options.showArrows
           ? `
-            <button class="prev" onclick="prevSlide()">⤶</button>
-            <button class="next" onclick="nextSlide()">⤷</button>
+            <button class="slide-prev" onclick="prevSlide()">⤶</button>
+            <button class="slide-next" onclick="nextSlide()">⤷</button>
           `
           : ''
       }

@@ -12,30 +12,30 @@ const studyTimeline = await getCollection('education', (tl) => {
 ---
 
 <div>
-  <div class="tabs" id="tab-menu">
-    <div class="tab active" data-tab="work">
+  <div class="history-tabs" id="tab-menu">
+    <div class="history-tab __active" data-tab="work">
       {t('about.article.topic_3.tabs.experience')}
     </div>
-    <div class="tab" data-tab="study">
+    <div class="history-tab" data-tab="study">
       {t('about.article.topic_3.tabs.education')}
     </div>
   </div>
 
   <div class="tab-content" id="tab-work">
-    <ul class="timeline">
+    <ul class="tab-timeline">
       {
         workTimeline.map(async (item, index) => {
           return (
-            <li class="timeline-item">
-              <span class="timeline-circle" />
-              <strong class="timeline-year">
+            <li class="tab-timeline-item">
+              <span class="tab-timeline-circle" />
+              <strong class="tab-timeline-year">
                 {item.data.startDate} - {item.data.endDate}
               </strong>
-              <h3 class="timeline-title">
+              <h3 class="tab-timeline-title">
                 {item.data.title} - {item.data.institution}
               </h3>
-              <p class="timeline-description">{item.data.description}</p>
-              <p class="timeline-description">
+              <p class="tab-timeline-description">{item.data.description}</p>
+              <p class="tab-timeline-description">
                 <details open={index === 0}>
                   <summary>
                     {t('about.article.topic_3.tabs.responsabilities')}
@@ -47,10 +47,10 @@ const studyTimeline = await getCollection('education', (tl) => {
                   </ul>
                 </details>
               </p>
-              <p class="timeline-description timeline-description-skills">
+              <p class="tab-timeline-description tab-timeline-description-skills">
                 <strong>Skills:</strong>
                 {item.data.technologies.map((item) => (
-                  <span class="timeline-skills" set:html={item} />
+                  <span class="tab-timeline-skills" set:html={item} />
                 ))}
               </p>
             </li>
@@ -61,20 +61,20 @@ const studyTimeline = await getCollection('education', (tl) => {
   </div>
 
   <div class="tab-content" id="tab-study" style="display: none;">
-    <ul class="timeline">
+    <ul class="tab-timeline">
       {
         studyTimeline.map(async (item, index) => {
           return (
-            <li class="timeline-item">
-              <span class="timeline-circle" />
-              <strong class="timeline-year">
+            <li class="tab-timeline-item">
+              <span class="tab-timeline-circle" />
+              <strong class="tab-timeline-year">
                 {item.data.startDate} - {item.data.endDate}
               </strong>
-              <h3 class="timeline-title">
+              <h3 class="tab-timeline-title">
                 {item.data.title} - {item.data.institution}
               </h3>
-              <p class="timeline-description">{item.data.description}</p>
-              <p class="timeline-description">
+              <p class="tab-timeline-description">{item.data.description}</p>
+              <p class="tab-timeline-description">
                 <details open={index === 0}>
                   <summary>
                     {t('about.article.topic_3.tabs.responsabilities')}
@@ -86,10 +86,10 @@ const studyTimeline = await getCollection('education', (tl) => {
                   </ul>
                 </details>
               </p>
-              <p class="timeline-description timeline-description-skills">
+              <p class="tab-timeline-description tab-timeline-description-skills">
                 <strong>Skills:</strong>
                 {item.data.technologies.map((item) => (
-                  <span class="timeline-skills" set:html={item} />
+                  <span class="tab-timeline-skills" set:html={item} />
                 ))}
               </p>
             </li>
@@ -101,14 +101,14 @@ const studyTimeline = await getCollection('education', (tl) => {
 </div>
 
 <style>
-  .tabs {
+  .history-tabs {
     display: flex;
     border-bottom: 1px solid var(--border-color);
     -webkit-tap-highlight-color: transparent;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
-  .tab {
+  .history-tab {
     padding: 0.5rem;
     text-align: center;
     flex: 1;
@@ -117,20 +117,20 @@ const studyTimeline = await getCollection('education', (tl) => {
     cursor: pointer;
   }
 
-  .tab:first-child {
+  .history-tab:first-child {
     border-top-left-radius: var(--border-radius);
     border-right: none;
   }
 
-  .tab:last-child {
+  .history-tab:last-child {
     border-top-right-radius: var(--border-radius);
   }
 
-  .tab:hover {
+  .history-tab:hover {
     background-color: var(--secondary-color);
   }
 
-  .tab.active {
+  .history-tab.__active {
     font-weight: bold;
     background-color: var(--contrast-color);
     color: var(--secondary-text-color);
@@ -144,14 +144,14 @@ const studyTimeline = await getCollection('education', (tl) => {
     border-bottom-right-radius: var(--border-radius);
   }
 
-  .timeline {
+  .tab-timeline {
     list-style: none;
     padding: 0;
     margin: 0;
     position: relative;
   }
 
-  .timeline::before {
+  .tab-timeline::before {
     content: '';
     position: absolute;
     top: 0;
@@ -161,17 +161,17 @@ const studyTimeline = await getCollection('education', (tl) => {
     background: var(--contrast-color);
   }
 
-  .timeline-item {
+  .tab-timeline-item {
     position: relative;
     margin-bottom: 2rem;
     padding-left: 2.5rem;
   }
 
-  .timeline-item:last-child {
+  .tab-timeline-item:last-child {
     margin-bottom: 0;
   }
 
-  .timeline-circle {
+  .tab-timeline-circle {
     position: absolute;
     top: 0;
     left: 0;
@@ -182,23 +182,23 @@ const studyTimeline = await getCollection('education', (tl) => {
     transform: translate(90%, 0); /* Center circle */
   }
 
-  .timeline-year {
+  .tab-timeline-year {
     font-size: 0.8em;
     margin-bottom: 0.5rem;
   }
 
-  .timeline-title {
+  .tab-timeline-title {
     margin: 0.25rem 0;
     font-size: 1.1rem;
     color: var(--primary-text-color);
   }
 
-  .timeline-description {
+  .tab-timeline-description {
     margin: 0;
     color: var(--description-text-color);
   }
 
-  .timeline-description-skills {
+  .tab-timeline-description-skills {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -207,7 +207,7 @@ const studyTimeline = await getCollection('education', (tl) => {
     font-size: 0.88em;
   }
 
-  .timeline-skills {
+  .tab-timeline-skills {
     padding: 0.1rem 0.3rem;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -215,7 +215,8 @@ const studyTimeline = await getCollection('education', (tl) => {
 </style>
 
 <script>
-  const tabs: NodeListOf<HTMLDivElement> = document.querySelectorAll('.tab');
+  const tabs: NodeListOf<HTMLDivElement> =
+    document.querySelectorAll('.history-tab');
   const contents: Record<string, HTMLElement | null> = {
     work: document.getElementById('tab-work'),
     study: document.getElementById('tab-study'),
@@ -224,13 +225,13 @@ const studyTimeline = await getCollection('education', (tl) => {
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       // Ensure all tabs and contents are reset
-      tabs.forEach((t) => t.classList.remove('active'));
+      tabs.forEach((t) => t.classList.remove('__active'));
       Object.values(contents).forEach((content) => {
         if (content) content.style.display = 'none';
       });
 
       // Activate the clicked tab and show the corresponding content
-      tab.classList.add('active');
+      tab.classList.add('__active');
       const tabKey = tab.dataset.tab;
 
       if (tabKey && contents[tabKey]) {
