@@ -5,7 +5,7 @@
   font-size: .888889em;
 }
 
-.remark-text-highlight.underline {
+.remark-text-highlight.__effect-underline {
   --color: rgb(66 218 218 / 1);
 
   background-position: bottom;
@@ -18,11 +18,11 @@
   transition: background-size var(--transition-duration) ease-in-out;
 }
 
-.remark-text-highlight.underline.animate:hover {
+.remark-text-highlight.__underline.__animate:hover {
   background-size: 100% 100%;
 }
 
-.remark-text-highlight.underline-slim {
+.remark-text-highlight.__underline-slim {
   --color: #ff4500;
 
   background: none;
@@ -32,7 +32,7 @@
   text-decoration-color: var(--color);
 }
 
-.remark-text-highlight.wavy {
+.remark-text-highlight.__wavy {
   --color: #ff4500;
 
   text-decoration: underline;
@@ -40,14 +40,14 @@
   text-decoration-color: var(--color);
 }
 
-.remark-text-highlight.glow {
+.remark-text-highlight.__glow {
   --color: #71f051;
 
   font-weight: bold;
   text-shadow: 0 0 10px var(--color), 0 0 30px var(--color);
 }
 
-.remark-text-highlight.gradient {
+.remark-text-highlight.__gradient {
   --lgColor: #ff9a9e, #fad0c4;
   --color: #222;
 
@@ -55,7 +55,7 @@
   color: var(--color);
 }
 
-.remark-text-highlight.marker {
+.remark-text-highlight.__marker {
   --color: yellow;
 
   background-color: var(--color);
@@ -63,7 +63,7 @@
   padding: 0 4px;
 }
 
-.remark-text-highlight.sketch {
+.remark-text-highlight.__sketch {
   --color: var(--primary-text-color);
 
   position: relative;
@@ -71,7 +71,7 @@
   font-weight: bold;
 }
 
-.remark-text-highlight.sketch::before {
+.remark-text-highlight.__sketch::before {
   content: "";
   left: -0.5em;
   top: -0.1em;
@@ -88,7 +88,7 @@
   padding: 0.1em 0.25em;
 }
 
-.remark-text-highlight.sketch::after {
+.remark-text-highlight.__sketch::after {
   content: "";
   left: -0.5em;
   top: 0.1em;
@@ -106,7 +106,7 @@
   border-radius: 50%;
 }
 
-.remark-text-highlight.striped {
+.remark-text-highlight.__striped {
   --bgColor1: #ffcccb;
   --bgColor2: #ffe4e1;
 
@@ -120,7 +120,7 @@
   transition: background-position 0.3s ease-in-out;
 }
 
-.remark-text-highlight.striped.animate:hover {
+.remark-text-highlight.__striped.__animate:hover {
   animation: moveStripes 0.5s linear infinite;
 }
 

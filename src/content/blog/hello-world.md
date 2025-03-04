@@ -172,18 +172,20 @@ https://www.lucasjosino.com/blog/how-to-hash-class-names-in-astro-using-astro-re
 Code:
 
 ```
-Lorem ipsum dolor sit amet. Ut enim ad minim :highlight[gradient]{classes="gradient"}, quis nisi ut aliquip ex ea :highlight[glow]{classes="glow"} consequat. Duis aute irure dolor in :highlight[custom]{color="white" bg="#f0ad4e"} in voluptate velit esse :highlight[underline-slim]{classes="underline-slim"} dolore eu fugiat nulla pariatur. :highlight[Custom striped animate: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]{classes="striped animate" style="font-weight: bold; color: #e75480;"}
+Lorem ipsum dolor sit amet. Ut enim ad minim :highlight[gradient]{effect="gradient"}, quis nisi ut aliquip ex ea :highlight[glow]{effect="glow"} consequat. Duis aute irure dolor in :highlight[custom]{color="white" bg="#f0ad4e"} in voluptate velit esse :highlight[underline-slim]{effect="underline-slim"} dolore eu fugiat nulla pariatur. :highlight[Custom striped animate: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]{effect="striped animate" style="font-weight: bold; color: #e75480;"}
 
-Lorem ipsum dolor sit amet, :highlight[marker]{classes="marker"} adipiscing elit, sed do eiusmod :highlight[underline animate]{classes="underline animate"} et dolore magna aliqua. Ullamco laboris nisi ut aliquip ex ea :highlight[striped animate]{classes="striped animate" style="--bgColor1: #121212; --bgColor2: #505050; color: white;"} consequat. Duis aute irure :highlight[wavy]{classes="wavy"} in reprehenderit in :highlight[sketch]{classes="sketch" style="--color: rgb(66 218 218 / 1);"} velit esse cillum dolore eu fugiat nulla pariatur.
+Lorem ipsum dolor sit amet, :highlight[marker]{effect="marker"} adipiscing elit, sed do eiusmod :highlight[underline animate]{effect="underline animate"} et dolore magna aliqua. Ullamco laboris nisi ut aliquip ex ea :highlight[striped animate]{effect="striped animate" style="--bgColor1: #121212; --bgColor2: #505050; color: white;"} consequat. Duis aute irure :highlight[wavy]{effect="wavy"} in reprehenderit in :highlight[sketch]{effect="sketch" style="--color: rgb(66 218 218 / 1);"} velit esse cillum dolore eu fugiat nulla pariatur.
 ```
 
 Preview:
 
 ---
 
-Lorem ipsum dolor sit amet. Ut enim ad minim :highlight[gradient]{classes="gradient"}, quis nisi ut aliquip ex ea :highlight[glow]{classes="glow"} consequat. Duis aute irure dolor in :highlight[custom]{color="white" bg="#f0ad4e"} in voluptate velit esse :highlight[underline-slim]{classes="underline-slim"} dolore eu fugiat nulla pariatur. :highlight[Custom striped animate: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]{classes="striped animate" style="font-weight: bold; color: #e75480;"}
+FAWOIJFD adawd awd
 
-Lorem ipsum dolor sit amet, :highlight[marker]{classes="marker"} adipiscing elit, sed do eiusmod :highlight[underline animate]{classes="underline animate"} et dolore magna aliqua. Ullamco laboris nisi ut aliquip ex ea :highlight[striped animate]{classes="striped animate" style="--bgColor1: #121212; --bgColor2: #505050; color: white;"} consequat. Duis aute irure :highlight[wavy]{classes="wavy"} in reprehenderit in :highlight[sketch]{classes="sketch" style="--color: rgb(66 218 218 / 1);"} velit esse cillum dolore eu fugiat nulla pariatur.
+Lorem ipsum dolor sit amet. Ut enim ad minim :highlight[gradient]{effect="gradient"}, quis nisi ut aliquip ex ea :highlight[glow]{effect="glow"} consequat. Duis aute irure dolor in :highlight[custom]{color="white" bg="#f0ad4e"} in voluptate velit esse :highlight[underline-slim]{effect="underline-slim"} dolore eu fugiat nulla pariatur. :highlight[Custom striped animate: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]{effect="striped animate" style="font-weight: bold; color: #e75480;"}
+
+Lorem ipsum dolor sit amet, :highlight[marker]{effect="marker"} adipiscing elit, sed do eiusmod :highlight[underline animate]{effect="underline animate"} et dolore magna aliqua. Ullamco laboris nisi ut aliquip ex ea :highlight[striped animate]{effect="striped animate" style="--bgColor1: #121212; --bgColor2: #505050; color: white;"} consequat. Duis aute irure :highlight[wavy]{effect="wavy"} in reprehenderit in :highlight[sketch]{effect="sketch" style="--color: rgb(66 218 218 / 1);"} velit esse cillum dolore eu fugiat nulla pariatur.
 
 ---
 
