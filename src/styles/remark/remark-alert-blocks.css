@@ -17,6 +17,7 @@
   align-items: center;
   margin: 1.3333333em 0;
   border-style: solid;
+  background-color: var(--primary-color);
 }
 
 .remark-alert-info,

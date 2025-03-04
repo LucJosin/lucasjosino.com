@@ -25,6 +25,7 @@ import remarkAlertBlocks from './plugins/remark-alert-blocks';
 import remarkCodeSet from './plugins/remark-code-set';
 import remarkGitHubCard from './plugins/remark-github-card';
 import remarkImageCaption from './plugins/remark-image-caption';
+import remarkMention from './plugins/remark-mention';
 import remarkSlider from './plugins/remark-slider';
 import remarkTextHighlight from './plugins/remark-text-highlight';
 
@@ -169,6 +170,7 @@ export default defineConfig({
     ],
     remarkPlugins: [
       remarkDirective,
+      remarkMention,
       remarkLinkCard,
       remarkGitHubCard,
       numberedFootnoteLabels,

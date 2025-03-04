@@ -1,0 +1,29 @@
+.remark-mention {
+    height: min-content;
+    width: fit-content;
+    padding: 0 8px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    text-decoration: none !important;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    transform: translateY(3px);
+    opacity: 1 !important;
+    transition: background-color var(--transition-duration) ease !important;
+}
+
+.remark-mention:hover {
+    background-color: var(--secondary-color);
+}
+
+.remark-mention-icon {
+    width: 18px;
+    height: 18px;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none;
+}
