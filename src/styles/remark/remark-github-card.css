@@ -44,7 +44,7 @@
     display: none;
 }
 
-.gc-archived.active {
+.gc-archived.gc-archived-active {
     display: initial;
 }
 

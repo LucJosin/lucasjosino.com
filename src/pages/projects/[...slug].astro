@@ -149,7 +149,7 @@ const imagePath = await getOpenGraphImage(
     }
     {
       project.data.subProjects && (
-        <div class="project-miniprojects-container">
+        <div class="project-mini-projects-container">
           <h2>{t('projects.repositories')}</h2>
           <div class="project-miniprojects">
             {project.data.subProjects.map(async (sub) => {
@@ -218,7 +218,7 @@ const imagePath = await getOpenGraphImage(
     gap: 1rem;
   }
 
-  .project-miniprojects-container {
+  .project-mini-projects-container {
     width: 100%;
     display: flex;
     flex-direction: column;
