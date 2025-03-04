@@ -18,10 +18,30 @@ isIndexable: false
 enableComments: false
 easyShare: false
 publishedAt: '2023-10-19 09:08 UTC-3'
-updatedAt: '2025-03-02 18:15 UTC-3'
+updatedAt: '2025-03-04 12:20 UTC-3'
 ---
 
 ## Summary
+
+## Mention
+
+Code:
+
+```
+Shoutout to :mention[lucjosin]{url="https://github.com/lucjosin" img="https://github.com/lucjosin.png"} for their awesome work on this!
+
+Vue.js is a progressive JavaScript framework for building user interfaces. Learn more at :mention[Vue.js]{url="https://vuejs.org/"}.
+```
+
+Preview:
+
+---
+
+Shoutout to :mention[lucjosin]{url="https://github.com/lucjosin" img="https://github.com/lucjosin.png"} for their awesome work on this!
+
+Vue.js is a progressive JavaScript framework for building user interfaces. Learn more at :mention[Vue.js]{url="https://vuejs.org/"}.
+
+---
 
 ## KBD
 
