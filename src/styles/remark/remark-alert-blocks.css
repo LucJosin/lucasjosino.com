@@ -130,19 +130,19 @@
 }
 
 .remark-alert-content {
+  max-width: 100%;
   padding: 1rem;
+  display: inline-flex;
+  gap: 1rem;
+  flex-direction: column;
 }
 
 .remark-alert-content>* {
-  margin: 0.5rem 0;
+  margin: 0 0 !important;
 }
 
 .remark-alert-content>*:first-child {
-  margin: 0.2rem 0 0.5rem 0;
-}
-
-.remark-alert-content>*:last-child {
-  margin: 0.5rem 0 0.2rem 0;
+  margin-top: 1.8rem !important;
 }
 
 .remark-alert-content::before {
@@ -151,6 +151,7 @@
   display: block;
   height: 20px;
   width: 100px;
+  position: absolute;
 }
 
 .remark-alert-info>.remark-alert-content::before {
