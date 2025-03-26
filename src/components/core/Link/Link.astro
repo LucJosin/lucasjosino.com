@@ -16,6 +16,8 @@ interface Props {
   reverseAnimation?: boolean;
   event?: string;
   accesskey?: string;
+  align?: 'center' | 'flex-start';
+  class?: string;
 }
 
 const {
@@ -33,10 +35,14 @@ const {
   reverseAnimation = false,
   event,
   accesskey,
+  align = 'center',
+  class: classes,
+  ...rest
 } = Astro.props as Props;
 
 const attr = { 'data-umami-event': event };
 
+const alignStyle = align === 'center' ? 'center' : 'flex-start';
 const borderBottom = hasBorderBottom ? 'var(--border-color)' : 'transparent';
 
 const currentGap = reverseAnimation ? '0' : gap;
@@ -53,9 +59,10 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
   title={alt}
   rel={isLocal ? undefined : 'noopener noreferrer'}
   target={isLocal ? undefined : '_blank'}
-  class="link-data"
+  class:list={['link-data', classes]}
   accesskey={accesskey}
   {...attr}
+  {...rest}
 >
   {icon && iconSide === 'left' && <Icon name={icon} />}
   {title ? <span>{title}</span> : <slot />}
@@ -70,6 +77,7 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
     iconColor,
     iconSize,
     display,
+    alignStyle,
   }}
 >
   .link-data {
@@ -78,6 +86,9 @@ const iconColor = animatedIcon ? 'var(--constrast-color)' : 'gray';
     cursor: pointer;
     gap: var(--currentGap);
     display: var(--display);
+    align-items: var(--alignStyle);
+    color: var(--primary-text-color);
+    color: inherit;
   }
 
   .link-data:hover {
