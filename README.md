@@ -1,6 +1,7 @@
 <div align=center>
 
-# Lucas Josino - Portfolio & Blog
+  <img src="./public/animated-logo-white.svg#gh-dark-mode-only" height="64" width="64">
+  <img src="./public/animated-logo.svg#gh-light-mode-only" height="64" width="64">
 
   <p align="center">
     <br>
