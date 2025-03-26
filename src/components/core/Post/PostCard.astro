@@ -1,6 +1,7 @@
 ---
 import Tags from '@components/data/Tags.astro';
 import { getReadTime } from '@lib/time';
+import { Image } from 'astro:assets';
 import { useLocale } from 'i18n';
 import Description from '../Description.astro';
 import Link from '../Link/Link.astro';
@@ -38,7 +39,14 @@ const {
     {
       image && (
         <a href={href} title={t('post.card.read_post')}>
-          <img src={image} alt={`Post - ${title}`} class="post-card-img" />
+          <Image
+            height={1920}
+            width={1080}
+            src={image}
+            alt={`Post - ${title}`}
+            class="post-card-img"
+            loading="lazy"
+          />
         </a>
       )
     }

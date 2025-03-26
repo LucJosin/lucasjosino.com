@@ -1,6 +1,7 @@
 ---
 import Tags from '@components/data/Tags.astro';
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { getEntry } from 'astro:content';
 import { useLocale } from 'i18n';
@@ -31,12 +32,16 @@ const { project, titleSize, descSize } = Astro.props as Props;
             images={[project.data.thumbnail!, ...project.data.images]}
           />
         ) : (
-          <img
-            src={project.data.thumbnail}
-            loading="lazy"
-            class="project-card-img"
-            title={`${project.data.title}`}
-          />
+          project.data.thumbnail && (
+            <Image
+              height={1920}
+              width={1080}
+              src={project.data.thumbnail}
+              alt={`${project.data.title} - Thumbnail`}
+              class="project-card-img"
+              loading="lazy"
+            />
+          )
         )
       }
     </div>

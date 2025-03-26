@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<div class="logo-container">
+  <Image
+    src="/animated-logo.svg"
+    alt="Logo"
+    height={40}
+    width={40}
+    class={'header-logo logo-black'}
+  />
+  <Image
+    src="/animated-logo-white.svg"
+    alt="Logo"
+    height={40}
+    width={40}
+    class={'header-logo logo-white'}
+  />
+</div>
+
+<style>
+  .header-logo {
+    align-items: center;
+    gap: 0.5rem;
+    pointer-events: none;
+  }
+</style>

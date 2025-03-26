@@ -18,6 +18,8 @@ const { icon } = Astro.props;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 0.95em;
+    color: var(--description-text-color);
   }
 
   .post-info-item::after {
@@ -34,5 +36,6 @@ const { icon } = Astro.props;
 
   [data-icon] {
     font-size: 1.2em;
+    color: var(--description-text-color);
   }
 </style>

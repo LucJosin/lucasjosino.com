@@ -28,7 +28,8 @@
 
 .remark-code-tabs {
   margin: 20px 0;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border: var(--border-size) solid var(--border-color);
   border-radius: var(--border-radius);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
@@ -53,13 +54,13 @@
 
 .remark-code-tab:has(:checked) {
   display: flex;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: var(--primary-text-color);
 }
 
 
 .remark-code-tab:not(:has(:checked)) {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: var(--description-text-color);
   border-bottom: var(--border-size) transparent;
 }

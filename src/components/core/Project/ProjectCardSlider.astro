@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 
 interface Props {
   images: string[];
@@ -13,7 +14,13 @@ const { images } = Astro.props;
     {
       images.map((image, index) => (
         <div class="project-card-slide" data-key={index}>
-          <img src={image} loading="lazy" alt={`Slide ${index + 1}`} />
+          <Image
+            height={1920}
+            width={1080}
+            src={image}
+            loading="lazy"
+            alt={`Slide ${index + 1}`}
+          />
         </div>
       ))
     }

@@ -1,6 +1,7 @@
 ---
 import LanguageIcon from '@components/core/LanguageIcon.astro';
 import Link from '@components/core/Link/Link.astro';
+import Logo from '@components/core/Logo.astro';
 import ThemeIcon from '@components/core/ThemeIcon.astro';
 import Tooltip from '@components/core/Tooltip.astro';
 import { Icon } from 'astro-icon/components';
@@ -18,8 +19,9 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
           alt={t('common.header.homepage')}
           hasBorderBottom={false}
           accesskey="h"
+          align="center"
         >
-          <h3 class="header-title">LUCAS JOSINO</h3>
+          <Logo />
         </Link>
       </Tooltip>
     </div>

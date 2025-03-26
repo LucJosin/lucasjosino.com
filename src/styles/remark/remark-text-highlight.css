@@ -3,9 +3,10 @@
   overflow-wrap: anywhere;
   padding: .2rem .3rem;
   font-size: .888889em;
+  user-select: all;
 }
 
-.remark-text-highlight.__effect-underline {
+.remark-text-highlight.__underline {
   --color: rgb(66 218 218 / 1);
 
   background-position: bottom;

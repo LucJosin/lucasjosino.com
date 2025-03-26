@@ -1,0 +1,28 @@
+.auto-select {
+    cursor: pointer;
+    user-select: all;
+    position: relative;
+    transition: all 0.3s cubic-bezier(.22, .68, 0, 1.71);
+    font-weight: bold;
+}
+
+.auto-select::before,
+.auto-select::after {
+    transition: all 0.3s cubic-bezier(.22, .68, 0, 1.71);
+    margin: 0 -5px;
+    opacity: 0;
+}
+
+.auto-select::before {
+    content: '<';
+}
+
+.auto-select::after {
+    content: '>';
+}
+
+.auto-select:hover::before,
+.auto-select:hover::after {
+    margin: 0 1px;
+    opacity: 1;
+}

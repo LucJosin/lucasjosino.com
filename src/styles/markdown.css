@@ -483,6 +483,7 @@
   color: var(--secondary-text-color);
   overflow-wrap: anywhere;
   font-family: inherit;
+  user-select: all;
 }
 
 .post-content-lg h2 code {

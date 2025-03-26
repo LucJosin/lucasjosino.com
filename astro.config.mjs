@@ -22,6 +22,7 @@ import remarkLinkCard from 'remark-link-card-plus';
 import numberedFootnoteLabels from 'remark-numbered-footnote-labels';
 import remarkToc from 'remark-toc';
 import remarkAlertBlocks from './plugins/remark-alert-blocks';
+import remarkAutoSelect from './plugins/remark-auto-select';
 import remarkCodeSet from './plugins/remark-code-set';
 import remarkGitHubCard from './plugins/remark-github-card';
 import remarkImageCaption from './plugins/remark-image-caption';
@@ -82,9 +83,28 @@ export default defineConfig({
   integrations: [
     astroExpressiveCode({
       themes: ['dark-plus', 'light-plus'],
+      styleOverrides: {
+        borderRadius: 'var(--border-radius)',
+        borderWidth: '1px',
+        codeFontFamily: 'monospace',
+        gutterBorderColor: 'var(--border-color)',
+        frames: {
+          frameBoxShadowCssValue: 'none',
+          editorBackground: 'var(--primary-color)',
+          editorTabBarBackground: 'var(--secondary-color)',
+          editorActiveTabBackground: 'var(--primary-color)',
+          inlineButtonBorder: 'var(--border-color)',
+          inlineButtonBorderOpacity: 1,
+          terminalBackground: 'var(--primary-color)',
+          terminalBorder: 'var(--border-color)',
+          terminalBorderOpacity: 1,
+          terminalTitlebarBackground: 'var(--secondary-color)',
+          terminalTitlebarBorder: 'var(--border-color)',
+          terminalTitlebarBorderOpacity: 1,
+        },
+      },
       useDarkModeMediaQuery: true,
-      themeCssSelector: (theme) =>
-        `[data-theme='${theme.name.replace('-plus', '')}']`,
+      themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
       plugins: [
         pluginLineNumbers(),
         pluginFileIcons({
@@ -170,6 +190,7 @@ export default defineConfig({
     ],
     remarkPlugins: [
       remarkDirective,
+      remarkAutoSelect,
       remarkMention,
       remarkLinkCard,
       remarkGitHubCard,
