@@ -24,10 +24,10 @@ import remarkToc from 'remark-toc';
 import remarkAlertBlocks from './plugins/remark-alert-blocks';
 import remarkAutoSelect from './plugins/remark-auto-select';
 import remarkCodeSet from './plugins/remark-code-set';
+import remarkGallery from './plugins/remark-gallery';
 import remarkGitHubCard from './plugins/remark-github-card';
 import remarkImageCaption from './plugins/remark-image-caption';
 import remarkMention from './plugins/remark-mention';
-import remarkSlider from './plugins/remark-slider';
 import remarkTextHighlight from './plugins/remark-text-highlight';
 
 import { defaultLocale, explicitLocales, locales } from './src/i18n/config';
@@ -192,12 +192,12 @@ export default defineConfig({
       remarkDirective,
       remarkAutoSelect,
       remarkMention,
+      remarkGallery,
       remarkLinkCard,
       remarkGitHubCard,
       numberedFootnoteLabels,
       remarkAlertBlocks,
       remarkTextHighlight,
-      remarkSlider,
       remarkImageCaption,
       responsiveTables,
       remarkCodeSet,
