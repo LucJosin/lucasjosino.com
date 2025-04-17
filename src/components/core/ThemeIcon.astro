@@ -76,6 +76,8 @@ const { position = 'initial' } = Astro.props;
     html.setAttribute('data-theme', theme);
     showLogo(theme);
 
+    updateDiagrams();
+
     // Update giscus
     sendMessage({
       setConfig: {

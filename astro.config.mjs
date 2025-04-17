@@ -28,6 +28,7 @@ import remarkGallery from './plugins/remark-gallery';
 import remarkGitHubCard from './plugins/remark-github-card';
 import remarkImageCaption from './plugins/remark-image-caption';
 import remarkMention from './plugins/remark-mention';
+import remarkMermaid from './plugins/remark-mermaid';
 import remarkTextHighlight from './plugins/remark-text-highlight';
 
 import { defaultLocale, explicitLocales, locales } from './src/i18n/config';
@@ -195,6 +196,7 @@ export default defineConfig({
       remarkGallery,
       remarkLinkCard,
       remarkGitHubCard,
+      remarkMermaid,
       numberedFootnoteLabels,
       remarkAlertBlocks,
       remarkTextHighlight,
