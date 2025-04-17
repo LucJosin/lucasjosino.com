@@ -27,6 +27,7 @@ import remarkCodeSet from './plugins/remark-code-set';
 import remarkGallery from './plugins/remark-gallery';
 import remarkGitHubCard from './plugins/remark-github-card';
 import remarkImageCaption from './plugins/remark-image-caption';
+import remarkImageHost from './plugins/remark-image-host';
 import remarkMention from './plugins/remark-mention';
 import remarkMermaid from './plugins/remark-mermaid';
 import remarkTextHighlight from './plugins/remark-text-highlight';
@@ -190,6 +191,7 @@ export default defineConfig({
       ],
     ],
     remarkPlugins: [
+      [remarkImageHost, { host: 'rawcdn.githack.com' }],
       remarkDirective,
       remarkAutoSelect,
       remarkMention,
