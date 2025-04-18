@@ -3,7 +3,7 @@ permSlug: 'hello-world'
 title: 'Hello World'
 description: 'A markdown showcase of all features.'
 image:
-  src: 'https://lucasjosino.com/static/default-og.png'
+  src: 'https://rawcdn.githack.com/lucjosin/lucasjosino.com/main/public/static/default-og.png'
   position: 'center'
   showInPost: true
 tags:

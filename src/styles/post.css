@@ -19,6 +19,11 @@ summary {
   z-index: 2;
 }
 
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 99;
+}
+
 .expressive-code .frame.is-terminal .header,
 .expressive-code .frame .header {
   z-index: 0 !important;

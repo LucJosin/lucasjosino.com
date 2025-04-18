@@ -105,3 +105,46 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
     }
   </style>
 </div>
+
+<script>
+  async function renderDiagrams(graphs: HTMLCollection) {
+    const { default: mermaid } = await import('mermaid');
+    mermaid.initialize({
+      startOnLoad: false,
+      theme:
+        document.documentElement.dataset.theme === 'dark' ? 'dark' : 'neutral',
+    });
+
+    for (const graph of Array.from(graphs)) {
+      const content = graph.getAttribute('data-content');
+      if (!content) {
+        continue;
+      }
+      const svg = document.createElement('svg');
+      svg.id = 'mermaid-' + Math.round(Math.random() * 100000);
+      graph.appendChild(svg);
+      mermaid
+        .render(svg.id, content.replace(/(%0A)+/g, '\n'))
+        .then((result) => {
+          graph.innerHTML = result.svg;
+        });
+    }
+  }
+
+  function verifyAndRenderDiagrams() {
+    const graphs = document.getElementsByClassName('mermaid');
+    if (graphs.length > 0) {
+      renderDiagrams(graphs);
+    }
+  }
+
+  verifyAndRenderDiagrams();
+
+  // @ts-ignore
+  window.updateDiagrams = function () {
+    const graphs = document.getElementsByClassName('mermaid');
+    if (graphs.length > 0) {
+      renderDiagrams(graphs);
+    }
+  };
+</script>

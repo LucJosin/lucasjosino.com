@@ -8,21 +8,23 @@ import { Image } from 'astro:assets';
     alt="Logo"
     height={40}
     width={40}
-    class={'header-logo logo-black'}
+    class={'logo-vector logo-black'}
   />
   <Image
     src="/animated-logo-white.svg"
     alt="Logo"
     height={40}
     width={40}
-    class={'header-logo logo-white'}
+    class={'logo-vector logo-white'}
   />
 </div>
 
 <style>
-  .header-logo {
-    align-items: center;
+  .logo-vector {
+    height: 40px;
+    width: 40px;
     gap: 0.5rem;
+    align-items: center;
     pointer-events: none;
   }
 </style>

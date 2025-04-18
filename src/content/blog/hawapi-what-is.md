@@ -230,11 +230,11 @@ See more in [HawAPI/js-sdk#examples/web](https://github.com/HawAPI/js-sdk/tree/m
 
 The **Hawbrary** is a "library" to showcase all information provided from the HawAPI project, built with React (NextJs) + Typescript, hosted in GitHub Pages and using the official [@hawapi/js-sdk](https://npmjs.com/package/@hawapi/js-sdk).
 
-[remark_slider showArrows=true showImageInde=true]
-![Hawbrary - Image 3](/static/projects/hawbrary/hawbrary-3.png)
+:::gallery
 ![Hawbrary - Image 1](/static/projects/hawbrary/hawbrary-1.png)
 ![Hawbrary - Image 2](/static/projects/hawbrary/hawbrary-2.png)
-[/remark_slider]
+![Hawbrary - Image 3](/static/projects/hawbrary/hawbrary-3.png)
+:::
 
 See the live demo of [Hawbrary](https://hawbrary.theproject.id/) and the [GitHub repository](https://github.com/LucJosin/hawbrary)
 

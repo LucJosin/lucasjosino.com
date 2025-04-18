@@ -8,11 +8,11 @@ import '@styles/remark/remark-alert-blocks.css';
 import '@styles/remark/remark-text-highlight.css';
 import '@styles/remark/remark-codeset.css';
 import '@styles/remark/remark-image-caption.css';
-import '@styles/remark/remark-slider.css';
 import '@styles/remark/remark-link-card-plus.css';
 import '@styles/remark/remark-github-card.css';
 import '@styles/remark/remark-mention.css';
 import '@styles/remark/remark-auto-select.css';
+import '@styles/remark/remark-gallery.css';
 
 export const getStaticPaths = getStaticBlogPaths();
 
@@ -43,7 +43,12 @@ locales = locales.map((post) => {
 
 <script>
   import mediumZoom from 'medium-zoom';
-  mediumZoom(document.querySelectorAll('img') as NodeListOf<HTMLImageElement>, {
-    background: '#000000e0',
-  });
+  mediumZoom(
+    document.querySelectorAll(
+      'img:not(.no-zoom)'
+    ) as NodeListOf<HTMLImageElement>,
+    {
+      background: '#000000e0',
+    }
+  );
 </script>
