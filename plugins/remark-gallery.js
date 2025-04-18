@@ -99,7 +99,9 @@ export default function remarkGallery() {
                   src: url,
                   alt,
                   className:
-                    index === 0 ? 'thumb active no-zoom' : 'thumb no-zoom',
+                    index === 0
+                      ? 'gallery-thumb thumb-active no-zoom'
+                      : 'gallery-thumb no-zoom',
                   'data-index': index,
                 },
                 children: [],

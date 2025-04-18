@@ -82,7 +82,7 @@
     padding: 0.2rem;
 }
 
-.gallery-thumbs img.thumb {
+.gallery-thumbs img.gallery-thumb {
     max-width: 150px;
     height: 100px;
     object-fit: cover;
@@ -94,11 +94,11 @@
     filter: grayscale(50%) brightness(0.7);
 }
 
-.gallery-thumbs img.thumb:hover {
+.gallery-thumbs img.gallery-thumb:hover {
     transform: scale(1.05);
 }
 
-.gallery-thumbs img.thumb.active {
+.gallery-thumbs img.gallery-thumb.thumb-active {
     filter: none;
     border-color: var(--contrast-color);
 }
