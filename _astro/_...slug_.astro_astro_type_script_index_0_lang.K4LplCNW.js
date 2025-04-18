@@ -1,1 +1,0 @@
-import{m}from"./medium-zoom.esm.bWEtUbjf.js";m(document.querySelectorAll("img"),{background:"#000000e0"});
