@@ -1,0 +1,69 @@
+---
+import BackToTop from '@components/core/BackToTop.astro';
+import Divider from '@components/core/Divider.astro';
+import ProgressBar from '@components/core/ProgressBar.astro';
+import Title from '@components/core/Title.astro';
+import Container from '@components/data/Container.astro';
+import PostComments from '@components/data/Post/PostComments.astro';
+import Tags from '@components/data/Tags.astro';
+import { type CollectionEntry } from 'astro:content';
+import type { LocaleSlug } from 'i18n/types';
+import { getOpenGraphImage } from 'open-graph';
+import PostFooter from '../components/core/Post/PostFooter.astro';
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  note: CollectionEntry<'notes'>;
+  locales?: LocaleSlug[];
+  tags: string[];
+}
+
+const { title, description, note, locales, tags } = Astro.props;
+
+const imagePath = await getOpenGraphImage(
+  'note',
+  {
+    title: note.data.title,
+    tags: tags.join(', '),
+    language: note.data.language,
+  },
+  note.slug
+);
+---
+
+<Layout
+  title={title}
+  description={description}
+  robots={note.data.isIndexable ? 'index,follow' : 'noindex,nofollow'}
+  image={imagePath}
+  locale={note.data.language}
+  locales={locales}
+>
+  <Container maxWidth="52rem" gap="1rem">
+    <ProgressBar />
+    <BackToTop />
+
+    <Title title={note.data.title} fontSize="2.5em" margin="0 0 1rem 0" />
+
+    <Divider margin="0" />
+
+    <slot />
+
+    <PostFooter>
+      <Tags
+        values={note.data.tags}
+        target="tags"
+        id="tags"
+        title="Tags"
+        active
+      />
+      {note.data.enableComments && <PostComments />}
+    </PostFooter>
+  </Container>
+</Layout>
+
+<style></style>
+
+<!-- <script src="../lib/browser/post.ts"></script> -->

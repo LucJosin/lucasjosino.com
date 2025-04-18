@@ -1,0 +1,59 @@
+---
+import Description from '@components/core/Description.astro';
+import Divider from '@components/core/Divider.astro';
+import NoteCard from '@components/core/Note/NoteCard.astro';
+import Title from '@components/core/Title.astro';
+import Container from '@components/data/Container.astro';
+import Layout from '@layouts/Layout.astro';
+import { getAllNotes } from '@lib/notes';
+import { useLocale } from 'i18n';
+
+const { t, localizePath, locale } = useLocale(Astro.url.pathname);
+const notes = await getAllNotes(true, locale);
+
+const title = t('notes.title');
+const description = t('notes.description');
+---
+
+<Layout title={title} description={description}>
+  <Container>
+    <Title title={title} fontSize="2.5em" />
+    <Description value={description} margin="0.5rem 0" width="80%" />
+    <Divider height="1px" width="80%" />
+    <div class="notes">
+      {
+        notes.length > 0 ? (
+          notes.map((post) => {
+            return (
+              <NoteCard
+                title={post.data.title}
+                description={post.data.description}
+                href={localizePath(`/notes/${post.slug}`)}
+                tags={post.data.tags}
+              />
+            );
+          })
+        ) : (
+          <p set:html={t('notes.no_note_found')} class="blog-empty" />
+        )
+      }
+    </div>
+  </Container>
+</Layout>
+
+<style>
+  .notes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .notes-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--description-text-color);
+  }
+</style>

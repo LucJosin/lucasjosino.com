@@ -25,6 +25,17 @@ export const blogSchema = z.object({
   easyShare: z.boolean().default(true),
 });
 
+export const noteSchema = z.object({
+  title: z.string().max(65),
+  description: z.string().max(160),
+  tags: z.array(z.string()),
+  language: z.enum(['en', 'pt']),
+  isVisible: z.boolean().default(true),
+  isIndexable: z.boolean().default(true),
+  isDraft: z.boolean().default(false),
+  enableComments: z.boolean().default(true),
+});
+
 export const projectSchema = z.object({
   permSlug: z.string(),
   thumbnail: z.string().optional(),

@@ -42,6 +42,11 @@ export interface i18nSchema {
     description: string;
     no_post_found: string;
   };
+  notes: {
+    title: string;
+    description: string;
+    no_note_found: string;
+  };
   post: {
     card: {
       read_post: string;

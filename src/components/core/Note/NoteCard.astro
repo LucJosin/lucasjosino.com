@@ -1,0 +1,52 @@
+---
+import Description from '@components/core/Description.astro';
+import Link from '@components/core/Link/Link.astro';
+import Tags from '@components/data/Tags.astro';
+import { useLocale } from 'i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  href: string;
+}
+
+const { t } = useLocale(Astro.url.pathname);
+
+const { title, description, tags, href } = Astro.props;
+---
+
+<div class="note-card">
+  <div class="note-card-header">
+    <Link href={href} alt={t('post.card.read_post')} display="inline">
+      <h3>{title}</h3>
+    </Link>
+  </div>
+  <Description
+    value={description}
+    margin="0"
+    align={false}
+    maxLine="2"
+    title={description}
+  />
+  <Tags values={tags} target="tags" />
+</div>
+
+<style>
+  h3 {
+    margin: 0;
+    display: inherit;
+  }
+
+  .note-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--card-padding);
+    transition: all var(--transition-duration);
+    display: flex;
+    gap: 1rem;
+  }
+</style>

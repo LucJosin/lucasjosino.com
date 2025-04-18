@@ -41,6 +41,11 @@ const { t, localizePath } = useLocale(Astro.url.pathname);
         href={localizePath('/about/')}
         alt={t('common.header.about_link_alt')}
       />
+      <Link
+        title={'Notes'}
+        href={localizePath('/notes/')}
+        alt={t('common.header.blog_link_alt')}
+      />
       <LanguageIcon />
       <ThemeIcon />
     </nav>

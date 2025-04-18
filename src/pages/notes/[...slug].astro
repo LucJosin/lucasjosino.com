@@ -1,0 +1,55 @@
+---
+import NoteLayout from '@layouts/NoteLayout.astro';
+import { getStaticNotePaths } from '@lib/notes';
+import '@styles/markdown.css';
+import '@styles/post.css';
+import '@styles/expressive-code.css';
+import '@styles/remark/remark-alert-blocks.css';
+import '@styles/remark/remark-text-highlight.css';
+import '@styles/remark/remark-codeset.css';
+import '@styles/remark/remark-image-caption.css';
+import '@styles/remark/remark-link-card-plus.css';
+import '@styles/remark/remark-github-card.css';
+import '@styles/remark/remark-mention.css';
+import '@styles/remark/remark-auto-select.css';
+import '@styles/remark/remark-gallery.css';
+
+export const getStaticPaths = getStaticNotePaths();
+
+const { note } = Astro.props;
+let { locales } = Astro.props;
+const { Content } = await note.render();
+
+locales = locales.map((post) => {
+  return {
+    locale: post.locale,
+    slug: `/blog/${post.slug}`,
+  };
+});
+---
+
+<NoteLayout
+  title={note.data.title}
+  description={note.data.description}
+  note={note}
+  locales={locales}
+  tags={note.data.tags}
+>
+  <article class="post-content post-content-lg">
+    <Content />
+  </article>
+</NoteLayout>
+
+<style></style>
+
+<script>
+  import mediumZoom from 'medium-zoom';
+  mediumZoom(
+    document.querySelectorAll(
+      'img:not(.no-zoom)'
+    ) as NodeListOf<HTMLImageElement>,
+    {
+      background: '#000000e0',
+    }
+  );
+</script>
