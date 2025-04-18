@@ -194,10 +194,9 @@ export default defineConfig({
       [
         remarkImageHost,
         {
-          imageBaseUrl:
-            process.env.CONTEXT === 'production'
-              ? 'https://rawcdn.githack.com/lucjosin/lucasjosino.com/main/public'
-              : '',
+          imageBaseUrl: import.meta.env.PROD
+            ? 'https://rawcdn.githack.com/lucjosin/lucasjosino.com/main/public'
+            : '',
         },
       ],
       remarkDirective,
