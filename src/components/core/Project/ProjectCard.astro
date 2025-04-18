@@ -8,19 +8,17 @@ import { useLocale } from 'i18n';
 import Description from '../Description.astro';
 import Divider from '../Divider.astro';
 import LinkBox from '../Link/LinkBox.astro';
-import Title from '../Title.astro';
 import MiniProjectCard from './MiniProjectCard.astro';
 import ProjectCardSlider from './ProjectCardSlider.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
-  titleSize?: string;
   descSize?: string;
 }
 
 const { t, localizePath } = useLocale(Astro.url.pathname);
 
-const { project, titleSize, descSize } = Astro.props as Props;
+const { project, descSize } = Astro.props as Props;
 ---
 
 <div class="project-card">
@@ -48,8 +46,8 @@ const { project, titleSize, descSize } = Astro.props as Props;
 
     <div class="project-card-container">
       <div class="project-card-header">
-        <div class="project-card-title">
-          <Title title={project.data.title} fontSize={titleSize} margin="0" />
+        <div class="project-card-title-wrapper">
+          <h3 class="project-card-title">{project.data.title}</h3>
           <span
             class="project-card-status"
             title={t(
@@ -241,9 +239,14 @@ const { project, titleSize, descSize } = Astro.props as Props;
     bottom: 0;
   }
 
-  .project-card-title {
+  .project-card-title-wrapper {
     display: flex;
     align-items: center;
+  }
+
+  .project-card-title {
+    margin: 0;
+    font-size: 1.2em;
   }
 
   .project-card-status,
