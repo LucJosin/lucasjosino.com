@@ -72,11 +72,11 @@ Now, the Astro project is running on localhost using the default port `:4321`:
 http://localhost:4321
 ```
 
-![Astro default template running on localhost]({{host}}/lucjosin/lucasjosino.com/main/public/static/blog/pNCgOiQi/astro-rename-example-default-project.png)
+![Astro default template running on localhost]({{image_base_url}}/static/blog/pNCgOiQi/astro-rename-example-default-project.png)
 
 Let's take a look at the DevTools from this default project:
 
-![Devtools from default Astro project]({{host}}/lucjosin/lucasjosino.com/main/public/static/blog/pNCgOiQi/devtools-from-default-astro-project.png)
+![Devtools from default Astro project]({{image_base_url}}/static/blog/pNCgOiQi/devtools-from-default-astro-project.png)
 
 As you can see, all CSS class names are "exposed".
 
@@ -150,7 +150,7 @@ yarn run build
 
 Now, run the output file using the [VSCode Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) and take a look at the DevTools:
 
-![Devtools from default astro-rename strategy]({{host}}/lucjosin/lucasjosino.com/main/public/static/blog/pNCgOiQi/devtools-from-default-astro-rename-strategy.png)
+![Devtools from default astro-rename strategy]({{image_base_url}}/static/blog/pNCgOiQi/devtools-from-default-astro-rename-strategy.png)
 
 Note that all class names have been **replaced with letters**, by default the integration will use the minimal[^minimal-strategy] strategy.
 
@@ -309,7 +309,7 @@ yarn run build
 
 Run the output file using the [VSCode Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) and take a look at the DevTools:
 
-![Devtools from custom astro-rename strategy]({{host}}/lucjosin/lucasjosino.com/main/public/static/blog/pNCgOiQi/devtools-from-custom-astro-rename-strategy.png)
+![Devtools from custom astro-rename strategy]({{image_base_url}}/static/blog/pNCgOiQi/devtools-from-custom-astro-rename-strategy.png)
 
 All class names have been replaced with hash names.
 

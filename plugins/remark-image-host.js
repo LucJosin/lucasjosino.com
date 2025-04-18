@@ -1,16 +1,19 @@
 import { visit } from 'unist-util-visit';
 
 export default function remarkImageHost(options) {
-  const host = options?.host?.replace(/\/+$/, '');
+  const imageBaseUrl = options?.imageBaseUrl?.replace(/\/+$/, '');
 
-  if (!host) {
-    throw new Error("Please provide a 'host' option to remark-image-host");
+  if (!imageBaseUrl) {
+    console.log('[remark-image-host] No host provided. Using default.');
   }
 
   return (tree) => {
     visit(tree, 'image', (node) => {
-      if (typeof node.url === 'string' && node.url.includes('{{host}}')) {
-        node.url = node.url.replace('{{host}}', `https://${host}`);
+      if (
+        typeof node.url === 'string' &&
+        node.url.includes('{{image_base_url}}')
+      ) {
+        node.url = node.url.replace('{{image_base_url}}', imageBaseUrl);
       }
     });
   };

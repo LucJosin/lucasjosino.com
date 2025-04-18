@@ -191,7 +191,15 @@ export default defineConfig({
       ],
     ],
     remarkPlugins: [
-      [remarkImageHost, { host: 'rawcdn.githack.com' }],
+      [
+        remarkImageHost,
+        {
+          imageBaseUrl:
+            process.env.CONTEXT === 'production'
+              ? 'https://rawcdn.githack.com/lucjosin/lucasjosino.com/main/public'
+              : '',
+        },
+      ],
       remarkDirective,
       remarkAutoSelect,
       remarkMention,
