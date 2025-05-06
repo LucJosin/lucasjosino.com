@@ -103,54 +103,21 @@ const imagePath = await getOpenGraphImage(
     </div>
     {
       project.data.thumbnail && (
-        <div class="project-image">
-          <img src={project.data.thumbnail} alt="Project 1" />
-        </div>
-      )
-    }
-    <Divider />
-    <article class="post-content post-content-lg">
-      <Content />
-    </article>
-    <Divider margin="0 1rem" />
-    <div class="project-info">
-      <div class="project-info-item project-category">
-        <h3>{t('project.target')}</h3>
-        <p>{project.data.target?.join(', ')}</p>
-      </div>
-      <div class="project-info-item project-category">
-        <h3>{t('project.type')}</h3>
-        <p>{project.data.category}</p>
-      </div>
-      <div class="project-info-item project-stauts">
-        <h3>{t('project.status')}</h3>
-        <p>{t(`project.project_status.${project.data.status}.title`)}</p>
-      </div>
-      <div class="project-info-item project-language">
-        <h3>{t('project.language')}</h3>
-        <p>{project.data.codeLanguage}</p>
-      </div>
-    </div>
-    <div class="project-tags">
-      <h3>Tags</h3>
-      <Tags values={project.data.tags} target="tags" />
-    </div>
-    {
-      project.data.images && (
-        <div class="project-images-container">
-          <h2 id="images">{t('project.images')}</h2>
-          <div class="project-images">
-            {project.data.images.map((image, index) => (
-              <img src={image} alt={`Image ${index}`} class="project-image" />
-            ))}
-          </div>
+        <div>
+          <img
+            class="project-image"
+            src={project.data.thumbnail}
+            alt="Project 1"
+          />
         </div>
       )
     }
     {
       project.data.subProjects && (
         <div class="project-mini-projects-container">
-          <h2>{t('projects.repositories')}</h2>
+          <h2 class="project-mini-projects-title">
+            {t('projects.repositories')}
+          </h2>
           <div class="project-miniprojects">
             {project.data.subProjects.map(async (sub) => {
               const subProject = await getEntry(sub);
@@ -166,6 +133,45 @@ const imagePath = await getOpenGraphImage(
                 />
               );
             })}
+          </div>
+        </div>
+      )
+    }
+    <Divider margin="0" />
+    <article class="post-content post-content-lg">
+      <Content />
+    </article>
+    <Divider margin="0 1rem" />
+    <div class="project-info">
+      <div class="project-info-item project-category">
+        <h3 class="project-info-item-title">{t('project.target')}</h3>
+        <p>{project.data.target?.join(', ')}</p>
+      </div>
+      <div class="project-info-item project-category">
+        <h3 class="project-info-item-title">{t('project.type')}</h3>
+        <p>{project.data.category}</p>
+      </div>
+      <div class="project-info-item project-stauts">
+        <h3 class="project-info-item-title">{t('project.status')}</h3>
+        <p>{t(`project.project_status.${project.data.status}.title`)}</p>
+      </div>
+      <div class="project-info-item project-language">
+        <h3 class="project-info-item-title">{t('project.language')}</h3>
+        <p>{project.data.codeLanguage}</p>
+      </div>
+    </div>
+    <div class="project-tags">
+      <h3>Tags</h3>
+      <Tags values={project.data.tags} target="tags" />
+    </div>
+    {
+      project.data.images && (
+        <div class="project-images-container">
+          <h2 id="images">{t('project.images')}</h2>
+          <div class="project-images">
+            {project.data.images.map((image, index) => (
+              <img src={image} alt={`Image ${index}`} class="project-image" />
+            ))}
           </div>
         </div>
       )
@@ -201,11 +207,41 @@ const imagePath = await getOpenGraphImage(
     font-size: 2.5em;
   }
 
+  .project-image {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    border-radius: var(--border-radius);
+  }
+
   .project-info {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem 3rem;
+    gap: 1rem;
+  }
+
+  .project-info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    border: var(--border-size) solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--card-padding);
+    transition: all var(--transition-duration);
+    user-select: none;
+  }
+
+  .project-info-item:hover {
+    background-color: var(--secondary-color);
+    border: var(--border-size) solid var(--contrast-color);
+  }
+
+  .project-info-item-title {
+    margin: 0;
   }
 
   .project-images-container {
@@ -219,11 +255,14 @@ const imagePath = await getOpenGraphImage(
   }
 
   .project-mini-projects-container {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    width: 100%;
     gap: 1rem;
+  }
+
+  .project-mini-projects-title {
+    margin: 0;
   }
 
   .project-miniprojects {
@@ -231,18 +270,6 @@ const imagePath = await getOpenGraphImage(
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
   }
-
-  /* @media (max-width: 520px) {
-    .project-title {
-      width: 100%;
-      text-align: center;
-    }
-
-    .project-links {
-      width: 100%;
-      justify-content: center;
-    }
-  } */
 </style>
 
 <script>
