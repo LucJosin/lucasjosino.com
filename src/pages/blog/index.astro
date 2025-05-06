@@ -48,8 +48,8 @@ const description = t('blog.description');
 <style>
   .blog-posts {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
   }
 

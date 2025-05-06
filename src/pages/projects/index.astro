@@ -22,11 +22,7 @@ const description = t('projects.description');
     <Divider height="1px" width="80%" />
 
     <div class="projects-list">
-      {
-        projects.map((data) => (
-          <ProjectCard project={data} titleSize="1.2em" descSize="1em" />
-        ))
-      }
+      {projects.map((data) => <ProjectCard project={data} descSize="1em" />)}
     </div>
   </Container>
 </Layout>
@@ -34,8 +30,8 @@ const description = t('projects.description');
 <style>
   .projects-list {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
   }
 </style>
