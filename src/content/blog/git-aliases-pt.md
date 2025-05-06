@@ -3,7 +3,7 @@ permSlug: 'git-aliases-typing-less-doing-more-my-favorite-shortcuts'
 title: 'Git Aliases: Digitando rápido e eficiente — Meu modo de usar'
 description: 'Aprenda a melhorar o uso do Git com aliases, criando atalhos para reduzir a repetição e conheça alguns dos meus atalhos favoritos de comandos Git.'
 image:
-  src: 'https://rawcdn.githack.com/lucjosin/lucasjosino.com/main/public/static/blog/wOAJxF4A/git-aliases-pt.png'
+  src: '/static/blog/wOAJxF4A/git-aliases-pt.png'
   position: 'center'
   showInPost: true
 tags:

@@ -70,6 +70,10 @@ const article = {
   tags: post.data.tags,
   category: post.data.category,
 };
+
+const IMAGE_BASE_URL = import.meta.env.PROD
+  ? 'https://raw.githubusercontent.com/lucjosin/lucasjosino.com/main/public'
+  : '';
 ---
 
 <Layout
@@ -128,7 +132,10 @@ const article = {
 
     {
       post.data.image.showInPost && (
-        <PostImage src={post.data.image.src} title={post.data.title} />
+        <PostImage
+          src={`${IMAGE_BASE_URL}${post.data.image.src}`}
+          title={post.data.title}
+        />
       )
     }
 

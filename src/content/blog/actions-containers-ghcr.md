@@ -3,7 +3,7 @@ permSlug: 'ci-cd-shipping-containers-to-ghcr-using-github-actions'
 title: 'CI/CD: Shipping containers to GHCR using GitHub Actions'
 description: "In this post, let's explore DevOps by building a CI/CD workflow to ship containers to GHCR using GitHub Actions with a simple Golang web application."
 image:
-  src: 'https://rawcdn.githack.com/lucjosin/lucasjosino.com/main/public/static/blog/xFvj4iCr/actions-containers-ghcr.png'
+  src: '/static/blog/xFvj4iCr/actions-containers-ghcr.png'
   position: 'center'
   showInPost: true
 tags:

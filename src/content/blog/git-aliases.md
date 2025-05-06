@@ -3,7 +3,7 @@ permSlug: 'git-aliases-typing-less-doing-more-my-favorite-shortcuts'
 title: 'Git Aliases: Typing less, doing more — My favorite shortcuts'
 description: 'Learn how to speed up your Git usage with aliases, creating shortcuts to reduce repetitive typing, and explore some of my favorite Git command shortcuts.'
 image:
-  src: 'https://rawcdn.githack.com/lucjosin/lucasjosino.com/main/public/static/blog/wOAJxF4A/git-aliases.png'
+  src: '/static/blog/wOAJxF4A/git-aliases.png'
   position: 'center'
   showInPost: true
 tags:

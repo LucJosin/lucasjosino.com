@@ -3,7 +3,7 @@ permSlug: 'go-how-to-mock-scs-session-authentication-in-tests'
 title: 'Go: How to mock SCS session authentication in tests'
 description: "In this article, we'll explore how to mock our session when using SCS and inject data into context for authentication tests."
 image:
-  src: 'https://rawcdn.githack.com/lucjosin/lucasjosino.com/main/public/static/blog/ZfgJzcJf/golang-session-tests.png'
+  src: '/static/blog/ZfgJzcJf/golang-session-tests.png'
   position: 'left'
   showInPost: true
 tags:
