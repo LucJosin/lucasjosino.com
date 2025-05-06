@@ -76,18 +76,6 @@ const {
       title={description}
     />
     <Tags values={tags.slice(0, maxTags)} target="tags" active />
-    <div class="post-card-read-more">
-      <Link
-        href={href}
-        alt={t('post.card.read_post')}
-        title={t('post.card.read_post')}
-        icon="mdi:arrow-right-thin"
-        iconSide="right"
-        hasBorderBottom={false}
-        animatedIcon
-        reverseAnimation
-      />
-    </div>
   </div>
 </div>
 
@@ -100,6 +88,7 @@ const {
     padding: var(--card-padding);
     transition: all var(--transition-duration);
     display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
 
@@ -113,10 +102,8 @@ const {
   }
 
   .post-card-img-container {
-    width: 50%;
-    max-width: 50%;
-    min-width: 50%;
     overflow: hidden;
+    aspect-ratio: 16/9;
     border-radius: var(--border-radius);
   }
 
@@ -133,9 +120,9 @@ const {
   }
 
   .post-card-container {
-    width: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 0.8rem;
     position: relative;
   }

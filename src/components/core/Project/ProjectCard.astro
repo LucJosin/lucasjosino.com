@@ -3,12 +3,10 @@ import Tags from '@components/data/Tags.astro';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { getEntry } from 'astro:content';
 import { useLocale } from 'i18n';
 import Description from '../Description.astro';
 import Divider from '../Divider.astro';
 import LinkBox from '../Link/LinkBox.astro';
-import MiniProjectCard from './MiniProjectCard.astro';
 import ProjectCardSlider from './ProjectCardSlider.astro';
 
 interface Props {
@@ -134,30 +132,6 @@ const { project, descSize } = Astro.props as Props;
       </div>
     </div>
   </div>
-
-  {
-    project.data.subProjects && (
-      <div class="project-card-sub-projects-wrapper">
-        <h3>{t('projects.repositories')}</h3>
-        <div class="project-card-sub-projects">
-          {project.data.subProjects.map(async (sub) => {
-            const subProject = await getEntry(sub);
-            return (
-              <MiniProjectCard
-                slug={subProject.data.permSlug}
-                title={subProject.data.title}
-                description={subProject.data.description}
-                url={subProject.data.url}
-                git={subProject.data.git}
-                codeLanguage={subProject.data.codeLanguage}
-                icon={subProject.data.icon}
-              />
-            );
-          })}
-        </div>
-      </div>
-    )
-  }
 </div>
 
 <style>
@@ -167,13 +141,11 @@ const { project, descSize } = Astro.props as Props;
   }
 
   .project-card-wrapper {
-    height: 100%;
-    width: 100%;
-    min-height: 15rem;
     box-sizing: border-box;
     padding: var(--card-padding);
     transition: all var(--transition-duration);
     display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
 
@@ -191,6 +163,7 @@ const { project, descSize } = Astro.props as Props;
   .project-card-sub-projects {
     width: 100%;
     display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
 
@@ -199,12 +172,10 @@ const { project, descSize } = Astro.props as Props;
   }
 
   .project-card-img-container {
-    width: 50%;
-    max-width: 50%;
-    min-width: 50%;
     display: flex;
     wrap: nowrap;
     overflow: hidden;
+    aspect-ratio: 16/9;
   }
 
   .project-card-img {
@@ -216,7 +187,6 @@ const { project, descSize } = Astro.props as Props;
   }
 
   .project-card-container {
-    width: 50%;
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
@@ -235,7 +205,7 @@ const { project, descSize } = Astro.props as Props;
     display: flex;
     flex-direction: column;
     gap: inherit;
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
   }
 
@@ -260,6 +230,16 @@ const { project, descSize } = Astro.props as Props;
     display: flex;
     gap: 0.2rem;
     align-items: center;
+  }
+
+  .project-card-status {
+    user-select: none;
+    cursor: help;
+  }
+
+  .project-card-status:hover {
+    background-color: var(--secondary-color);
+    border: var(--border-size) solid var(--contrast-color);
   }
 
   .project-card-org:hover {

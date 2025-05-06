@@ -83,15 +83,21 @@ const { slug, title, description, codeLanguage, url, git, icon } =
     gap: 0.5rem;
   }
 
+  .mini-project-item:hover {
+    background-color: var(--secondary-color);
+  }
+
   .mini-item-header {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 1rem;
   }
 
   .mini-item-wrapper {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     align-items: center;
   }
