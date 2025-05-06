@@ -15,7 +15,7 @@ const { title, href, value, active = false } = Astro.props;
       {value}
     </a>
   ) : (
-    <span class="tag-item">{value}</span>
+    <span class="tag-item not-active">{value}</span>
   )
 }
 
@@ -28,10 +28,16 @@ const { title, href, value, active = false } = Astro.props;
     white-space: nowrap;
   }
 
-  .tag-item:hover {
+  .tag-item:not(.not-active):hover {
     border: var(--border-size) solid var(--primary-color);
     background-color: var(--contrast-color);
     color: var(--primary-color);
     cursor: pointer;
+  }
+
+  .not-active:hover {
+    background-color: var(--secondary-color);
+    user-select: none;
+    border: var(--border-size) solid var(--contrast-color);
   }
 </style>
