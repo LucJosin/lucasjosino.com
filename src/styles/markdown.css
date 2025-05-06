@@ -33,7 +33,7 @@
   box-shadow: 0 1px 0 var(--kbd-effect), 0 0 0 1px var(--primary-color) inset;
   transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
   cursor: pointer;
-  margin: 0 0.1rem;
+  margin: 0 0.1rem !important;
   padding: 0.1rem 0.4rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
