@@ -25,11 +25,7 @@ const projects = await getAllProjects(true, locale);
   </div>
 
   <div class="projects-container">
-    {
-      projects
-        .slice(0, 2)
-        .map((data) => <ProjectCard project={data} titleSize="1.2em" />)
-    }
+    {projects.slice(0, 2).map((data) => <ProjectCard project={data} />)}
   </div>
 </section>
 
@@ -47,8 +43,8 @@ const projects = await getAllProjects(true, locale);
 
   .projects-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
   }
 </style>
