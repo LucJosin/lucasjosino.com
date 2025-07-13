@@ -1,7 +1,6 @@
 import { createSatoriOgInstance, type SatoriOptions } from 'satori-og';
 import blogRender from './renders/blog';
 import defaultRender from './renders/default';
-import noteRender from './renders/note';
 import projectRender from './renders/project';
 
 const SATORI_OPTIONS: SatoriOptions = {
@@ -27,7 +26,6 @@ const renders = {
   default: defaultRender,
   blog: blogRender,
   project: projectRender,
-  note: noteRender,
 } as const;
 
 type Render = keyof typeof renders;

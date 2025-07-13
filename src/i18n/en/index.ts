@@ -4,7 +4,6 @@ import { blog } from './blog';
 import { categories } from './categories';
 import { common } from './common';
 import { home } from './home';
-import { notes } from './notes';
 import { post } from './post';
 import { project } from './project';
 import { projects } from './projects';
@@ -17,7 +16,6 @@ export const enLocale = {
   categories,
   common,
   home,
-  notes,
   post,
   projects,
   project,
