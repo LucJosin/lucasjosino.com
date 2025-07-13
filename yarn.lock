@@ -1786,6 +1786,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expressive-code/core@npm:^0.41.2":
+  version: 0.41.2
+  resolution: "@expressive-code/core@npm:0.41.2"
+  dependencies:
+    "@ctrl/tinycolor": ^4.0.4
+    hast-util-select: ^6.0.2
+    hast-util-to-html: ^9.0.1
+    hast-util-to-text: ^4.0.1
+    hastscript: ^9.0.0
+    postcss: ^8.4.38
+    postcss-nested: ^6.0.1
+    unist-util-visit: ^5.0.0
+    unist-util-visit-parents: ^6.0.1
+  checksum: 9ee7c7c239fc3065f9c5be2e3e5742b5b48f0ebf536a64b8dbd8ff6d86b5b1bd23ce54253f26c67497e7053bf3ecbbee8874b162cca09ed37d5369a68b597b3d
+  languageName: node
+  linkType: hard
+
+"@expressive-code/plugin-collapsible-sections@npm:^0.41.2":
+  version: 0.41.2
+  resolution: "@expressive-code/plugin-collapsible-sections@npm:0.41.2"
+  dependencies:
+    "@expressive-code/core": ^0.41.2
+  checksum: b447657024de96674de31e96453d1f217bfca256fa323667a579a8a41a213dd4242851075c00205a343a9bfcb4feb091697f5ed890aa380604ee5b4d49163883
+  languageName: node
+  linkType: hard
+
 "@expressive-code/plugin-frames@npm:^0.40.2":
   version: 0.40.2
   resolution: "@expressive-code/plugin-frames@npm:0.40.2"
@@ -2198,6 +2224,7 @@ __metadata:
     "@astrojs/react": 4.2.1
     "@astrojs/rss": 4.0.11
     "@astrojs/sitemap": 3.2.1
+    "@expressive-code/plugin-collapsible-sections": ^0.41.2
     "@expressive-code/plugin-line-numbers": ^0.33.4
     "@iconify-json/ic": ^1.1.17
     "@iconify-json/mdi": ^1.1.64

@@ -3,6 +3,11 @@ import { s } from 'hastscript';
 
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import {
+  pluginCollapsibleSections,
+  pluginCollapsibleSectionsTexts,
+} from '@expressive-code/plugin-collapsible-sections';
+import { pluginFramesTexts } from '@expressive-code/plugin-frames';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import { pluginFileIcons } from '@xt0rted/expressive-code-file-icons';
 import compress from 'astro-compress';
@@ -52,6 +57,17 @@ const exceptions = [
   'header',
   'is-terminal',
 ];
+
+pluginCollapsibleSectionsTexts.addLocale('pt', {
+  collapsedLines:
+    '{lineCount} {lineCount;1=linha;linhas} {lineCount;1=recolhida;recolhidas}',
+});
+
+pluginFramesTexts.addLocale('pt', {
+  terminalWindowFallbackTitle: 'Janela de terminal',
+  copyButtonTooltip: 'Copiar texto',
+  copyButtonCopied: 'Copiado!',
+});
 
 // https://astro.build/config
 export default defineConfig({
@@ -104,10 +120,24 @@ export default defineConfig({
           terminalTitlebarBorder: 'var(--border-color)',
           terminalTitlebarBorderOpacity: 1,
         },
+        collapsibleSections: {
+          closedBackgroundColor: 'var(--primary-color)',
+          closedTextColor: 'var(--primary-text-color)',
+          openBackgroundColor: 'var(--primary-color)',
+          closedBorderColor: 'var(--border-color)',
+          closedBorderWidth: '1px',
+          openBorderColor: 'var(--primary-color)',
+        },
       },
       useDarkModeMediaQuery: true,
       themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
+      getBlockLocale: ({ file }) =>
+        file.data.astro.frontmatter.language || defaultLocale,
+      defaultLocale: defaultLocale,
       plugins: [
+        pluginCollapsibleSections({
+          collapseStyle: 'collapsible-start',
+        }),
         pluginLineNumbers(),
         pluginFileIcons({
           iconClass: 'expressive-code-icon',
